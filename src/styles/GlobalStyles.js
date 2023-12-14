@@ -1,8 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
-import modernNormalize from 'modern-normalize';
 
 const GlobalStyles = createGlobalStyle`
-  /* ${modernNormalize} */
+  
 
 :root {
   --bg: #0A0A11
