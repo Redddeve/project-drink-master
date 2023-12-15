@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { HeaderWrapper, HeaderContainer } from "./Header.styled"
-import Logo from './Logo';
+import Navigation from './Navigation/Navigation';
+import Logo from './Logo/Logo';
+import BurgerMenu from './Burger/Burger';
 
 const Header = () => {
   
@@ -30,13 +32,13 @@ const Header = () => {
 	useEffect(() => {
 		window.addEventListener("resize", updateMedia);
 		if (isOpenBurgerMenu) {
-			window.addEventListener("click", handlerBackdropClicks);
+			window.addEventListener("click" );
 			window.addEventListener("keydown", handlerEscClick);
 		}
 
 		return () => {
 			window.removeEventListener("resize", updateMedia);
-			window.removeEventListener("click", handlerBackdropClicks);
+			window.removeEventListener("click" );
 			window.removeEventListener("keydown", handlerEscClick);
 		};
 	});
@@ -50,7 +52,6 @@ const Header = () => {
 				<HeaderContainer>
 					<Logo />
 					{isDesktop && <Navigation />}
-					<UserMenu />
 					<BurgerMenu
 						toggleMenu={toggleMenu}
 						isOpenBurgerMenu={isOpenBurgerMenu}
