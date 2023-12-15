@@ -1,5 +1,25 @@
+import { useMediaQuery } from "react-responsive";
+import FooterMob from "./FooterMob/FooterMob";
+import FooterTab from "./FooterTab/FooterTab";
+import FooterDesc from "./FooterDesc";
+
 const Footer = () => {
-  return <div>Footer</div>;
+  const isMobile = useMediaQuery({
+    query: "(max-width: 767px)",
+  });
+  const isTablet = useMediaQuery({
+    query: "(min-width: 768px)",
+  });
+  const isDesktop = useMediaQuery({
+    query: "(min-width: 1440px)",
+  });
+  return (
+    <>
+      {isMobile && <FooterMob />}
+      {isTablet && <FooterTab />}
+      {isDesktop && <FooterDesc />}
+    </>
+  );
 };
 
 export default Footer;
