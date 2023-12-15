@@ -9,6 +9,7 @@ import AddDrinkPage from './pages/AddDrinkPage/AddDrinkPage';
 import FavoriteDrinksPage from './pages/FavoriteDrinksPage/FavoriteDrinksPage';
 import UserDrinkPage from './pages/UserDrinkPage/UserDrinkPage';
 import MyDrinksPage from './pages/MyDrinksPage/MyDrinksPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/favorites" element={<FavoriteDrinksPage />} />
           <Route path="/drink/:drinkId" element={<UserDrinkPage />} />
           <Route path="/my" element={<MyDrinksPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </>
