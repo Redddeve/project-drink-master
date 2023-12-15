@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize/modern-normalize.css';
 import './fonts.css';
+import { device } from './device';
 
 const GlobalStyles = createGlobalStyle`
   
@@ -33,15 +34,19 @@ const GlobalStyles = createGlobalStyle`
 
 body {
   color: var(--white);
-  background-color: var(--dark-bg);
+  background-color: var(--dark);
   font-family: 'Manrope', sans-serif; 
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 1.29;
-  /* -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
   scroll-behavior: smooth;
+
+  @media ${device.tablet} {
+      font-size: 16px;
+      line-height: 1.38;
+    }
+
   }
 
   p,
