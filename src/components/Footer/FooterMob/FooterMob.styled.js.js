@@ -31,7 +31,7 @@ export const LogoFlex = styled.div`
   flex-direction: column;
 `;
 
-export const StyledLogoLink = styled(NavLink)`
+export const StyledLogoLink = styled.a`
   display: flex;
   gap: 14px;
   align-items: center;
