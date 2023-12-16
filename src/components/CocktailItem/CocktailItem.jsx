@@ -1,21 +1,21 @@
 /* eslint-disable react/prop-types */
+import sprite from "../../images/sprite.svg";
 import {
   ButtonContainer,
   CocktailContainerTitle,
   CocktailDescription,
-  CocktailDescriptionContainer,
   CocktailImage,
   CocktailCard,
   CocktailLabel,
   CocktailTitle,
   MoreButton,
   RemoveButton,
-  Icon,
+  // Icon,
 } from "./CocktailItem.styled";
-import iconTrash from "../../images/trash.svg";
 
 const CocktailItem = ({ cocktail }) => {
   const { drink, alcoholic, description, drinkThumb } = cocktail;
+
   return (
     <CocktailCard>
       <CocktailImage src={drinkThumb} alt={drink} />
@@ -23,13 +23,13 @@ const CocktailItem = ({ cocktail }) => {
         <CocktailTitle>{drink}</CocktailTitle>
         <CocktailLabel>{alcoholic}</CocktailLabel>
       </CocktailContainerTitle>
-      <CocktailDescriptionContainer>
-        <CocktailDescription>{description}</CocktailDescription>
-      </CocktailDescriptionContainer>
+      <CocktailDescription>{description}</CocktailDescription>
       <ButtonContainer>
         <MoreButton type="button">See more</MoreButton>
         <RemoveButton type="button">
-          <Icon src={iconTrash} alt="remove" />
+          <svg width="22" height="22">
+            <use href={sprite + "#icon-trash"} />
+          </svg>
         </RemoveButton>
       </ButtonContainer>
     </CocktailCard>

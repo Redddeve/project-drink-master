@@ -6,4 +6,14 @@ export const ListStyled = styled.ul`
   flex-wrap: wrap;
   gap: 40px;
   margin-top: 40px;
+
+  @media screen and (min-width: 768px) {
+    column-gap: 20px;
+    row-gap: 80px;
+    margin-top: 60px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-top: 60px;
+  }
 `;

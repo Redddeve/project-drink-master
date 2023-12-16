@@ -6,6 +6,16 @@ export const CocktailCard = styled.li`
   flex-direction: column;
   align-items: flex-start;
   gap: 18px;
+
+  @media screen and (min-width: 768px) {
+    width: 342px;
+    gap: 24px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 400px;
+    gap: 24px;
+  }
 `;
 
 export const CocktailImage = styled.img`
@@ -17,6 +27,15 @@ export const CocktailImage = styled.img`
     rgba(10, 10, 17, 0.02) 51.18%,
     rgba(10, 10, 17, 0.77) 97.66%
   );
+
+  @media screen and (min-width: 768px) {
+    width: 342px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 400px;
+    height: 400px;
+  }
 `;
 
 export const CocktailContainerTitle = styled.div`
@@ -27,25 +46,31 @@ export const CocktailContainerTitle = styled.div`
 `;
 
 export const CocktailTitle = styled.h3`
-  color: var(--white);
   font-size: 18px;
   font-weight: 500;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+  }
 `;
 
 export const CocktailLabel = styled.p`
-  color: rgba(243, 243, 243, 0.5);
-`;
-
-export const CocktailDescriptionContainer = styled.div`
-  width: 335px;
-  height: 75px;
+  color: var(--transp-white);
 `;
 
 export const CocktailDescription = styled.p`
-  color: #f3f3f3;
-  height: 75px;
-  text-overflow: ellipsis;
   overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+
+  @media screen and (min-width: 768px) {
+    -webkit-line-clamp: 5;
+  }
+
+  @media screen and (min-width: 1280px) {
+    -webkit-line-clamp: 4;
+  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -58,9 +83,14 @@ export const MoreButton = styled.button`
   padding: 14px 40px;
   border-radius: 42px;
   background: var(--black);
-  color: var(--white);
+  color: inherit;
   font-weight: 600;
+  font-size: 16px;
   border: none;
+
+  @media screen and (min-width: 768px) {
+    padding: 18px 44px;
+  }
 `;
 
 export const RemoveButton = styled.button`
@@ -68,10 +98,11 @@ export const RemoveButton = styled.button`
   border-radius: 40px;
   background: var(--black);
   border: none;
-`;
+  & > svg {
+    fill: var(--white);
+  }
 
-export const Icon = styled.img`
-  width: 24px;
-  height: 24px;
-  fill: white;
+  @media screen and (min-width: 768px) {
+    padding: 15px;
+  }
 `;

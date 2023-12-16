@@ -1,0 +1,211 @@
+[
+  {
+    "_id": {
+      "$oid": "639b6de9ff77d221f190c50f"
+    },
+    "drink": "Quentin",
+    "drinkAlternate": "Sorry, not specified",
+    "tags": "IBA,ContemporaryClassic",
+    "video": "https://www.youtube.com/watch?v=2jtoa_t7g94",
+    "category": "Ordinary Drink",
+    "IBA": "Contemporary Classics",
+    "alcoholic": "Alcoholic",
+    "glass": "Cocktail glass",
+    "description": "Quentin is a refreshing cocktail that combines the flavors of citrus and mint. It is made with fresh lime juice, orange liqueur, and a touch of mint syrup. The drink is served over ice and garnished with a sprig of mint. It is the perfect beverage for a hot summer day.",
+    "instructions": "In a shaker half-filled with ice cubes, combine the rum, Kahlua, and cream. Shake well. Strain into a cocktail glass and garnish with the nutmeg.",
+    "instructionsES": "En una coctelera llena hasta la mitad con cubitos de hielo, combine el ron, Kahlua y la crema. Agite bien. Colar en una copa de cóctel y decorar con la nuez moscada.",
+    "instructionsDE": "In einem Shaker, der halb mit Eiswürfeln gefüllt ist, Rum, Kahlua und Sahne mischen. Gut schütteln. In ein Cocktailglas abseihen und mit der Muskatnuss garnieren.",
+    "instructionsFR": "Dans un shaker à moitié rempli de glaçons, mélanger le rhum, le Kahlua et la crème. Bien agiter. Versez dans un verre à cocktail et décorez avec la noix de muscade.",
+    "instructionsIT": "In uno shaker riempito a metà con cubetti di ghiaccio, unire il rum, il Kahlua e la panna. Filtrare in una coppetta da cocktail e guarnire con la noce moscata. Agitare bene.",
+    "instructionsRU": "В шейкере, наполовину наполненном кубиками льда, смешайте ром, Калуа и сливки. Хорошо встряхнуть. Процедите в коктейльный бокал и украсьте мускатным орехом.",
+    "instructionsPL": "W shakerze wypełnionym do połowy kostkami lodu wymieszać rum, Kahlua i śmietanę. Dobrze wstrząsnąć. Przelej do kieliszka koktajlowego i udekoruj gałką muszkatołową.",
+    "instructionsUK": "У шейкері, наповненому наполовину кубиками льоду, змішайте ром, Калуа та вершки. Добре струсити. Процідіть у келих для коктейлю та прикрасьте мускатним горіхом.",
+    "drinkThumb": "https://ftp.goit.study/img/drinkify/recipes/Quentin.jpg",
+    "ingredients": [
+      {
+        "title": "Dark rum",
+        "measure": "1 1/2 oz ",
+        "ingredientId": {
+          "$oid": "64aebb7f82d96cc69e0eb4a7"
+        }
+      },
+      {
+        "title": "Kahlua",
+        "measure": "1/2 oz ",
+        "ingredientId": {
+          "$oid": "64aebb7f82d96cc69e0eb4bd"
+        }
+      },
+      {
+        "title": "Light cream",
+        "measure": "1 oz ",
+        "ingredientId": {
+          "$oid": "64f1d5c069d8333cf130fb31"
+        }
+      },
+      {
+        "title": "Nutmeg",
+        "measure": "1/8 tsp grated ",
+        "ingredientId": {
+          "$oid": "64f1d5c069d8333cf130fb34"
+        }
+      }
+    ],
+    "shortDescription": "A refreshing and citrusy cocktail with a hint of mint."
+  },
+  {
+    "_id": {
+      "$oid": "639b6de9ff77d221f190c508"
+    },
+    "drink": "Irish Coffee",
+    "drinkAlternate": "Sorry, not specified",
+    "tags": "IBA,ContemporaryClassic",
+    "video": "https://youtu.be/9xwtCHELxMA?si=j9qrBEoFTqqgPVCr",
+    "category": "Coffee / Tea",
+    "IBA": "Contemporary Classics",
+    "alcoholic": "Alcoholic",
+    "glass": "Irish coffee cup",
+    "description": "Irish Coffee is a classic hot cocktail that combines the richness of coffee with the smoothness of Irish whiskey. It is made by pouring hot coffee into a glass, adding a shot of Irish whiskey, and topping it off with a dollop of whipped cream. The warmth of the drink and the sweetness of the cream make it a comforting and indulgent treat.",
+    "instructions": "Heat the coffee, whiskey and sugar; do not boil. Pour into glass and top with cream; serve hot.",
+    "instructionsES": "Calienta el café, el whisky y el azúcar; no hierva. Vierta en un vaso y cubra con crema; servir caliente.",
+    "instructionsDE": "Kaffee, Whiskey und Zucker erhitzen; nicht kochen lassen. In ein Glas geben und mit Sahne übergießen; heiß servieren.",
+    "instructionsFR": "Faire chauffer le café, le whisky et le sucre ; ne pas faire bouillir. Verser dans un verre et garnir de crème; Servir chaud.",
+    "instructionsIT": "Riscaldare il caffè, il whisky e lo zucchero; non bollire. Versare nel bicchiere e ricoprire con la panna; servito caldo.",
+    "instructionsRU": "Нагрейте кофе, виски и сахар; не кипятить. Перелейте в стакан и украсьте сливками; подавать горячим.",
+    "instructionsPL": "Podgrzej kawę, whisky i cukier; nie gotuj. Wlać do szklanki i posypać śmietaną; podawać na gorąco.",
+    "instructionsUK": "Розігріти каву, віскі і цукор; не кип'ятити. Перелити в келих і зверху полити кремом; подавати гарячим.",
+    "drinkThumb": "https://ftp.goit.study/img/drinkify/recipes/Irish_Coffee.jpg",
+    "ingredients": [
+      {
+        "title": "Irish whiskey",
+        "measure": "1 1/2 oz ",
+        "ingredientId": {
+          "$oid": "64aebb7f82d96cc69e0eb4c2"
+        }
+      },
+      {
+        "title": "Coffee",
+        "measure": "8 oz ",
+        "ingredientId": {
+          "$oid": "64aebb7f82d96cc69e0eb4e7"
+        }
+      },
+      {
+        "title": "Sugar",
+        "measure": "1 tsp ",
+        "ingredientId": {
+          "$oid": "64aebb7f82d96cc69e0eb4bc"
+        }
+      },
+      {
+        "title": "Whipped cream",
+        "measure": "1 tblsp ",
+        "ingredientId": {
+          "$oid": "64f1d5c069d8333cf130fb38"
+        }
+      }
+    ],
+    "shortDescription": "A classic hot cocktail with coffee, Irish whiskey, and whipped cream."
+  },
+  {
+    "_id": {
+      "$oid": "639b6de9ff77d221f190c50d"
+    },
+    "drink": "Iced Coffee Fillip",
+    "drinkAlternate": "Sorry, not specified",
+    "tags": "Coffee / Tea,IBA,NewEra",
+    "video": "https://youtu.be/3E__KEFweRI?si=nkzSORYlM6OBHJj7",
+    "category": "Coffee / Tea",
+    "IBA": "Sorry, not specified",
+    "alcoholic": "Alcoholic",
+    "glass": "Coffee mug",
+    "description": "Iced Coffee Fillip is a cool and creamy beverage that combines the flavors of iced coffee, vanilla syrup, and chocolate sauce. It is made by blending ice, coffee, milk, vanilla syrup, and chocolate sauce together until smooth. The result is a refreshing and indulgent drink that is perfect for a hot summer day or as a pick-me-up in the afternoon.",
+    "instructions": "Mix together in a coffee mug and chill before serving.",
+    "instructionsES": "Mezclar en una taza de café y enfriar antes de servir.",
+    "instructionsDE": "In einer Kaffeetasse vermischen und vor dem Servieren kalt stellen.",
+    "instructionsFR": "Mélanger dans une tasse à café et réfrigérer avant de servir.",
+    "instructionsIT": "Mescolare insieme in una tazza da caffè e raffreddare prima di servire.",
+    "instructionsRU": "Смешайте в кофейной кружке и охладите перед подачей на стол.",
+    "instructionsPL": "Wymieszać w kubku do kawy i schłodzić przed podaniem.",
+    "instructionsUK": "Змішайте в чашці для кави та охолодіть перед подачею.",
+    "drinkThumb": "https://ftp.goit.study/img/drinkify/recipes/Iced_Coffee_Fillip.jpg",
+    "ingredients": [
+      {
+        "title": "Kahlua",
+        "measure": "2 tsp ",
+        "ingredientId": {
+          "$oid": "64aebb7f82d96cc69e0eb4bd"
+        }
+      },
+      {
+        "title": "Coffee",
+        "measure": "Strong cold ",
+        "ingredientId": {
+          "$oid": "64aebb7f82d96cc69e0eb4e7"
+        }
+      }
+    ],
+    "shortDescription": "A cool and creamy iced coffee with a touch of vanilla and chocolate."
+  },
+  {
+    "_id": {
+      "$oid": "639b6de9ff77d221f190c6ab"
+    },
+    "drink": "Tequila Sour",
+    "drinkAlternate": "Sorry, not specified",
+    "tags": "Sorry, not specified",
+    "video": "Sorry, not specified",
+    "category": "Ordinary Drink",
+    "IBA": "Sorry, not specified",
+    "alcoholic": "Alcoholic",
+    "glass": "Whiskey sour glass",
+    "description": "Tequila Sour is a zesty and citrusy cocktail that's perfect for those who appreciate the bright and tangy flavors of tequila. This invigorating libation combines tequila with fresh lemon juice and simple syrup, creating a lively and refreshing drink with a zesty kick, citrusy brightness, and a touch of sweetness. It's a cocktail that's known for its tequila essence and the invigorating zing of lemon, making it a favorite choice for those who want to enjoy a revitalizing and tequila-infused sip. Sip on a Tequila Sour cocktail and let its citrusy goodness awaken your taste buds.",
+    "instructions": "Shake tequila, juice of lemon, and powdered sugar with ice and strain into a whiskey sour glass. Add the half-slice of lemon, top with the cherry, and serve.",
+    "instructionsES": "Agite el tequila, el jugo de limón y el azúcar en polvo con hielo y cuele en un vaso de whisky sour. Agregue la media rodaja de limón, cubra con la cereza y sirva.",
+    "instructionsDE": "Tequila, Zitronensaft und Puderzucker mit Eis schütteln und in ein Whiskey-Sourglas abseihen. Die halbe Zitronenscheibe dazugeben, mit der Kirsche garnieren und servieren.",
+    "instructionsFR": "Secouez la tequila, le jus de citron et le sucre en poudre avec de la glace et filtrez dans un verre à whisky aigre. Ajouter la demi-tranche de citron, garnir de la cerise et servir.",
+    "instructionsIT": "Shakerare la tequila, il succo di limone e lo zucchero a velo con ghiaccio e filtrare in un bicchiere da whisky sour.Aggiungere la mezza fetta di limone, guarnire con la ciliegia e servire.",
+    "instructionsRU": "Смешайте текилу, сок лимона и сахарную пудру со льдом и процедите в стакан для виски сауэр. Добавьте половину ломтика лимона, украсьте вишней и подавайте.",
+    "instructionsPL": "Tequilę, sok z cytryny i cukier puder wstrząśnij z lodem i przelej do szklanki z kwaśną whisky. Dodaj pół plasterka cytryny, posyp wiśnią i podawaj.",
+    "instructionsUK": "Збовтайте текілу, лимонний сік і цукрову пудру з льодом і процідіть у келих для віскі. Додайте половину лимона, зверху покладіть вишню та подавайте.",
+    "drinkThumb": "https://ftp.goit.study/img/drinkify/recipes/Tequila_Sour.jpg",
+    "ingredients": [
+      {
+        "title": "Tequila",
+        "measure": "2 oz ",
+        "ingredientId": {
+          "$oid": "64aebb7f82d96cc69e0eb4b8"
+        }
+      },
+      {
+        "title": "Lemon",
+        "measure": "Juice of 1/2 ",
+        "ingredientId": {
+          "$oid": "64aebb7f82d96cc69e0eb4f6"
+        }
+      },
+      {
+        "title": "Powdered sugar",
+        "measure": "1 tsp ",
+        "ingredientId": {
+          "$oid": "64f1d5c369d8333cf130fb78"
+        }
+      },
+      {
+        "title": "Lemon",
+        "measure": "1/2 slice ",
+        "ingredientId": {
+          "$oid": "64aebb7f82d96cc69e0eb4f6"
+        }
+      },
+      {
+        "title": "Cherry",
+        "measure": "1 ",
+        "ingredientId": {
+          "$oid": "64f1d5de69d8333cf130fd51"
+        }
+      }
+    ],
+    "shortDescription": "A zesty and citrusy cocktail with tequila, lemon juice, and simple syrup."
+  }
+]
