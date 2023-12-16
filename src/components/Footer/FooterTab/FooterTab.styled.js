@@ -23,7 +23,7 @@ export const FooterNavFlex = styled.div`
   gap: 40px;
 
   margin-bottom: 80px;
-  outline: 2px solid red;
+
   > nav {
     display: flex;
     flex-direction: column;
@@ -34,7 +34,6 @@ export const FooterNavFlex = styled.div`
 export const LogoFlex = styled.div`
   display: flex;
   flex-direction: column;
-  outline: 2px solid red;
 `;
 export const LogoSpan = styled.span`
   font-size: 16px;

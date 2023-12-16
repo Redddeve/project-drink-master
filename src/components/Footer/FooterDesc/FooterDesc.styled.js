@@ -8,22 +8,26 @@ export const FooterWrap = styled.footer`
 `;
 
 export const FooterContainer = styled.div`
-  max-width: 375px;
+  max-width: 1440px;
   margin: auto;
-  padding: 18px 20px 40px 20px;
-  /* background-color: green; */
+  padding: 80px 100px 24px 100px;
+  > div {
+    display: flex;
+    justify-content: space-between;
+    > nav {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+  }
 `;
 
 export const FooterNavFlex = styled.div`
   display: flex;
   justify-content: space-between;
 
-  margin-bottom: 40px;
-
-  > nav {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+  > div {
+    width: 309px;
   }
 `;
 
@@ -32,9 +36,9 @@ export const LogoFlex = styled.div`
   flex-direction: column;
 `;
 export const LogoSpan = styled.span`
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
-  line-height: 1.125;
+  line-height: 1.22;
 `;
 export const StyledNavLink = styled(NavLink)`
   color: var(--white);
@@ -57,13 +61,14 @@ export const StyledNavLink = styled(NavLink)`
   }
 `;
 
-export const Copy = styled.div`
-  margin-bottom: 8px;
+export const Copy = styled.p`
+  display: inline;
+  /* margin-right: auto; */
 
   color: rgba(243, 243, 243, 0.5);
-  font-size: 12px;
-  line-height: 1.33;
-  letter-spacing: -0.24px;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -0.28px;
   opacity: 0.9;
 `;
 
@@ -72,8 +77,8 @@ export const StyledLink = styled(NavLink)`
 
   color: rgba(243, 243, 243, 0.5);
   text-align: right;
-  font-size: 12px;
-  line-height: 1.33;
-  letter-spacing: -0.24px;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -0.28px;
   cursor: pointer;
 `;
