@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../styles/device";
 
 export const CocktailCard = styled.li`
   display: flex;
@@ -7,12 +8,12 @@ export const CocktailCard = styled.li`
   align-items: flex-start;
   gap: 18px;
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     width: 342px;
     gap: 24px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media ${device.desktop} {
     width: 400px;
     gap: 24px;
   }
@@ -28,11 +29,11 @@ export const CocktailImage = styled.img`
     rgba(10, 10, 17, 0.77) 97.66%
   );
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     width: 342px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media ${device.desktop} {
     width: 400px;
     height: 400px;
   }
@@ -49,7 +50,7 @@ export const CocktailTitle = styled.h3`
   font-size: 18px;
   font-weight: 500;
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     font-size: 24px;
   }
 `;
@@ -64,11 +65,11 @@ export const CocktailDescription = styled.p`
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     -webkit-line-clamp: 5;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media ${device.desktop} {
     -webkit-line-clamp: 4;
   }
 `;
@@ -88,7 +89,7 @@ export const MoreButton = styled.button`
   font-size: 16px;
   border: none;
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     padding: 18px 44px;
   }
 `;
@@ -102,7 +103,7 @@ export const RemoveButton = styled.button`
     fill: var(--white);
   }
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     padding: 15px;
   }
 `;
