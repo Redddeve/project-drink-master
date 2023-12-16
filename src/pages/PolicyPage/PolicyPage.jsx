@@ -1,12 +1,10 @@
-import React from "react";
-
 const PolicyPage = () => {
   return (
     <div>
-      "Your privacy is important to us. This section outlines how we collect,
-      use, process, and protect your personal data. This Privacy Policy applies
-      to the use of our website, applications, and services, so please take a
-      moment to read it. What personal data do we collect: We may collect
+      &quot;Your privacy is important to us. This section outlines how we
+      collect, use, process, and protect your personal data. This Privacy Policy
+      applies to the use of our website, applications, and services, so please
+      take a moment to read it. What personal data do we collect: We may collect
       various types of personal data that you voluntarily provide when
       interacting with our website, registering an account or filling out forms.
       This may include your name, email address, phone number and more. How we
@@ -22,7 +20,7 @@ const PolicyPage = () => {
       Privacy Policy. Please refer to this page to stay informed about any
       changes. Contact us: If you have any questions or concerns regarding this
       Privacy Policy or your information, please contact us using the contact
-      details provided on our website."
+      details provided on our website.&quot;
     </div>
   );
 };
