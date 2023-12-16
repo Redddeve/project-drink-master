@@ -45,7 +45,6 @@ export const StyledFileLabel = styled.label`
   }
   @media only screen and (min-width: 1440px) {
     min-width: 400px;
-    gap: 40px;
   }
 `;
 export const StyledFileInput = styled.input`
