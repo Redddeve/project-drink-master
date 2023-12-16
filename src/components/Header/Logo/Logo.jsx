@@ -1,17 +1,18 @@
-import { NavLink } from 'react-router-dom';
 import { LogoGroup, Icon, Name } from './Logo.styled';
-
+import sprite from "../../../images/sprite.svg";
 
 const Logo = () => {
   return (
-    <NavLink to="/">
+    <a to="/">
       <LogoGroup>
         <Icon>
-          <use href={`$#logo`}></use>
+          <svg width="22" height="22">
+          <use href={sprite + "#icon-logo"} />
+          </svg>
         </Icon>
         <Name>Drink Master</Name>
       </LogoGroup>
-    </NavLink>
+    </a>
   );
 };
 

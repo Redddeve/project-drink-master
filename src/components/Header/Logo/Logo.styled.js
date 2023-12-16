@@ -8,19 +8,20 @@ export const LogoGroup = styled.div`
 
   &:hover,
   &:focus {
-    transform: scale(1.1);
+    cursor:pointer;
   }
 
   @media screen and (min-width: 768px) {
     gap: 14px;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1440px) {
     margin-right: 0;
   }
 `;
 
 export const Icon = styled.svg`
+  fill: #F3F3F3;
   width: 22px;
   height: 22px;
 

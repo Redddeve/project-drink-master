@@ -14,10 +14,9 @@ export const HeaderContainer = styled.div`
     padding: 20px 32px;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1440px) {
     justify-content: space-between;
     padding: 20px;
-    max-width: 1280px;
     margin-left: auto;
     margin-right: auto;
   }
