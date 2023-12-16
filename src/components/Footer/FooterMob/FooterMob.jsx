@@ -6,10 +6,12 @@ import {
   FooterNavFlex,
   FooterWrap,
   LogoFlex,
+  StyledLogoLink,
   StyledNavLink,
   StyledLink,
-  LogoSpan,
+  Icon,
 } from "./FooterMob.styled.js";
+import sprite from "../../../images/sprite.svg";
 
 const FooterMob = () => {
   return (
@@ -17,11 +19,12 @@ const FooterMob = () => {
       <FooterContainer>
         <FooterNavFlex>
           <LogoFlex>
-            <StyledNavLink to="/">
-              <p>
-                O<LogoSpan>Drink Master</LogoSpan>
-              </p>
-            </StyledNavLink>
+            <StyledLogoLink to="/">
+              <Icon>
+                <use href={sprite + "#icon-logo"} />
+              </Icon>
+              <span>Drink Master</span>
+            </StyledLogoLink>
 
             <FollowUs />
           </LogoFlex>

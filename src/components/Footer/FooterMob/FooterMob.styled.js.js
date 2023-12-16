@@ -11,7 +11,6 @@ export const FooterContainer = styled.div`
   max-width: 375px;
   margin: auto;
   padding: 18px 20px 40px 20px;
-  /* background-color: green; */
 `;
 
 export const FooterNavFlex = styled.div`
@@ -31,11 +30,25 @@ export const LogoFlex = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const LogoSpan = styled.span`
+
+export const StyledLogoLink = styled(NavLink)`
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 20px;
+
+  color: var(--white);
   font-size: 16px;
   font-weight: 600;
   line-height: 1.125;
 `;
+export const Icon = styled.svg`
+  width: 22px;
+  height: 22px;
+  fill: var(--white);
+  stroke: var(--white);
+`;
+
 export const StyledNavLink = styled(NavLink)`
   color: var(--white);
   font-weight: 500;
@@ -44,7 +57,6 @@ export const StyledNavLink = styled(NavLink)`
   cursor: pointer;
   transition: color var(--tran-fast);
   > p {
-    margin-bottom: 20px;
   }
   &:hover {
     color: var(--active-blue);

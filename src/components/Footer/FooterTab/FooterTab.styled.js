@@ -35,11 +35,25 @@ export const LogoFlex = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const LogoSpan = styled.span`
-  font-size: 16px;
+
+export const StyledLogoLink = styled(NavLink)`
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 28px;
+
+  color: var(--white);
+  font-size: 18px;
   font-weight: 600;
-  line-height: 1.125;
+  line-height: 1.122;
 `;
+export const Icon = styled.svg`
+  width: 28px;
+  height: 28px;
+  fill: var(--white);
+  stroke: var(--white);
+`;
+
 export const StyledNavLink = styled(NavLink)`
   color: var(--white);
   font-weight: 500;
@@ -47,9 +61,7 @@ export const StyledNavLink = styled(NavLink)`
 
   cursor: pointer;
   transition: color var(--tran-fast);
-  > p {
-    margin-bottom: 20px;
-  }
+
   &:hover {
     color: var(--active-blue);
   }
