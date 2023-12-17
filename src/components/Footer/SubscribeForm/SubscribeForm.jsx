@@ -4,9 +4,9 @@ import {
   SubscribeButton,
   SubscribeInput,
   InputMessage,
-} from "./SubscribeForm.styled";
-import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
+} from './SubscribeForm.styled';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 const SubscribeForm = () => {
   const {
@@ -15,12 +15,10 @@ const SubscribeForm = () => {
     handleSubmit,
     reset,
   } = useForm({
-    mode: "onBlur",
+    mode: 'onBlur',
   });
-  const onSubmit = (data) => {
-    alert(JSON.stringify("Subscription completed successfully!"));
-    toast.success(`Subscription ${data}completed successfully!`);
-
+  const onSubmit = data => {
+    toast.success(`Subscription ${data.email} completed successfully!`);
     reset();
   };
 
@@ -33,16 +31,16 @@ const SubscribeForm = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="email">
           <SubscribeInput
-            {...register("email", {
+            {...register('email', {
               required: "Email can't be empty",
               minLength: {
                 value: 5,
-                message: "Email must contain at least 5 characters",
+                message: 'Email must contain at least 5 characters',
               },
               pattern: {
                 value:
                   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-                message: "Invalid characters or missing  @ or . ",
+                message: 'Invalid characters or missing  @ or . ',
               },
             })}
             type="email"
@@ -52,7 +50,7 @@ const SubscribeForm = () => {
           />
           <InputMessage>
             {errors?.email && (
-              <p>{errors?.email?.message || "This is an ERROR email"}</p>
+              <p>{errors?.email?.message || 'This is an ERROR email'}</p>
             )}
             {!errors?.email && isValid && (
               <p className="correct">This is an CORRECT email</p>

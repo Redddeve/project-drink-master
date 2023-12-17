@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const FormWrap = styled.div`
   max-width: 335px;
@@ -71,6 +71,9 @@ export const SubscribeButton = styled.button`
   &:focus:not(:disabled) {
     background-color: var(--white);
     color: var(--black);
+  }
+  &:disabled {
+    cursor: not-allowed;
   }
   @media screen and (min-width: 768px) {
     height: 56px;
