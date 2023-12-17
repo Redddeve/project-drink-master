@@ -3,6 +3,7 @@ import {
   SubscribeDesc,
   SubscribeButton,
   SubscribeInput,
+  InputMessage,
 } from "./SubscribeForm.styled";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -41,8 +42,7 @@ const SubscribeForm = () => {
               pattern: {
                 value:
                   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-                message:
-                  "Invalid characters or missing required characters @ or . ",
+                message: "Invalid characters or missing  @ or . ",
               },
             })}
             type="email"
@@ -50,12 +50,15 @@ const SubscribeForm = () => {
             title="Enter an email"
             placeholder="Enter the email"
           />
+          <InputMessage>
+            {errors?.email && (
+              <p>{errors?.email?.message || "This is an ERROR email"}</p>
+            )}
+            {!errors?.email && isValid && (
+              <p className="correct">This is an CORRECT email</p>
+            )}
+          </InputMessage>
         </label>
-        <div style={{ height: 40 }}>
-          {errors?.email && (
-            <p>{errors?.email?.message || "This is an ERROR email"}</p>
-          )}
-        </div>
 
         <SubscribeButton type="submit" disabled={!isValid}>
           Subscribe

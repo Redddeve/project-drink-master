@@ -56,15 +56,14 @@ export const StyledNavLink = styled(NavLink)`
 
   cursor: pointer;
   transition: color var(--tran-fast);
-  > p {
-  }
+
   &:hover {
     color: var(--active-blue);
   }
   &:focus {
     color: var(--active-blue);
   }
-  &:active {
+  &.active {
     color: var(--active-blue);
   }
 `;

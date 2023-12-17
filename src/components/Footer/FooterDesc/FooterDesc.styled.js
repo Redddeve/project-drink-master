@@ -67,7 +67,7 @@ export const StyledNavLink = styled(NavLink)`
   &:focus {
     color: var(--active-blue);
   }
-  &:active {
+  &.active {
     color: var(--active-blue);
   }
 `;

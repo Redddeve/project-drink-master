@@ -21,7 +21,7 @@ export const SubscribeInput = styled.input`
   max-width: 335px;
   height: 54px;
   padding-left: 24px;
-  margin-bottom: 18px;
+  /* margin-bottom: 18px; */
 
   background-color: transparent;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -35,7 +35,17 @@ export const SubscribeInput = styled.input`
     line-height: 1.56;
   }
 `;
-
+export const InputMessage = styled.div`
+  height: 18px;
+  padding: 3px 0px 3px 20px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.16;
+  color: var(--error-red);
+  .correct {
+    color: var(--correct-green);
+  }
+`;
 export const SubscribeButton = styled.button`
   width: 100%;
   max-width: 335px;
