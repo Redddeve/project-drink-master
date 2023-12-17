@@ -1,5 +1,7 @@
+import { StyledWrap } from "./SignInPage.styled.js";
+
 const SignInPage = () => {
-  return <div>SignInPage</div>;
+  return <StyledWrap></StyledWrap>;
 };
 
 export default SignInPage;
