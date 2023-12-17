@@ -1,7 +1,7 @@
-import { createGlobalStyle } from 'styled-components';
-import 'modern-normalize/modern-normalize.css';
-import { device } from './device';
-import fontObject from './fonts';
+import { createGlobalStyle } from "styled-components";
+import "modern-normalize/modern-normalize.css";
+import { device } from "./device";
+import fontObject from "./fonts";
 
 const { regular, medium, semiBold } = fontObject;
 
@@ -23,6 +23,7 @@ const GlobalStyles = createGlobalStyle`
   --white: #F3F3F3;
   --sub-white: #FAFAFA;
   --transp-white: #F3F3F380;
+  --transp-not-found:#F3F3F310;
   --dark: #0A0A11;
   --transp-dark: #0A0A1166; // light theme
   --black: #161F37;

@@ -20,7 +20,6 @@ export const EmptyFavoritesContainer = styled.div`
 `;
 
 export const EmptyFavoritesImage = styled.img`
-  width: 100%;
   height: 247px;
 
   @media ${device.tablet} {
@@ -31,8 +30,4 @@ export const EmptyFavoritesImage = styled.img`
 export const EmptyDescription = styled.p`
   text-align: center;
   font-weight: 500;
-
-  @media ${device.tablet} {
-    font-size: 16px;
-  }
 `;

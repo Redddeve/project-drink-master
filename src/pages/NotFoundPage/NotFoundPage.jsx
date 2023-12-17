@@ -1,5 +1,12 @@
+import NotFoundComponent from "../../components/NotFoundComponent/NotFoundComponent";
+import { NotFoundContainer } from "./NotFoundPage.styled";
+
 const NotFoundPage = () => {
-  return <div>NotFoundPage</div>;
+  return (
+    <NotFoundContainer>
+      <NotFoundComponent />
+    </NotFoundContainer>
+  );
 };
 
 export default NotFoundPage;

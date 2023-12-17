@@ -27,7 +27,7 @@ const CocktailItem = ({ cocktail }) => {
       <ButtonContainer>
         <MoreButton type="button">See more</MoreButton>
         <RemoveButton type="button">
-          <svg width="22" height="22">
+          <svg width="24" height="24">
             <use href={sprite + "#icon-trash"} />
           </svg>
         </RemoveButton>
