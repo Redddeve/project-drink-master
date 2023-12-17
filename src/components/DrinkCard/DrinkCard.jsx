@@ -13,15 +13,15 @@ export const DrinkCard = ({ drink, detailed }) => {
         src={drink.drinkThumb}
         alt={drink.drink}
       ></StyledDrinkImage>
-      {!detailed ? (
-        <StyledTextContainerSmall>
-          <span>{drink.drink}</span>
-          <StyledSeeMoreSmall to={`../drink/${drink._id.$oid}`}>
-            See more
-          </StyledSeeMoreSmall>
-        </StyledTextContainerSmall>
+      {detailed ? (
+          <></>
       ) : (
-        <></>
+        <StyledTextContainerSmall>
+        <span>{drink.drink}</span>
+        <StyledSeeMoreSmall to={`../drink/${drink._id.$oid}`}>
+        See more
+        </StyledSeeMoreSmall>
+        </StyledTextContainerSmall>
       )}
     </StyledDrinkCard>
   );

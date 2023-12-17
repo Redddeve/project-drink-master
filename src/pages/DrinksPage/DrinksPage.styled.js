@@ -4,7 +4,7 @@ import { device } from "../../styles/device.js";
 
 export const StyledHeader = styled.h2`
   margin-bottom: 40px;
-  color: #f3f3f3;
+  color: var(--white);
   font-size: 32px;
   font-weight: 600;
   line-height: 1.19;
@@ -34,9 +34,6 @@ export const StyledFilterContainer = styled.div`
     flex-direction: row;
     gap: 8px;
   }
-
-  @media screen and ${device.laptopL} {
-  }
 `;
 
 export const StyledCardsContainer = styled.div`
@@ -65,9 +62,11 @@ export const StyledInput = styled.input`
   opacity: 0.8;
   outline: none;
   background: transparent;
+  
+  color: white;
 
-  ::placeholder {
-    color: white;
+  &::placeholder {
+    color: var(--white);
   }
 
   @media screen and ${device.tablet} {
@@ -105,9 +104,9 @@ export const StyledSelect = styled(Select)`
     border: none;
     box-shadow: none;
     cursor: pointer;
-    color: #f3f3f3;
+    color: var(--white);
     border-radius: 200px;
-    background: #161f37;
+    background: var(--black);
 
     @media screen and ${device.tablet} {
       width: 199px;
@@ -115,7 +114,7 @@ export const StyledSelect = styled(Select)`
   }
 
   .Select__placeholder {
-    color: #f3f3f3;
+    color: var(--white);
   }
 
   .Select__indicator-separator {

@@ -32,6 +32,6 @@ export const StyledTextContainerSmall = styled.div`
 `;
 
 export const StyledSeeMoreSmall = styled(Link)`
-  color: rgba(243, 243, 243, 0.5);
+  color: var(--transp-white);
   cursor: pointer;
 `;
