@@ -11,15 +11,13 @@ export const FollowUsWrap = styled.ul`
     border-radius: 10px;
     border: 1px solid rgba(243, 243, 243, 0.2);
     transition: border var(--tran-fast);
+
     &:hover {
       border: 1px solid rgba(243, 243, 243, 0.5);
     }
     &:focus {
       border: 1px solid rgba(243, 243, 243, 0.5);
     }
-  }
-  > li > a {
-    color: var(--white);
   }
 
   @media screen and (min-width: 768px) {
@@ -28,5 +26,24 @@ export const FollowUsWrap = styled.ul`
       width: 44px;
       height: 44px;
     }
+  }
+`;
+
+export const SvgSocial = styled.svg`
+  width: 22px;
+  height: 22px;
+  stroke: var(--white);
+  fill: var(--white);
+  opacity: 0.5;
+  transition: opacity;
+  &:hover {
+    opacity: 1;
+  }
+  &:focus {
+    opacity: 1;
+  }
+  @media screen and (min-width: 768px) {
+    width: 28px;
+    height: 28px;
   }
 `;

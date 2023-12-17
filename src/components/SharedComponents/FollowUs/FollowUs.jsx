@@ -1,4 +1,5 @@
-import { FollowUsWrap } from "./FollowUs.styled";
+import { FollowUsWrap, SvgSocial } from "./FollowUs.styled";
+import sprite from "../../../images/sprite.svg";
 
 const FollowUs = () => {
   return (
@@ -9,7 +10,9 @@ const FollowUs = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          F
+          <SvgSocial>
+            <use href={sprite + "#icon-facebook"} />
+          </SvgSocial>
         </a>
       </li>
 
@@ -19,7 +22,9 @@ const FollowUs = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          I
+          <SvgSocial>
+            <use href={sprite + "#icon-instagram"} />
+          </SvgSocial>
         </a>
       </li>
 
@@ -29,7 +34,9 @@ const FollowUs = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Y
+          <SvgSocial>
+            <use href={sprite + "#icon-youtube"} />
+          </SvgSocial>
         </a>
       </li>
     </FollowUsWrap>

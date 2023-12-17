@@ -12,7 +12,7 @@ export const StyledMain = styled.main`
     padding: 140px 32px;
   }
 
-  @media ${device.laptopL} {
+  @media ${device.desktop} {
     max-width: 1440px;
     padding: 158px 100px 140px;
   }
