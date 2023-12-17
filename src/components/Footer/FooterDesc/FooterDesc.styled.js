@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const FooterWrap = styled.footer`
   width: 100%;
@@ -35,11 +35,24 @@ export const LogoFlex = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const LogoSpan = styled.span`
+export const StyledLogoLink = styled.a`
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 40px;
+
+  color: var(--white);
   font-size: 18px;
   font-weight: 600;
   line-height: 1.22;
 `;
+export const Icon = styled.svg`
+  width: 28px;
+  height: 28px;
+  fill: var(--white);
+  stroke: var(--white);
+`;
+
 export const StyledNavLink = styled(NavLink)`
   color: var(--white);
   font-weight: 500;
@@ -47,24 +60,20 @@ export const StyledNavLink = styled(NavLink)`
 
   cursor: pointer;
   transition: color var(--tran-fast);
-  > p {
-    margin-bottom: 20px;
-  }
+
   &:hover {
     color: var(--active-blue);
   }
   &:focus {
     color: var(--active-blue);
   }
-  &:active {
+  &.active {
     color: var(--active-blue);
   }
 `;
 
 export const Copy = styled.p`
   display: inline;
-  /* margin-right: auto; */
-
   color: rgba(243, 243, 243, 0.5);
   font-size: 14px;
   line-height: 1.28;

@@ -8,8 +8,10 @@ import {
   LogoFlex,
   StyledNavLink,
   StyledLink,
-  LogoSpan,
+  StyledLogoLink,
+  Icon,
 } from "./FooterDesc.styled.js";
+import sprite from "../../../images/sprite.svg";
 
 const FooterDesc = () => {
   return (
@@ -17,11 +19,12 @@ const FooterDesc = () => {
       <FooterContainer>
         <div>
           <LogoFlex>
-            <StyledNavLink to="/">
-              <p>
-                O<LogoSpan>Drink Master</LogoSpan>
-              </p>
-            </StyledNavLink>
+            <StyledLogoLink href="/">
+              <Icon>
+                <use href={sprite + "#icon-logo"} />
+              </Icon>
+              <span>Drink Master</span>
+            </StyledLogoLink>
 
             <FollowUs />
           </LogoFlex>
