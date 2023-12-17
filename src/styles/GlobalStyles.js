@@ -22,7 +22,7 @@ const GlobalStyles = createGlobalStyle`
   // colors
   --white: #F3F3F3;
   --sub-white: #FAFAFA;
-  --transp-white: #F3F3F380;
+  --transp-white: #F3F3F380; // rgba(243, 243, 243, 0.80)
   --transp-not-found:#F3F3F310;
   --dark: #0A0A11;
   --transp-dark: #0A0A1166; // light theme
