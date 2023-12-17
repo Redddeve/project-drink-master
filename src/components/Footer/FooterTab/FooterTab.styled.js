@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const FooterWrap = styled.footer`
   width: 100%;
@@ -45,7 +45,7 @@ export const StyledLogoLink = styled.a`
   color: var(--white);
   font-size: 18px;
   font-weight: 600;
-  line-height: 1.122;
+  line-height: 1.22;
 `;
 export const Icon = styled.svg`
   width: 28px;
