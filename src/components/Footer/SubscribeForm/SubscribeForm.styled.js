@@ -54,11 +54,11 @@ export const SubscribeButton = styled.button`
 
   transition: background-color var(--tran-fast);
 
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: var(--white);
     color: var(--black);
   }
-  &:focus {
+  &:focus:not(:disabled) {
     background-color: var(--white);
     color: var(--black);
   }
