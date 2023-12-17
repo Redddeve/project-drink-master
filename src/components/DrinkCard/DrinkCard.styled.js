@@ -5,11 +5,11 @@ import { device } from "../../styles/device.js";
 export const StyledDrinkCard = styled.div`
   width: 335px;
 
-  @media screen and ${device.tablet} {
+  @media ${device.tablet} {
     width: 342px;
   }
 
-  @media screen and ${device.laptopL} {
+  @media ${device.desktop} {
     width: 400px;
   }
 `;
@@ -19,7 +19,7 @@ export const StyledDrinkImage = styled.img`
   height: 360px;
   border-radius: 8px;
 
-  @media screen and ${device.laptopL} {
+  @media ${device.desktop} {
     height: 400px;
   }
 `;
