@@ -1,5 +1,7 @@
-/* eslint-disable react/prop-types */
-import sprite from "../../images/sprite.svg";
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import usual from '../../images/defaultImg/default@1x.webp';
+import retina from '../../images/defaultImg/default@2x.webp';
 import {
   ButtonContainer,
   CocktailContainerTitle,
@@ -8,32 +10,50 @@ import {
   CocktailCard,
   CocktailLabel,
   CocktailTitle,
-  MoreButton,
-  RemoveButton,
-  // Icon,
-} from "./CocktailItem.styled";
+  MoreLink,
+} from './CocktailItem.styled';
+import RemoveButton from '../RemoveButton/RemoveButton';
 
-const CocktailItem = ({ cocktail }) => {
-  const { drink, alcoholic, description, drinkThumb } = cocktail;
+const CocktailItem = ({ cocktail, page }) => {
+  const { _id, drink, alcoholic, description, drinkThumb } = cocktail;
+
+  const [imageLoadError, setImageLoadError] = useState(false);
+
+  const handleImageError = () => setImageLoadError(true);
 
   return (
     <CocktailCard>
-      <CocktailImage src={drinkThumb} alt={drink} />
+      {imageLoadError ? (
+        <CocktailImage srcSet={`${usual} 1x, ${retina} 2x`} alt={drink} />
+      ) : (
+        <CocktailImage
+          src={drinkThumb}
+          alt={drink}
+          onError={handleImageError}
+        />
+      )}
       <CocktailContainerTitle>
         <CocktailTitle>{drink}</CocktailTitle>
         <CocktailLabel>{alcoholic}</CocktailLabel>
       </CocktailContainerTitle>
       <CocktailDescription>{description}</CocktailDescription>
       <ButtonContainer>
-        <MoreButton type="button">See more</MoreButton>
-        <RemoveButton type="button">
-          <svg width="24" height="24">
-            <use href={sprite + "#icon-trash"} />
-          </svg>
-        </RemoveButton>
+        <MoreLink to={`/drink/${_id}`}>See more</MoreLink>
+        <RemoveButton id={_id} page={page} />
       </ButtonContainer>
     </CocktailCard>
   );
+};
+
+CocktailItem.propTypes = {
+  cocktail: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    drink: PropTypes.string.isRequired,
+    alcoholic: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    drinkThumb: PropTypes.string.isRequired,
+  }).isRequired,
+  page: PropTypes.string.isRequired,
 };
 
 export default CocktailItem;

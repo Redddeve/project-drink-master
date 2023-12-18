@@ -1,15 +1,17 @@
-import CocktailList from "../CocktailList/CocktailList";
-import usual from "../../images/blue-iced-tea@1x.png";
-import retina from "../../images/blue-iced-tea@2x.png";
+import { selectFavoriteDrinks } from '../../redux/drinks/selectors';
+import CocktailList from '../CocktailList/CocktailList';
+import usual from '../../images/blue-iced-tea@1x.png';
+import retina from '../../images/blue-iced-tea@2x.png';
 
 import {
   EmptyDescription,
   EmptyFavoritesContainer,
   EmptyFavoritesImage,
-} from "./FavoriteCocktails.styled";
+} from './FavoriteCocktails.styled';
+import { useSelector } from 'react-redux';
 
 const FavoriteCocktails = () => {
-  const yourCocktail = [];
+  const yourCocktail = useSelector(selectFavoriteDrinks);
 
   return yourCocktail.length === 0 ? (
     <EmptyFavoritesContainer>
@@ -22,7 +24,7 @@ const FavoriteCocktails = () => {
       </EmptyDescription>
     </EmptyFavoritesContainer>
   ) : (
-    <CocktailList cocktailData={yourCocktail} />
+    <CocktailList cocktailData={yourCocktail} page="favorite" />
   );
 };
 
