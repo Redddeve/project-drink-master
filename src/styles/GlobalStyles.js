@@ -1,7 +1,7 @@
-import { createGlobalStyle } from "styled-components";
-import "modern-normalize/modern-normalize.css";
-import { device } from "./device";
-import fontObject from "./fonts";
+import { createGlobalStyle } from 'styled-components';
+import 'modern-normalize/modern-normalize.css';
+import { device } from './device';
+import fontObject from './fonts';
 
 const { regular, medium, semiBold } = fontObject;
 
@@ -64,6 +64,32 @@ body {
       line-height: 1.38;
     }
   }
+  body::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 100px;
+  left: -400px;
+  width: 520px;
+  height: 550px;
+  border-radius: 550px;
+  background: rgba(64, 112, 205, 0.50);
+  filter: blur(104.8543701171875px);
+  
+}
+  body::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -200px;
+  right: -400px;
+  width: 549px;
+  height: 543px;
+  border-radius: 549px;
+  background: rgba(64, 112, 205, 0.50);
+  filter: blur(104.8543701171875px);
+  
+}
 
   p,
   h1, 
