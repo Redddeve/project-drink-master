@@ -1,5 +1,5 @@
-import { FollowUsWrap, SvgSocial } from "./FollowUs.styled";
-import sprite from "../../../images/sprite.svg";
+import { FollowUsWrap, SvgSocial } from './FollowUs.styled';
+import sprite from '../../../../images/sprite.svg';
 
 const FollowUs = () => {
   return (
@@ -11,7 +11,7 @@ const FollowUs = () => {
           rel="noopener noreferrer"
         >
           <SvgSocial>
-            <use href={sprite + "#icon-facebook"} />
+            <use href={sprite + '#icon-facebook'} />
           </SvgSocial>
         </a>
       </li>
@@ -23,7 +23,7 @@ const FollowUs = () => {
           rel="noopener noreferrer"
         >
           <SvgSocial>
-            <use href={sprite + "#icon-instagram"} />
+            <use href={sprite + '#icon-instagram'} />
           </SvgSocial>
         </a>
       </li>
@@ -35,7 +35,7 @@ const FollowUs = () => {
           rel="noopener noreferrer"
         >
           <SvgSocial>
-            <use href={sprite + "#icon-youtube"} />
+            <use href={sprite + '#icon-youtube'} />
           </SvgSocial>
         </a>
       </li>
