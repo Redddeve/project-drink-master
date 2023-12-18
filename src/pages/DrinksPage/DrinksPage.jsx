@@ -42,7 +42,7 @@ const DrinksPage = () => {
     dispatch(
       searchDrinksThunk({ drink: name, ingredients: ingredient, category })
     );
-  }, [name, ingredient, category]);
+  }, [name, ingredient, category, dispatch]);
 
   const ingredientsOptions = ingredients.map(ing => {
     return { value: ing.title, label: ing.title };

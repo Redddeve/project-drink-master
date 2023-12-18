@@ -1,8 +1,7 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { signinThunk } from '../../redux/auth/operations.js';
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 
 import {
@@ -24,7 +23,7 @@ const SignIn = () => {
   const submit = data => {
     dispatch(signinThunk(data))
       .unwrap()
-      .then(res => {
+      .then(() => {
         navigate(location.state?.from ?? '/');
       });
   };
