@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
 import usual from '../../images/defaultImg/default@1x.webp';
 import retina from '../../images/defaultImg/default@2x.webp';
 import {
@@ -19,10 +18,8 @@ const CocktailItem = ({ cocktail, page }) => {
   const { id, drink, alcoholic, description, drinkThumb } = cocktail;
 
   const [imageLoadError, setImageLoadError] = useState(false);
-  const navigate = useNavigate();
 
   const handleImageError = () => setImageLoadError(true);
-  const handleSeeMore = () => navigate(`/drink/${id}`);
 
   return (
     <CocktailCard>
@@ -41,7 +38,7 @@ const CocktailItem = ({ cocktail, page }) => {
       </CocktailContainerTitle>
       <CocktailDescription>{description}</CocktailDescription>
       <ButtonContainer>
-        <MoreLink onClick={handleSeeMore}>See more</MoreLink>
+        <MoreLink to={`/drink/${id}`}>See more</MoreLink>
         <RemoveButton id={id} page={page} />
       </ButtonContainer>
     </CocktailCard>

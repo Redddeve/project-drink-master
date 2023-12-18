@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { device } from '../../styles/device';
+import { Link } from 'react-router-dom';
 
 export const CocktailCard = styled.li`
   display: flex;
@@ -80,7 +81,7 @@ export const ButtonContainer = styled.div`
   gap: 8px;
 `;
 
-export const MoreLink = styled.a`
+export const MoreLink = styled(Link)`
   padding: 14px 40px;
   border-radius: 42px;
   background: var(--black);
