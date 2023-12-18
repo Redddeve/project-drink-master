@@ -86,9 +86,6 @@ export const addOwnDrinkThunk = createAsyncThunk(
   async (credentials, { rejectWithValue, getState }) => {
     try {
       setToken(getState().auth.token);
-      setToken(
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2VjOWI1YjYxNTcxM2UzNzgwYTdkOSIsImlhdCI6MTcwMjg5NjU4OCwiZXhwIjoxNzAyOTgyOTg4fQ.EhMi3TL1C5yTxPBDBFyJd-lmUnxEty6MeuUWZ9mc9mA'
-      );
       const { data } = await instance.post('/drinks/own/add', credentials, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -170,9 +167,6 @@ export const getCategoriesThunk = createAsyncThunk(
   async (_, { rejectWithValue, getState }) => {
     try {
       setToken(getState().auth.token);
-      setToken(
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2VjOWI1YjYxNTcxM2UzNzgwYTdkOSIsImlhdCI6MTcwMjg5NjU4OCwiZXhwIjoxNzAyOTgyOTg4fQ.EhMi3TL1C5yTxPBDBFyJd-lmUnxEty6MeuUWZ9mc9mA'
-      );
       const { data } = await instance.get('/filters/categories');
       return data;
     } catch (error) {
@@ -186,9 +180,6 @@ export const getIngredientsThunk = createAsyncThunk(
   async (_, { rejectWithValue, getState }) => {
     try {
       setToken(getState().auth.token);
-      setToken(
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2VjOWI1YjYxNTcxM2UzNzgwYTdkOSIsImlhdCI6MTcwMjg5NjU4OCwiZXhwIjoxNzAyOTgyOTg4fQ.EhMi3TL1C5yTxPBDBFyJd-lmUnxEty6MeuUWZ9mc9mA'
-      );
       const { data } = await instance.get('/filters/ingredients');
       return data;
     } catch (error) {
@@ -202,9 +193,6 @@ export const getGlassesThunk = createAsyncThunk(
   async (_, { rejectWithValue, getState }) => {
     try {
       setToken(getState().auth.token);
-      setToken(
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2VjOWI1YjYxNTcxM2UzNzgwYTdkOSIsImlhdCI6MTcwMjg5NjU4OCwiZXhwIjoxNzAyOTgyOTg4fQ.EhMi3TL1C5yTxPBDBFyJd-lmUnxEty6MeuUWZ9mc9mA'
-      );
       const { data } = await instance.get('/filters/glasses');
       return data;
     } catch (error) {

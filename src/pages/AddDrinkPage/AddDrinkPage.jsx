@@ -6,7 +6,6 @@ import {
   StyledAddBtn,
   StyledAddDiv,
   StyledAddTitle,
-  StyledAfterContent,
   StyledDescInput,
   StyledFileInput,
   StyledFileLabel,
@@ -27,6 +26,7 @@ import {
   ingStyles,
   StyledValidText,
   RelativeLabel,
+  StyledValidIng,
 } from './AddDrinkPage.styled';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -41,31 +41,29 @@ import {
   selectGlasses,
   selectIngredients,
 } from '../../redux/drinks/selectors';
+import { useNavigate } from 'react-router-dom';
+import { selectIsAdult } from '../../redux/auth/selectors';
 
 const AddDrinkPage = () => {
   const dispatch = useDispatch();
+  const glassesState = useSelector(selectGlasses);
+  const categoryState = useSelector(selectCategories);
+  const ingredientsState = useSelector(selectIngredients);
+  const isAdult = useSelector(selectIsAdult);
+  const navigate = useNavigate();
   const {
     register,
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  console.log(isAdult);
+  const [imagePreview, setImagePreview] = useState('');
   const [ingNumber, setIngNumber] = useState([1, 2, 3]);
   const [category, setCategory] = useState('Cocktail');
   const [glass, setGlass] = useState('Highball glass');
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [glassMenuIsOpen, setGlassMenuIsOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    Ingredients: [],
-    aboutRecipe: '',
-    itemTitle: '',
-    photo: '',
-    category: '',
-    glass: '',
-    recipeDesc: '',
-    alcohol: 'Non alcoholic',
-  });
 
   useEffect(() => {
     dispatch(getGlassesThunk());
@@ -76,9 +74,7 @@ const AddDrinkPage = () => {
   useEffect(() => {
     dispatch(getIngredientsThunk());
   }, [dispatch]);
-  const glassesState = useSelector(selectGlasses);
-  const categoryState = useSelector(selectCategories);
-  const ingredientsState = useSelector(selectIngredients);
+
   const categoryOptions = categoryState[0]?.categories.map(el => {
     return { label: el, value: el };
   });
@@ -122,9 +118,11 @@ const AddDrinkPage = () => {
 
   const deleteIng = (e, index) => {
     e.preventDefault();
-
-    const newNumbers = formData.Ingredients.filter((_, i) => i !== index);
-    setFormData({ ...formData, Ingredients: newNumbers });
+    if (ingNumber.length < 4) {
+      return;
+    }
+    const newNumber = ingNumber.filter(el => el !== index);
+    setIngNumber(newNumber);
   };
 
   const onSubmit = data => {
@@ -133,12 +131,6 @@ const AddDrinkPage = () => {
       [`measure`]: data[`IngNumber${index}`],
     }));
 
-    setFormData({
-      ...data,
-      Ingredients: ingredientsArray,
-      glass: glass,
-      category: category,
-    });
     dispatch(
       addOwnDrinkThunk({
         ingredients: ingredientsArray,
@@ -150,19 +142,31 @@ const AddDrinkPage = () => {
         description: data.recipeDesc,
         alcoholic: data.alcohol,
       })
-    );
+    )
+      .unwrap()
+      .then(() => navigate('/my'))
+      .catch(error => console.log(error));
   };
-  const selectValidation = { required: 'This field is required' };
+  const handleFileChange = e => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
   return (
     <div>
       <StyledAddTitle>Add drink</StyledAddTitle>
       <form onSubmit={handleSubmit(onSubmit)}>
         <StyledInfoDiv>
-          <StyledFileLabel>
+          <StyledFileLabel style={{ backgroundImage: `url(${imagePreview})` }}>
             <StyledFileInput
               type="file"
               {...register('photo')}
-              onChange={e => console.log(e.target.value)}
+              onChange={handleFileChange}
             />
           </StyledFileLabel>
           <div>
@@ -192,7 +196,7 @@ const AddDrinkPage = () => {
               <p>Category</p>
 
               <Controller
-                name="glass"
+                name="category"
                 control={control}
                 render={({ field }) => (
                   <Select
@@ -215,7 +219,7 @@ const AddDrinkPage = () => {
                     onMenuClose={() => setMenuIsOpen(false)}
                   />
                 )}
-                rules={{ required: 'This field is required' }}
+                rules={{ required: 'Category field is required' }}
               />
               {errors.category && (
                 <StyledValidText>{errors.category.message}</StyledValidText>
@@ -247,7 +251,7 @@ const AddDrinkPage = () => {
                     onMenuClose={() => setGlassMenuIsOpen(false)}
                   />
                 )}
-                rules={{ required: 'This field is required' }}
+                rules={{ required: 'Glass field is required' }}
               />
               {errors.glass && (
                 <StyledValidText>{errors.glass.message}</StyledValidText>
@@ -260,6 +264,7 @@ const AddDrinkPage = () => {
                   value={'Non alcoholic'}
                   name="alcohol"
                   {...register('alcohol', { required: true })}
+                  defaultChecked
                 />
                 <p>Non alcoholic</p>
               </StyledRadioLabel>
@@ -269,14 +274,10 @@ const AddDrinkPage = () => {
                   name="alcohol"
                   value={'Alcoholic'}
                   {...register('alcohol', { required: true })}
+                  disabled={!isAdult}
                 />
                 <p>Alcoholic</p>
               </StyledRadioLabel>
-              {errors.alcohol && (
-                <StyledValidText>
-                  At least one option must be selected.
-                </StyledValidText>
-              )}
             </StyledRadioLabelDiv>
           </div>
         </StyledInfoDiv>
@@ -317,24 +318,22 @@ const AddDrinkPage = () => {
                         })}
                       />
                     )}
-                    rules={{ required: 'It is required' }}
+                    rules={{ required: '!' }}
                   />
                   {errors[`Ingredients${index}`] && (
-                    <StyledValidText>
+                    <StyledValidIng>
                       {errors[`Ingredients${index}`].message}
-                    </StyledValidText>
+                    </StyledValidIng>
                   )}
                 </RelativeLabel>
 
                 <StyledIngFieldWrapper>
                   <StyledIngFieldInput
-                    type="number"
-                    {...register(`IngNumber${index}`, {
-                      maxLength: 3,
-                      pattern: /^\d{0,3}$/,
-                    })}
+                    type="text"
+                    placeholder="1 cl"
+                    minLength={2}
+                    {...register(`IngNumber${index}`)}
                   />
-                  <StyledAfterContent>cl</StyledAfterContent>
                 </StyledIngFieldWrapper>
                 <StyledIngFieldBtn onClick={e => deleteIng(e, index)}>
                   <svg width="18" height="18">

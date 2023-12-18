@@ -11,6 +11,7 @@ export const StyledAddTitle = styled.h1`
 export const StyledFileLabel = styled.label`
   width: 335px;
   height: 320px;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,6 +19,8 @@ export const StyledFileLabel = styled.label`
   border-radius: 8px;
   background: rgba(22, 31, 55, 0.5);
   margin-bottom: 40px;
+  background-repeat: no-repeat;
+  background-size: cover;
   &::before {
     content: '+';
     display: flex;
@@ -43,7 +46,7 @@ export const StyledFileLabel = styled.label`
     min-width: 320px;
     margin-bottom: 0;
   }
-  @media ${device.laptopL} {
+  @media ${device.desktop} {
     min-width: 400px;
   }
 `;
@@ -87,6 +90,7 @@ export const StyledSelectLabel = styled.label`
 export const StyledRadioLabel = styled.label`
   color: rgba(243, 243, 243, 0.5);
   display: flex;
+  cursor: pointer;
   margin-bottom: 80px;
   input[type='radio']:checked + p {
     color: var(--white);
@@ -99,8 +103,8 @@ export const StyledRadioLabel = styled.label`
       content: '';
       display: flex;
       border-radius: 50%;
-      top: 2.2px;
-      left: 2.2px;
+      top: 2.5px;
+      left: 2.5px;
       border: 3.1px solid black;
       width: 12px;
       height: 12px;
@@ -176,6 +180,7 @@ export const StyledAddBtn = styled.button`
   align-items: center;
   color: inherit;
   font-family: inherit;
+  cursor: pointer;
   &:disabled {
     color: var(--transp-white);
   }
@@ -187,17 +192,9 @@ export const StyledIngFieldInput = styled.input`
   border: 1px solid var(--transp-white);
   background: transparent;
   color: var(--white);
-  padding: 0 60px 0 18px;
+  padding: 0 60px 0 24px;
   position: relative;
-  &::after {
-    content: 'cl';
-    display: block;
-    width: 10px;
-    height: 10px;
-    color: white;
-    right: 30px;
-    top: 10px;
-  }
+
   @media ${device.tablet} {
     width: 150px;
   }
@@ -210,28 +207,19 @@ export const StyledIngFieldLabel = styled.label`
 export const StyledIngFieldWrapper = styled.div`
   position: relative;
 `;
-export const StyledAfterContent = styled.span`
-  content: 'cl';
-  display: block;
-  width: 10px;
-  height: 10px;
-  color: white;
-  position: absolute;
-  right: 50px;
-  top: 20px;
-  transform: translateY(-50%);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 18px;
-`;
+
 export const StyledIngFieldBtn = styled.button`
   background: transparent;
   border: none;
   padding: 0;
+  cursor: pointer;
+  *:hover > svg {
+    stroke: aqua;
+  }
   @media ${device.tablet} {
     margin-left: 188px;
   }
-  @media ${device.laptopL} {
+  @media ${device.desktop} {
     margin-left: 20px;
   }
 `;
@@ -240,7 +228,7 @@ export const StyledIngDiv = styled.div`
   @media ${device.tablet} {
     max-width: 704px;
   }
-  @media ${device.laptopL} {
+  @media ${device.desktop} {
     max-width: 540px;
   }
 `;
@@ -277,13 +265,18 @@ export const StyledSubmitBtn = styled.button`
   align-items: flex-start;
   gap: 10px;
   color: var(--black);
-
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
   line-height: 18px;
+  transition: all var(--tran-fast);
   @media ${device.tablet} {
     display: block;
+  }
+
+  &:hover {
+    box-shadow: rgba(233, 233, 233, 0.3) 0px 0px 28px,
+      rgba(233, 233, 233, 0.32) 0px 6px 23px;
   }
 `;
 export const stylesSelect = {
@@ -316,22 +309,6 @@ export const stylesSelect = {
     width: '131px',
     right: '0',
   }),
-  //   menuList: (base) => ({
-  //     ...base,
-  //     "::-webkit-scrollbar": {
-  //       width: "2px",
-  //       height: "0px",
-  //     },
-  //     "::-webkit-scrollbar-track": {
-  //       background: "#eaeaea",
-  //     },
-  //     "::-webkit-scrollbar-thumb": {
-  //       background: "#2f2c54",
-  //     },
-  //     "::-webkit-scrollbar-thumb:hover": {
-  //       background: "#0a0342",
-  //     },
-  //   }),
 };
 export const ingStyles = {
   ...stylesSelect,
@@ -363,8 +340,37 @@ export const ingStyles = {
 export const StyledValidText = styled.p`
   position: absolute;
   top: 40px;
-  color: red;
-  font-size: 14px;
+  color: #ff7c31;
+  font-size: 13px;
+  width: 100%;
+`;
+export const StyledValidIng = styled(StyledValidText)`
+  top: 7px;
+  left: -15px;
+  font-size: 26px;
+  font-weight: 700;
+  &::after {
+    content: 'This field is required';
+    display: none;
+    width: 145px;
+    height: 20px;
+    background-color: white;
+    color: black;
+    font-size: 14px;
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    opacity: 0;
+    transition: all;
+    border-radius: 6px;
+    padding: 1px 4px;
+  }
+  &:hover {
+    &::after {
+      display: block;
+      opacity: 1;
+    }
+  }
 `;
 
 export const RelativeLabel = styled.label`
