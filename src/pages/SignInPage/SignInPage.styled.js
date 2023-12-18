@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import bg from "../../images/wellcomeGlass@1x.jpg";
+import bg from "../../images/start-bg-mob@2x.jpg";
 import { Link } from "react-router-dom";
 
 export const StyledWrap = styled.div`
@@ -8,9 +8,11 @@ export const StyledWrap = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
+  width: 375px;
+  margin: 0 auto;
   background-image: url(${bg});
   background-repeat: no-repeat;
-  background-position: left -5% center;
+  background-size: cover;
 `;
 
 export const StyledFormWrap = styled.form`

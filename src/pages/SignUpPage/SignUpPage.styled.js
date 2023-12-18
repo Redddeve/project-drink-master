@@ -8,6 +8,8 @@ export const StyledWrap = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
+  width: 375px;
+  margin: 0 auto;
   /* width: 100%; */
   background-image: url(${bg});
   background-repeat: no-repeat;

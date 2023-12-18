@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-import bg from "../../images/wellcomeGlass@1x.jpg";
+import bg from "../../images/start-bg-mob@2x.jpg";
 
 export const StyledWrap = styled.div`
   display: flex;
@@ -10,9 +10,11 @@ export const StyledWrap = styled.div`
   justify-content: center;
   gap: 40px;
   height: 100vh;
+  width: 375px;
+  margin: 0 auto;
   background-image: url(${bg});
   background-repeat: no-repeat;
-  background-position: left -5% center;
+  background-size: cover;
 `;
 
 export const StyledTextWrap = styled.div`
