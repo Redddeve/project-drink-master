@@ -3,6 +3,7 @@ import { PageContainer } from './AgreementPage.styled';
 const AgreementPage = () => {
   return (
     <PageContainer>
+      <h1>Terms of Service</h1>
       <p>
         This "User Agreement" (the "Agreement") sets forth the terms and
         conditions governing the use of the Drink Master application ("App") and
