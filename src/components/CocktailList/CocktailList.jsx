@@ -7,7 +7,7 @@ const CocktailList = ({ cocktailData, page }) => {
     <ListStyled>
       {cocktailData.map((cocktail, index) => (
         <CocktailItem
-          key={cocktail.id || index}
+          key={cocktail._id || index}
           cocktail={cocktail}
           page={page}
         />
@@ -19,7 +19,7 @@ const CocktailList = ({ cocktailData, page }) => {
 CocktailList.propTypes = {
   cocktailData: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      _id: PropTypes.string.isRequired,
       drink: PropTypes.string.isRequired,
       alcoholic: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,

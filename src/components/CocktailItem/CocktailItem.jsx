@@ -15,7 +15,7 @@ import {
 import RemoveButton from '../RemoveButton/RemoveButton';
 
 const CocktailItem = ({ cocktail, page }) => {
-  const { id, drink, alcoholic, description, drinkThumb } = cocktail;
+  const { _id, drink, alcoholic, description, drinkThumb } = cocktail;
 
   const [imageLoadError, setImageLoadError] = useState(false);
 
@@ -38,8 +38,8 @@ const CocktailItem = ({ cocktail, page }) => {
       </CocktailContainerTitle>
       <CocktailDescription>{description}</CocktailDescription>
       <ButtonContainer>
-        <MoreLink to={`/drink/${id}`}>See more</MoreLink>
-        <RemoveButton id={id} page={page} />
+        <MoreLink to={`/drink/${_id}`}>See more</MoreLink>
+        <RemoveButton id={_id} page={page} />
       </ButtonContainer>
     </CocktailCard>
   );
@@ -47,7 +47,7 @@ const CocktailItem = ({ cocktail, page }) => {
 
 CocktailItem.propTypes = {
   cocktail: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
     drink: PropTypes.string.isRequired,
     alcoholic: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
