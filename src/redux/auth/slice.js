@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 import {
   getCurrentUserThunk,
   refreshThunk,
@@ -7,17 +7,18 @@ import {
   signupThunk,
   subscribeThunk,
   updateThunk,
-} from "./operations";
+} from './operations';
 
 const initialState = {
   user: {
     email: null,
     name: null,
+    date: null,
     id: null,
     avatarURL: null,
     subscribed: false,
   },
-  token: "",
+  token: '',
   isLoggedIn: false,
   isLoading: false,
   isRefresh: false,
@@ -25,9 +26,9 @@ const initialState = {
 };
 
 export const slice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
 
       .addCase(refreshThunk.fulfilled, (state, { payload }) => {
@@ -49,20 +50,21 @@ export const slice = createSlice({
         state.user = payload;
         state.isLoggedIn = true;
       })
-      .addCase(signoutThunk.fulfilled, (state) => {
+      .addCase(signoutThunk.fulfilled, state => {
         state.isLoading = false;
         state.isLoggedIn = false;
-        state.token = "";
+        state.token = '';
         state.user = {
           email: null,
           name: null,
+          date: null,
           id: null,
           avatarURL: null,
           subscribed: false,
         };
       })
       .addMatcher(
-        (action) =>
+        action =>
           [
             signinThunk.pending,
             signoutThunk.pending,
@@ -72,12 +74,12 @@ export const slice = createSlice({
             getCurrentUserThunk.pending,
             refreshThunk.pending,
           ].includes(action.type),
-        (state) => {
+        state => {
           state.isLoading = true;
         }
       )
       .addMatcher(
-        (action) =>
+        action =>
           [signinThunk.fulfilled, signupThunk.fulfilled].includes(action.type),
         (state, { payload }) => {
           state.isLoading = false;
@@ -87,7 +89,7 @@ export const slice = createSlice({
         }
       )
       .addMatcher(
-        (action) =>
+        action =>
           [
             signinThunk.rejected,
             signoutThunk.rejected,
