@@ -6,8 +6,9 @@ import { toast } from 'react-toastify';
 
 export const fetchAllDrinks = createAsyncThunk(
   'drinks/fetchAllDrinks',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
+      setToken(getState().auth.token);
       const { data } = await instance.get('/drinks/mainpage?limit=15&page=1');
       return data;
     } catch (error) {
@@ -19,8 +20,9 @@ export const fetchAllDrinks = createAsyncThunk(
 
 export const getPopularThunk = createAsyncThunk(
   'drinks/popular',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
+      setToken(getState().auth.token);
       const { data } = await instance.get('/drinks/popular');
       return data;
     } catch (error) {
@@ -53,8 +55,9 @@ export const searchDrinksThunk = createAsyncThunk(
 
 export const getDrinkbyIdThunk = createAsyncThunk(
   'drinks/id',
-  async (id, { rejectWithValue }) => {
+  async (id, { rejectWithValue, getState }) => {
     try {
+      setToken(getState().auth.token);
       const { data } = await instance.get(`/drinks/${id}`);
       return data;
     } catch (error) {
@@ -67,8 +70,9 @@ export const getDrinkbyIdThunk = createAsyncThunk(
 
 export const getOwnDrinksThunk = createAsyncThunk(
   'drinks/own',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
+      setToken(getState().auth.token);
       const { data } = await instance.get('/drinks/own');
       return data;
     } catch (error) {
@@ -79,9 +83,12 @@ export const getOwnDrinksThunk = createAsyncThunk(
 
 export const addOwnDrinkThunk = createAsyncThunk(
   '/drinks/own/add',
-  async (credentials, { rejectWithValue }) => {
-    console.log(credentials);
+  async (credentials, { rejectWithValue, getState }) => {
     try {
+      setToken(getState().auth.token);
+      setToken(
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2VjOWI1YjYxNTcxM2UzNzgwYTdkOSIsImlhdCI6MTcwMjg5NjU4OCwiZXhwIjoxNzAyOTgyOTg4fQ.EhMi3TL1C5yTxPBDBFyJd-lmUnxEty6MeuUWZ9mc9mA'
+      );
       const { data } = await instance.post('/drinks/own/add', credentials, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -98,8 +105,9 @@ export const addOwnDrinkThunk = createAsyncThunk(
 
 export const deleteOwnDrinkThunk = createAsyncThunk(
   '/drinks/own/remove',
-  async (id, { rejectWithValue }) => {
+  async (id, { rejectWithValue, getState }) => {
     try {
+      setToken(getState().auth.token);
       const { data } = await instance.delete(`/drinks/own/remove/${id}`);
       toast.success(`Drink deleted successfully`);
       return data;
@@ -114,8 +122,9 @@ export const deleteOwnDrinkThunk = createAsyncThunk(
 
 export const getFavoriteDrinksThunk = createAsyncThunk(
   'drinks/favorite',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
+      setToken(getState().auth.token);
       const { data } = await instance.get('/drinks/favorite');
       return data;
     } catch (error) {
@@ -126,8 +135,9 @@ export const getFavoriteDrinksThunk = createAsyncThunk(
 
 export const addFavoriteDrinkThunk = createAsyncThunk(
   '/drinks/favorite/add',
-  async (id, { rejectWithValue }) => {
+  async (id, { rejectWithValue, getState }) => {
     try {
+      setToken(getState().auth.token);
       const { data } = await instance.post(`/drinks/favorite/add/${id}`);
       toast.success(`Drink added to favorites`);
       return data;
@@ -140,8 +150,9 @@ export const addFavoriteDrinkThunk = createAsyncThunk(
 
 export const removeFavoriteDrinkThunk = createAsyncThunk(
   '/drinks/favorite/remove',
-  async (id, { rejectWithValue }) => {
+  async (id, { rejectWithValue, getState }) => {
     try {
+      setToken(getState().auth.token);
       const { data } = await instance.delete(`/drinks/favorite/remove/${id}`);
       toast.success(`Drink removed from favorites`);
       return data;
@@ -156,8 +167,12 @@ export const removeFavoriteDrinkThunk = createAsyncThunk(
 
 export const getCategoriesThunk = createAsyncThunk(
   'filters/categories',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
+      setToken(getState().auth.token);
+      setToken(
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2VjOWI1YjYxNTcxM2UzNzgwYTdkOSIsImlhdCI6MTcwMjg5NjU4OCwiZXhwIjoxNzAyOTgyOTg4fQ.EhMi3TL1C5yTxPBDBFyJd-lmUnxEty6MeuUWZ9mc9mA'
+      );
       const { data } = await instance.get('/filters/categories');
       return data;
     } catch (error) {
@@ -168,8 +183,12 @@ export const getCategoriesThunk = createAsyncThunk(
 
 export const getIngredientsThunk = createAsyncThunk(
   'filters/ingredients',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
+      setToken(getState().auth.token);
+      setToken(
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2VjOWI1YjYxNTcxM2UzNzgwYTdkOSIsImlhdCI6MTcwMjg5NjU4OCwiZXhwIjoxNzAyOTgyOTg4fQ.EhMi3TL1C5yTxPBDBFyJd-lmUnxEty6MeuUWZ9mc9mA'
+      );
       const { data } = await instance.get('/filters/ingredients');
       return data;
     } catch (error) {
@@ -180,8 +199,12 @@ export const getIngredientsThunk = createAsyncThunk(
 
 export const getGlassesThunk = createAsyncThunk(
   'filters/glasses',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
+      setToken(getState().auth.token);
+      setToken(
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2VjOWI1YjYxNTcxM2UzNzgwYTdkOSIsImlhdCI6MTcwMjg5NjU4OCwiZXhwIjoxNzAyOTgyOTg4fQ.EhMi3TL1C5yTxPBDBFyJd-lmUnxEty6MeuUWZ9mc9mA'
+      );
       const { data } = await instance.get('/filters/glasses');
       return data;
     } catch (error) {
