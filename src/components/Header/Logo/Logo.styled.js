@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../../styles/device';
 
 export const LogoGroup = styled.div`
   display: flex;
@@ -11,11 +12,11 @@ export const LogoGroup = styled.div`
     cursor:pointer;
   }
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     gap: 14px;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media ${device.desktop} {
     margin-right: 0;
   }
 `;
@@ -25,7 +26,7 @@ export const Icon = styled.svg`
   width: 22px;
   height: 22px;
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     width: 28px;
     height: 28px;
   }
@@ -34,7 +35,7 @@ export const Icon = styled.svg`
 export const Name = styled.p`
   font-weight: 600;
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     font-size: 18px;
   }
 `;

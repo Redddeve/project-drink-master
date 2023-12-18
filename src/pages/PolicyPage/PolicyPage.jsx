@@ -2,6 +2,7 @@ import { PageContainer } from '../AgreementPage/AgreementPage.styled';
 const PolicyPage = () => {
   return (
     <PageContainer>
+      <h1>Privacy Policy</h1>
       <p>
         Your privacy is important to us. This section outlines how we collect,
         use, process, and protect your personal data. This Privacy Policy
