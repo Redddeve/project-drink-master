@@ -1,14 +1,14 @@
-import instance, { setToken } from "../instance";
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { toast } from "react-toastify";
+import instance, { setToken } from '../instance';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 // DRINKS OPERATIONS
 
 export const fetchAllDrinks = createAsyncThunk(
-  "drinks/fetchAllDrinks",
+  'drinks/fetchAllDrinks',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await instance.get("/drinks/mainpage?limit=15&page=1");
+      const { data } = await instance.get('/drinks/mainpage?limit=15&page=1');
       return data;
     } catch (error) {
       toast.error(`Something went wrong. Please try again later.`);
@@ -18,10 +18,10 @@ export const fetchAllDrinks = createAsyncThunk(
 );
 
 export const getPopularThunk = createAsyncThunk(
-  "drinks/popular",
+  'drinks/popular',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await instance.get("/drinks/popular");
+      const { data } = await instance.get('/drinks/popular');
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -30,12 +30,12 @@ export const getPopularThunk = createAsyncThunk(
 );
 
 export const searchDrinksThunk = createAsyncThunk(
-  "drinks/search",
+  'drinks/search',
   async (body, { rejectWithValue, getState }) => {
     const {
-      category = "",
-      ingredients = "",
-      drink = "",
+      category = '',
+      ingredients = '',
+      drink = '',
       page = 1,
       limit = 12,
     } = body;
@@ -52,7 +52,7 @@ export const searchDrinksThunk = createAsyncThunk(
 );
 
 export const getDrinkbyIdThunk = createAsyncThunk(
-  "drinks/id",
+  'drinks/id',
   async (id, { rejectWithValue }) => {
     try {
       const { data } = await instance.get(`/drinks/${id}`);
@@ -66,10 +66,10 @@ export const getDrinkbyIdThunk = createAsyncThunk(
 // USER OWN OPERATIONS
 
 export const getOwnDrinksThunk = createAsyncThunk(
-  "drinks/own",
+  'drinks/own',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await instance.get("/drinks/own");
+      const { data } = await instance.get('/drinks/own');
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -78,12 +78,13 @@ export const getOwnDrinksThunk = createAsyncThunk(
 );
 
 export const addOwnDrinkThunk = createAsyncThunk(
-  "/drinks/own/add",
+  '/drinks/own/add',
   async (credentials, { rejectWithValue }) => {
+    console.log(credentials);
     try {
-      const { data } = await instance.post("/drinks/own/add", credentials, {
+      const { data } = await instance.post('/drinks/own/add', credentials, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          'Content-Type': 'multipart/form-data',
         },
       });
       toast.success(`Drink added successfully`);
@@ -96,7 +97,7 @@ export const addOwnDrinkThunk = createAsyncThunk(
 );
 
 export const deleteOwnDrinkThunk = createAsyncThunk(
-  "/drinks/own/remove",
+  '/drinks/own/remove',
   async (id, { rejectWithValue }) => {
     try {
       const { data } = await instance.delete(`/drinks/own/remove/${id}`);
@@ -112,10 +113,10 @@ export const deleteOwnDrinkThunk = createAsyncThunk(
 // USER FAVORITES OPERATIONS
 
 export const getFavoriteDrinksThunk = createAsyncThunk(
-  "drinks/favorite",
+  'drinks/favorite',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await instance.get("/drinks/favorite");
+      const { data } = await instance.get('/drinks/favorite');
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -124,7 +125,7 @@ export const getFavoriteDrinksThunk = createAsyncThunk(
 );
 
 export const addFavoriteDrinkThunk = createAsyncThunk(
-  "/drinks/favorite/add",
+  '/drinks/favorite/add',
   async (id, { rejectWithValue }) => {
     try {
       const { data } = await instance.post(`/drinks/favorite/add/${id}`);
@@ -138,7 +139,7 @@ export const addFavoriteDrinkThunk = createAsyncThunk(
 );
 
 export const removeFavoriteDrinkThunk = createAsyncThunk(
-  "/drinks/favorite/remove",
+  '/drinks/favorite/remove',
   async (id, { rejectWithValue }) => {
     try {
       const { data } = await instance.delete(`/drinks/favorite/remove/${id}`);
@@ -154,10 +155,10 @@ export const removeFavoriteDrinkThunk = createAsyncThunk(
 // FILTERS OPERATIONS
 
 export const getCategoriesThunk = createAsyncThunk(
-  "filters/categories",
+  'filters/categories',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await instance.get("/filters/categories");
+      const { data } = await instance.get('/filters/categories');
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -166,10 +167,10 @@ export const getCategoriesThunk = createAsyncThunk(
 );
 
 export const getIngredientsThunk = createAsyncThunk(
-  "filters/ingredients",
+  'filters/ingredients',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await instance.get("/filters/ingredients");
+      const { data } = await instance.get('/filters/ingredients');
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -178,10 +179,10 @@ export const getIngredientsThunk = createAsyncThunk(
 );
 
 export const getGlassesThunk = createAsyncThunk(
-  "filters/glasses",
+  'filters/glasses',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await instance.get("/filters/glasses");
+      const { data } = await instance.get('/filters/glasses');
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

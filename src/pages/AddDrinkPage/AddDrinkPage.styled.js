@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { device } from "../../styles/device";
+import styled from 'styled-components';
+import { device } from '../../styles/device';
 
 export const StyledAddTitle = styled.h1`
   font-size: 32px;
@@ -19,7 +19,7 @@ export const StyledFileLabel = styled.label`
   background: rgba(22, 31, 55, 0.5);
   margin-bottom: 40px;
   &::before {
-    content: "+";
+    content: '+';
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +33,7 @@ export const StyledFileLabel = styled.label`
     margin-bottom: 18px;
   }
   &::after {
-    content: "Add image";
+    content: 'Add image';
     color: var(--white);
     font-size: 16px;
     font-weight: 500;
@@ -52,6 +52,7 @@ export const StyledFileInput = styled.input`
 `;
 export const StyledTitleInput = styled.input`
   width: 335px;
+  position: relative;
   height: 35px;
   background-color: transparent;
   outline: none;
@@ -67,6 +68,7 @@ export const StyledTitleInput = styled.input`
 `;
 export const StyledSelectLabel = styled.label`
   width: 335px;
+  position: relative;
   height: 35px;
   align-items: center;
   padding-bottom: 14px;
@@ -86,15 +88,15 @@ export const StyledRadioLabel = styled.label`
   color: rgba(243, 243, 243, 0.5);
   display: flex;
   margin-bottom: 80px;
-  input[type="radio"]:checked + p {
+  input[type='radio']:checked + p {
     color: var(--white);
     &::before {
-      content: "";
+      content: '';
       background-color: white;
       border: 2px solid var(--transp-white);
     }
     &::after {
-      content: "";
+      content: '';
       display: flex;
       border-radius: 50%;
       top: 2.2px;
@@ -109,13 +111,13 @@ export const StyledRadioLabel = styled.label`
   }
   position: relative;
 
-  input[type="radio"] {
+  input[type='radio'] {
     opacity: 0;
   }
-  input[type="radio"] + p {
+  input[type='radio'] + p {
     padding-left: 15px;
     &::before {
-      content: "";
+      content: '';
       display: flex;
       justify-content: center;
       align-items: center;
@@ -135,8 +137,9 @@ export const StyledRadioLabel = styled.label`
 export const StyledRadioLabelDiv = styled.label`
   display: flex;
   gap: 30px;
+  position: relative;
   @media ${device.tablet} {
-    padding-top: 30px;
+    padding-top: 20px;
     max-height: 32px;
   }
 `;
@@ -187,7 +190,7 @@ export const StyledIngFieldInput = styled.input`
   padding: 0 60px 0 18px;
   position: relative;
   &::after {
-    content: "cl";
+    content: 'cl';
     display: block;
     width: 10px;
     height: 10px;
@@ -208,7 +211,7 @@ export const StyledIngFieldWrapper = styled.div`
   position: relative;
 `;
 export const StyledAfterContent = styled.span`
-  content: "cl";
+  content: 'cl';
   display: block;
   width: 10px;
   height: 10px;
@@ -284,34 +287,34 @@ export const StyledSubmitBtn = styled.button`
   }
 `;
 export const stylesSelect = {
-  control: (baseStyles) => ({
+  control: baseStyles => ({
     ...baseStyles,
     width: 200,
     height: 50,
-    color: "var(--white)",
-    border: "none",
-    textAlign: "right",
-    background: "transparent",
+    color: 'var(--white)',
+    border: 'none',
+    textAlign: 'right',
+    background: 'transparent',
   }),
   option: (styles, state) => ({
     ...styles,
-    padding: "3px 10px",
-    fontSize: "12px",
-    backgroundColor: state.isSelected ? "rgba(255, 255, 255, 0.10)" : "",
-    color: state.isSelected ? "var(--white)" : "var(--transp-white)",
-    ":hover": {
-      background: "rgba(255, 255, 255, 0.10)",
-      color: "#F3F3F3",
+    padding: '3px 10px',
+    fontSize: '12px',
+    backgroundColor: state.isSelected ? 'rgba(255, 255, 255, 0.10)' : '',
+    color: state.isSelected ? 'var(--white)' : 'var(--transp-white)',
+    ':hover': {
+      background: 'rgba(255, 255, 255, 0.10)',
+      color: '#F3F3F3',
     },
   }),
-  menu: (baseStyles) => ({
+  menu: baseStyles => ({
     ...baseStyles,
-    background: "#161F37",
-    border: "none ",
-    borderRadius: "12px ",
-    maxHeight: "300px",
-    width: "131px",
-    right: "0",
+    background: '#161F37',
+    border: 'none ',
+    borderRadius: '12px ',
+    maxHeight: '300px',
+    width: '131px',
+    right: '0',
   }),
   //   menuList: (base) => ({
   //     ...base,
@@ -332,27 +335,38 @@ export const stylesSelect = {
 };
 export const ingStyles = {
   ...stylesSelect,
-  control: (baseStyles) => ({
+  control: baseStyles => ({
     ...baseStyles,
     width: 200,
     height: 50,
-    color: "var(--white)",
-    border: "border: 1px solid rgba(243, 243, 243, 0.30)",
-    borderRadius: "200px",
-    textAlign: "left",
-    background: "transparent",
-    "@media only screen and (min-width:768px)": {
-      ...stylesSelect["@media only screen and (min-width: 768px)"],
+    color: 'var(--white)',
+    border: 'border: 1px solid rgba(243, 243, 243, 0.30)',
+    borderRadius: '200px',
+    textAlign: 'left',
+    background: 'transparent',
+    '@media only screen and (min-width:768px)': {
+      ...stylesSelect['@media only screen and (min-width: 768px)'],
       width: 332,
     },
   }),
-  menu: (baseStyles) => ({
+  menu: baseStyles => ({
     ...baseStyles,
-    background: "#161F37",
-    border: "none ",
-    borderRadius: "12px ",
-    maxHeight: "300px",
-    width: "100%",
-    left: "0",
+    background: '#161F37',
+    border: 'none ',
+    borderRadius: '12px ',
+    maxHeight: '300px',
+    width: '100%',
+    left: '0',
   }),
 };
+
+export const StyledValidText = styled.p`
+  position: absolute;
+  top: 40px;
+  color: red;
+  font-size: 14px;
+`;
+
+export const RelativeLabel = styled.label`
+  position: relative;
+`;
