@@ -8,8 +8,10 @@ import {
   LogoFlex,
   StyledNavLink,
   StyledLink,
-  LogoSpan,
+  StyledLogoLink,
+  Icon,
 } from "./FooterTab.styled.js";
+import sprite from "../../../images/sprite.svg";
 
 const FooterTab = () => {
   return (
@@ -18,12 +20,12 @@ const FooterTab = () => {
         <div>
           <FooterNavFlex>
             <LogoFlex>
-              <StyledNavLink to="/">
-                <p>
-                  O<LogoSpan>Drink Master</LogoSpan>
-                </p>
-              </StyledNavLink>
-
+              <StyledLogoLink href="/">
+                <Icon>
+                  <use href={sprite + "#icon-logo"} />
+                </Icon>
+                <span>Drink Master</span>
+              </StyledLogoLink>
               <FollowUs />
             </LogoFlex>
 
