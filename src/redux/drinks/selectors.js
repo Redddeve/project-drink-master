@@ -1,0 +1,13 @@
+export const selectAllDrinks = (state) => state.drinks.drinks;
+export const selectPopular = (state) => state.drinks.popular;
+export const selectSearchDrinks = (state) => state.drinks.searchDrinks;
+export const selectDrinkById = (state) => state.drinks.byId;
+export const selectOwnDrinks = (state) => state.drinks.own;
+export const selectFavoriteDrinks = (state) => state.drinks.favorite;
+export const selectCategories = (state) => state.drinks.categories;
+export const selectIngredients = (state) => state.drinks.ingredients;
+export const selectGlasses = (state) => state.drinks.glasses;
+export const selectIsLoading = (state) => state.drinks.isLoading;
+export const selectError = (state) => state.drinks.error;
+export const selectPage = (state) => state.drinks.page;
+export const selectLimit = (state) => state.drinks.limit;

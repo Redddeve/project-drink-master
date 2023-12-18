@@ -1,16 +1,29 @@
-import { createGlobalStyle } from 'styled-components';
-import 'modern-normalize/modern-normalize.css';
-import './fonts.css';
-import { device } from './device';
+import { createGlobalStyle } from "styled-components";
+import "modern-normalize/modern-normalize.css";
+import { device } from "./device";
+import fontObject from "./fonts";
+
+const { regular, medium, semiBold } = fontObject;
 
 const GlobalStyles = createGlobalStyle`
   
+@font-face {
+  font-family: 'Manrope';
+  src: url(${regular}), url(${semiBold}) ;
+  font-weight: 400, 600;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url(${medium}) ;
+  font-weight: 500;
+}
 
 :root {
   // colors
   --white: #F3F3F3;
   --sub-white: #FAFAFA;
-  --transp-white: #F3F3F380;
+  --transp-white: #F3F3F380; // rgba(243, 243, 243, 0.80)
+  --transp-not-found:#F3F3F310;
   --dark: #0A0A11;
   --transp-dark: #0A0A1166; // light theme
   --black: #161F37;
@@ -41,18 +54,24 @@ body {
   font-weight: 400;
   line-height: 1.29;
   scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+
+  
 
   @media ${device.tablet} {
       font-size: 16px;
       line-height: 1.38;
     }
-
   }
 
   p,
   h1, 
   h2,  
-  h3 {
+  h3,
+  h4,
+  h5,
+  h6 {
     margin: 0;
     padding: 0;
   }
@@ -68,11 +87,12 @@ body {
   img {
     display: block;
     max-width: 100%;
-    object-fit: cover;
+    height: auto;
   }
 
   a {
     text-decoration: none;
+    color: currentColor;
   }
 `;
 

@@ -10,6 +10,8 @@ import FavoriteDrinksPage from './pages/FavoriteDrinksPage/FavoriteDrinksPage';
 import UserDrinkPage from './pages/UserDrinkPage/UserDrinkPage';
 import MyDrinksPage from './pages/MyDrinksPage/MyDrinksPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import PolicyPage from './pages/PolicyPage/PolicyPage';
+import AgreementPage from './pages/AgreementPage/AgreementPage';
 
 const App = () => {
   return (
@@ -18,6 +20,7 @@ const App = () => {
         <Route path="/welcome" element={<WelcomePage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/signin" element={<SignInPage />} />
+
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="/drinks" element={<DrinksPage />} />
@@ -26,6 +29,8 @@ const App = () => {
           <Route path="/drink/:drinkId" element={<UserDrinkPage />} />
           <Route path="/my" element={<MyDrinksPage />} />
           <Route path="*" element={<NotFoundPage />} />
+          <Route path="/agreement" element={<AgreementPage />} />
+          <Route path="/policy" element={<PolicyPage />} />
         </Route>
       </Routes>
     </>
