@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../../styles/device";
 
 
 export const BurgerMenuWrapper = styled.div`
@@ -12,12 +13,12 @@ export const BurgerIcon = styled.div`
   height: 32px;
 
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     width: 38px;
     height: 38px;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media ${device.desktop} {
     display: none;
   }
 `;

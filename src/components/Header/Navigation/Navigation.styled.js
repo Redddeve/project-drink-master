@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../../styles/device';
 
 export const Nav = styled.nav`
   position: absolute;
@@ -10,9 +11,9 @@ export const Nav = styled.nav`
   display: grid;
   background-color: #0A0A11;
   color: #F3F3F3;
-  border-top: 1px solid rgba(243, 243, 243, 0.2);
+ 
 
-  @media (min-width: 1440px) {
+  @media ${device.desktop} {
     position: static;
     display: block;
     border: none;
@@ -39,7 +40,7 @@ export const List = styled.ul`
   gap: 16px;
   margin: 20% auto 0 auto;
 
-  @media (min-width: 1440px) {
+  @media ${device.desktop} {
     display: flex;
     flex-direction: row;
     margin: 0;
@@ -54,7 +55,7 @@ export const Item = styled.li`
   font-weight: 500;
 
   transition-property: transform;
-  transition: $trans-fast;
+  transition: 0.3s ease;
 
   &:hover,
   &:focus {

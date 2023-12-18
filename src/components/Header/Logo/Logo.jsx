@@ -3,7 +3,7 @@ import sprite from "../../../images/sprite.svg";
 
 const Logo = () => {
   return (
-    <a to="/">
+    <a href="/">
       <LogoGroup>
         <Icon>
           <svg width="22" height="22">
