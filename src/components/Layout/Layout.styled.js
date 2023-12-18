@@ -16,7 +16,7 @@ export const StyledMain = styled.main`
     max-width: 1440px;
     padding: 158px 100px 140px;
   }
-  ::before {
+  /* ::before {
     content: '';
     display: block;
     position: absolute;
@@ -39,5 +39,5 @@ export const StyledMain = styled.main`
     border-radius: 549px;
     background: rgba(64, 112, 205, 0.5);
     filter: blur(104.8543701171875px);
-  }
+  } */
 `;
