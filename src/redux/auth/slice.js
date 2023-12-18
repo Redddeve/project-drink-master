@@ -13,6 +13,7 @@ const initialState = {
   user: {
     email: null,
     name: null,
+    date: null,
     id: null,
     avatarURL: null,
     subscribed: false,
@@ -57,6 +58,7 @@ export const slice = createSlice({
         state.user = {
           email: null,
           name: null,
+          date: null,
           id: null,
           avatarURL: null,
           subscribed: false,

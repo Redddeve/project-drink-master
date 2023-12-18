@@ -1,15 +1,7 @@
-import { StyledIcon, StyledWrap } from "./WelcomePage.styled";
-import sprite from "../../images/sprite.svg";
+import Welcome from '../../components/Welcome/Welcome';
 
 const WelcomePage = () => {
-  return (
-    <StyledWrap>
-      WelcomePage
-      <StyledIcon width="32" height="32">
-        <use href={sprite + "#icon-logo"} />
-      </StyledIcon>
-    </StyledWrap>
-  );
+  return <Welcome />;
 };
 
 export default WelcomePage;
