@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+
 import bg from "../../images/wellcomeGlass@1x.jpg";
 
 export const StyledWrap = styled.div`
@@ -46,7 +48,7 @@ export const StyledBtnWrap = styled.div`
   gap: 14px;
 `;
 
-export const StyledBtnSignUp = styled.button`
+export const StyledBtnSignUp = styled(NavLink)`
   display: flex;
   padding: 14px 40px;
   align-items: center;
@@ -69,7 +71,7 @@ export const StyledBtnSignUp = styled.button`
   }
 `;
 
-export const StyledBtnSignIn = styled.button`
+export const StyledBtnSignIn = styled(NavLink)`
   display: flex;
   padding: 14px 40px;
   align-items: center;

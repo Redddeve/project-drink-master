@@ -20,8 +20,8 @@ const WelcomePage = () => {
         </StyledText>
       </StyledTextWrap>
       <StyledBtnWrap>
-        <StyledBtnSignUp>Sign Up</StyledBtnSignUp>
-        <StyledBtnSignIn>Sign In</StyledBtnSignIn>
+        <StyledBtnSignUp to="/signup">Sign Up</StyledBtnSignUp>
+        <StyledBtnSignIn to="/signin">Sign In</StyledBtnSignIn>
       </StyledBtnWrap>
     </StyledWrap>
   );
