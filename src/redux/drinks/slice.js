@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 import {
   addFavoriteDrinkThunk,
   addOwnDrinkThunk,
@@ -13,7 +13,7 @@ import {
   getPopularThunk,
   removeFavoriteDrinkThunk,
   searchDrinksThunk,
-} from "./operations";
+} from './operations';
 
 const initialState = {
   drinks: [],
@@ -32,11 +32,10 @@ const initialState = {
 };
 
 export const slice = createSlice({
-  name: "drinks",
+  name: 'drinks',
   initialState,
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-
       .addCase(fetchAllDrinks.fulfilled, (state, { payload }) => {
         state.drinks = payload;
         state.isLoading = false;
@@ -88,7 +87,7 @@ export const slice = createSlice({
         state.glasses = payload.glasses;
       })
       .addMatcher(
-        (action) =>
+        action =>
           [
             fetchAllDrinks.pending,
             getPopularThunk.pending,
@@ -104,12 +103,12 @@ export const slice = createSlice({
             getIngredientsThunk.pending,
             getGlassesThunk.pending,
           ].includes(action.type),
-        (state) => {
+        state => {
           state.isLoading = true;
         }
       )
       .addMatcher(
-        (action) =>
+        action =>
           [
             fetchAllDrinks.rejected,
             getPopularThunk.rejected,

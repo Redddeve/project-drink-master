@@ -1,14 +1,15 @@
-import instance, { setToken } from "../instance";
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { toast } from "react-toastify";
+import instance, { setToken } from '../instance';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 // DRINKS OPERATIONS
 
 export const fetchAllDrinks = createAsyncThunk(
-  "drinks/fetchAllDrinks",
-  async (_, { rejectWithValue }) => {
+  'drinks/fetchAllDrinks',
+  async (_, { rejectWithValue, getState }) => {
     try {
-      const { data } = await instance.get("/drinks/mainpage?limit=15&page=1");
+      setToken(getState().auth.token);
+      const { data } = await instance.get('/drinks/mainpage?limit=15&page=1');
       return data;
     } catch (error) {
       toast.error(`Something went wrong. Please try again later.`);
@@ -18,10 +19,11 @@ export const fetchAllDrinks = createAsyncThunk(
 );
 
 export const getPopularThunk = createAsyncThunk(
-  "drinks/popular",
-  async (_, { rejectWithValue }) => {
+  'drinks/popular',
+  async (_, { rejectWithValue, getState }) => {
     try {
-      const { data } = await instance.get("/drinks/popular");
+      setToken(getState().auth.token);
+      const { data } = await instance.get('/drinks/popular');
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -30,12 +32,12 @@ export const getPopularThunk = createAsyncThunk(
 );
 
 export const searchDrinksThunk = createAsyncThunk(
-  "drinks/search",
+  'drinks/search',
   async (body, { rejectWithValue, getState }) => {
     const {
-      category = "",
-      ingredients = "",
-      drink = "",
+      category = '',
+      ingredients = '',
+      drink = '',
       page = 1,
       limit = 12,
     } = body;
@@ -52,9 +54,10 @@ export const searchDrinksThunk = createAsyncThunk(
 );
 
 export const getDrinkbyIdThunk = createAsyncThunk(
-  "drinks/id",
-  async (id, { rejectWithValue }) => {
+  'drinks/id',
+  async (id, { rejectWithValue, getState }) => {
     try {
+      setToken(getState().auth.token);
       const { data } = await instance.get(`/drinks/${id}`);
       return data;
     } catch (error) {
@@ -66,10 +69,11 @@ export const getDrinkbyIdThunk = createAsyncThunk(
 // USER OWN OPERATIONS
 
 export const getOwnDrinksThunk = createAsyncThunk(
-  "drinks/own",
-  async (_, { rejectWithValue }) => {
+  'drinks/own',
+  async (_, { rejectWithValue, getState }) => {
     try {
-      const { data } = await instance.get("/drinks/own");
+      setToken(getState().auth.token);
+      const { data } = await instance.get('/drinks/own');
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -78,12 +82,13 @@ export const getOwnDrinksThunk = createAsyncThunk(
 );
 
 export const addOwnDrinkThunk = createAsyncThunk(
-  "/drinks/own/add",
-  async (credentials, { rejectWithValue }) => {
+  '/drinks/own/add',
+  async (credentials, { rejectWithValue, getState }) => {
     try {
-      const { data } = await instance.post("/drinks/own/add", credentials, {
+      setToken(getState().auth.token);
+      const { data } = await instance.post('/drinks/own/add', credentials, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          'Content-Type': 'multipart/form-data',
         },
       });
       toast.success(`Drink added successfully`);
@@ -96,9 +101,10 @@ export const addOwnDrinkThunk = createAsyncThunk(
 );
 
 export const deleteOwnDrinkThunk = createAsyncThunk(
-  "/drinks/own/remove",
-  async (id, { rejectWithValue }) => {
+  '/drinks/own/remove',
+  async (id, { rejectWithValue, getState }) => {
     try {
+      setToken(getState().auth.token);
       const { data } = await instance.delete(`/drinks/own/remove/${id}`);
       toast.success(`Drink deleted successfully`);
       return data;
@@ -112,10 +118,11 @@ export const deleteOwnDrinkThunk = createAsyncThunk(
 // USER FAVORITES OPERATIONS
 
 export const getFavoriteDrinksThunk = createAsyncThunk(
-  "drinks/favorite",
-  async (_, { rejectWithValue }) => {
+  'drinks/favorite',
+  async (_, { rejectWithValue, getState }) => {
     try {
-      const { data } = await instance.get("/drinks/favorite");
+      setToken(getState().auth.token);
+      const { data } = await instance.get('/drinks/favorite');
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -124,9 +131,10 @@ export const getFavoriteDrinksThunk = createAsyncThunk(
 );
 
 export const addFavoriteDrinkThunk = createAsyncThunk(
-  "/drinks/favorite/add",
-  async (id, { rejectWithValue }) => {
+  '/drinks/favorite/add',
+  async (id, { rejectWithValue, getState }) => {
     try {
+      setToken(getState().auth.token);
       const { data } = await instance.post(`/drinks/favorite/add/${id}`);
       toast.success(`Drink added to favorites`);
       return data;
@@ -138,9 +146,10 @@ export const addFavoriteDrinkThunk = createAsyncThunk(
 );
 
 export const removeFavoriteDrinkThunk = createAsyncThunk(
-  "/drinks/favorite/remove",
-  async (id, { rejectWithValue }) => {
+  '/drinks/favorite/remove',
+  async (id, { rejectWithValue, getState }) => {
     try {
+      setToken(getState().auth.token);
       const { data } = await instance.delete(`/drinks/favorite/remove/${id}`);
       toast.success(`Drink removed from favorites`);
       return data;
@@ -154,10 +163,11 @@ export const removeFavoriteDrinkThunk = createAsyncThunk(
 // FILTERS OPERATIONS
 
 export const getCategoriesThunk = createAsyncThunk(
-  "filters/categories",
-  async (_, { rejectWithValue }) => {
+  'filters/categories',
+  async (_, { rejectWithValue, getState }) => {
     try {
-      const { data } = await instance.get("/filters/categories");
+      setToken(getState().auth.token);
+      const { data } = await instance.get('/filters/categories');
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -166,10 +176,11 @@ export const getCategoriesThunk = createAsyncThunk(
 );
 
 export const getIngredientsThunk = createAsyncThunk(
-  "filters/ingredients",
-  async (_, { rejectWithValue }) => {
+  'filters/ingredients',
+  async (_, { rejectWithValue, getState }) => {
     try {
-      const { data } = await instance.get("/filters/ingredients");
+      setToken(getState().auth.token);
+      const { data } = await instance.get('/filters/ingredients');
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -178,10 +189,11 @@ export const getIngredientsThunk = createAsyncThunk(
 );
 
 export const getGlassesThunk = createAsyncThunk(
-  "filters/glasses",
-  async (_, { rejectWithValue }) => {
+  'filters/glasses',
+  async (_, { rejectWithValue, getState }) => {
     try {
-      const { data } = await instance.get("/filters/glasses");
+      setToken(getState().auth.token);
+      const { data } = await instance.get('/filters/glasses');
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
