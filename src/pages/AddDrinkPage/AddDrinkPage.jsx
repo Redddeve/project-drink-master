@@ -76,15 +76,17 @@ const AddDrinkPage = () => {
     dispatch(getIngredientsThunk());
   }, [dispatch]);
 
-  const categoryOptions = categoryState[0]?.categories.map(el => {
+  const categoryOptions = categoryState[0]?.categories?.map(el => {
     return { label: el, value: el };
   });
 
   const ingOptions = ingredientsState?.map(({ title }) => {
     return { label: title, value: title };
   });
+
+  const glassOptions = glassesState[0]?.glasses?.map(el => {
+
   console.log(ingredientsState);
-  const glassOptions = glassesState[0]?.glasses.map(el => {
     return { label: el, value: el };
   });
   // ****   STYLES FOR SELECT  ****
