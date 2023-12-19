@@ -5,7 +5,6 @@ import sprite from '../../images/sprite.svg';
 import {
   StyledAddBtn,
   StyledAddDiv,
-  StyledAddTitle,
   StyledDescInput,
   StyledFileInput,
   StyledFileLabel,
@@ -44,6 +43,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { selectIsAdult } from '../../redux/auth/selectors';
 import ButtonUpToTop from '../../components/ButtonUpToTop/ButtonUpToTop';
+import PageTitle from '../../components/PageTitle/PageTitle';
 
 const AddDrinkPage = () => {
   const dispatch = useDispatch();
@@ -160,7 +160,7 @@ const AddDrinkPage = () => {
   };
   return (
     <div>
-      <StyledAddTitle>Add drink</StyledAddTitle>
+      <PageTitle title="Add drink" />
       <form onSubmit={handleSubmit(onSubmit)}>
         <StyledInfoDiv>
           <StyledFileLabel style={{ backgroundImage: `url(${imagePreview})` }}>
