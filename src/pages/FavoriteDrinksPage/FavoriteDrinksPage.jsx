@@ -12,11 +12,13 @@ const FavoriteDrinksPage = () => {
     dispatch(getFavoriteDrinksThunk());
   }, [dispatch]);
   return (
-    <section>
-      <FavoriteTitle>Favorites</FavoriteTitle>
-      <FavoriteCocktails />
-      <ButtonUpToTop />
-    </section>
+    <>
+      <section>
+        <FavoriteTitle>Favorites</FavoriteTitle>
+        <FavoriteCocktails />
+        <ButtonUpToTop />
+      </section>
+    </>
   );
 };
 
