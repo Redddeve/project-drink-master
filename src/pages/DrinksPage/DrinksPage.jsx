@@ -21,6 +21,7 @@ import {
   getIngredientsThunk,
   searchDrinksThunk,
 } from '../../redux/drinks/operations.js';
+import ButtonUpToTop from '../../components/ButtonUpToTop/ButtonUpToTop.jsx';
 
 const DrinksPage = () => {
   const dispatch = useDispatch();
@@ -110,6 +111,7 @@ const DrinksPage = () => {
           );
         })}
       </StyledCardsContainer>
+      <ButtonUpToTop />
     </>
   );
 };
