@@ -44,10 +44,10 @@ const DrinksPage = () => {
     );
   }, [name, ingredient, category, dispatch]);
 
-  const ingredientsOptions = ingredients.map(ing => {
+  const ingredientsOptions = ingredients?.map(ing => {
     return { value: ing.title, label: ing.title };
   });
-  const categoriesOptions = categories.map(cat => {
+  const categoriesOptions = categories?.map(cat => {
     return { value: cat, label: cat };
   });
 
@@ -100,10 +100,10 @@ const DrinksPage = () => {
         />
       </StyledFilterContainer>
       <StyledCardsContainer>
-        {drinks.map(drink => {
+        {drinks?.map(drink => {
           return (
             <DrinkCard
-              key={drink._id.$oid}
+              key={drink._id}
               drink={drink}
               // detailed={false}
             />
