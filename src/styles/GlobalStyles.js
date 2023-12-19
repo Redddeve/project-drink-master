@@ -1,7 +1,7 @@
-import { createGlobalStyle } from "styled-components";
-import "modern-normalize/modern-normalize.css";
-import { device } from "./device";
-import fontObject from "./fonts";
+import { createGlobalStyle } from 'styled-components';
+import 'modern-normalize/modern-normalize.css';
+import { device } from './device';
+import fontObject from './fonts';
 
 const { regular, medium, semiBold } = fontObject;
 
@@ -56,14 +56,14 @@ body {
   scroll-behavior: smooth;
   margin: 0;
   padding: 0;
-
-  
+   
 
   @media ${device.tablet} {
       font-size: 16px;
       line-height: 1.38;
     }
   }
+  
 
   p,
   h1, 

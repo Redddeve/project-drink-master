@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Select from 'react-select/base';
+import Select from 'react-select';
 import { device } from '../../styles/device.js';
 
 export const StyledHeader = styled.h2`
@@ -36,10 +36,11 @@ export const StyledFilterContainer = styled.div`
   }
 `;
 
-export const StyledCardsContainer = styled.div`
+export const StyledCardsContainer = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 28px;
+  list-style: none;
 
   @media ${device.tablet} {
     flex-direction: row;
@@ -62,15 +63,10 @@ export const StyledInput = styled.input`
   opacity: 0.8;
   outline: none;
   background: transparent;
-
-  color: white;
-
-  &::placeholder {
-    color: var(--white);
-  }
+  color: var(--white);
 
   @media ${device.tablet} {
-    max-width: 264px;
+    width: 264px;
   }
 `;
 
@@ -80,7 +76,7 @@ export const StyledSvg = styled.svg`
   height: 20px;
   top: 18px;
   left: 220px;
-  fill: white;
+  stroke: white;
 
   @media screen and (max-width: 767px) {
     width: 1px;
@@ -117,7 +113,72 @@ export const StyledSelect = styled(Select)`
     color: var(--white);
   }
 
+  .Select__indicator {
+    position: absolute;
+    right: 24px;
+    padding: 0;
+
+    transform: ${props => (props.$menuIsOpen ? 'rotate(180deg)' : 'none')};
+    display: ${props => (props.$menuIsOpen ? 'block' : 'display')};
+  }
+
   .Select__indicator-separator {
     display: none;
   }
+
+  .Select__option {
+    background: none;
+    cursor: pointer;
+    color: rgba(243, 243, 243, 0.4);
+    transition: var(--tran-fast);
+  }
+
+  .Select__option--is-focused {
+    color: var(--white);
+  }
+
+  .Select__menu {
+    height: ${props => (props.$small ? '240px' : '314px')};
+    border-radius: 20px;
+    background: var(--black);
+    padding-top: 9px;
+    padding-right: 7px;
+    overflow-y: hidden;
+
+    @media ${device.tablet} {
+      font-size: 17px;
+      line-height: 1.56;
+      height: ${props => (props.$small ? '295px' : '405px')};
+    }
+
+    .Select__menu-list {
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: var(--gray);
+        border-radius: 12px;
+      }
+    }
+
+    .Select__value-container--has-value {
+      color: var(--white);
+    }
+
+    .Select__option--is-selected {
+      color: var(--orange);
+      cursor: pointer;
+    }
+  }
 `;
+
+export const stylesDrink = {
+  singleValue: () => ({
+    color: 'var(--white)',
+  }),
+  valueContainer: () => ({
+    display: 'flex',
+    paddingLeft: '10px',
+  }),
+};

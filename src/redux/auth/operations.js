@@ -1,13 +1,13 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import instance, { setToken, clearToken } from "../instance";
-import { toast } from "react-toastify";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import instance, { setToken, clearToken } from '../instance';
+import { toast } from 'react-toastify';
 
 // AUTH OPERATIONS
 export const signupThunk = createAsyncThunk(
-  "auth/signup",
+  'auth/signup',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await instance.post("auth/signup", credentials);
+      const { data } = await instance.post('auth/signup', credentials);
       setToken(data.token);
       toast.success(`Welcome ${data.user.email}`);
       return data;
@@ -28,12 +28,12 @@ export const signupThunk = createAsyncThunk(
 );
 
 export const signinThunk = createAsyncThunk(
-  "auth/signin",
+  'auth/signin',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await instance.post("auth/signin", credentials);
+      const { data } = await instance.post('auth/signin', credentials);
       setToken(data.token);
-      toast.success(`Hello, ${data.user.email}`);
+      toast.success(`Hello, ${data.user.name}`);
       return data;
     } catch (error) {
       toast.error(`Email or password is not valid`);
@@ -43,16 +43,16 @@ export const signinThunk = createAsyncThunk(
 );
 
 export const signoutThunk = createAsyncThunk(
-  "auth/signout",
+  'auth/signout',
   async (_, { rejectWithValue, getState }) => {
     try {
-      await instance.delete("auth/signout");
+      await instance.delete('auth/signout');
       clearToken();
       toast.info(`Bye, ${getState().auth.user.email} `);
     } catch (error) {
       switch (error.response.status) {
         case 401:
-          toast.error("Bearer auth failed. You are not authorized to log out.");
+          toast.error('Bearer auth failed. You are not authorized to log out.');
           break;
         default:
           toast.warning(`Something went wrong. Please try again later.`);
@@ -66,12 +66,12 @@ export const signoutThunk = createAsyncThunk(
 // USER OPERATIONS
 
 export const updateThunk = createAsyncThunk(
-  "auth/update",
+  'auth/update',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await instance.put("users/update", credentials, {
+      const { data } = await instance.put('users/update', credentials, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          'Content-Type': 'multipart/form-data',
         },
       });
       toast.success(`Profile updated`);
@@ -84,15 +84,15 @@ export const updateThunk = createAsyncThunk(
 );
 
 export const refreshThunk = createAsyncThunk(
-  "users/refresh",
+  'users/refresh',
   async (_, { rejectWithValue, getState }) => {
     const savedToken = getState().auth.token;
     if (!savedToken) {
-      return rejectWithValue("token was not found");
+      return rejectWithValue('token was not found');
     }
     try {
       setToken(savedToken);
-      const { data } = await instance.get("users/current");
+      const { data } = await instance.get('users/current');
       toast.success(`Welcome back, ${data.email}`);
       return data;
     } catch (error) {
@@ -103,11 +103,11 @@ export const refreshThunk = createAsyncThunk(
 );
 
 export const getCurrentUserThunk = createAsyncThunk(
-  "users/current",
+  'users/current',
   async (_, { rejectWithValue, getState }) => {
     try {
       setToken(getState().auth.token);
-      const { data } = await instance.get("users/current");
+      const { data } = await instance.get('users/current');
       toast.success(`Welcome back, ${data.email}`);
       return data;
     } catch (error) {
@@ -118,10 +118,10 @@ export const getCurrentUserThunk = createAsyncThunk(
 );
 
 export const subscribeThunk = createAsyncThunk(
-  "users/subscribe",
+  'users/subscribe',
   async (credentials, { rejectWithValue }) => {
     try {
-      const res = await instance.post("users/subscribe", credentials);
+      const res = await instance.post('users/subscribe', credentials);
       toast.success(`You have subscribed to ${credentials.email}`);
       return res.data;
     } catch (error) {

@@ -48,6 +48,10 @@ export const slice = createSlice({
         state.searchDrinks = payload;
         state.isLoading = false;
       })
+      .addCase(searchDrinksThunk.rejected, state => {
+        state.searchDrinks = [];
+        state.isLoading = false;
+      })
       .addCase(getDrinkbyIdThunk.fulfilled, (state, { payload }) => {
         state.byId = payload;
         state.isLoading = false;
@@ -112,7 +116,6 @@ export const slice = createSlice({
           [
             fetchAllDrinks.rejected,
             getPopularThunk.rejected,
-            searchDrinksThunk.rejected,
             getDrinkbyIdThunk.rejected,
             getOwnDrinksThunk.rejected,
             addOwnDrinkThunk.rejected,

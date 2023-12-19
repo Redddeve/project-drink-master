@@ -5,9 +5,9 @@ const AgreementPage = () => {
     <PageContainer>
       <h1>Terms of Service</h1>
       <p>
-        This "User Agreement" (the "Agreement") sets forth the terms and
-        conditions governing the use of the Drink Master application ("App") and
-        its services.
+        This &quot;User Agreement&quot; (the &quot;Agreement&quot;) sets forth
+        the terms and conditions governing the use of the Drink Master
+        application (&quot;App&quot;) and its services.
       </p>
 
       <p>
@@ -25,8 +25,8 @@ const AgreementPage = () => {
       </p>
 
       <p>
-        User Accounts and Content: To fully utilize the App's features, you may
-        be required to create a user account. You are responsible for
+        User Accounts and Content: To fully utilize the App&apos;s features, you
+        may be required to create a user account. You are responsible for
         maintaining the confidentiality of your account credentials and any
         content you submit, including your own cocktail recipes. You retain
         ownership of your content, but by submitting, you grant the App a
@@ -39,7 +39,7 @@ const AgreementPage = () => {
         app, including cocktail recipes, images, and text, are protected by
         copyright and other intellectual property laws. Users may not reproduce,
         distribute, or use these materials for commercial purposes without
-        explicit permission from the App's operators.
+        explicit permission from the App&apos;s operators.
       </p>
 
       <p>
@@ -62,8 +62,8 @@ const AgreementPage = () => {
         accuracy, completeness, or reliability of the content provided. Users
         acknowledge that cocktail recipes involve the use of alcohol and
         potentially hazardous ingredients and should exercise caution when using
-        the recipes. The App's liability is limited to the extent permitted by
-        applicable law.
+        the recipes. The App&apos;s liability is limited to the extent permitted
+        by applicable law.
       </p>
 
       <p>
