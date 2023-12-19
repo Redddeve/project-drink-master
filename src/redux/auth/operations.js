@@ -93,22 +93,6 @@ export const refreshThunk = createAsyncThunk(
     try {
       setToken(savedToken);
       const { data } = await instance.get('users/current');
-      toast.success(`Welcome back, ${data.email}`);
-      return data;
-    } catch (error) {
-      toast.error(`Something went wrong. Please try again later.`);
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
-export const getCurrentUserThunk = createAsyncThunk(
-  'users/current',
-  async (_, { rejectWithValue, getState }) => {
-    try {
-      setToken(getState().auth.token);
-      const { data } = await instance.get('users/current');
-      toast.success(`Welcome back, ${data.email}`);
       return data;
     } catch (error) {
       toast.error(`Something went wrong. Please try again later.`);
