@@ -83,7 +83,10 @@ const AddDrinkPage = () => {
   const ingOptions = ingredientsState?.map(({ title }) => {
     return { label: title, value: title };
   });
+
   const glassOptions = glassesState[0]?.glasses?.map(el => {
+
+  console.log(ingredientsState);
     return { label: el, value: el };
   });
   // ****   STYLES FOR SELECT  ****
@@ -139,7 +142,7 @@ const AddDrinkPage = () => {
         category: category,
         instructions: data.aboutRecipe,
         drink: data.itemTitle,
-        photo: data.photo,
+        drinkThumb: data.photo,
         description: data.recipeDesc,
         alcoholic: data.alcohol,
       })
