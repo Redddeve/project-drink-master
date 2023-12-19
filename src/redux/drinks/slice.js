@@ -85,7 +85,7 @@ export const slice = createSlice({
         state.categories = payload.categories;
       })
       .addCase(getIngredientsThunk.fulfilled, (state, { payload }) => {
-        state.ingredients = payload.ingredients;
+        state.ingredients = payload;
       })
       .addCase(getGlassesThunk.fulfilled, (state, { payload }) => {
         state.glasses = payload.glasses;
