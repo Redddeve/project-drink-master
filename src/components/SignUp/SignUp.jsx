@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { signupThunk } from '../../redux/auth/operations.js';
+import { signinThunk, signupThunk } from '../../redux/auth/operations.js';
 import { useNavigate } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch } from 'react-redux';
@@ -38,6 +38,7 @@ const SignUp = () => {
     console.log(newData);
     dispatch(signupThunk(newData))
       .unwrap()
+      .then(res => dispatch(signinThunk(res)))
       .then(() => {
         navigate('/');
       });
