@@ -8,9 +8,9 @@ export const signupThunk = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await instance.post('auth/signup', credentials);
-      setToken(data.token);
-      toast.success(`Welcome ${data.user.email}`);
-      return data;
+      toast.success(`Welcome ${data.user.name}`);
+      const { email, password } = credentials;
+      return { email, password };
     } catch (error) {
       switch (error.response.status) {
         case 400:
@@ -48,7 +48,7 @@ export const signoutThunk = createAsyncThunk(
     try {
       await instance.delete('auth/signout');
       clearToken();
-      toast.info(`Bye, ${getState().auth.user.email} `);
+      toast.info(`Bye, ${getState().auth.user.name} `);
     } catch (error) {
       switch (error.response.status) {
         case 401:
@@ -93,22 +93,6 @@ export const refreshThunk = createAsyncThunk(
     try {
       setToken(savedToken);
       const { data } = await instance.get('users/current');
-      toast.success(`Welcome back, ${data.email}`);
-      return data;
-    } catch (error) {
-      toast.error(`Something went wrong. Please try again later.`);
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
-export const getCurrentUserThunk = createAsyncThunk(
-  'users/current',
-  async (_, { rejectWithValue, getState }) => {
-    try {
-      setToken(getState().auth.token);
-      const { data } = await instance.get('users/current');
-      toast.success(`Welcome back, ${data.email}`);
       return data;
     } catch (error) {
       toast.error(`Something went wrong. Please try again later.`);
