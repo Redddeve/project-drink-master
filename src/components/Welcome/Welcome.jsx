@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/auth/selectors';
-import { Navigate, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import {
   StyledBtnSignIn,
   StyledBtnSignUp,
@@ -13,13 +13,13 @@ import {
 
 const Welcome = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  // const navigate = useNavigate();
-  // if (isLoggedIn) {
-  //   navigate('/');
-  // }
+  const navigate = useNavigate();
   if (isLoggedIn) {
-    return <Navigate to="/" />;
+    navigate('/');
   }
+  // if (isLoggedIn) {
+  //   return <Navigate to="/" />;
+  // }
 
   return (
     <StyledWrap>

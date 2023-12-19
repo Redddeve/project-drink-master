@@ -93,7 +93,7 @@ export const refreshThunk = createAsyncThunk(
     try {
       setToken(savedToken);
       const { data } = await instance.get('users/current');
-      toast.success(`Welcome back, ${data.email}`);
+      toast.success(`Welcome back, ${data.user.name}`);
       return data;
     } catch (error) {
       toast.error(`Something went wrong. Please try again later.`);
