@@ -1,12 +1,12 @@
 import {
   FormWrap,
   SubscribeDesc,
-  SubscribeButton,
   SubscribeInput,
   InputMessage,
 } from './SubscribeForm.styled';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import CommonBtn from '../../SharedComponents/CommonBtn/CommonBtn';
 
 const SubscribeForm = () => {
   const {
@@ -59,9 +59,9 @@ const SubscribeForm = () => {
           </InputMessage>
         </label>
 
-        <SubscribeButton type="submit" disabled={!isValid}>
+        <CommonBtn type="submit" variant="subscribe" disabled={!isValid}>
           Subscribe
-        </SubscribeButton>
+        </CommonBtn>
       </form>
     </FormWrap>
   );
