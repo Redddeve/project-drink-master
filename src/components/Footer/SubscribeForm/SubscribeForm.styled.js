@@ -17,7 +17,7 @@ export const SubscribeDesc = styled.div`
 `;
 
 export const SubscribeInput = styled.input`
-  width: 100%;
+  position: relative;
   max-width: 335px;
   height: 54px;
   padding-left: 24px;
