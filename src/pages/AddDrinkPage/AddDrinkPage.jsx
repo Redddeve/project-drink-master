@@ -43,6 +43,7 @@ import {
 } from '../../redux/drinks/selectors';
 import { useNavigate } from 'react-router-dom';
 import { selectIsAdult } from '../../redux/auth/selectors';
+import ButtonUpToTop from '../../components/ButtonUpToTop/ButtonUpToTop';
 
 const AddDrinkPage = () => {
   const dispatch = useDispatch();
@@ -366,6 +367,7 @@ const AddDrinkPage = () => {
         </RelativeLabel>
         <StyledSubmitBtn type="submit">Add</StyledSubmitBtn>
       </form>
+      <ButtonUpToTop />
     </div>
   );
 };

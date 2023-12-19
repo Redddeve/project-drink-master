@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   getCurrentUserThunk,
   refreshThunk,
@@ -11,11 +11,9 @@ import {
 
 const initialState = {
   user: {
-    email: null,
-    name: null,
-    date: null,
-    id: null,
-    avatarURL: null,
+    email: '',
+    name: '',
+    avatarURL: '',
     subscribed: false,
     isAdult: false,
   },
@@ -31,7 +29,12 @@ export const slice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-
+      .addCase(signinThunk.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.isLoggedIn = true;
+        state.token = payload.token;
+        state.user = payload.user;
+      })
       .addCase(refreshThunk.fulfilled, (state, { payload }) => {
         state.isRefresh = false;
         state.isLoading = true;
@@ -56,50 +59,36 @@ export const slice = createSlice({
         state.isLoggedIn = false;
         state.token = '';
         state.user = {
-          email: null,
-          name: null,
-          date: null,
-          id: null,
-          avatarURL: null,
+          email: '',
+          name: '',
+          avatarURL: '',
           subscribed: false,
         };
       })
       .addMatcher(
-        action =>
-          [
-            signinThunk.pending,
-            signoutThunk.pending,
-            signupThunk.pending,
-            subscribeThunk.pending,
-            updateThunk.pending,
-            getCurrentUserThunk.pending,
-            refreshThunk.pending,
-          ].includes(action.type),
+        isAnyOf(
+          signinThunk.pending,
+          signoutThunk.pending,
+          signupThunk.pending,
+          subscribeThunk.pending,
+          updateThunk.pending,
+          getCurrentUserThunk.pending,
+          refreshThunk.pending
+        ),
         state => {
           state.isLoading = true;
         }
       )
       .addMatcher(
-        action =>
-          [signinThunk.fulfilled, signupThunk.fulfilled].includes(action.type),
-        (state, { payload }) => {
-          state.isLoading = false;
-          state.isLoggedIn = true;
-          state.token = payload.token;
-          state.user = payload.user;
-        }
-      )
-      .addMatcher(
-        action =>
-          [
-            signinThunk.rejected,
-            signoutThunk.rejected,
-            signupThunk.rejected,
-            subscribeThunk.rejected,
-            updateThunk.rejected,
-            getCurrentUserThunk.rejected,
-            refreshThunk.rejected,
-          ].includes(action.type),
+        isAnyOf(
+          signinThunk.rejected,
+          signoutThunk.rejected,
+          signupThunk.rejected,
+          subscribeThunk.rejected,
+          updateThunk.rejected,
+          getCurrentUserThunk.rejected,
+          refreshThunk.rejected
+        ),
         (state, { payload }) => {
           state.isLoading = false;
           state.error = payload;
