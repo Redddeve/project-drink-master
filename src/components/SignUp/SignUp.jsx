@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch } from 'react-redux';
 
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+
 import {
   StyledWrap,
   StyledHead,
@@ -20,7 +23,30 @@ import sprite from '../../images/sprite.svg';
 const SignUp = () => {
   const [date, setDate] = useState(null);
 
-  const { handleSubmit, register } = useForm();
+  // const schema = yup.object({
+  //   name: yup.string().required('name is required'),
+  //   date: yup.string().required('date is required'),
+  //   email: yup
+  //     .string()
+  //     .email('Email format is not valid')
+  //     .required('email is required'),
+  //   password: yup.string().required('password is required'),
+  //   // .matches(
+  //   //   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+  //   //   'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character'
+  //   // ),
+  // });
+
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors, isValid },
+  } = useForm({
+    // resolver: yupResolver(schema),
+    mode: 'onBlur',
+  });
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -42,13 +68,33 @@ const SignUp = () => {
       .then(() => {
         navigate('/');
       });
+    reset();
   };
 
   return (
     <StyledWrap>
       <StyledFormWrap onSubmit={handleSubmit(submit)}>
         <StyledHead>Sign Up</StyledHead>
-        <StyledInput {...register('name')} placeholder="Name" />
+        <StyledInput
+          {...register('name', {
+            required: "name can't be empty",
+            minLength: {
+              value: 2,
+              message: 'name must contain at least 2 characters',
+            },
+          })}
+          placeholder="Name"
+          className={errors?.name ? 'error' : isValid ? 'correct' : ''}
+          // style={
+          //   errors?.name
+          //     ? { border: '1px solid red' }
+          //     : isValid
+          //     ? { border: '1px solid green' }
+          //     : { border: '1px solid white' }
+          // }
+        />
+        {errors?.name && <p>{errors?.name?.message || 'This is an ERROR'}</p>}
+        {!errors?.name && isValid && <p>ok</p>}
 
         {/* <StyledInput {...register('date')} placeholder="dd/mm/yyyy" /> */}
 

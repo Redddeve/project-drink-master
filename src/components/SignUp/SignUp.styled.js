@@ -55,6 +55,16 @@ export const StyledInput = styled.input`
   font-weight: 400;
   line-height: 18px; /* 128.571% */
   margin-bottom: 14px;
+  &.error {
+    border: 1px solid var(--error-red);
+    color: var(--error-red);
+  }
+
+  &.correct {
+    border: 1px solid var(--correct-green);
+    color: var(--correct-green);
+  }
+
   &:last-of-type {
     margin-bottom: 28px;
   }

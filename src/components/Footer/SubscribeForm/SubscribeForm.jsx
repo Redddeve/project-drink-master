@@ -17,6 +17,7 @@ const SubscribeForm = () => {
   } = useForm({
     mode: 'onBlur',
   });
+
   const onSubmit = data => {
     toast.success(`Subscription ${data.email} completed successfully!`);
     reset();
