@@ -50,6 +50,10 @@ export const CocktailContainerTitle = styled.div`
 export const CocktailTitle = styled.h3`
   font-size: 18px;
   font-weight: 500;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 
   @media ${device.tablet} {
     font-size: 24px;

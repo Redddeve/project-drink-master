@@ -1,5 +1,6 @@
 import { StyledPageTitle } from './PageTitle.styled';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+// eslint-disable-next-line react/prop-types
 const PageTitle = ({ title, mbMobile, mbTablet, mbDesktop }) => {
   return (
     <StyledPageTitle
