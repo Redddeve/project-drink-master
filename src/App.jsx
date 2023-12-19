@@ -8,7 +8,7 @@ import SignUpPage from './pages/SignUpPage/SignUpPage';
 import SignInPage from './pages/SignInPage/SignInPage';
 import Layout from './components/Layout/Layout';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import { selectIsLoading } from './redux/auth/selectors';
+import { selectIsRefresh } from './redux/auth/selectors';
 
 const HomePage = lazy(() => import('./pages/Homepage/Homepage'));
 const DrinksPage = lazy(() => import('./pages/DrinksPage/DrinksPage'));
@@ -23,7 +23,7 @@ const AgreementPage = lazy(() => import('./pages/AgreementPage/AgreementPage'));
 
 const App = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
+  const isLoading = useSelector(selectIsRefresh);
   useEffect(() => {
     dispatch(refreshThunk());
   }, [dispatch]);
