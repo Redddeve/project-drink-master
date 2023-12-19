@@ -1,5 +1,5 @@
 import { StyledPageTitle } from './PageTitle.styled';
-
+import PropTypes from 'prop-types';
 const PageTitle = ({ title, mbMobile, mbTablet, mbDesktop }) => {
   return (
     <StyledPageTitle
