@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const FollowUsWrap = styled.ul`
   display: flex;
@@ -10,13 +10,20 @@ export const FollowUsWrap = styled.ul`
     text-align: center;
     border-radius: 10px;
     border: 1px solid rgba(243, 243, 243, 0.2);
-    transition: border var(--tran-fast);
+    transition: border var(--tran-fast), opacity var(--tran-fast);
 
     &:hover {
       border: 1px solid rgba(243, 243, 243, 0.5);
+      cursor: pointer;
+      svg {
+        opacity: 1;
+      }
     }
     &:focus {
       border: 1px solid rgba(243, 243, 243, 0.5);
+      svg {
+        opacity: 1;
+      }
     }
   }
 
@@ -36,12 +43,7 @@ export const SvgSocial = styled.svg`
   fill: var(--white);
   opacity: 0.5;
   transition: opacity;
-  &:hover {
-    opacity: 1;
-  }
-  &:focus {
-    opacity: 1;
-  }
+
   @media screen and (min-width: 768px) {
     width: 28px;
     height: 28px;

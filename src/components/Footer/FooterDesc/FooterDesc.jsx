@@ -1,5 +1,5 @@
-import FollowUs from "../../SharedComponents/FollowUs/FollowUs";
-import SubscribeForm from "../SubscribeForm/SubscribeForm.jsx";
+import FollowUs from '../../SharedComponents/FollowUs/FollowUs/FollowUs.jsx';
+import SubscribeForm from '../SubscribeForm/SubscribeForm.jsx';
 import {
   Copy,
   FooterContainer,
@@ -10,8 +10,8 @@ import {
   StyledLink,
   StyledLogoLink,
   Icon,
-} from "./FooterDesc.styled.js";
-import sprite from "../../../images/sprite.svg";
+} from './FooterDesc.styled.js';
+import sprite from '../../../images/sprite.svg';
 
 const FooterDesc = () => {
   return (
@@ -21,7 +21,7 @@ const FooterDesc = () => {
           <LogoFlex>
             <StyledLogoLink href="/">
               <Icon>
-                <use href={sprite + "#icon-logo"} />
+                <use href={sprite + '#icon-logo'} />
               </Icon>
               <span>Drink Master</span>
             </StyledLogoLink>

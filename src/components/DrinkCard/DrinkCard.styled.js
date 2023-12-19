@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { device } from "../../styles/device.js";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { device } from '../../styles/device.js';
 
-export const StyledDrinkCard = styled.div`
+export const StyledDrinkCard = styled.li`
   width: 335px;
 
   @media ${device.tablet} {
