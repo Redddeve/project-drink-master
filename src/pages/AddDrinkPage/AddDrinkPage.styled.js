@@ -21,27 +21,6 @@ export const StyledFileLabel = styled.label`
   margin-bottom: 40px;
   background-repeat: no-repeat;
   background-size: cover;
-  &::before {
-    content: '+';
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 6px;
-    background: var(--white);
-    font-size: 45px;
-    color: black;
-    padding: 11px;
-    margin-bottom: 18px;
-  }
-  &::after {
-    content: 'Add image';
-    color: var(--white);
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
-  }
   @media ${device.tablet} {
     min-width: 320px;
     margin-bottom: 0;
@@ -49,6 +28,31 @@ export const StyledFileLabel = styled.label`
   @media ${device.desktop} {
     min-width: 400px;
   }
+`;
+export const StyledFileDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+export const StyledFileTextPlus = styled.p`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+  background: var(--white);
+  font-size: 45px;
+  color: black;
+  padding: 11px;
+  margin-bottom: 18px;
+`;
+export const StyledFileTextAdd = styled.p`
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
 `;
 export const StyledFileInput = styled.input`
   display: none;

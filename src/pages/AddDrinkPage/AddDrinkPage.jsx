@@ -27,6 +27,9 @@ import {
   StyledValidText,
   RelativeLabel,
   StyledValidIng,
+  StyledFileDiv,
+  StyledFileTextPlus,
+  StyledFileTextAdd,
 } from './AddDrinkPage.styled';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -57,14 +60,14 @@ const AddDrinkPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  console.log(isAdult);
+
   const [imagePreview, setImagePreview] = useState('');
-  const [ingNumber, setIngNumber] = useState([1, 2, 3]);
+  const [ingNumber, setIngNumber] = useState([0, 1, 2]);
   const [category, setCategory] = useState('Cocktail');
   const [glass, setGlass] = useState('Highball glass');
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [glassMenuIsOpen, setGlassMenuIsOpen] = useState(false);
-
+  const [ingCount, setIngCount] = useState(4);
   useEffect(() => {
     dispatch(getGlassesThunk());
   }, [dispatch]);
@@ -107,7 +110,8 @@ const AddDrinkPage = () => {
 
   const addIngField = e => {
     e.preventDefault();
-    setIngNumber([...ingNumber, ingNumber.length + 1]);
+    setIngNumber([...ingNumber, ingCount]);
+    setIngCount(ingCount + 1);
   };
 
   const deleteIngField = e => {
@@ -118,7 +122,7 @@ const AddDrinkPage = () => {
 
   const deleteIng = (e, index) => {
     e.preventDefault();
-    if (ingNumber.length < 4) {
+    if (ingNumber.length <= 3) {
       return;
     }
     const newNumber = ingNumber.filter(el => el !== index);
@@ -168,6 +172,12 @@ const AddDrinkPage = () => {
               {...register('photo')}
               onChange={handleFileChange}
             />
+            {!imagePreview && (
+              <StyledFileDiv>
+                <StyledFileTextPlus>+</StyledFileTextPlus>
+                <StyledFileTextAdd>Add image</StyledFileTextAdd>
+              </StyledFileDiv>
+            )}
           </StyledFileLabel>
           <div>
             <RelativeLabel>
@@ -268,16 +278,17 @@ const AddDrinkPage = () => {
                 />
                 <p>Non alcoholic</p>
               </StyledRadioLabel>
-              <StyledRadioLabel>
-                <input
-                  type="radio"
-                  name="alcohol"
-                  value={'Alcoholic'}
-                  {...register('alcohol', { required: true })}
-                  disabled={!isAdult}
-                />
-                <p>Alcoholic</p>
-              </StyledRadioLabel>
+              {isAdult && (
+                <StyledRadioLabel>
+                  <input
+                    type="radio"
+                    name="alcohol"
+                    value={'Alcoholic'}
+                    {...register('alcohol', { required: true })}
+                  />
+                  <p>Alcoholic</p>
+                </StyledRadioLabel>
+              )}
             </StyledRadioLabelDiv>
           </div>
         </StyledInfoDiv>
@@ -300,7 +311,7 @@ const AddDrinkPage = () => {
 
           {ingNumber.map((el, index) => {
             return (
-              <StyledIngFieldLabel key={el}>
+              <StyledIngFieldLabel key={ingNumber[index]}>
                 <RelativeLabel>
                   <Controller
                     name={`Ingredients${index}`}
@@ -335,7 +346,7 @@ const AddDrinkPage = () => {
                     {...register(`IngNumber${index}`)}
                   />
                 </StyledIngFieldWrapper>
-                <StyledIngFieldBtn onClick={e => deleteIng(e, index)}>
+                <StyledIngFieldBtn onClick={e => deleteIng(e, el)}>
                   <svg width="18" height="18">
                     <use
                       href={`${sprite}#icon-X`}
