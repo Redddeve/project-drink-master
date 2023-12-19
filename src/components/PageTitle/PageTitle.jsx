@@ -13,3 +13,10 @@ const PageTitle = ({ title, mbMobile, mbTablet, mbDesktop }) => {
 };
 
 export default PageTitle;
+
+PageTitle.propTypes = {
+  title: PropTypes.string.isRequired,
+  mbMobile: PropTypes.string,
+  mbTablet: PropTypes.string,
+  mbDesktop: PropTypes.string,
+};
