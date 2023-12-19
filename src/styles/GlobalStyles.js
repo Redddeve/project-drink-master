@@ -24,6 +24,7 @@ const GlobalStyles = createGlobalStyle`
   --sub-white: #FAFAFA;
   --transp-white: #F3F3F380; // rgba(243, 243, 243, 0.80)
   --transp-not-found:#F3F3F310;
+  --transp-disabled:#F3F3F330;
   --dark: #0A0A11;
   --transp-dark: #0A0A1166; // light theme
   --black: #161F37;
