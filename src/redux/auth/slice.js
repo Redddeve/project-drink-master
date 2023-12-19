@@ -38,6 +38,7 @@ export const slice = createSlice({
       .addCase(refreshThunk.fulfilled, (state, { payload }) => {
         state.isRefresh = false;
         state.isLoading = true;
+        state.isLoggedIn = true;
         state.token = payload.token;
         state.user = payload.user;
       })

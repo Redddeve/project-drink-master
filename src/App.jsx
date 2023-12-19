@@ -1,20 +1,44 @@
 import { Route, Routes } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { useEffect, lazy } from 'react';
+import { refreshThunk } from './redux/auth/operations';
+import PrivateRoute from './routes/PrivateRoute';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
 import SignInPage from './pages/SignInPage/SignInPage';
 import Layout from './components/Layout/Layout';
-import HomePage from './pages/Homepage/Homepage';
-import DrinksPage from './pages/DrinksPage/DrinksPage';
-import AddDrinkPage from './pages/AddDrinkPage/AddDrinkPage';
-import FavoriteDrinksPage from './pages/FavoriteDrinksPage/FavoriteDrinksPage';
-import UserDrinkPage from './pages/UserDrinkPage/UserDrinkPage';
-import MyDrinksPage from './pages/MyDrinksPage/MyDrinksPage';
+
+// import HomePage from './pages/Homepage/Homepage';
+// import DrinksPage from './pages/DrinksPage/DrinksPage';
+// import AddDrinkPage from './pages/AddDrinkPage/AddDrinkPage';
+// import FavoriteDrinksPage from './pages/FavoriteDrinksPage/FavoriteDrinksPage';
+// import UserDrinkPage from './pages/UserDrinkPage/UserDrinkPage';
+// import MyDrinksPage from './pages/MyDrinksPage/MyDrinksPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import PolicyPage from './pages/PolicyPage/PolicyPage';
-import AgreementPage from './pages/AgreementPage/AgreementPage';
-import PrivateRoute from './routes/PrivateRoute';
+// import PolicyPage from './pages/PolicyPage/PolicyPage';
+// import AgreementPage from './pages/AgreementPage/AgreementPage';
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshThunk());
+  }, [dispatch]);
+
+  const HomePage = lazy(() => import('./pages/Homepage/Homepage'));
+  const DrinksPage = lazy(() => import('./pages/DrinksPage/DrinksPage'));
+  const AddDrinkPage = lazy(() => import('./pages/AddDrinkPage/AddDrinkPage'));
+  const FavoriteDrinksPage = lazy(() =>
+    import('./pages/FavoriteDrinksPage/FavoriteDrinksPage')
+  );
+  const UserDrinkPage = lazy(() =>
+    import('./pages/UserDrinkPage/UserDrinkPage')
+  );
+  const MyDrinksPage = lazy(() => import('./pages/MyDrinksPage/MyDrinksPage'));
+  const PolicyPage = lazy(() => import('./pages/PolicyPage/PolicyPage'));
+  const AgreementPage = lazy(() =>
+    import('./pages/AgreementPage/AgreementPage')
+  );
+
   return (
     <>
       <Routes>
