@@ -6,7 +6,7 @@ import Logo from './Logo/Logo';
 import BurgerMenu from './Burger/Burger';
 
 const Header = () => {
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1280);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1440);
   const [isOpenBurgerMenu, setisOpenBurgerMenu] = useState(false);
 
   const location = useLocation();
@@ -14,7 +14,7 @@ const Header = () => {
   const toggleMenu = () => setisOpenBurgerMenu(!isOpenBurgerMenu);
 
   const updateMedia = () => {
-    const newIsDesktop = window.innerWidth >= 1280;
+    const newIsDesktop = window.innerWidth >= 1440;
     setIsDesktop(newIsDesktop);
 
     if (newIsDesktop) {

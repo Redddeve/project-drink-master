@@ -11,7 +11,7 @@ import UserDrinkPage from './pages/UserDrinkPage/UserDrinkPage';
 import MyDrinksPage from './pages/MyDrinksPage/MyDrinksPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import PolicyPage from './pages/PolicyPage/PolicyPage';
-import CopyPage from './pages/AgreementPage/AgreementPage';
+import AgreementPage from './pages/AgreementPage/AgreementPage';
 import PrivateRoute from './routes/PrivateRoute';
 
 const App = () => {
@@ -21,8 +21,7 @@ const App = () => {
         <Route path="/welcome" element={<WelcomePage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/signin" element={<SignInPage />} />
-        <Route path="/policy" element={<PolicyPage />} />
-        <Route path="/agreement" element={<CopyPage />} />
+
         <Route path="/" element={<Layout />}>
           <Route
             index
@@ -69,6 +68,22 @@ const App = () => {
             element={
               <PrivateRoute>
                 <MyDrinksPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/agreement"
+            element={
+              <PrivateRoute>
+                <AgreementPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/policy"
+            element={
+              <PrivateRoute>
+                <PolicyPage />
               </PrivateRoute>
             }
           />

@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   addFavoriteDrinkThunk,
   addOwnDrinkThunk,
@@ -27,8 +27,6 @@ const initialState = {
   searchDrinks: [],
   isLoading: false,
   error: null,
-  page: 1,
-  limit: 10,
 };
 
 export const slice = createSlice({
@@ -46,6 +44,10 @@ export const slice = createSlice({
       })
       .addCase(searchDrinksThunk.fulfilled, (state, { payload }) => {
         state.searchDrinks = payload;
+        state.isLoading = false;
+      })
+      .addCase(searchDrinksThunk.rejected, state => {
+        state.searchDrinks = [];
         state.isLoading = false;
       })
       .addCase(getDrinkbyIdThunk.fulfilled, (state, { payload }) => {
@@ -87,43 +89,40 @@ export const slice = createSlice({
         state.glasses = payload.glasses;
       })
       .addMatcher(
-        action =>
-          [
-            fetchAllDrinks.pending,
-            getPopularThunk.pending,
-            searchDrinksThunk.pending,
-            getDrinkbyIdThunk.pending,
-            getOwnDrinksThunk.pending,
-            addOwnDrinkThunk.pending,
-            deleteOwnDrinkThunk.pending,
-            getFavoriteDrinksThunk.pending,
-            addFavoriteDrinkThunk.pending,
-            removeFavoriteDrinkThunk.pending,
-            getCategoriesThunk.pending,
-            getIngredientsThunk.pending,
-            getGlassesThunk.pending,
-          ].includes(action.type),
+        isAnyOf(
+          fetchAllDrinks.pending,
+          getPopularThunk.pending,
+          searchDrinksThunk.pending,
+          getDrinkbyIdThunk.pending,
+          getOwnDrinksThunk.pending,
+          addOwnDrinkThunk.pending,
+          deleteOwnDrinkThunk.pending,
+          getFavoriteDrinksThunk.pending,
+          addFavoriteDrinkThunk.pending,
+          removeFavoriteDrinkThunk.pending,
+          getCategoriesThunk.pending,
+          getIngredientsThunk.pending,
+          getGlassesThunk.pending
+        ),
         state => {
           state.isLoading = true;
         }
       )
       .addMatcher(
-        action =>
-          [
-            fetchAllDrinks.rejected,
-            getPopularThunk.rejected,
-            searchDrinksThunk.rejected,
-            getDrinkbyIdThunk.rejected,
-            getOwnDrinksThunk.rejected,
-            addOwnDrinkThunk.rejected,
-            deleteOwnDrinkThunk.rejected,
-            getFavoriteDrinksThunk.rejected,
-            addFavoriteDrinkThunk.rejected,
-            removeFavoriteDrinkThunk.rejected,
-            getCategoriesThunk.rejected,
-            getIngredientsThunk.rejected,
-            getGlassesThunk.rejected,
-          ].includes(action.type),
+        isAnyOf(
+          fetchAllDrinks.rejected,
+          getPopularThunk.rejected,
+          getDrinkbyIdThunk.rejected,
+          getOwnDrinksThunk.rejected,
+          addOwnDrinkThunk.rejected,
+          deleteOwnDrinkThunk.rejected,
+          getFavoriteDrinksThunk.rejected,
+          addFavoriteDrinkThunk.rejected,
+          removeFavoriteDrinkThunk.rejected,
+          getCategoriesThunk.rejected,
+          getIngredientsThunk.rejected,
+          getGlassesThunk.rejected
+        ),
         (state, { payload }) => {
           state.error = payload;
           state.isLoading = false;
