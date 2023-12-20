@@ -135,7 +135,9 @@ export const addFavoriteDrinkThunk = createAsyncThunk(
   async (id, { rejectWithValue, getState }) => {
     try {
       setToken(getState().auth.token);
-      const { data } = await instance.post(`/drinks/favorite/add/${id}`);
+      const { data } = await instance.post(`/drinks/favorite/add`, {
+        cocktailId: id,
+      });
       toast.success(`Drink added to favorites`);
       return data;
     } catch (error) {
@@ -150,9 +152,12 @@ export const removeFavoriteDrinkThunk = createAsyncThunk(
   async (id, { rejectWithValue, getState }) => {
     try {
       setToken(getState().auth.token);
-      const { data } = await instance.delete(`/drinks/favorite/remove/${id}`);
+      await instance.delete(`/drinks/favorite/remove`, {
+        headers: {},
+        data: { cocktailId: id },
+      });
       toast.success(`Drink removed from favorites`);
-      return data;
+      return id;
     } catch (error) {
       toast.error(`Something went wrong. Please try again later.`);
       return rejectWithValue(error.message);

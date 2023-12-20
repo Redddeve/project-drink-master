@@ -74,9 +74,7 @@ export const slice = createSlice({
         state.isLoading = false;
       })
       .addCase(removeFavoriteDrinkThunk.fulfilled, (state, { payload }) => {
-        state.favorite = state.favorite.filter(
-          ({ _id }) => _id !== payload._id
-        );
+        state.favorite = state.favorite.filter(({ _id }) => _id !== payload);
         state.isLoading = false;
       })
       .addCase(getCategoriesThunk.fulfilled, (state, { payload }) => {
