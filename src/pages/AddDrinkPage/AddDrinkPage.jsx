@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { StyledSubmitBtn } from './AddDrinkPage.styled';
@@ -19,7 +18,6 @@ import AddFormIngredients from '../../components/AddFormIngredients/AddFormIngre
 import AddFormDesc from '../../components/AddFormDesc/AddFormDesc';
 import PopularDrinks from '../../components/PopularDrinks/PopularDrinks';
 
-
 const AddDrinkPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -33,7 +31,7 @@ const AddDrinkPage = () => {
   const [ingNumber, setIngNumber] = useState([0, 1, 2]);
   const [category, setCategory] = useState('Cocktail');
   const [glass, setGlass] = useState('Highball glass');
-  
+
   useEffect(() => {
     dispatch(getGlassesThunk());
     dispatch(getCategoriesThunk());
@@ -102,11 +100,9 @@ const AddDrinkPage = () => {
           Add
         </StyledSubmitBtn>
       </div>
-      <PopularDrinks/>
+      <PopularDrinks />
       <ButtonUpToTop />
     </>
-
-    
   );
 };
 
