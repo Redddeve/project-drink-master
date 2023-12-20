@@ -21,11 +21,17 @@ const SignIn = () => {
     handleSubmit,
     register,
     reset,
-    formState: { errors, isValid },
+    getValues,
+    formState: { errors },
   } = useForm({
-    // resolver: yupResolver(schema),
-    mode: 'onBlur',
-  }); // const isLoading = useSelector(selectLoading);
+    mode: 'all',
+  });
+
+  const isFieldValid = fieldName => {
+    return getValues(fieldName) && !errors[fieldName];
+  };
+
+  // const isLoading = useSelector(selectLoading);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -61,14 +67,16 @@ const SignIn = () => {
               },
             })}
             placeholder="Email"
-            className={errors?.email ? 'error' : isValid ? 'correct' : ''}
+            className={
+              errors?.email ? 'error' : isFieldValid('email') ? 'correct' : ''
+            }
           />
           {errors?.email && (
             <StyledMessage className="error">
               {errors?.email?.message || 'ERROR'}
             </StyledMessage>
           )}
-          {!errors?.email && isValid && (
+          {!errors?.email && isFieldValid('email') && (
             <StyledMessage className="correct">ok</StyledMessage>
           )}
         </StyledInputWrap>
@@ -82,18 +90,24 @@ const SignIn = () => {
               },
             })}
             placeholder="Password"
-            className={errors?.password ? 'error' : isValid ? 'correct' : ''}
+            className={
+              errors?.password
+                ? 'error'
+                : isFieldValid('password')
+                ? 'correct'
+                : ''
+            }
           />
           {errors?.password && (
             <StyledMessage className="error">
               {errors?.password?.message || 'ERROR'}
             </StyledMessage>
           )}
-          {!errors?.password && isValid && (
+          {!errors?.password && isFieldValid('password') && (
             <StyledMessage className="correct">ok</StyledMessage>
           )}
         </StyledInputWrap>
-        <StyledSignInBtn disabled={!isValid}>Sign Up</StyledSignInBtn>
+        <StyledSignInBtn>Sign In</StyledSignInBtn>
 
         <StyledLink to="/signup">Sign Up</StyledLink>
       </StyledFormWrap>

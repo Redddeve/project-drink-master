@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { signinThunk, signupThunk } from '../../redux/auth/operations.js';
 import { useNavigate } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch } from 'react-redux';
+import React, { useRef } from 'react';
 
 // import * as yup from 'yup';
 // import { yupResolver } from '@hookform/resolvers/yup';
@@ -23,37 +24,26 @@ import {
 import sprite from '../../images/sprite.svg';
 
 const SignUp = () => {
-  const [date, setDate] = useState(null);
-
-  // const schema = yup.object({
-  //   name: yup.string().required('name is required'),
-  //   date: yup.string().required('date is required'),
-  //   email: yup
-  //     .string()
-  //     .email('Email format is not valid')
-  //     .required('email is required'),
-  //   password: yup.string().required('password is required'),
-  //   // .matches(
-  //   //   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-  //   //   'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character'
-  //   // ),
-  // });
-
   const {
     handleSubmit,
     register,
     reset,
-    formState: { errors, isValid },
+    getValues,
+    control,
+    formState: { errors },
   } = useForm({
-    // resolver: yupResolver(schema),
-    mode: 'onBlur',
+    mode: 'all',
   });
+
+  const isFieldValid = fieldName => {
+    return getValues(fieldName) && !errors[fieldName];
+  };
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const submit = data => {
-    const inputDate = new Date(date);
+    const inputDate = new Date(data.date);
     const year = inputDate.getFullYear();
     const month = (inputDate.getMonth() + 1).toString().padStart(2, '0');
     const day = inputDate.getDate().toString().padStart(2, '0');
@@ -77,6 +67,7 @@ const SignUp = () => {
     <StyledWrap>
       <StyledFormWrap onSubmit={handleSubmit(submit)}>
         <StyledHead>Sign Up</StyledHead>
+
         <StyledInputWrap>
           <StyledInput
             {...register('name', {
@@ -87,47 +78,53 @@ const SignUp = () => {
               },
             })}
             placeholder="Name"
-            className={errors?.name ? 'error' : isValid ? 'correct' : ''}
-            // $content={
-            //   errors?.name ? errors?.name?.message : isValid ? 'ok' : ''
-            // }
+            className={
+              errors?.name ? 'error' : isFieldValid('name') ? 'correct' : ''
+            }
           />
           {errors?.name && (
             <StyledMessage className="error">
               {errors?.name?.message || 'ERROR'}
             </StyledMessage>
           )}
-          {!errors?.name && isValid && (
+          {!errors?.name && isFieldValid('name') && (
             <StyledMessage className="correct">ok</StyledMessage>
           )}
         </StyledInputWrap>
 
-        {/* <StyledInput {...register('date')} placeholder="dd/mm/yyyy" /> */}
         <StyledInputWrap>
-          <StyledDatePicker
-            {...register('date', {
-              required: "date can't be empty",
-            })}
-            showIcon
-            selected={date}
-            onChange={date => setDate(date)}
-            icon={
-              <StyledCalendarIcon>
-                <use href={`${sprite}#icon-calendar`} />
-              </StyledCalendarIcon>
-            }
-            placeholderText="dd/mm/yyyy"
-            className={errors?.date ? 'error' : isValid ? 'correct' : ''}
+          <Controller
+            control={control}
+            name="date"
+            rules={{ required: "date can't be empty" }}
+            render={({ field }) => (
+              <StyledDatePicker
+                showIcon
+                selected={field.value}
+                onChange={date => field.onChange(date)}
+                onBlur={() => field.onBlur()}
+                icon={
+                  <StyledCalendarIcon>
+                    <use href={`${sprite}#icon-calendar`} />
+                  </StyledCalendarIcon>
+                }
+                placeholderText="dd/mm/yyyy"
+                className={
+                  errors?.date ? 'error' : isFieldValid('date') ? 'correct' : ''
+                }
+              />
+            )}
           />
           {errors?.date && (
             <StyledMessage className="error">
               {errors?.date?.message || 'ERROR'}
             </StyledMessage>
           )}
-          {!errors?.date && isValid && (
+          {!errors?.date && isFieldValid('date') && (
             <StyledMessage className="correct">ok</StyledMessage>
           )}
         </StyledInputWrap>
+
         <StyledInputWrap>
           <StyledInput
             {...register('email', {
@@ -143,17 +140,20 @@ const SignUp = () => {
               },
             })}
             placeholder="Email"
-            className={errors?.email ? 'error' : isValid ? 'correct' : ''}
+            className={
+              errors?.email ? 'error' : isFieldValid('email') ? 'correct' : ''
+            }
           />
           {errors?.email && (
             <StyledMessage className="error">
               {errors?.email?.message || 'ERROR'}
             </StyledMessage>
           )}
-          {!errors?.email && isValid && (
+          {!errors?.email && isFieldValid('email') && (
             <StyledMessage className="correct">ok</StyledMessage>
           )}
         </StyledInputWrap>
+
         <StyledInputWrap>
           <StyledInput
             {...register('password', {
@@ -164,18 +164,25 @@ const SignUp = () => {
               },
             })}
             placeholder="Password"
-            className={errors?.password ? 'error' : isValid ? 'correct' : ''}
+            className={
+              errors?.password
+                ? 'error'
+                : isFieldValid('password')
+                ? 'correct'
+                : ''
+            }
           />
           {errors?.password && (
             <StyledMessage className="error">
               {errors?.password?.message || 'ERROR'}
             </StyledMessage>
           )}
-          {!errors?.password && isValid && (
+          {!errors?.password && isFieldValid('password') && (
             <StyledMessage className="correct">ok</StyledMessage>
           )}
         </StyledInputWrap>
-        <StyledSignInBtn disabled={!isValid}>Sign Up</StyledSignInBtn>
+
+        <StyledSignInBtn>Sign Up</StyledSignInBtn>
 
         <StyledLink to="/signin">Sign In</StyledLink>
       </StyledFormWrap>
