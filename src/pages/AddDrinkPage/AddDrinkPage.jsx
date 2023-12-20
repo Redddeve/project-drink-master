@@ -18,7 +18,7 @@ import AddFormIngredients from '../../components/AddFormIngredients/AddFormIngre
 import AddFormDesc from '../../components/AddFormDesc/AddFormDesc';
 import PopularDrinks from '../../components/PopularDrinks/PopularDrinks';
 
-const AddDrinkPage = () => {
+const AddDrinkPage = ({ theme }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
@@ -65,6 +65,7 @@ const AddDrinkPage = () => {
   return (
     <>
       <PageTitle title="Add drink" />
+
       <div>
         <AddFormMain
           setGlass={setGlass}
@@ -76,6 +77,7 @@ const AddDrinkPage = () => {
           handleSubmit={handleSubmit}
           errors={errors}
           onSubmit={onSubmit}
+          theme={theme}
         ></AddFormMain>
 
         <AddFormIngredients
@@ -86,6 +88,7 @@ const AddDrinkPage = () => {
           handleSubmit={handleSubmit}
           errors={errors}
           onSubmit={onSubmit}
+          theme={theme}
         />
 
         <AddFormDesc
@@ -94,14 +97,19 @@ const AddDrinkPage = () => {
           handleSubmit={handleSubmit}
           errors={errors}
           onSubmit={onSubmit}
+          theme={theme}
         />
 
-        <StyledSubmitBtn type="button" onClick={handleSubmit(onSubmit)}>
+        <StyledSubmitBtn
+          type="button"
+          onClick={handleSubmit(onSubmit)}
+          theme={theme}
+        >
           Add
         </StyledSubmitBtn>
       </div>
       <PopularDrinks />
-      <ButtonUpToTop />
+      <ButtonUpToTop theme={theme} />
     </>
   );
 };

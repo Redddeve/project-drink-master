@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { device } from '../../styles/device';
+import { darkTheme, lightTheme } from '../../styles/theme';
 
 export const StyledAddTitle = styled.h1`
   font-size: 32px;
@@ -23,7 +24,8 @@ export const StyledDescInput = styled.textarea`
   background: transparent;
   border-radius: 14px;
   border: 1px solid var(--transp-white);
-  color: var(--white);
+  color: ${({ theme }) =>
+    theme === 'dark' ? lightTheme.colors.main : darkTheme.colors.main};
   line-height: 1;
   vertical-align: top;
   @media ${device.tablet} {
@@ -33,12 +35,14 @@ export const StyledDescInput = styled.textarea`
 
 export const StyledSubmitBtn = styled.button`
   border-radius: 42px;
-  background: var(--white);
+  background-color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.background.main : lightTheme.background.main};
   display: inline-flex;
   padding: 14px 40px;
   align-items: flex-start;
   gap: 10px;
-  color: var(--black);
+  color: ${({ theme }) =>
+    theme === 'dark' ? lightTheme.colors.main : darkTheme.colors.main};
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
