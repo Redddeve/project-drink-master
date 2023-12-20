@@ -22,7 +22,7 @@ const Hero = () => {
           />
           <HeroText>
             Unlock your inner mixologist with Drink Master, your one-stop
-            destination for exploring, crafting, and mastering the world's
+            destination for exploring, crafting, and mastering the world&apos;s
             finest beverages.
           </HeroText>
           <AddDrinksNavLink to="/add">Add drinks</AddDrinksNavLink>

@@ -8,7 +8,7 @@ import {
 
 const AddFormDesc = ({ register, handleSubmit, errors, onSubmit }) => {
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
       <RelativeLabel>
         <StyledIngTitle>Recipe Preparation</StyledIngTitle>
         <StyledDescInput

@@ -13,19 +13,44 @@ import {
   StyledFormWrap,
   StyledInputWrap,
   StyledMessage,
+  StyledEye,
+  StyledStatus,
 } from './SignIn.styled.js';
 
+import sprite from '../../images/sprite.svg';
+
+import { useState } from 'react';
+
 const SignIn = () => {
+  const [type, setType] = useState('password');
+  const [icon, setIcon] = useState('eye-off');
+
+  const handleEyeToggle = () => {
+    if (type === 'password') {
+      setIcon('eye');
+      setType('text');
+    } else {
+      setIcon('eye-off');
+      setType('password');
+    }
+  };
+
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const {
     handleSubmit,
     register,
     reset,
-    formState: { errors, isValid },
+    getValues,
+    formState: { errors },
   } = useForm({
-    // resolver: yupResolver(schema),
-    mode: 'onBlur',
-  }); // const isLoading = useSelector(selectLoading);
+    mode: 'all',
+  });
+
+  const isFieldValid = fieldName => {
+    return getValues(fieldName) && !errors[fieldName];
+  };
+
+  // const isLoading = useSelector(selectLoading);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -34,8 +59,8 @@ const SignIn = () => {
       .unwrap()
       .then(() => {
         navigate(location.state?.from ?? '/');
+        reset();
       });
-    reset();
   };
   if (isLoggedIn) {
     return <Navigate to="/" />;
@@ -61,15 +86,29 @@ const SignIn = () => {
               },
             })}
             placeholder="Email"
-            className={errors?.email ? 'error' : isValid ? 'correct' : ''}
+            className={
+              errors?.email ? 'error' : isFieldValid('email') ? 'correct' : ''
+            }
           />
           {errors?.email && (
-            <StyledMessage className="error">
-              {errors?.email?.message || 'ERROR'}
-            </StyledMessage>
+            <>
+              <StyledStatus className="error">
+                <use href={`${sprite}#icon-error-outline`} />
+              </StyledStatus>
+              <StyledMessage className="error">
+                {errors?.email?.message || 'ERROR'}
+              </StyledMessage>
+            </>
           )}
-          {!errors?.email && isValid && (
-            <StyledMessage className="correct">ok</StyledMessage>
+          {!errors?.email && isFieldValid('email') && (
+            <>
+              <StyledStatus className="correct">
+                <use href={`${sprite}#icon-done-outline`} />
+              </StyledStatus>
+              <StyledMessage className="correct">
+                This is a CORRECT email
+              </StyledMessage>
+            </>
           )}
         </StyledInputWrap>
         <StyledInputWrap>
@@ -82,18 +121,32 @@ const SignIn = () => {
               },
             })}
             placeholder="Password"
-            className={errors?.password ? 'error' : isValid ? 'correct' : ''}
+            autoComplete="off"
+            type={type}
+            className={
+              errors?.password
+                ? 'error'
+                : isFieldValid('password')
+                ? 'correct'
+                : ''
+            }
           />
+
+          <StyledEye onClick={handleEyeToggle}>
+            <use href={`${sprite}#icon-${icon}`} />
+          </StyledEye>
           {errors?.password && (
             <StyledMessage className="error">
               {errors?.password?.message || 'ERROR'}
             </StyledMessage>
           )}
-          {!errors?.password && isValid && (
-            <StyledMessage className="correct">ok</StyledMessage>
+          {!errors?.password && isFieldValid('password') && (
+            <StyledMessage className="correct">
+              This is a CORRECT password
+            </StyledMessage>
           )}
         </StyledInputWrap>
-        <StyledSignInBtn disabled={!isValid}>Sign Up</StyledSignInBtn>
+        <StyledSignInBtn>Sign In</StyledSignInBtn>
 
         <StyledLink to="/signup">Sign Up</StyledLink>
       </StyledFormWrap>

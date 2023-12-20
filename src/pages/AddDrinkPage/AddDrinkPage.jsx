@@ -5,10 +5,12 @@ import { useDispatch } from 'react-redux';
 import { addOwnDrinkThunk } from '../../redux/drinks/operations';
 import { useNavigate } from 'react-router-dom';
 import ButtonUpToTop from '../../components/ButtonUpToTop/ButtonUpToTop';
+
 import PageTitle from '../../components/PageTitle/PageTitle';
 import AddFormMain from '../../components/AddFormMain/AddFormMain';
 import AddFormIngredients from '../../components/AddFormIngredients/AddFormIngredients';
 import AddFormDesc from '../../components/AddFormDesc/AddFormDesc';
+import PopularDrinks from '../../components/PopularDrinks/PopularDrinks';
 
 const AddDrinkPage = () => {
   const dispatch = useDispatch();
@@ -17,6 +19,7 @@ const AddDrinkPage = () => {
     register,
     control,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
 
@@ -55,7 +58,7 @@ const AddDrinkPage = () => {
   };
 
   return (
-    <div>
+    <>
       <PageTitle title="Add drink" />
       <div>
         <AddFormMain
@@ -66,6 +69,7 @@ const AddDrinkPage = () => {
           register={register}
           setSelectedImage={setSelectedImage}
           control={control}
+          setValue={setValue}
           handleSubmit={handleSubmit}
           errors={errors}
           onSubmit={onSubmit}
@@ -93,8 +97,9 @@ const AddDrinkPage = () => {
           Add
         </StyledSubmitBtn>
       </div>
+      <PopularDrinks />
       <ButtonUpToTop />
-    </div>
+    </>
   );
 };
 

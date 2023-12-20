@@ -6,10 +6,13 @@ import { toast } from 'react-toastify';
 
 export const fetchAllDrinks = createAsyncThunk(
   'drinks/fetchAllDrinks',
-  async (_, { rejectWithValue, getState }) => {
+  async (body, { rejectWithValue, getState }) => {
+    const { page = 1, limit = 3 } = body;
     try {
       setToken(getState().auth.token);
-      const { data } = await instance.get('/drinks/mainpage?limit=15&page=1');
+      const { data } = await instance.get(
+        `/drinks/mainpage?limit=${limit}&page=${page}`
+      );
       return data;
     } catch (error) {
       toast.error(`Something went wrong. Please try again later.`);
@@ -135,7 +138,9 @@ export const addFavoriteDrinkThunk = createAsyncThunk(
   async (id, { rejectWithValue, getState }) => {
     try {
       setToken(getState().auth.token);
-      const { data } = await instance.post(`/drinks/favorite/add/${id}`);
+      const { data } = await instance.post(`/drinks/favorite/add`, {
+        cocktailId: id,
+      });
       toast.success(`Drink added to favorites`);
       return data;
     } catch (error) {
@@ -150,9 +155,12 @@ export const removeFavoriteDrinkThunk = createAsyncThunk(
   async (id, { rejectWithValue, getState }) => {
     try {
       setToken(getState().auth.token);
-      const { data } = await instance.delete(`/drinks/favorite/remove/${id}`);
+      await instance.delete(`/drinks/favorite/remove`, {
+        headers: {},
+        data: { cocktailId: id },
+      });
       toast.success(`Drink removed from favorites`);
-      return data;
+      return id;
     } catch (error) {
       toast.error(`Something went wrong. Please try again later.`);
       return rejectWithValue(error.message);
