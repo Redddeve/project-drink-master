@@ -23,25 +23,32 @@ const AddDrinkPage = () => {
   const [ingNumber, setIngNumber] = useState([0, 1, 2]);
   const [category, setCategory] = useState('Cocktail');
   const [glass, setGlass] = useState('Highball glass');
-
+  const [selectedImage, setSelectedImage] = useState(null);
   const onSubmit = data => {
-    const ingredientsArray = ingNumber.map((el, index) => ({
-      [`title`]: data[`Ingredients${index}`].value,
-      [`measure`]: data[`IngNumber${index}`],
-    }));
+    const formData = new FormData(); // Create a FormData object to send files and other data
+    formData.append('drinkThumb', selectedImage);
+    formData.append('glass', glass);
+    formData.append('category', category);
+    formData.append('instructions', data.aboutRecipe);
+    formData.append('drink', data.itemTitle);
+    formData.append('description', data.recipeDesc);
+    formData.append('alcoholic', data.alcohol);
 
-    dispatch(
-      addOwnDrinkThunk({
-        ingredients: ingredientsArray,
-        glass: glass,
-        category: category,
-        instructions: data.aboutRecipe,
-        drink: data.itemTitle,
-        drinkThumb: data.photo,
-        description: data.recipeDesc,
-        alcoholic: data.alcohol,
-      })
-    )
+    ingNumber.map((el, index) =>
+      formData.append(
+        `ingredients[${index}][title]`,
+        data[`Ingredients${index}`].value
+      )
+    );
+    ingNumber.map((el, index) =>
+      formData.append(
+        `ingredients[${index}][measure]`,
+        data[`IngNumber${index}`]
+      )
+    );
+
+    console.log(formData.ingredients);
+    dispatch(addOwnDrinkThunk(formData))
       .unwrap()
       .then(() => navigate('/my'))
       .catch(error => console.log(error));
@@ -57,6 +64,7 @@ const AddDrinkPage = () => {
           glass={glass}
           category={category}
           register={register}
+          setSelectedImage={setSelectedImage}
           control={control}
           handleSubmit={handleSubmit}
           errors={errors}
