@@ -1,4 +1,4 @@
-import{s as i,d as s,a,j as t,u as n,r as o,E as c}from"./index-GKUeT4jD.js";import{e as r}from"./selectors-U2SLgOji.js";import{C as l}from"./CocktailList-YQd2fHYQ.js";const p=i.div`
+import{s as i,d as s,b as a,j as t,a as n,e as o,U as c}from"./index-CJO0Qxxs.js";import{h as r}from"./selectors-3DDbZiSm.js";import{C as l}from"./CocktailList-gOpFn-vf.js";const p=i.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,4 +29,4 @@ import{s as i,d as s,a,j as t,u as n,r as o,E as c}from"./index-GKUeT4jD.js";imp
   @media ${s.desktop} {
     font-size: 64px;
   }
-`,f=()=>{const e=n();return o.useEffect(()=>{e(c())},[e]),t.jsxs("section",{children:[t.jsx(m,{children:"PageTitle"}),t.jsx(x,{})]})};export{f as default};
+`,k=()=>{const e=n();return o.useEffect(()=>{e(c())},[e]),t.jsxs("section",{children:[t.jsx(m,{children:"PageTitle"}),t.jsx(x,{})]})};export{k as default};
