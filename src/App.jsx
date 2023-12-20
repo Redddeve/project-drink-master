@@ -9,6 +9,7 @@ import SignInPage from './pages/SignInPage/SignInPage';
 import Layout from './components/Layout/Layout';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { selectIsRefresh } from './redux/auth/selectors';
+import { Loader } from './components/Loader/Loader';
 
 const HomePage = lazy(() => import('./pages/Homepage/Homepage'));
 const DrinksPage = lazy(() => import('./pages/DrinksPage/DrinksPage'));
@@ -31,7 +32,7 @@ const App = () => {
   return (
     <>
       {isLoading ? (
-        <h1>Loading...</h1>
+        <Loader />
       ) : (
         <Routes>
           <Route path="/welcome" element={<WelcomePage />} />
