@@ -43,6 +43,7 @@ export const StyledInputWrap = styled.div`
 `;
 
 export const StyledInput = styled.input`
+  z-index: 10;
   width: 335px;
   height: 54px;
   flex-shrink: 0;
@@ -50,10 +51,11 @@ export const StyledInput = styled.input`
   border: 1px solid rgba(243, 243, 243, 0.2);
   background-color: transparent;
 
-  color: rgba(243, 243, 243, 0.5);
+  color: var(--white);
 
   outline: none;
   padding: 18px 24px;
+  padding-right: 44px;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -79,6 +81,17 @@ export const StyledInput = styled.input`
   }
 `;
 
+export const StyledEye = styled.svg`
+  position: absolute;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  right: 14px;
+  top: 14px;
+  fill: none;
+  stroke: var(--white);
+`;
+
 export const StyledMessage = styled.p`
   position: absolute;
   top: 54px;
@@ -87,6 +100,7 @@ export const StyledMessage = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 14px; /* 116.667% */
+  user-select: none;
   &.error {
     color: var(--error-red);
   }
@@ -94,24 +108,27 @@ export const StyledMessage = styled.p`
     color: var(--correct-green);
   }
 `;
+export const StyledStatus = styled.svg`
+  z-index: 1;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  right: 14px;
+  top: 14px;
+  fill: none;
+  &.error {
+    /* stroke: var(--error-red); */
+    fill: var(--error-red);
+  }
 
-// export const StyledEmailMessage = styled.p`
-//   position: absolute;
-//   top: 54px;
-//   left: 24px;
-//   font-size: 12px;
-//   font-style: normal;
-//   font-weight: 400;
-//   line-height: 14px; /* 116.667% */
-//   &.emailError {
-//     color: var(--error-red);
-//   }
-//   &.emailCorrect {
-//     color: var(--correct-green);
-//   }
-// `;
+  &.correct {
+    /* stroke: var(--correct-green); */
+    fill: var(--correct-green);
+  }
+`;
 
 export const StyledDatePicker = styled(DatePicker)`
+  z-index: 10;
   width: 335px;
   height: 54px;
   flex-shrink: 0;
@@ -119,10 +136,11 @@ export const StyledDatePicker = styled(DatePicker)`
   border: 1px solid rgba(243, 243, 243, 0.2);
   background-color: transparent;
 
-  color: rgba(243, 243, 243, 0.5);
+  color: var(--white);
 
   outline: none;
   padding: 18px 24px;
+  padding-right: 44px;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -148,9 +166,9 @@ export const StyledDatePicker = styled(DatePicker)`
 `;
 
 export const StyledCalendarIcon = styled.svg`
+  z-index: 1;
   fill: none;
   stroke: currentColor;
-  cursor: pointer;
   width: 18px;
   height: 18px;
   right: 10px;
