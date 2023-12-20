@@ -27,7 +27,7 @@ const PreviewDrinks = () => {
 
   useEffect(() => {
     dispatch(fetchAllDrinks({ limit }));
-  }, [dispatch, isMobile, isTablet]);
+  }, [dispatch, isMobile, isTablet, limit]);
 
   return (
     <>
