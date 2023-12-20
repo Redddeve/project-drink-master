@@ -40,11 +40,11 @@ const UserDrinkPage = () => {
   useEffect(() => {
     dispatch(getFavoriteDrinksThunk());
     dispatch(getDrinkbyIdThunk(drinkId));
-  }, []);
+  }, [dispatch, drinkId]);
 
   useEffect(() => {
-    setIsFavorite(!!favorites.find(dr => dr.id === drink.id));
-  }, [favorites]);
+    setIsFavorite(!!favorites?.find(dr => dr.id === drink.id));
+  }, [favorites, drink.id]);
 
   return (
     <>
