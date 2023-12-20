@@ -21,18 +21,26 @@ const DrinkIngredientsList = ({ ingredientsArray }) => {
   }, [dispatch]);
   const ingredientsState = useSelector(selectIngredients);
 
+  const isMobile = window.innerWidth < 768;
+  const isTablet = window.innerWidth >= 768 && window.innerWidth < 1440;
+
+  const imgSrc = ingredientId => {
+    if (ingredientsState.length !== 0) {
+      return ingredientsState?.find(el => ingredientId === el._id)[
+        isMobile ? 'thumbSmall' : isTablet ? 'thumbMedium' : 'ingredientThumb'
+      ];
+    }
+  };
+
   return (
     <div>
       <StyledTitle>Ingredients</StyledTitle>
       <StyledList>
-        {ingredientsArray?.map(({ _id, title, measure }) => {
+        {ingredientsArray?.map(({ ingredientId, title, measure }) => {
           return (
             <StyledItem key={title}>
               <StyledImgDiv>
-                <StyledImg
-                  src={ingredientsState?.find(el => _id === el._id)?.thumbSmall}
-                  alt={title}
-                />
+                <StyledImg src={imgSrc(ingredientId)} alt={title} />
               </StyledImgDiv>
               <StyledTextDiv>
                 <StyledTextTitle>{title}</StyledTextTitle>
