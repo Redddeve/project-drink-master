@@ -92,7 +92,7 @@ const AddFormMain = ({
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
       <StyledInfoDiv>
         <StyledFileLabel style={{ backgroundImage: `url(${imagePreview})` }}>
           <StyledFileInput

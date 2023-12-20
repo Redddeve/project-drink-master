@@ -33,10 +33,10 @@ const AddDrinkPage = () => {
   const [glass, setGlass] = useState('Highball glass');
 
   useEffect(() => {
-    dispatch(getGlassesThunk());
-    dispatch(getCategoriesThunk());
-    dispatch(getIngredientsThunk());
-    dispatch(getPopularThunk());
+    // dispatch(getGlassesThunk());
+    // dispatch(getCategoriesThunk());
+    // dispatch(getIngredientsThunk());
+    // dispatch(getPopularThunk());
   }, [dispatch]);
 
   const onSubmit = data => {
@@ -44,21 +44,45 @@ const AddDrinkPage = () => {
       [`title`]: data[`Ingredients${index}`].value,
       [`measure`]: data[`IngNumber${index}`],
     }));
+    console.log('data :>> ', data);
+    console.log('photo :>> ', data.photo);
+    console.log('category :>> ', data.category.label);
+    const dataToSend = new FormData();
+    ingredientsArray.forEach((ingredient, index) => {
+      dataToSend.append(`ingredients[${index}][title]`, ingredient.title);
+      dataToSend.append(`ingredients[${index}][measure]`, ingredient.measure);
+    });
+    if (data.photo) {
+      dataToSend.append('drinkThumb', data.photo);
+    }
+    dataToSend.append('category', data.category.label);
+    dataToSend.append('glass', data.glass.label);
+    dataToSend.append('description', data.recipeDesc);
+    dataToSend.append('instructions', data.aboutRecipe);
+    dataToSend.append('alcoholic', data.alcohol);
+    dataToSend.append('drink', data.itemTitle);
+    // Object.entries(data).forEach(([key, value]) => {
+    //   dataToSend.append(key, value);
+    // });
+    for (const [key, value] of dataToSend) {
+      console.log(`dataToSend :>> ${key}: ${value}\n`);
+    }
 
     dispatch(
-      addOwnDrinkThunk({
-        ingredients: ingredientsArray,
-        glass: glass,
-        category: category,
-        instructions: data.aboutRecipe,
-        drink: data.itemTitle,
-        drinkThumb: data.photo,
-        description: data.recipeDesc,
-        alcoholic: data.alcohol,
-      })
+      addOwnDrinkThunk(dataToSend)
+      // addOwnDrinkThunk({
+      //   ingredients: ingredientsArray,
+      //   glass: glass,
+      //   category: category,
+      //   instructions: data.aboutRecipe,
+      //   drink: data.itemTitle,
+      //   drinkThumb: data.photo,
+      //   description: data.recipeDesc,
+      //   alcoholic: data.alcohol,
+      // })
     )
       .unwrap()
-      .then(() => navigate('/my'))
+      // .then(() => navigate('/my'))
       .catch(error => console.log(error));
   };
 
