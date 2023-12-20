@@ -35,6 +35,7 @@ const AddFormMain = ({
   register,
   control,
   handleSubmit,
+  setValue,
   errors,
   onSubmit,
 }) => {
@@ -82,6 +83,7 @@ const AddFormMain = ({
 
   const handleFileChange = e => {
     const file = e.target.files[0];
+    setValue('photo', file);
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -97,6 +99,7 @@ const AddFormMain = ({
         <StyledFileLabel style={{ backgroundImage: `url(${imagePreview})` }}>
           <StyledFileInput
             type="file"
+            accept=".png, .jpeg, .jpg"
             {...register('photo')}
             onChange={handleFileChange}
           />
@@ -230,6 +233,7 @@ AddFormMain.propTypes = {
   control: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
+  setValue: PropTypes.func,
   onSubmit: PropTypes.func.isRequired,
 };
 export default AddFormMain;

@@ -25,6 +25,7 @@ const AddDrinkPage = () => {
     register,
     control,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
 
@@ -33,10 +34,10 @@ const AddDrinkPage = () => {
   const [glass, setGlass] = useState('Highball glass');
 
   useEffect(() => {
-    // dispatch(getGlassesThunk());
-    // dispatch(getCategoriesThunk());
-    // dispatch(getIngredientsThunk());
-    // dispatch(getPopularThunk());
+    dispatch(getGlassesThunk());
+    dispatch(getCategoriesThunk());
+    dispatch(getIngredientsThunk());
+    dispatch(getPopularThunk());
   }, [dispatch]);
 
   const onSubmit = data => {
@@ -44,9 +45,6 @@ const AddDrinkPage = () => {
       [`title`]: data[`Ingredients${index}`].value,
       [`measure`]: data[`IngNumber${index}`],
     }));
-    console.log('data :>> ', data);
-    console.log('photo :>> ', data.photo);
-    console.log('category :>> ', data.category.label);
     const dataToSend = new FormData();
     ingredientsArray.forEach((ingredient, index) => {
       dataToSend.append(`ingredients[${index}][title]`, ingredient.title);
@@ -61,28 +59,10 @@ const AddDrinkPage = () => {
     dataToSend.append('instructions', data.aboutRecipe);
     dataToSend.append('alcoholic', data.alcohol);
     dataToSend.append('drink', data.itemTitle);
-    // Object.entries(data).forEach(([key, value]) => {
-    //   dataToSend.append(key, value);
-    // });
-    for (const [key, value] of dataToSend) {
-      console.log(`dataToSend :>> ${key}: ${value}\n`);
-    }
 
-    dispatch(
-      addOwnDrinkThunk(dataToSend)
-      // addOwnDrinkThunk({
-      //   ingredients: ingredientsArray,
-      //   glass: glass,
-      //   category: category,
-      //   instructions: data.aboutRecipe,
-      //   drink: data.itemTitle,
-      //   drinkThumb: data.photo,
-      //   description: data.recipeDesc,
-      //   alcoholic: data.alcohol,
-      // })
-    )
+    dispatch(addOwnDrinkThunk(dataToSend))
       .unwrap()
-      // .then(() => navigate('/my'))
+      .then(() => navigate('/my'))
       .catch(error => console.log(error));
   };
 
@@ -97,6 +77,7 @@ const AddDrinkPage = () => {
           category={category}
           register={register}
           control={control}
+          setValue={setValue}
           handleSubmit={handleSubmit}
           errors={errors}
           onSubmit={onSubmit}
