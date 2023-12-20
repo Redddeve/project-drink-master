@@ -25,6 +25,7 @@ const AddDrinkPage = () => {
     register,
     control,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
 
@@ -44,19 +45,22 @@ const AddDrinkPage = () => {
       [`title`]: data[`Ingredients${index}`].value,
       [`measure`]: data[`IngNumber${index}`],
     }));
+    const dataToSend = new FormData();
+    ingredientsArray.forEach((ingredient, index) => {
+      dataToSend.append(`ingredients[${index}][title]`, ingredient.title);
+      dataToSend.append(`ingredients[${index}][measure]`, ingredient.measure);
+    });
+    if (data.photo) {
+      dataToSend.append('drinkThumb', data.photo);
+    }
+    dataToSend.append('category', data.category.label);
+    dataToSend.append('glass', data.glass.label);
+    dataToSend.append('description', data.recipeDesc);
+    dataToSend.append('instructions', data.aboutRecipe);
+    dataToSend.append('alcoholic', data.alcohol);
+    dataToSend.append('drink', data.itemTitle);
 
-    dispatch(
-      addOwnDrinkThunk({
-        ingredients: ingredientsArray,
-        glass: glass,
-        category: category,
-        instructions: data.aboutRecipe,
-        drink: data.itemTitle,
-        drinkThumb: data.photo,
-        description: data.recipeDesc,
-        alcoholic: data.alcohol,
-      })
-    )
+    dispatch(addOwnDrinkThunk(dataToSend))
       .unwrap()
       .then(() => navigate('/my'))
       .catch(error => console.log(error));
@@ -73,6 +77,7 @@ const AddDrinkPage = () => {
           category={category}
           register={register}
           control={control}
+          setValue={setValue}
           handleSubmit={handleSubmit}
           errors={errors}
           onSubmit={onSubmit}

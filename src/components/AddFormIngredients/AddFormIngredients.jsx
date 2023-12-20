@@ -65,7 +65,7 @@ const AddFormIngredients = ({
     setIngNumber(newNumber);
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
       <StyledIngDiv>
         <StyledIngTitleDiv>
           <StyledIngTitle>Ingredients</StyledIngTitle>
