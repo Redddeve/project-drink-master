@@ -1,14 +1,24 @@
-import { useState } from 'react';
+
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { StyledSubmitBtn } from './AddDrinkPage.styled';
 import { useDispatch } from 'react-redux';
-import { addOwnDrinkThunk } from '../../redux/drinks/operations';
+import {
+  addOwnDrinkThunk,
+  getCategoriesThunk,
+  getGlassesThunk,
+  getIngredientsThunk,
+  getPopularThunk,
+} from '../../redux/drinks/operations';
 import { useNavigate } from 'react-router-dom';
 import ButtonUpToTop from '../../components/ButtonUpToTop/ButtonUpToTop';
+
 import PageTitle from '../../components/PageTitle/PageTitle';
 import AddFormMain from '../../components/AddFormMain/AddFormMain';
 import AddFormIngredients from '../../components/AddFormIngredients/AddFormIngredients';
 import AddFormDesc from '../../components/AddFormDesc/AddFormDesc';
+import PopularDrinks from '../../components/PopularDrinks/PopularDrinks';
+
 
 const AddDrinkPage = () => {
   const dispatch = useDispatch();
@@ -23,6 +33,13 @@ const AddDrinkPage = () => {
   const [ingNumber, setIngNumber] = useState([0, 1, 2]);
   const [category, setCategory] = useState('Cocktail');
   const [glass, setGlass] = useState('Highball glass');
+  
+  useEffect(() => {
+    dispatch(getGlassesThunk());
+    dispatch(getCategoriesThunk());
+    dispatch(getIngredientsThunk());
+    dispatch(getPopularThunk());
+  }, [dispatch]);
 
   const onSubmit = data => {
     const ingredientsArray = ingNumber.map((el, index) => ({
@@ -48,7 +65,7 @@ const AddDrinkPage = () => {
   };
 
   return (
-    <div>
+    <>
       <PageTitle title="Add drink" />
       <div>
         <AddFormMain
@@ -85,8 +102,11 @@ const AddDrinkPage = () => {
           Add
         </StyledSubmitBtn>
       </div>
+      <PopularDrinks/>
       <ButtonUpToTop />
-    </div>
+    </>
+
+    
   );
 };
 
