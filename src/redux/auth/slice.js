@@ -1,6 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
-  getCurrentUserThunk,
   refreshThunk,
   signinThunk,
   signoutThunk,
@@ -20,7 +19,7 @@ const initialState = {
   token: '',
   isLoggedIn: false,
   isLoading: false,
-  isRefresh: false,
+  isRefresh: true,
   error: null,
 };
 
@@ -37,7 +36,8 @@ export const slice = createSlice({
       })
       .addCase(refreshThunk.fulfilled, (state, { payload }) => {
         state.isRefresh = false;
-        state.isLoading = true;
+        state.isLoading = false;
+        state.isLoggedIn = true;
         state.token = payload.token;
         state.user = payload.user;
       })
@@ -48,11 +48,6 @@ export const slice = createSlice({
       .addCase(subscribeThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.user.subscribed = payload.subscribed;
-      })
-      .addCase(getCurrentUserThunk.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.user = payload;
-        state.isLoggedIn = true;
       })
       .addCase(signoutThunk.fulfilled, state => {
         state.isLoading = false;
@@ -65,15 +60,20 @@ export const slice = createSlice({
           subscribed: false,
         };
       })
+      .addCase(refreshThunk.pending, state => {
+        state.isRefresh = true;
+      })
+      .addCase(refreshThunk.rejected, (state, { payload }) => {
+        state.isRefresh = false;
+        state.error = payload;
+      })
       .addMatcher(
         isAnyOf(
           signinThunk.pending,
           signoutThunk.pending,
           signupThunk.pending,
           subscribeThunk.pending,
-          updateThunk.pending,
-          getCurrentUserThunk.pending,
-          refreshThunk.pending
+          updateThunk.pending
         ),
         state => {
           state.isLoading = true;
@@ -86,7 +86,6 @@ export const slice = createSlice({
           signupThunk.rejected,
           subscribeThunk.rejected,
           updateThunk.rejected,
-          getCurrentUserThunk.rejected,
           refreshThunk.rejected
         ),
         (state, { payload }) => {

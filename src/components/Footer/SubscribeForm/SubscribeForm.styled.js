@@ -17,11 +17,10 @@ export const SubscribeDesc = styled.div`
 `;
 
 export const SubscribeInput = styled.input`
-  width: 100%;
+  position: relative;
   max-width: 335px;
   height: 54px;
   padding-left: 24px;
-  /* margin-bottom: 18px; */
 
   background-color: transparent;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -44,40 +43,5 @@ export const InputMessage = styled.div`
   color: var(--error-red);
   .correct {
     color: var(--correct-green);
-  }
-`;
-export const SubscribeButton = styled.button`
-  width: 100%;
-  max-width: 335px;
-  height: 54px;
-
-  flex-shrink: 0;
-  background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 200px;
-  cursor: pointer;
-  color: var(--white);
-  text-align: center;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.125;
-
-  transition: background-color var(--tran-fast);
-
-  &:hover:not(:disabled) {
-    background-color: var(--white);
-    color: var(--black);
-  }
-  &:focus:not(:disabled) {
-    background-color: var(--white);
-    color: var(--black);
-  }
-  &:disabled {
-    cursor: not-allowed;
-  }
-  @media screen and (min-width: 768px) {
-    height: 56px;
-    font-size: 17px;
-    line-height: 1.56;
   }
 `;

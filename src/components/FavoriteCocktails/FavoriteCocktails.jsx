@@ -1,17 +1,19 @@
+import { useSelector } from 'react-redux';
 import { selectFavoriteDrinks } from '../../redux/drinks/selectors';
 import CocktailList from '../CocktailList/CocktailList';
 import usual from '../../images/blue-iced-tea@1x.png';
 import retina from '../../images/blue-iced-tea@2x.png';
+import datas from './cocktail.json';
 
 import {
   EmptyDescription,
   EmptyFavoritesContainer,
   EmptyFavoritesImage,
 } from './FavoriteCocktails.styled';
-import { useSelector } from 'react-redux';
+import PaginatedItems from '../Paginator/Paginator';
 
 const FavoriteCocktails = () => {
-  const yourCocktail = useSelector(selectFavoriteDrinks);
+  const yourCocktail = useSelector(selectFavoriteDrinks) && datas;
 
   return yourCocktail.length === 0 ? (
     <EmptyFavoritesContainer>
@@ -24,7 +26,12 @@ const FavoriteCocktails = () => {
       </EmptyDescription>
     </EmptyFavoritesContainer>
   ) : (
-    <CocktailList cocktailData={yourCocktail} page="favorite" />
+    <PaginatedItems
+      items={yourCocktail}
+      destination="favorite"
+      ListComponent={CocktailList}
+      itemsPerPageValue={{ mobile: 9, tablet: 8, desktop: 9, default: 9 }}
+    />
   );
 };
 

@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.2",
     "@reduxjs/toolkit": "^2.0.1",
     "axios": "^1.6.2",
     "lucide-react": "^0.298.0",
@@ -19,14 +20,17 @@
     "react-datepicker": "^4.24.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.49.2",
+    "react-paginate": "^8.2.0",
     "react-redux": "^9.0.4",
     "react-responsive": "^9.0.2",
     "react-router-dom": "^6.21.0",
     "react-select": "^5.8.0",
+    "react-spinners": "^0.13.8",
     "react-toastify": "^9.1.3",
     "react-transition-group": "^4.4.5",
     "redux-persist": "^6.0.0",
-    "styled-components": "^6.1.1"
+    "styled-components": "^6.1.1",
+    "yup": "^1.3.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

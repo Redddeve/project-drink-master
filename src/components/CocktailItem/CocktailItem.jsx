@@ -13,6 +13,7 @@ import {
   MoreLink,
 } from './CocktailItem.styled';
 import RemoveButton from '../RemoveButton/RemoveButton';
+// import CommonBtn from '../SharedComponents/CommonBtn/CommonBtn';
 
 const CocktailItem = ({ cocktail, page }) => {
   const { _id, drink, alcoholic, description, drinkThumb } = cocktail;
@@ -38,6 +39,9 @@ const CocktailItem = ({ cocktail, page }) => {
       </CocktailContainerTitle>
       <CocktailDescription>{description}</CocktailDescription>
       <ButtonContainer>
+        {/* <CommonBtn to={`/drink/${_id}`} type="submit" variant="seeMore">
+          See more
+        </CommonBtn> */}
         <MoreLink to={`/drink/${_id}`}>See more</MoreLink>
         <RemoveButton id={_id} page={page} />
       </ButtonContainer>
