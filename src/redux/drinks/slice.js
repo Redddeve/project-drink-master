@@ -66,7 +66,7 @@ export const slice = createSlice({
         state.own = state.own.filter(({ _id }) => _id !== payload._id);
       })
       .addCase(getFavoriteDrinksThunk.fulfilled, (state, { payload }) => {
-        state.favorite = payload;
+        state.favorite = payload.favorites;
         state.isLoading = false;
       })
       .addCase(addFavoriteDrinkThunk.fulfilled, (state, { payload }) => {
