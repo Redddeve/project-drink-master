@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { selectPopular } from '../../redux/drinks/selectors';
 import FollowUs from '../SharedComponents/FollowUs/FollowUs/FollowUs';
+import { Link } from 'react-router-dom';
 import {
   TitleFollow,
   FollowUsContainer,
@@ -17,7 +18,6 @@ import {
 
 const PopularDrinks = () => {
   const popularDrinks = useSelector(selectPopular);
-  
 
   return (
     <MainContainer>
@@ -29,16 +29,19 @@ const PopularDrinks = () => {
       <PopularDrinkTitle>Popular drinks</PopularDrinkTitle>
 
       <PopDrinkContainer>
-        {popularDrinks.map((item, index) => (
-          <SpaceContainer key={item._id || index}>
-            <ImgDrink src={item.drinkThumb} alt={item.drink} />
-            <PositionContainer>
-              <DrinkTitle>{item.drink}</DrinkTitle>
-              <DescriptiontTitle>{item.description}</DescriptiontTitle>
-            </PositionContainer>
-          </SpaceContainer>
-        ))}
-      </PopDrinkContainer>
+  {popularDrinks.map((item, index) => (
+    <SpaceContainer key={item._id || index}>
+     
+      <Link to={`/drink/${item._id}`}>  
+        <ImgDrink src={item.drinkThumb} alt={item.drink} />
+      </Link>
+      <PositionContainer>
+        <DrinkTitle>{item.drink}</DrinkTitle>
+        <DescriptiontTitle>{item.description}</DescriptiontTitle>
+      </PositionContainer>
+    </SpaceContainer>
+  ))}
+</PopDrinkContainer>
     </MainContainer>
   );
 };
