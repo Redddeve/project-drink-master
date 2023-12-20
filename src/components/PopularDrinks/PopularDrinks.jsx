@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { selectPopular } from '../../redux/drinks/selectors';
-import FollowUs from '../SharedComponents/FollowUs/FollowUs';
+import FollowUs from '../SharedComponents/FollowUs/FollowUs/FollowUs';
 import {
   TitleFollow,
   FollowUsContainer,
@@ -17,6 +17,7 @@ import {
 
 const PopularDrinks = () => {
   const popularDrinks = useSelector(selectPopular);
+  
 
   return (
     <MainContainer>

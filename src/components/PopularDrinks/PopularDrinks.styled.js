@@ -2,13 +2,17 @@ import styled from 'styled-components';
 import { device } from '../../styles/device';
 
 export const MainContainer = styled.div`
+  margin-top: 80px;
+
   @media ${device.tablet} {
-    margin: 100px auto 0;
+    /* margin: 100px auto 0; */
     width: 261px;
   }
 
   @media ${device.desktop} {
-    margin: 67px auto 0;
+    position: absolute;
+    top: 33%;
+    right: 15%;
   }
 `;
 
@@ -17,12 +21,9 @@ export const FollowUsContainer = styled.div`
 `;
 
 export const TitleFollow = styled.p`
-  color: #f3f3f3;
-  font-family: Manrope;
+  color: var(--white);
   font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px; 
+  line-height: 24px;
   margin-bottom: 20px;
 `;
 
@@ -30,9 +31,9 @@ export const PopularDrinkTitle = styled.p`
   margin-bottom: 28px;
   color: black;
   font-size: 18px;
-  font-weight: 500;
+
   line-height: 24px; /* 133.333% */
-  background-color: yellow;
+  color: var(--white);
   border: none;
   border-radius: 6px;
   width: fit-content;
@@ -63,13 +64,40 @@ export const PopDrinkContainer = styled.div`
 export const SpaceContainer = styled.div`
   margin-bottom: 24px;
   display: flex;
-
   gap: 14px;
+  
 
   @media ${device.tablet} {
   }
 
   @media ${device.desktop} {
+    img {
+    transition: transform 0.3s ease-out;
+  }
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &:hover .overlay {
+    opacity: 1;
+  }
   }
 `;
 
@@ -78,10 +106,12 @@ export const PositionContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  
 
   @media ${device.tablet} {
   }
   @media ${device.desktop} {
+    
   }
 `;
 
@@ -98,11 +128,10 @@ export const DrinkTitle = styled.p`
   width: 232px;
   margin: 0;
   @media ${device.tablet} {
-    color: #f3f3f3;
+    color: var(--white);
 
-    font-family: Manrope;
     font-size: 16px;
-    font-weight: 500;
+
     line-height: 22px;
   }
   @media ${device.desktop} {
@@ -111,15 +140,8 @@ export const DrinkTitle = styled.p`
 
 export const DescriptiontTitle = styled.p`
   color: rgba(243, 243, 243, 0.5);
-
   text-overflow: ellipsis;
-
-  font-family: Manrope;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 18px;
-
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;

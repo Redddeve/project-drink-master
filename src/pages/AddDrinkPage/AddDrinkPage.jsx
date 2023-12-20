@@ -29,12 +29,14 @@ import {
   StyledValidIng,
 } from './AddDrinkPage.styled';
 
+
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addOwnDrinkThunk,
   getCategoriesThunk,
   getGlassesThunk,
   getIngredientsThunk,
+  getPopularThunk,
 } from '../../redux/drinks/operations';
 import {
   selectCategories,
@@ -44,6 +46,10 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { selectIsAdult } from '../../redux/auth/selectors';
 import ButtonUpToTop from '../../components/ButtonUpToTop/ButtonUpToTop';
+import PopularDrinks from '../../components/PopularDrinks/PopularDrinks';
+
+
+
 
 const AddDrinkPage = () => {
   const dispatch = useDispatch();
@@ -68,22 +74,19 @@ const AddDrinkPage = () => {
 
   useEffect(() => {
     dispatch(getGlassesThunk());
-  }, [dispatch]);
-  useEffect(() => {
     dispatch(getCategoriesThunk());
-  }, [dispatch]);
-  useEffect(() => {
     dispatch(getIngredientsThunk());
+    dispatch(getPopularThunk());
   }, [dispatch]);
 
-  const categoryOptions = categoryState[0]?.categories.map(el => {
+  const categoryOptions = categoryState[0]?.categories?.map(el => {
     return { label: el, value: el };
   });
 
   const ingOptions = ingredientsState?.map(({ title }) => {
     return { label: title, value: title };
   });
-  const glassOptions = glassesState[0]?.glasses.map(el => {
+  const glassOptions = glassesState[0]?.glasses?.map(el => {
     return { label: el, value: el };
   });
   // ****   STYLES FOR SELECT  ****
@@ -159,7 +162,7 @@ const AddDrinkPage = () => {
     }
   };
   return (
-    <div>
+    <>
       <StyledAddTitle>Add drink</StyledAddTitle>
       <form onSubmit={handleSubmit(onSubmit)}>
         <StyledInfoDiv>
@@ -366,8 +369,13 @@ const AddDrinkPage = () => {
         </RelativeLabel>
         <StyledSubmitBtn type="submit">Add</StyledSubmitBtn>
       </form>
+
+      <PopularDrinks/>
       <ButtonUpToTop />
-    </div>
+    
+    </>
+
+    
   );
 };
 
