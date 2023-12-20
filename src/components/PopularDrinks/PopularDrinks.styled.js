@@ -11,7 +11,7 @@ export const MainContainer = styled.div`
 
   @media ${device.desktop} {
     position: absolute;
-    top: 33%;
+    top: 40%;
     right: 15%;
   }
 `;
@@ -58,6 +58,7 @@ export const PopDrinkContainer = styled.div`
 
   @media ${device.desktop} {
     flex-direction: column;
+    width: 340px;
   }
 `;
 
@@ -116,6 +117,7 @@ export const PositionContainer = styled.div`
 `;
 
 export const ImgDrink = styled.img`
+
   width: 90px;
   height: 90px;
   border-radius: 12px;
