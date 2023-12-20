@@ -5,18 +5,18 @@ import {
   StyledText,
   StyledTitle,
 } from './RecipePreparation.styled';
-const RecipePreparation = ({ description }) => {
+const RecipePreparation = ({ instructions }) => {
   return (
     <div>
       <StyledTitle>Recipe Preparation</StyledTitle>
       <StyledDiv>
         <StyledImgDiv></StyledImgDiv>
-        <StyledText>{description}</StyledText>
+        <StyledText>{instructions}</StyledText>
       </StyledDiv>
     </div>
   );
 };
 RecipePreparation.propTypes = {
-  description: PropTypes.string.isRequired,
+  instructions: PropTypes.string,
 };
 export default RecipePreparation;

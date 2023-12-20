@@ -25,7 +25,7 @@ const DrinkIngredientsList = ({ ingredientsArray }) => {
     <div>
       <StyledTitle>Ingredients</StyledTitle>
       <StyledList>
-        {ingredientsArray.map(({ _id, title, measure }) => {
+        {ingredientsArray?.map(({ _id, title, measure }) => {
           return (
             <StyledItem key={title}>
               <StyledImgDiv>
@@ -46,6 +46,6 @@ const DrinkIngredientsList = ({ ingredientsArray }) => {
   );
 };
 DrinkIngredientsList.propTypes = {
-  ingredientsArray: PropTypes.array.isRequired,
+  ingredientsArray: PropTypes.array,
 };
 export default DrinkIngredientsList;
