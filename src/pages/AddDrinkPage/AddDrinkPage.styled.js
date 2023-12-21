@@ -26,6 +26,7 @@ export const StyledDescInput = styled.textarea`
   color: var(--white);
   line-height: 1;
   vertical-align: top;
+  resize: none;
   @media ${device.tablet} {
     width: 480px;
   }

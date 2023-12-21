@@ -23,7 +23,7 @@ const AddDrinkPage = () => {
     formState: { errors },
   } = useForm();
 
-  const [ingNumber, setIngNumber] = useState([0, 1, 2]);
+  const [ingNumber, setIngNumber] = useState([0, 1]);
   const [category, setCategory] = useState('Cocktail');
   const [glass, setGlass] = useState('Highball glass');
   const [selectedImage, setSelectedImage] = useState(null);
