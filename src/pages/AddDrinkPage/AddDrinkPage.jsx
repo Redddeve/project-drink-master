@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { StyledSubmitBtn } from './AddDrinkPage.styled';
 import { useDispatch } from 'react-redux';
-import { addOwnDrinkThunk } from '../../redux/drinks/operations';
+import {
+  addOwnDrinkThunk,
+  getPopularThunk,
+} from '../../redux/drinks/operations';
 import { useNavigate } from 'react-router-dom';
 import ButtonUpToTop from '../../components/ButtonUpToTop/ButtonUpToTop';
 
@@ -14,6 +17,10 @@ import PopularDrinks from '../../components/PopularDrinks/PopularDrinks';
 
 const AddDrinkPage = () => {
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getPopularThunk());
+  }, [dispatch]);
+
   const navigate = useNavigate();
   const {
     register,
