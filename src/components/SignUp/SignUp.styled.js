@@ -29,6 +29,9 @@ export const StyledFormWrap = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  @media ${device.tablet} {
+    max-width: 400px;
+  }
 `;
 
 export const StyledHead = styled.h2`
@@ -39,7 +42,13 @@ export const StyledHead = styled.h2`
   line-height: 32px; /* 114.286% */
   letter-spacing: -0.56px;
   margin-bottom: 28px;
+  @media ${device.tablet} {
+    font-size: 40px;
+    line-height: 44px; /* 110% */
+    letter-spacing: -0.8px;
+  }
 `;
+
 export const StyledInputWrap = styled.div`
   position: relative;
   margin-bottom: 14px;
@@ -47,30 +56,6 @@ export const StyledInputWrap = styled.div`
     margin-bottom: 28px;
   }
 
-  //=== datePikerStyles ===
-  /* .react-datepicker__view-calendar-icon input {
-    padding: 6px 5px 5px 20px;
-  } */
-  /* .react-datepicker__input {
-    border: 2px solid #333;
-    border-radius: 4px;
-    padding: 8px;
-  }
-  .react-datepicker__input-container {
-    padding-bottom: 15px;
-  }
-  .react-datepicker__input-container .react-datepicker__calendar-icon {
-    position: absolute;
-    padding: 0.5rem;
-    box-sizing: content-box;
-    right: 5px;
-    top: 25px;
-  }
-  .react-datepicker__calendar-icon {
-    width: 24px;
-    height: 24px;
-    vertical-align: -0.125em;
-  } */
   .react-datepicker {
     background: transparent;
     border: none;
@@ -168,6 +153,11 @@ export const StyledInput = styled.input`
   &.correct {
     border: 1px solid var(--correct-green);
   }
+  @media ${device.tablet} {
+    width: 400px;
+    height: 56px;
+    font-size: 16px;
+  }
 `;
 
 export const StyledEye = styled.svg`
@@ -252,6 +242,11 @@ export const StyledDatePicker = styled(DatePicker)`
   &.correct {
     border: 1px solid var(--correct-green);
   }
+  @media ${device.tablet} {
+    width: 400px;
+    height: 56px;
+    font-size: 16px;
+  }
 `;
 
 export const StyledCalendarIcon = styled.svg`
@@ -290,6 +285,11 @@ export const StyledSignInBtn = styled.button`
   &:disabled {
     cursor: not-allowed;
   }
+  @media ${device.tablet} {
+    width: 400px;
+    font-size: 16px;
+    padding: 18px 169px;
+  }
 `;
 
 export const StyledLink = styled(Link)`
@@ -303,5 +303,9 @@ export const StyledLink = styled(Link)`
   text-decoration-line: underline;
   &:hover {
     //hover
+  }
+  @media ${device.tablet} {
+    font-size: 14px;
+    line-height: 18px; /* 128.571% */
   }
 `;
