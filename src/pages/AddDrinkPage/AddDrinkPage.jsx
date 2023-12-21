@@ -45,7 +45,6 @@ const AddDrinkPage = () => {
     if (data.photo) {
       dataToSend.append('drinkThumb', data.photo);
     }
-    console.log(data);
     dataToSend.append('category', data.category.label);
     dataToSend.append('glass', data.glass.label);
     dataToSend.append('description', data.recipeDesc);
