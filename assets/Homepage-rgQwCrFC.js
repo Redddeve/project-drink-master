@@ -1,4 +1,4 @@
-import{s as r,d as i,N as b,j as t,u as f,r as j,a as w,b as v,c as d,e as y,f as D}from"./index-MBFCPN1R.js";import{P as $}from"./PageTitle-GcYDzXbi.js";import{s as M}from"./selectors-3DDbZiSm.js";import{S as a,D as s}from"./DrinksPage.styled-RW2t9wvw.js";import"./react-select.esm-krxoeN1A.js";const S=r.section`
+import{s as r,d as i,N as b,j as t,u as f,r as j,a as w,b as v,c as d,e as y,f as D}from"./index-1JjgqQIc.js";import{P as $}from"./PageTitle-9CtcAglW.js";import{s as M}from"./selectors-3DDbZiSm.js";import{S as a,D as s}from"./DrinksPage.styled-w4caQeyA.js";import"./react-select.esm-v8rTAsWW.js";const S=r.section`
   margin-bottom: 112px;
 
   @media ${i.tablet} {
