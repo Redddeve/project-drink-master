@@ -9,6 +9,7 @@
 //   StyledIngTitleDiv,
 import styled from 'styled-components';
 import { device } from '../../styles/device';
+import { darkTheme, lightTheme } from '../../styles/theme';
 export const StyledAddBtn = styled.button`
   background-color: transparent;
   border: none;
@@ -22,8 +23,11 @@ export const StyledAddBtn = styled.button`
   color: inherit;
   font-family: inherit;
   cursor: pointer;
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
   &:disabled {
-    color: var(--transp-white);
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--transp-white)' : 'var(--transp-dark)'};
   }
 `;
 export const StyledIngDiv = styled.div`
@@ -36,13 +40,21 @@ export const StyledIngDiv = styled.div`
   }
 `;
 
+export const StyledIngredientsText = styled.p`
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
+`;
+
 export const StyledAddDiv = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
   width: 104px;
   border-radius: 200px;
-  border: 1px solid var(--transp-white);
+  border: ${({ theme }) =>
+    theme === 'dark'
+      ? darkTheme.borderColor.main
+      : lightTheme.borderColor.main};
   height: 38px;
   margin-bottom: 34px;
 `;
@@ -65,9 +77,12 @@ export const StyledIngFieldInput = styled.input`
   width: 101px;
   height: 50px;
   border-radius: 200px;
-  border: 1px solid var(--transp-white);
+  border: ${({ theme }) =>
+    theme === 'dark'
+      ? darkTheme.borderColor.main
+      : lightTheme.borderColor.main};
   background: transparent;
-  color: var(--white);
+  color: ${({ theme }) => (theme === 'dark' ? 'var(--white)' : 'var(--dark)')};
   padding: 0 60px 0 24px;
   position: relative;
 
@@ -87,4 +102,8 @@ export const StyledIngFieldWrapper = styled.div`
 export const StyledIngTitleDiv = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+export const StyledIconCross = styled.svg`
+  stroke: ${({ theme }) => (theme === 'dark' ? 'var(--white)' : 'var(--dark)')};
 `;

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { device } from '../../styles/device';
+import { darkTheme, lightTheme } from '../../styles/theme';
 export const StyledFileInput = styled.input`
   display: none;
 `;
@@ -12,7 +13,10 @@ export const StyledFileLabel = styled.label`
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  background: rgba(22, 31, 55, 0.5);
+  background-color: ${({ theme }) =>
+    theme === 'dark'
+      ? darkTheme.background.darkBg
+      : lightTheme.background.lightBg};
   margin-bottom: 40px;
   background-repeat: no-repeat;
   background-size: cover;
@@ -33,16 +37,20 @@ export const StyledInfoDiv = styled.div`
   }
 `;
 export const StyledRadioLabel = styled.label`
-  color: rgba(243, 243, 243, 0.5);
+  /* color: rgba(243, 243, 243, 0.5); */
   display: flex;
   cursor: pointer;
   margin-bottom: 80px;
   input[type='radio']:checked + p {
-    color: var(--white);
+    color: ${({ theme }) =>
+      theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
     &::before {
       content: '';
       background-color: white;
-      border: 2px solid var(--transp-white);
+      border: ${({ theme }) =>
+        theme === 'dark'
+          ? '2px solid var(--transp-white)'
+          : '2px solid var(--dark)'};
     }
     &::after {
       content: '';
@@ -72,7 +80,10 @@ export const StyledRadioLabel = styled.label`
       align-items: center;
       border-radius: 50%;
       border: unset;
-      border: 3px solid var(--transp-white);
+      border: ${({ theme }) =>
+        theme === 'dark'
+          ? '2px solid var(--transp-white)'
+          : '2px solid var(--dark)'};
       width: 17px;
       height: 17px;
       opacity: 1;
@@ -101,12 +112,57 @@ export const StyledSelectLabel = styled.label`
   display: flex;
   margin-bottom: 31px;
   justify-content: space-between;
-  border-bottom: 1px solid var(--white);
-  color: var(--transp-white);
+  border-bottom: ${({ theme }) =>
+    theme === 'dark' ? '1px solid var(--white)' : '1px solid var(--dark)'};
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.transp : lightTheme.colors.transp};
   padding-left: 3px;
   @media ${device.tablet} {
     padding-bottom: 18px;
     width: 352px;
+  }
+
+  .css-1mek91f-control {
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--white)' : 'var(--black)'};
+  }
+
+  .css-1s79r8j-menu {
+    background-color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--light-theme-bg)' : 'var(--white)'};
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--white)' : 'var(--black)'};
+  }
+
+  .css-o508l4-option {
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--transp-white)' : 'var(--transp-dark)'};
+  }
+
+  .css-1cjjgcc-option {
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--white)' : 'var(--dark)'};
+  }
+
+  .css-o508l4-option:hover {
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--white)' : 'var(--dark)'};
+    cursor: pointer;
+  }
+
+  .css-1diu2n5-indicatorContainer {
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--white)' : 'var(--dark)'};
+  }
+
+  .css-1u9des2-indicatorSeparator {
+    background-color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--dark)' : 'var(--white)'};
+  }
+
+  .css-1dimb5e-singleValue {
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--white)' : 'var(--black)'};
   }
 `;
 export const StyledTitleInput = styled.input`
@@ -116,10 +172,12 @@ export const StyledTitleInput = styled.input`
   background-color: transparent;
   outline: none;
   border: none;
-  border-bottom: 1px solid var(--white);
+  border-bottom: ${({ theme }) =>
+    theme === 'dark' ? '1px solid var(--white)' : '1px solid var(--dark)'};
   padding-bottom: 14px;
   margin-bottom: 31px;
-  color: var(--white);
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
   @media ${device.tablet} {
     padding-bottom: 18px;
     width: 352px;
@@ -149,4 +207,9 @@ export const StyledFileTextAdd = styled.p`
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
+`;
+
+export const StyledRadioTest = styled.p`
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.transp : lightTheme.colors.transp};
 `;

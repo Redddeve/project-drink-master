@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Select from 'react-select';
 import { device } from '../../styles/device.js';
+import { darkTheme, lightTheme } from '../../styles/theme.js';
 
 export const StyledHeader = styled.h2`
   margin-bottom: 40px;
@@ -59,11 +60,15 @@ export const StyledInput = styled.input`
   height: 54px;
   padding: 0 24px;
   border-radius: 200px;
-  border: 1px solid rgba(243, 243, 243, 0.2);
+  border: ${({ theme }) =>
+    theme === 'dark'
+      ? darkTheme.borderColor.main
+      : lightTheme.borderColor.main};
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
   opacity: 0.8;
   outline: none;
   background: transparent;
-  color: var(--white);
 
   @media ${device.tablet} {
     width: 264px;
@@ -76,7 +81,10 @@ export const StyledSvg = styled.svg`
   height: 20px;
   top: 18px;
   left: 220px;
-  stroke: white;
+  stroke: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
+  fill: ${({ theme }) =>
+    theme === 'dark' ? lightTheme.colors.main : darkTheme.colors.main};
 
   @media screen and (max-width: 767px) {
     width: 1px;

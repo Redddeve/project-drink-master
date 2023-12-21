@@ -2,7 +2,6 @@ import { DrinkCard } from '../../components/DrinkCard/DrinkCard.jsx';
 import {
   StyledCardsContainer,
   StyledFilterContainer,
-  StyledHeader,
   StyledInput,
   StyledSelect,
   StyledSvg,
@@ -22,12 +21,15 @@ import {
   searchDrinksThunk,
 } from '../../redux/drinks/operations.js';
 import ButtonUpToTop from '../../components/ButtonUpToTop/ButtonUpToTop.jsx';
+import { selectTheme } from '../../redux/theme/selectors.js';
+import PageTitle from '../../components/PageTitle/PageTitle.jsx';
 
 const DrinksPage = () => {
   const dispatch = useDispatch();
   const drinks = useSelector(selectSearchDrinks);
   const ingredients = useSelector(selectIngredients);
   const categories = useSelector(selectCategories);
+  const theme = useSelector(selectTheme);
   const [name, setName] = useState('');
   const [ingredient, setIngredient] = useState('');
   const [category, setCategory] = useState('');
@@ -54,7 +56,7 @@ const DrinksPage = () => {
 
   return (
     <>
-      <StyledHeader>Drinks</StyledHeader>
+      <PageTitle title={'Drinks'} />
       <StyledFilterContainer>
         <form
           action=""
@@ -63,9 +65,9 @@ const DrinksPage = () => {
             setName(e.currentTarget.name.value);
           }}
         >
-          <StyledInput placeholder="Enter the text" name="name" />
+          <StyledInput theme={theme} placeholder="Enter the text" name="name" />
         </form>
-        <StyledSvg>
+        <StyledSvg theme={theme}>
           <use href={`${sprite}#icon-search`} />
         </StyledSvg>
         <StyledSelect

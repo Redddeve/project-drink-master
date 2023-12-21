@@ -15,6 +15,7 @@ import {
   StyledFileDiv,
   StyledFileTextPlus,
   StyledFileTextAdd,
+  StyledRadioTest,
 } from './AddFormMain.styled';
 import {
   stylesSelect,
@@ -26,6 +27,7 @@ import {
   getGlassesThunk,
 } from '../../redux/drinks/operations';
 import { Controller } from 'react-hook-form';
+import { selectTheme } from '../../redux/theme/selectors';
 
 const AddFormMain = ({
   category,
@@ -42,6 +44,7 @@ const AddFormMain = ({
   const glassesState = useSelector(selectGlasses);
   const categoryState = useSelector(selectCategories);
   const isAdult = useSelector(selectIsAdult);
+  const theme = useSelector(selectTheme);
   const [imagePreview, setImagePreview] = useState('');
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [glassMenuIsOpen, setGlassMenuIsOpen] = useState();
@@ -94,32 +97,40 @@ const AddFormMain = ({
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <StyledInfoDiv>
-        <StyledFileLabel style={{ backgroundImage: `url(${imagePreview})` }}>
+        <StyledFileLabel
+          theme={theme}
+          style={{ backgroundImage: `url(${imagePreview})` }}
+        >
           <StyledFileInput
+            theme={theme}
             type="file"
             {...register('photo')}
             onChange={handleFileChange}
           />
           {!imagePreview && (
-            <StyledFileDiv>
-              <StyledFileTextPlus>+</StyledFileTextPlus>
-              <StyledFileTextAdd>Add image</StyledFileTextAdd>
+            <StyledFileDiv theme={theme}>
+              <StyledFileTextPlus theme={theme}>+</StyledFileTextPlus>
+              <StyledFileTextAdd theme={theme}>Add image</StyledFileTextAdd>
             </StyledFileDiv>
           )}
         </StyledFileLabel>
         <div>
-          <RelativeLabel>
+          <RelativeLabel theme={theme}>
             <StyledTitleInput
+              theme={theme}
               type="text"
               {...register('itemTitle', { required: true })}
               placeholder="Enter item title"
             />
             {errors.itemTitle && (
-              <StyledValidText>Item title is required.</StyledValidText>
+              <StyledValidText theme={theme}>
+                Item title is required.
+              </StyledValidText>
             )}
           </RelativeLabel>
           <RelativeLabel>
             <StyledTitleInput
+              theme={theme}
               type="text"
               {...register('aboutRecipe', { required: true })}
               placeholder="Enter about recipe"
@@ -128,7 +139,7 @@ const AddFormMain = ({
               <StyledValidText>About recipe field is required.</StyledValidText>
             )}
           </RelativeLabel>
-          <StyledSelectLabel>
+          <StyledSelectLabel theme={theme}>
             <p>Category</p>
 
             <Controller
@@ -144,12 +155,7 @@ const AddFormMain = ({
                     field.onChange(val);
                     setCategory(val.value);
                   }}
-                  theme={theme => ({
-                    ...theme,
-                    colors: {
-                      neutral50: '#fff',
-                    },
-                  })}
+                  theme={theme}
                   menuIsOpen={menuIsOpen}
                   onMenuOpen={() => setMenuIsOpen(true)}
                   onMenuClose={() => setMenuIsOpen(false)}
@@ -161,7 +167,7 @@ const AddFormMain = ({
               <StyledValidText>{errors.category.message}</StyledValidText>
             )}
           </StyledSelectLabel>
-          <StyledSelectLabel>
+          <StyledSelectLabel theme={theme}>
             <p>Glass</p>
             <Controller
               name="glass"
@@ -176,12 +182,7 @@ const AddFormMain = ({
                     field.onChange(val);
                     setGlass(val.value);
                   }}
-                  theme={theme => ({
-                    ...theme,
-                    colors: {
-                      neutral50: '#fff',
-                    },
-                  })}
+                  theme={theme}
                   menuIsOpen={glassMenuIsOpen}
                   onMenuOpen={() => setGlassMenuIsOpen(true)}
                   onMenuClose={() => setGlassMenuIsOpen(false)}
@@ -194,7 +195,7 @@ const AddFormMain = ({
             )}
           </StyledSelectLabel>
           <StyledRadioLabelDiv>
-            <StyledRadioLabel>
+            <StyledRadioLabel theme={theme}>
               <input
                 type="radio"
                 value={'Non alcoholic'}
@@ -202,17 +203,17 @@ const AddFormMain = ({
                 {...register('alcohol', { required: true })}
                 defaultChecked
               />
-              <p>Non alcoholic</p>
+              <StyledRadioTest theme={theme}>Non alcoholic</StyledRadioTest>
             </StyledRadioLabel>
             {isAdult && (
-              <StyledRadioLabel>
+              <StyledRadioLabel theme={theme}>
                 <input
                   type="radio"
                   name="alcohol"
                   value={'Alcoholic'}
                   {...register('alcohol', { required: true })}
                 />
-                <p>Alcoholic</p>
+                <StyledRadioTest theme={theme}>Alcoholic</StyledRadioTest>
               </StyledRadioLabel>
             )}
           </StyledRadioLabelDiv>

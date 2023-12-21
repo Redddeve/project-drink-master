@@ -36,6 +36,10 @@ const GlobalStyles = createGlobalStyle`
   --green: #BCE6D2;
   --correct-green: #3CBC81;
   --error-red: #DA1414;
+  --dark-theme-bg:rgba(22, 31, 55, 0.50);
+  --light-theme-bg: #161F37;
+
+
 
   // borders
   --dark-theme-common: 1px solid #F3F3F380;

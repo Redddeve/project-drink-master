@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { StyledSubmitBtn } from './AddDrinkPage.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   addOwnDrinkThunk,
   getCategoriesThunk,
@@ -17,10 +17,12 @@ import AddFormMain from '../../components/AddFormMain/AddFormMain';
 import AddFormIngredients from '../../components/AddFormIngredients/AddFormIngredients';
 import AddFormDesc from '../../components/AddFormDesc/AddFormDesc';
 import PopularDrinks from '../../components/PopularDrinks/PopularDrinks';
+import { selectTheme } from '../../redux/theme/selectors';
 
-const AddDrinkPage = ({ theme }) => {
+const AddDrinkPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const theme = useSelector(selectTheme);
   const {
     register,
     control,

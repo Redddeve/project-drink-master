@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const darkTheme = {
   background: {
     main: 'var(--dark)',
+    darkBg: 'var(--dark-theme-bg)',
   },
   colors: {
     main: 'var(--white)',
@@ -20,6 +21,7 @@ export const darkTheme = {
 export const lightTheme = {
   background: {
     main: 'var(--white)',
+    lightBg: 'var(--light-theme-bg)',
   },
   colors: {
     main: 'var(--dark)',
