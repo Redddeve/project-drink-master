@@ -22,6 +22,13 @@ import {
   searchDrinksThunk,
 } from '../../redux/drinks/operations.js';
 import ButtonUpToTop from '../../components/ButtonUpToTop/ButtonUpToTop.jsx';
+import { EmptyDescription } from '../../components/MyCocktails/MyCocktails.styled.js';
+import {
+  EmptyFavoritesContainer,
+  EmptyFavoritesImage,
+} from '../../components/FavoriteCocktails/FavoriteCocktails.styled.js';
+import usual from '../../images/blue-iced-tea@1x.png';
+import retina from '../../images/blue-iced-tea@2x.png';
 
 const DrinksPage = () => {
   const dispatch = useDispatch();
@@ -87,7 +94,6 @@ const DrinksPage = () => {
           classNamePrefix={'Select'}
           options={ingredientsOptions}
           placeholder={'Ingredients'}
-          isSearchable={false}
           onChange={value => {
             setIngredient(value.label);
           }}
@@ -101,15 +107,27 @@ const DrinksPage = () => {
         />
       </StyledFilterContainer>
       <StyledCardsContainer>
-        {drinks?.map(drink => {
-          return (
-            <DrinkCard
-              key={drink._id}
-              drink={drink}
-              // detailed={false}
+        {drinks.length !== 0 ? (
+          drinks?.map(drink => {
+            return (
+              <DrinkCard
+                key={drink._id}
+                drink={drink}
+                // detailed={false}
+              />
+            );
+          })
+        ) : (
+          <EmptyFavoritesContainer>
+            <EmptyFavoritesImage
+              srcSet={`${usual} 1x, ${retina} 2x`}
+              alt="Cocktail"
             />
-          );
-        })}
+            <EmptyDescription>
+              No cocktails found by your request
+            </EmptyDescription>
+          </EmptyFavoritesContainer>
+        )}
       </StyledCardsContainer>
       <ButtonUpToTop />
     </>
