@@ -38,9 +38,8 @@ export const StyledTitle = styled.h3`
   font-size: 28px;
   font-weight: 600;
   line-height: 32px;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
   @media ${device.tablet} {
-    margin-bottom: 40px;
     font-size: 40px;
     line-height: 44px;
   }
@@ -60,7 +59,5 @@ export const StyledText = styled.p`
   }
   @media ${device.desktop} {
     width: 549px;
-    max-height: 480px;
-    overflow-y: scroll;
   }
 `;

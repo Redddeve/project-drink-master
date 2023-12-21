@@ -28,13 +28,10 @@ import {
 import { Controller } from 'react-hook-form';
 
 const AddFormMain = ({
-  category,
-  setCategory,
-  glass,
-  setGlass,
   register,
   control,
   handleSubmit,
+  setValue,
   errors,
   onSubmit,
 }) => {
@@ -82,6 +79,7 @@ const AddFormMain = ({
 
   const handleFileChange = e => {
     const file = e.target.files[0];
+    setValue('photo', file);
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -92,11 +90,12 @@ const AddFormMain = ({
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
       <StyledInfoDiv>
         <StyledFileLabel style={{ backgroundImage: `url(${imagePreview})` }}>
           <StyledFileInput
             type="file"
+            accept=".png, .jpeg, .jpg"
             {...register('photo')}
             onChange={handleFileChange}
           />
@@ -139,10 +138,9 @@ const AddFormMain = ({
                   {...field}
                   styles={styles}
                   options={categoryOptions}
-                  value={{ label: category, value: category }}
+                  isSearchable={false}
                   onChange={val => {
                     field.onChange(val);
-                    setCategory(val.value);
                   }}
                   theme={theme => ({
                     ...theme,
@@ -171,10 +169,8 @@ const AddFormMain = ({
                   styles={glassStyles}
                   {...field}
                   options={glassOptions}
-                  value={{ label: glass, value: glass }}
                   onChange={val => {
                     field.onChange(val);
-                    setGlass(val.value);
                   }}
                   theme={theme => ({
                     ...theme,
@@ -222,14 +218,11 @@ const AddFormMain = ({
   );
 };
 AddFormMain.propTypes = {
-  category: PropTypes.string.isRequired,
-  glass: PropTypes.string.isRequired,
-  setCategory: PropTypes.func.isRequired,
-  setGlass: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
   control: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
+  setValue: PropTypes.func,
   onSubmit: PropTypes.func.isRequired,
 };
 export default AddFormMain;

@@ -34,7 +34,7 @@ const AddFormIngredients = ({
 }) => {
   const dispatch = useDispatch();
   const ingredientsState = useSelector(selectIngredients);
-  const [ingCount, setIngCount] = useState(4);
+  const [ingCount, setIngCount] = useState(3);
 
   useEffect(() => {
     dispatch(getIngredientsThunk());
@@ -58,14 +58,14 @@ const AddFormIngredients = ({
 
   const deleteIng = (e, index) => {
     e.preventDefault();
-    if (ingNumber.length <= 3) {
+    if (ingNumber.length <= 2) {
       return;
     }
     const newNumber = ingNumber.filter(el => el !== index);
     setIngNumber(newNumber);
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
       <StyledIngDiv>
         <StyledIngTitleDiv>
           <StyledIngTitle>Ingredients</StyledIngTitle>
@@ -74,7 +74,7 @@ const AddFormIngredients = ({
               onClick={e => {
                 deleteIngField(e);
               }}
-              disabled={ingNumber.length <= 3}
+              disabled={ingNumber.length <= 2}
             >
               -
             </StyledAddBtn>
