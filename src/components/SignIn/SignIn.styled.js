@@ -1,27 +1,38 @@
 import styled from 'styled-components';
-import bg from '../../images/start-bg-mob@2x.jpg';
 import { Link } from 'react-router-dom';
+import { device } from '../../styles/device';
 
 export const StyledWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 375px;
+  height: 100%;
   margin: 0 auto;
-  background-image: url(${bg});
-  background-repeat: no-repeat;
-  background-size: cover;
+
+  @media ${device.tablet} {
+    align-items: start;
+    margin-left: 64px;
+  }
+
+  @media ${device.desktop} {
+    margin-left: 100px;
+  }
 `;
 
 export const StyledFormWrap = styled.form`
   display: flex;
 
-  width: 335px;
+  max-width: 335px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  @media ${device.tablet} {
+    max-width: 400px;
+  }
+
+  @media ${device.desktop} {
+  }
 `;
 
 export const StyledHead = styled.h2`
@@ -32,6 +43,14 @@ export const StyledHead = styled.h2`
   line-height: 32px; /* 114.286% */
   letter-spacing: -0.56px;
   margin-bottom: 28px;
+  @media ${device.tablet} {
+    font-size: 40px;
+    line-height: 44px; /* 110% */
+    letter-spacing: -0.8px;
+  }
+
+  @media ${device.desktop} {
+  }
 `;
 export const StyledInputWrap = styled.div`
   position: relative;
@@ -77,6 +96,15 @@ export const StyledInput = styled.input`
 
   &.correct {
     border: 1px solid var(--correct-green);
+  }
+
+  @media ${device.tablet} {
+    width: 400px;
+    height: 56px;
+    font-size: 16px;
+  }
+
+  @media ${device.desktop} {
   }
 `;
 
@@ -152,6 +180,13 @@ export const StyledSignInBtn = styled.button`
   &:disabled {
     cursor: not-allowed;
   }
+  @media ${device.tablet} {
+    font-size: 16px;
+    padding: 18px 170px;
+  }
+
+  @media ${device.desktop} {
+  }
 `;
 
 export const StyledLink = styled(Link)`
@@ -165,5 +200,12 @@ export const StyledLink = styled(Link)`
   text-decoration-line: underline;
   &:hover {
     //hover
+  }
+  @media ${device.tablet} {
+    font-size: 14px;
+    line-height: 18px; /* 128.571% */
+  }
+
+  @media ${device.desktop} {
   }
 `;

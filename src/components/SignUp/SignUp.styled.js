@@ -1,19 +1,25 @@
 import styled from 'styled-components';
-import bg from '../../images/start-bg-mob@2x.jpg';
 import { Link } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
+import { device } from '../../styles/device';
 
 export const StyledWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 375px;
+  height: 100%;
+
   margin: 0 auto;
-  background-image: url(${bg});
-  background-repeat: no-repeat;
-  background-size: cover;
+
+  @media ${device.tablet} {
+    align-items: start;
+    margin-left: 64px;
+  }
+
+  @media ${device.desktop} {
+    margin-left: 100px;
+  }
 `;
 
 export const StyledFormWrap = styled.form`
