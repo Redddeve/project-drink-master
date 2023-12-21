@@ -50,7 +50,7 @@ const PreviewDrinks = () => {
             return <DrinkCard key={drink._id} drink={drink} />;
           })}
         </StyledCardsContainer>
-        <Title>Other/Unknow</Title>
+        <Title>Other/Unknown</Title>
         <StyledCardsContainer>
           {drinks['Other/Unknown']?.map(drink => {
             return <DrinkCard key={drink._id} drink={drink} />;
