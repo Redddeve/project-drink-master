@@ -28,17 +28,12 @@ import {
 import { Controller } from 'react-hook-form';
 
 const AddFormMain = ({
-  category,
-  setCategory,
-  glass,
-  setGlass,
   register,
   control,
   handleSubmit,
   setValue,
   errors,
   onSubmit,
-  setSelectedImage,
 }) => {
   const dispatch = useDispatch();
   const glassesState = useSelector(selectGlasses);
@@ -86,7 +81,6 @@ const AddFormMain = ({
     const file = e.target.files[0];
     setValue('photo', file);
     if (file) {
-      setSelectedImage(file);
       const reader = new FileReader();
       reader.onloadend = () => {
         setImagePreview(reader.result);
@@ -145,10 +139,8 @@ const AddFormMain = ({
                   styles={styles}
                   options={categoryOptions}
                   isSearchable={false}
-                  value={{ label: category, value: category }}
                   onChange={val => {
                     field.onChange(val);
-                    setCategory(val.value);
                   }}
                   theme={theme => ({
                     ...theme,
@@ -161,7 +153,11 @@ const AddFormMain = ({
                   onMenuClose={() => setMenuIsOpen(false)}
                 />
               )}
+              rules={{ required: 'Category field is required' }}
             />
+            {errors.category && (
+              <StyledValidText>{errors.category.message}</StyledValidText>
+            )}
           </StyledSelectLabel>
           <StyledSelectLabel>
             <p>Glass</p>
@@ -173,10 +169,8 @@ const AddFormMain = ({
                   styles={glassStyles}
                   {...field}
                   options={glassOptions}
-                  value={{ label: glass, value: glass }}
                   onChange={val => {
                     field.onChange(val);
-                    setGlass(val.value);
                   }}
                   theme={theme => ({
                     ...theme,
@@ -189,7 +183,11 @@ const AddFormMain = ({
                   onMenuClose={() => setGlassMenuIsOpen(false)}
                 />
               )}
+              rules={{ required: 'Glass field is required' }}
             />
+            {errors.glass && (
+              <StyledValidText>{errors.glass.message}</StyledValidText>
+            )}
           </StyledSelectLabel>
           <StyledRadioLabelDiv>
             <StyledRadioLabel>
@@ -220,11 +218,6 @@ const AddFormMain = ({
   );
 };
 AddFormMain.propTypes = {
-  category: PropTypes.string.isRequired,
-  glass: PropTypes.string.isRequired,
-  setCategory: PropTypes.func.isRequired,
-  setGlass: PropTypes.func.isRequired,
-  setSelectedImage: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
   control: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
