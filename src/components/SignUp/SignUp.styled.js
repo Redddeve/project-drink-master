@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import bg from '../../images/start-bg-mob@2x.jpg';
 import { Link } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import { device } from '../../styles/device';
