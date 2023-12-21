@@ -30,9 +30,6 @@ export const StyledFormWrap = styled.form`
   @media ${device.tablet} {
     max-width: 400px;
   }
-
-  @media ${device.desktop} {
-  }
 `;
 
 export const StyledHead = styled.h2`
@@ -47,9 +44,6 @@ export const StyledHead = styled.h2`
     font-size: 40px;
     line-height: 44px; /* 110% */
     letter-spacing: -0.8px;
-  }
-
-  @media ${device.desktop} {
   }
 `;
 export const StyledInputWrap = styled.div`
@@ -102,9 +96,6 @@ export const StyledInput = styled.input`
     width: 400px;
     height: 56px;
     font-size: 16px;
-  }
-
-  @media ${device.desktop} {
   }
 `;
 
@@ -181,11 +172,9 @@ export const StyledSignInBtn = styled.button`
     cursor: not-allowed;
   }
   @media ${device.tablet} {
+    width: 400px;
     font-size: 16px;
     padding: 18px 170px;
-  }
-
-  @media ${device.desktop} {
   }
 `;
 
@@ -204,8 +193,5 @@ export const StyledLink = styled(Link)`
   @media ${device.tablet} {
     font-size: 14px;
     line-height: 18px; /* 128.571% */
-  }
-
-  @media ${device.desktop} {
   }
 `;
