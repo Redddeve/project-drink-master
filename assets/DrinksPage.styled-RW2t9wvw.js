@@ -1,4 +1,4 @@
-import{s as i,d as t,L as a,P as r,j as o}from"./index-hMmrKk8Y.js";import{S as n}from"./react-select.esm-s61YNV-6.js";const d=i.li`
+import{s as i,d as t,L as o,P as a,j as r}from"./index-MBFCPN1R.js";import{S as n}from"./react-select.esm-krxoeN1A.js";const p=i.li`
   width: 335px;
 
   @media ${t.tablet} {
@@ -8,7 +8,7 @@ import{s as i,d as t,L as a,P as r,j as o}from"./index-hMmrKk8Y.js";import{S as 
   @media ${t.desktop} {
     width: 400px;
   }
-`,p=i.img`
+`,d=i.img`
   width: 100%;
   height: 360px;
   border-radius: 8px;
@@ -16,15 +16,15 @@ import{s as i,d as t,L as a,P as r,j as o}from"./index-hMmrKk8Y.js";import{S as 
   @media ${t.desktop} {
     height: 400px;
   }
-`,s=i.div`
+`,l=i.div`
   width: 100%;
   margin-top: 14px;
   display: flex;
   justify-content: space-between;
-`,l=i(a)`
+`,s=i(o)`
   color: var(--transp-white);
   cursor: pointer;
-`,c=({drink:e})=>o.jsxs(d,{children:[o.jsx(p,{src:e.drinkThumb,alt:e.drink}),o.jsxs(s,{children:[o.jsx("span",{children:e.drink}),o.jsx(l,{to:`../drink/${e._id}`,children:"See more"})]})]});c.propTypes={drink:r.shape({drinkThumb:r.string,drink:r.string,_id:r.string})};const g=i.h2`
+`,c=({drink:e})=>r.jsxs(p,{children:[r.jsx(d,{src:e.drinkThumb,alt:e.drink}),r.jsxs(l,{children:[r.jsx("span",{children:e.drink}),r.jsx(s,{to:`../drink/${e._id}`,children:"See more"})]})]});c.propTypes={drink:a.shape({drinkThumb:a.string,drink:a.string,_id:a.string})};const g=i.h2`
   margin-bottom: 40px;
   color: var(--white);
   font-size: 32px;
@@ -120,9 +120,11 @@ import{s as i,d as t,L as a,P as r,j as o}from"./index-hMmrKk8Y.js";import{S as 
       width: 199px;
     }
   }
-
+  
   .Select__placeholder {
     color: var(--white);
+    display: flex;
+    align-items: center;
   }
 
   .Select__indicator {
@@ -139,6 +141,7 @@ import{s as i,d as t,L as a,P as r,j as o}from"./index-hMmrKk8Y.js";import{S as 
   }
 
   .Select__option {
+    padding: 4.5px 12px;
     background: none;
     cursor: pointer;
     color: rgba(243, 243, 243, 0.4);
@@ -148,12 +151,15 @@ import{s as i,d as t,L as a,P as r,j as o}from"./index-hMmrKk8Y.js";import{S as 
   .Select__option--is-focused {
     color: var(--white);
   }
+  
+  .Select__input-container{
+    color: var(--white);
+  }
 
   .Select__menu {
     height: ${e=>e.$small?"240px":"314px"};
     border-radius: 20px;
     background: var(--black);
-    padding-top: 9px;
     padding-right: 7px;
     overflow-y: hidden;
 
@@ -164,8 +170,17 @@ import{s as i,d as t,L as a,P as r,j as o}from"./index-hMmrKk8Y.js";import{S as 
     }
 
     .Select__menu-list {
+      max-height: ${e=>e.$small?"295px":"405px"};
+      
       &::-webkit-scrollbar {
+        padding-right: 5px;
+        padding-bottom: 5px;
         width: 8px;
+      }
+
+      &::-webkit-scrollbar-track {
+        margin-top: 10px;
+        margin-bottom: 13px;
       }
 
       &::-webkit-scrollbar-thumb {

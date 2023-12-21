@@ -1,4 +1,4 @@
-import{s,d as e,j as n}from"./index-hMmrKk8Y.js";const p=s.h1`
+import{s,d as e,j as n}from"./index-MBFCPN1R.js";const p=s.h1`
   font-size: 32px;
   font-weight: 600;
   line-height: 38px;
