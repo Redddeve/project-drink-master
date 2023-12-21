@@ -1,4 +1,4 @@
-import{s as e,d as t}from"./index-Xb0BTwz4.js";const a=e.div`
+import{s as i,d as t}from"./index-zqTu2PMS.js";const e=i.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,13 +14,7 @@ import{s as e,d as t}from"./index-Xb0BTwz4.js";const a=e.div`
   @media ${t.desktop} {
     margin: 67px auto 0;
   }
-`,p=e.img`
-  height: 247px;
-
-  @media ${t.tablet} {
-    height: 326px;
-  }
-`,o=e.p`
+`,n=i.p`
   text-align: center;
   font-weight: 500;
-`;export{a as E,p as a,o as b};
+`;export{n as E,e as a};
