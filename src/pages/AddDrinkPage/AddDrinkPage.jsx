@@ -1,14 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { StyledSubmitBtn } from './AddDrinkPage.styled';
 import { useDispatch } from 'react-redux';
-import {
-  addOwnDrinkThunk,
-  getCategoriesThunk,
-  getGlassesThunk,
-  getIngredientsThunk,
-  getPopularThunk,
-} from '../../redux/drinks/operations';
+import { addOwnDrinkThunk } from '../../redux/drinks/operations';
 import { useNavigate } from 'react-router-dom';
 import ButtonUpToTop from '../../components/ButtonUpToTop/ButtonUpToTop';
 
@@ -29,16 +23,7 @@ const AddDrinkPage = () => {
     formState: { errors },
   } = useForm();
 
-  const [ingNumber, setIngNumber] = useState([0, 1, 2]);
-  const [category, setCategory] = useState('Cocktail');
-  const [glass, setGlass] = useState('Highball glass');
-
-  useEffect(() => {
-    dispatch(getGlassesThunk());
-    dispatch(getCategoriesThunk());
-    dispatch(getIngredientsThunk());
-    dispatch(getPopularThunk());
-  }, [dispatch]);
+  const [ingNumber, setIngNumber] = useState([0, 1]);
 
   const onSubmit = data => {
     const ingredientsArray = ingNumber.map((el, index) => ({
@@ -53,6 +38,7 @@ const AddDrinkPage = () => {
     if (data.photo) {
       dataToSend.append('drinkThumb', data.photo);
     }
+    console.log(data);
     dataToSend.append('category', data.category.label);
     dataToSend.append('glass', data.glass.label);
     dataToSend.append('description', data.recipeDesc);
@@ -71,10 +57,6 @@ const AddDrinkPage = () => {
       <PageTitle title="Add drink" />
       <div>
         <AddFormMain
-          setGlass={setGlass}
-          setCategory={setCategory}
-          glass={glass}
-          category={category}
           register={register}
           control={control}
           setValue={setValue}

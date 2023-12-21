@@ -28,10 +28,6 @@ import {
 import { Controller } from 'react-hook-form';
 
 const AddFormMain = ({
-  category,
-  setCategory,
-  glass,
-  setGlass,
   register,
   control,
   handleSubmit,
@@ -142,10 +138,9 @@ const AddFormMain = ({
                   {...field}
                   styles={styles}
                   options={categoryOptions}
-                  value={{ label: category, value: category }}
+                  isSearchable={false}
                   onChange={val => {
                     field.onChange(val);
-                    setCategory(val.value);
                   }}
                   theme={theme => ({
                     ...theme,
@@ -174,10 +169,8 @@ const AddFormMain = ({
                   styles={glassStyles}
                   {...field}
                   options={glassOptions}
-                  value={{ label: glass, value: glass }}
                   onChange={val => {
                     field.onChange(val);
-                    setGlass(val.value);
                   }}
                   theme={theme => ({
                     ...theme,
@@ -225,10 +218,6 @@ const AddFormMain = ({
   );
 };
 AddFormMain.propTypes = {
-  category: PropTypes.string.isRequired,
-  glass: PropTypes.string.isRequired,
-  setCategory: PropTypes.func.isRequired,
-  setGlass: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
   control: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
