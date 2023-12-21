@@ -57,8 +57,8 @@ export const StyledRadioLabel = styled.label`
       display: flex;
       border-radius: 50%;
       top: 2.5px;
-      left: 2.5px;
-      border: 3.1px solid black;
+      left: 2px;
+      border: 2.9px solid black;
       width: 12px;
       height: 12px;
       opacity: 1;
@@ -84,6 +84,7 @@ export const StyledRadioLabel = styled.label`
         theme === 'dark'
           ? '2px solid var(--transp-white)'
           : '2px solid var(--dark)'};
+      border: 2px solid var(--transp-white);
       width: 17px;
       height: 17px;
       opacity: 1;

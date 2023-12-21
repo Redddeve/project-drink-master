@@ -4,10 +4,6 @@ import { signinThunk, signupThunk } from '../../redux/auth/operations.js';
 import { useNavigate } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch } from 'react-redux';
-import React, { useRef } from 'react';
-
-// import * as yup from 'yup';
-// import { yupResolver } from '@hookform/resolvers/yup';
 
 import {
   StyledWrap,
@@ -20,10 +16,25 @@ import {
   StyledCalendarIcon,
   StyledInputWrap,
   StyledMessage,
+  StyledEye,
+  StyledStatus,
 } from './SignUp.styled.js';
 import sprite from '../../images/sprite.svg';
 
 const SignUp = () => {
+  const [type, setType] = useState('password');
+  const [icon, setIcon] = useState('eye-off');
+
+  const handleEyeToggle = () => {
+    if (type === 'password') {
+      setIcon('eye');
+      setType('text');
+    } else {
+      setIcon('eye-off');
+      setType('password');
+    }
+  };
+
   const {
     handleSubmit,
     register,
@@ -59,8 +70,8 @@ const SignUp = () => {
       .then(res => dispatch(signinThunk(res)))
       .then(() => {
         navigate('/');
+        reset();
       });
-    reset();
   };
 
   return (
@@ -78,17 +89,30 @@ const SignUp = () => {
               },
             })}
             placeholder="Name"
+            autoComplete="off"
             className={
               errors?.name ? 'error' : isFieldValid('name') ? 'correct' : ''
             }
           />
           {errors?.name && (
-            <StyledMessage className="error">
-              {errors?.name?.message || 'ERROR'}
-            </StyledMessage>
+            <>
+              <StyledStatus className="error">
+                <use href={`${sprite}#icon-error-outline`} />
+              </StyledStatus>
+              <StyledMessage className="error">
+                {errors?.name?.message || 'ERROR'}
+              </StyledMessage>
+            </>
           )}
           {!errors?.name && isFieldValid('name') && (
-            <StyledMessage className="correct">ok</StyledMessage>
+            <>
+              <StyledStatus className="correct">
+                <use href={`${sprite}#icon-done-outline`} />
+              </StyledStatus>
+              <StyledMessage className="correct">
+                This is a CORRECT name
+              </StyledMessage>
+            </>
           )}
         </StyledInputWrap>
 
@@ -99,16 +123,19 @@ const SignUp = () => {
             rules={{ required: "date can't be empty" }}
             render={({ field }) => (
               <StyledDatePicker
-                showIcon
                 selected={field.value}
                 onChange={date => field.onChange(date)}
                 onBlur={() => field.onBlur()}
+                showIcon
+                toggleCalendarOnIconClick
                 icon={
                   <StyledCalendarIcon>
                     <use href={`${sprite}#icon-calendar`} />
                   </StyledCalendarIcon>
                 }
                 placeholderText="dd/mm/yyyy"
+                maxDate={new Date()}
+                style={{ float: 'left' }}
                 className={
                   errors?.date ? 'error' : isFieldValid('date') ? 'correct' : ''
                 }
@@ -121,7 +148,9 @@ const SignUp = () => {
             </StyledMessage>
           )}
           {!errors?.date && isFieldValid('date') && (
-            <StyledMessage className="correct">ok</StyledMessage>
+            <StyledMessage className="correct">
+              This is a CORRECT date
+            </StyledMessage>
           )}
         </StyledInputWrap>
 
@@ -145,12 +174,24 @@ const SignUp = () => {
             }
           />
           {errors?.email && (
-            <StyledMessage className="error">
-              {errors?.email?.message || 'ERROR'}
-            </StyledMessage>
+            <>
+              <StyledStatus className="error">
+                <use href={`${sprite}#icon-error-outline`} />
+              </StyledStatus>
+              <StyledMessage className="error">
+                {errors?.email?.message || 'ERROR'}
+              </StyledMessage>
+            </>
           )}
           {!errors?.email && isFieldValid('email') && (
-            <StyledMessage className="correct">ok</StyledMessage>
+            <>
+              <StyledStatus className="correct">
+                <use href={`${sprite}#icon-done-outline`} />
+              </StyledStatus>
+              <StyledMessage className="correct">
+                This is a CORRECT email
+              </StyledMessage>
+            </>
           )}
         </StyledInputWrap>
 
@@ -164,6 +205,8 @@ const SignUp = () => {
               },
             })}
             placeholder="Password"
+            autoComplete="off"
+            type={type}
             className={
               errors?.password
                 ? 'error'
@@ -172,13 +215,18 @@ const SignUp = () => {
                 : ''
             }
           />
+          <StyledEye onClick={handleEyeToggle}>
+            <use href={`${sprite}#icon-${icon}`} />
+          </StyledEye>
           {errors?.password && (
             <StyledMessage className="error">
               {errors?.password?.message || 'ERROR'}
             </StyledMessage>
           )}
           {!errors?.password && isFieldValid('password') && (
-            <StyledMessage className="correct">ok</StyledMessage>
+            <StyledMessage className="correct">
+              This is a CORRECT password
+            </StyledMessage>
           )}
         </StyledInputWrap>
 

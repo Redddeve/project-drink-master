@@ -1,4 +1,3 @@
-import React from 'react';
 import { LoaderStyle } from './Loader.styled';
 import { PuffLoader } from 'react-spinners';
 export const Loader = () => {

@@ -59,7 +59,5 @@ export const StyledText = styled.p`
   }
   @media ${device.desktop} {
     width: 549px;
-    max-height: 480px;
-    overflow-y: scroll;
   }
 `;

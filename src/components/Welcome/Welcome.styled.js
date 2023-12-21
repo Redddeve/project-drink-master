@@ -1,7 +1,6 @@
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
-
-import bg from "../../images/start-bg-mob@2x.jpg";
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import { device } from '../../styles/device';
 
 export const StyledWrap = styled.div`
   display: flex;
@@ -9,20 +8,26 @@ export const StyledWrap = styled.div`
   align-items: center;
   justify-content: center;
   gap: 40px;
-  height: 100vh;
-  width: 375px;
+  height: 100%;
   margin: 0 auto;
-  background-image: url(${bg});
-  background-repeat: no-repeat;
-  background-size: cover;
+  @media ${device.tablet} {
+    align-items: start;
+    margin-left: 64px;
+  }
+
+  @media ${device.desktop} {
+    margin-left: 100px;
+  }
 `;
 
 export const StyledTextWrap = styled.div`
   display: flex;
-  width: 335px;
   flex-direction: column;
   align-items: center;
   gap: 14px;
+  @media ${device.tablet} {
+    align-items: start;
+  }
 `;
 
 export const StyledHead = styled.h2`
@@ -32,22 +37,41 @@ export const StyledHead = styled.h2`
   font-weight: 600;
   line-height: 32px; /* 114.286% */
   letter-spacing: -0.56px;
+
+  @media ${device.tablet} {
+    text-align: start;
+    max-width: 393px;
+
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 44px; /* 110% */
+    letter-spacing: -0.8px;
+  }
 `;
 
 export const StyledText = styled.p`
-  width: 319px;
+  max-width: 319px;
   text-align: center;
-  font-family: Manrope;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 18px; /* 128.571% */
   letter-spacing: -0.28px;
+  @media ${device.tablet} {
+    text-align: start;
+    max-width: 470px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px; /* 133.333% */
+    letter-spacing: -0.36px;
+  }
 `;
 
 export const StyledBtnWrap = styled.div`
   display: flex;
   gap: 14px;
+  @media ${device.tablet} {
+  }
 `;
 
 export const StyledBtnSignUp = styled(NavLink)`
@@ -71,6 +95,11 @@ export const StyledBtnSignUp = styled(NavLink)`
     border: 1px solid rgba(243, 243, 243, 0.2);
     color: #f3f3f3;
   }
+
+  @media ${device.tablet} {
+    font-size: 16px;
+    padding: 18px 44px;
+  }
 `;
 
 export const StyledBtnSignIn = styled(NavLink)`
@@ -93,5 +122,9 @@ export const StyledBtnSignIn = styled(NavLink)`
     background: #f3f3f3;
     /* border: 1px solid rgba(243, 243, 243, 0.2); */
     color: #161f37;
+  }
+  @media ${device.tablet} {
+    font-size: 16px;
+    padding: 18px 44px;
   }
 `;

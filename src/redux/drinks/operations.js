@@ -6,10 +6,11 @@ import { toast } from 'react-toastify';
 
 export const fetchAllDrinks = createAsyncThunk(
   'drinks/fetchAllDrinks',
-  async (_, { rejectWithValue, getState }) => {
+  async (body, { rejectWithValue, getState }) => {
+    const { limit = 3 } = body;
     try {
       setToken(getState().auth.token);
-      const { data } = await instance.get('/drinks/mainpage?limit=15&page=1');
+      const { data } = await instance.get(`/drinks/mainpage?limit=${limit}`);
       return data;
     } catch (error) {
       toast.error(`Something went wrong. Please try again later.`);

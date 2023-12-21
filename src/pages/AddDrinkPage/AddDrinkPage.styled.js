@@ -28,6 +28,7 @@ export const StyledDescInput = styled.textarea`
     theme === 'dark' ? lightTheme.colors.main : darkTheme.colors.main};
   line-height: 1;
   vertical-align: top;
+  resize: none;
   @media ${device.tablet} {
     width: 480px;
   }
@@ -69,7 +70,7 @@ export const stylesSelect = {
   }),
   option: (styles, state) => ({
     ...styles,
-    padding: '3px 10px',
+    padding: '4px 14px',
     fontSize: '12px',
     backgroundColor: state.isSelected ? 'rgba(255, 255, 255, 0.10)' : '',
     color: state.isSelected ? 'var(--white)' : 'var(--transp-white)',
@@ -84,8 +85,22 @@ export const stylesSelect = {
     border: 'none ',
     borderRadius: '12px ',
     maxHeight: '300px',
-    width: '131px',
+    width: '151px',
     right: '0',
+  }),
+  menuList: base => ({
+    ...base,
+
+    '::-webkit-scrollbar': {
+      width: '2px',
+      height: '0px',
+    },
+    '::-webkit-scrollbar-track': {
+      background: '#161F37',
+    },
+    '::-webkit-scrollbar-thumb': {
+      background: '#5d6b90',
+    },
   }),
 };
 export const ingStyles = {
@@ -127,6 +142,7 @@ export const StyledValidIng = styled(StyledValidText)`
   left: -15px;
   font-size: 26px;
   font-weight: 700;
+  width: 10px;
   &::after {
     content: 'This field is required';
     display: none;

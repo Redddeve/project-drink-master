@@ -24,9 +24,9 @@ const DrinkIngredientsList = ({ ingredientsArray }) => {
   const isMobile = window.innerWidth < 768;
   const isTablet = window.innerWidth >= 768 && window.innerWidth < 1440;
 
-  const imgSrc = ingredientId => {
+  const imgSrc = title => {
     if (ingredientsState.length !== 0) {
-      return ingredientsState?.find(el => ingredientId === el._id)[
+      return ingredientsState?.find(el => title === el.title)[
         isMobile ? 'thumbSmall' : isTablet ? 'thumbMedium' : 'ingredientThumb'
       ];
     }
@@ -36,11 +36,11 @@ const DrinkIngredientsList = ({ ingredientsArray }) => {
     <div>
       <StyledTitle>Ingredients</StyledTitle>
       <StyledList>
-        {ingredientsArray?.map(({ ingredientId, title, measure }) => {
+        {ingredientsArray?.map(({ title, measure }) => {
           return (
             <StyledItem key={title}>
               <StyledImgDiv>
-                <StyledImg src={imgSrc(ingredientId)} alt={title} />
+                <StyledImg src={imgSrc(title)} alt={title} />
               </StyledImgDiv>
               <StyledTextDiv>
                 <StyledTextTitle>{title}</StyledTextTitle>
