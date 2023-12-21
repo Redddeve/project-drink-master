@@ -1,4 +1,18 @@
-import { DrinkCard } from '../../components/DrinkCard/DrinkCard.jsx';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import sprite from '../../images/sprite.svg';
+import usual from '../../images/blue-iced-tea@1x.png';
+import retina from '../../images/blue-iced-tea@2x.png';
+import {
+  selectCategories,
+  selectIngredients,
+  selectSearchDrinks,
+} from '../../redux/drinks/selectors.js';
+import {
+  getCategoriesThunk,
+  getIngredientsThunk,
+  searchDrinksThunk,
+} from '../../redux/drinks/operations.js';
 import {
   StyledCardsContainer,
   StyledFilterContainer,
@@ -8,27 +22,13 @@ import {
   StyledSvg,
   stylesDrink,
 } from './DrinksPage.styled';
-import sprite from '../../images/sprite.svg';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectCategories,
-  selectIngredients,
-  selectSearchDrinks,
-} from '../../redux/drinks/selectors.js';
-import { useEffect, useState } from 'react';
-import {
-  getCategoriesThunk,
-  getIngredientsThunk,
-  searchDrinksThunk,
-} from '../../redux/drinks/operations.js';
 import ButtonUpToTop from '../../components/ButtonUpToTop/ButtonUpToTop.jsx';
-import { EmptyDescription } from '../../components/MyCocktails/MyCocktails.styled.js';
+import { EmptyDescription } from '../../components/FavoriteCocktails/FavoriteCocktails.styled.js';
+import { DrinkCard } from '../../components/DrinkCard/DrinkCard.jsx';
 import {
   EmptyFavoritesContainer,
   EmptyFavoritesImage,
 } from '../../components/FavoriteCocktails/FavoriteCocktails.styled.js';
-import usual from '../../images/blue-iced-tea@1x.png';
-import retina from '../../images/blue-iced-tea@2x.png';
 
 const DrinksPage = () => {
   const dispatch = useDispatch();
