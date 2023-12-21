@@ -108,9 +108,11 @@ export const StyledSelect = styled(Select)`
       width: 199px;
     }
   }
-
+  
   .Select__placeholder {
     color: var(--white);
+    display: flex;
+    align-items: center;
   }
 
   .Select__indicator {
@@ -127,6 +129,7 @@ export const StyledSelect = styled(Select)`
   }
 
   .Select__option {
+    padding: 4.5px 12px;
     background: none;
     cursor: pointer;
     color: rgba(243, 243, 243, 0.4);
@@ -136,12 +139,15 @@ export const StyledSelect = styled(Select)`
   .Select__option--is-focused {
     color: var(--white);
   }
+  
+  .Select__input-container{
+    color: var(--white);
+  }
 
   .Select__menu {
     height: ${props => (props.$small ? '240px' : '314px')};
     border-radius: 20px;
     background: var(--black);
-    padding-top: 9px;
     padding-right: 7px;
     overflow-y: hidden;
 
@@ -152,8 +158,17 @@ export const StyledSelect = styled(Select)`
     }
 
     .Select__menu-list {
+      max-height: ${props => (props.$small ? '295px' : '405px')};
+      
       &::-webkit-scrollbar {
+        padding-right: 5px;
+        padding-bottom: 5px;
         width: 8px;
+      }
+
+      &::-webkit-scrollbar-track {
+        margin-top: 10px;
+        margin-bottom: 13px;
       }
 
       &::-webkit-scrollbar-thumb {
