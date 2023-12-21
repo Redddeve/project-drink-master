@@ -2,17 +2,20 @@ import { useDispatch } from 'react-redux';
 import MyOwnCocktails from '../../components/MyCocktails/MyCocktails';
 import { useEffect } from 'react';
 import { getOwnDrinksThunk } from '../../redux/drinks/operations';
-import { MyCocktailsTitle } from './MyDrinksPage.styled';
+import PageTitle from '../../components/PageTitle/PageTitle';
+import ButtonUpToTop from '../../components/ButtonUpToTop/ButtonUpToTop';
 
 const MyDrinksPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getOwnDrinksThunk());
   }, [dispatch]);
+
   return (
     <section>
-      <MyCocktailsTitle>PageTitle</MyCocktailsTitle>
+      <PageTitle title={'My drinks'}></PageTitle>
       <MyOwnCocktails />
+      <ButtonUpToTop />
     </section>
   );
 };
