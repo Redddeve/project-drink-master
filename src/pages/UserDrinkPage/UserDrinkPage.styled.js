@@ -45,11 +45,11 @@ export const StyledDrinkType = styled.p`
 `;
 
 export const StyledDrinkDesc = styled.p`
-  max-width: 335px;
+  width: 335px;
   margin-bottom: 40px;
 
   @media ${device.tablet} {
-    max-width: 600px;
+    width: 600px;
   }
 `;
 
