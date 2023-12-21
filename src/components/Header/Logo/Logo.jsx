@@ -1,9 +1,10 @@
 import { LogoGroup, Icon, Name } from './Logo.styled';
 import sprite from "../../../images/sprite.svg";
+import {Link} from 'react-router-dom'
 
 const Logo = () => {
   return (
-    <a href="/">
+    <Link to="/">
       <LogoGroup>
         <Icon>
           <svg width="22" height="22">
@@ -12,7 +13,7 @@ const Logo = () => {
         </Icon>
         <Name>Drink Master</Name>
       </LogoGroup>
-    </a>
+    </Link>
   );
 };
 
