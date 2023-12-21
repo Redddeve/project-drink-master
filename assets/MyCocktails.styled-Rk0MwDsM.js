@@ -1,4 +1,4 @@
-import{s as i,d as t}from"./index-O2e_eQh8.js";const e=i.div`
+import{s as i,d as t}from"./index-Xb0BTwz4.js";const e=i.div`
   display: flex;
   flex-direction: column;
   align-items: center;
