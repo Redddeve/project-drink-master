@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { device } from '../../styles/device';
-import { Link } from 'react-router-dom';
 
 export const CocktailCard = styled.li`
   display: flex;
@@ -86,25 +85,4 @@ export const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-`;
-
-export const MoreLink = styled(Link)`
-  padding: 14px 40px;
-  border-radius: 42px;
-  background: var(--black);
-  color: inherit;
-  font-weight: 600;
-  font-size: 16px;
-  /* border: none; */
-  cursor: pointer;
-  transition: var(--tran-fast);
-
-  &:hover,
-  :focus {
-    transform: scale(1.02);
-  }
-
-  @media ${device.tablet} {
-    padding: 18px 44px;
-  }
 `;

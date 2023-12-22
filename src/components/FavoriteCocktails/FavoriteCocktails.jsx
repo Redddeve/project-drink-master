@@ -14,8 +14,7 @@ import {
 import PaginatedItems from '../Paginator/Paginator';
 
 const FavoriteCocktails = ({ destination, page, setPage }) => {
-  const selectedDrinks = useSelector(selectFavoriteDrinks);
-  const favorites = selectedDrinks;
+  const favorites = useSelector(selectFavoriteDrinks);
 
   return favorites.length === 0 ? (
     <EmptyFavoritesContainer>
