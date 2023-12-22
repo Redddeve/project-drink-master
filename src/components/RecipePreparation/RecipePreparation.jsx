@@ -5,6 +5,7 @@ import {
   StyledText,
   StyledTitle,
 } from './RecipePreparation.styled';
+
 const RecipePreparation = ({ instructions }) => {
   return (
     <div>

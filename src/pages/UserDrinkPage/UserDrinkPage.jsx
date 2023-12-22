@@ -63,7 +63,9 @@ const UserDrinkPage = () => {
         </div>
         <StyledDrinkImage src={drink.drinkThumb} />
       </StyledDrinkHero>
+
       <DrinkIngredientsList ingredientsArray={drink ? drink.ingredients : []} />
+
       <RecipePreparation instructions={drink.instructions} />
     </>
   );
