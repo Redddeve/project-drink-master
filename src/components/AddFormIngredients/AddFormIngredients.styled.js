@@ -104,12 +104,17 @@ export const StyledIngTitleDiv = styled.div`
 `;
 
 export const StyledIngTitle = styled.h3`
-  font-size: 40px;
+  font-size: 28px;
   font-weight: 600;
   line-height: 1.38em;
-  margin-bottom: 24px;
+  margin-bottom: 40px;
   color: ${({ theme }) =>
     theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
+
+  @media ${device.tablet} {
+    font-size: 40px;
+    line-height: 1.38em;
+  }
 `;
 
 export const StyledIconCross = styled.svg`

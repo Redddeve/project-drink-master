@@ -22,7 +22,7 @@ export const darkTheme = {
 export const lightTheme = {
   background: {
     main: 'var(--white)',
-    lightBg: 'var(--light-theme-bg)',
+    lightBg: 'var(--black)',
   },
   colors: {
     main: 'var(--dark)',

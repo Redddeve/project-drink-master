@@ -18,14 +18,16 @@ export const StyledIngTitle = styled.p`
 export const StyledDescInput = styled.textarea`
   width: 335px;
   min-height: 184px;
-  margin-top: 40px;
   padding: 16px;
   margin-bottom: 20px;
   background: transparent;
   border-radius: 14px;
-  border: 1px solid var(--transp-white);
+  border: ${({ theme }) =>
+    theme === 'dark'
+      ? '1px solid var(--transp-white)'
+      : '1px solid var(--transp-dark)'};
   color: ${({ theme }) =>
-    theme === 'dark' ? lightTheme.colors.main : darkTheme.colors.main};
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
   line-height: 1;
   vertical-align: top;
   resize: none;
@@ -37,7 +39,7 @@ export const StyledDescInput = styled.textarea`
 export const StyledSubmitBtn = styled.button`
   border-radius: 42px;
   background-color: ${({ theme }) =>
-    theme === 'dark' ? darkTheme.background.main : lightTheme.background.main};
+    theme === 'dark' ? 'var(--white)' : 'var(--black)'};
   display: inline-flex;
   padding: 14px 40px;
   align-items: flex-start;
@@ -49,6 +51,7 @@ export const StyledSubmitBtn = styled.button`
   font-weight: 600;
   line-height: 18px;
   transition: all var(--tran-fast);
+  border: none;
   @media ${device.tablet} {
     display: block;
   }
@@ -169,4 +172,12 @@ export const StyledValidIng = styled(StyledValidText)`
 
 export const RelativeLabel = styled.label`
   position: relative;
+`;
+
+export const StyledValidationText = styled.p`
+  position: absolute;
+  top: 280px;
+  color: #ff7c31;
+  font-size: 13px;
+  width: 100%;
 `;

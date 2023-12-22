@@ -38,6 +38,7 @@ const GlobalStyles = createGlobalStyle`
   --error-red: #DA1414;
   --dark-theme-bg:rgba(22, 31, 55, 0.50);
   --light-theme-bg: #161F37;
+  
 
 
 
