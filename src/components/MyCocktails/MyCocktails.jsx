@@ -11,9 +11,11 @@ import {
   EmptyFavoritesContainer,
   EmptyFavoritesImage,
 } from '../FavoriteCocktails/FavoriteCocktails.styled';
+import { selectTheme } from '../../redux/theme/selectors.js';
 
 const MyOwnCocktails = () => {
   const ownCocktailsList = useSelector(selectOwnDrinks);
+  const theme = useSelector(selectTheme);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -26,7 +28,7 @@ const MyOwnCocktails = () => {
         srcSet={`${usual} 1x, ${retina} 2x`}
         alt="Cocktail"
       />
-      <EmptyDescription>
+      <EmptyDescription theme={theme}>
         You haven&rsquo;t added any cocktails yet
       </EmptyDescription>
     </EmptyFavoritesContainer>

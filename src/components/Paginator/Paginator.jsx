@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 import { PaginateContainer, Paginator } from './Paginator.styled';
 import sprite from '../../images/sprite.svg';
 import { size } from '../../styles/device';
+import { useSelector } from 'react-redux';
+import { selectTheme } from '../../redux/theme/selectors';
 
 function PaginatedItems({
   items,
@@ -14,6 +16,7 @@ function PaginatedItems({
 }) {
   const [currentPage, setCurrentPage] = useState(0);
   const [currentDevice, setCurrentDevice] = useState('');
+  const theme = useSelector(selectTheme);
 
   useEffect(() => {
     const handleResize = () => {
@@ -86,6 +89,7 @@ function PaginatedItems({
       />
       {paginatorExpediency && (
         <Paginator
+          theme={theme}
           breakLabel="..."
           nextLabel={
             <svg width="8" height="15" fill="currentColor">

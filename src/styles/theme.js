@@ -5,6 +5,7 @@ export const darkTheme = {
     main: 'var(--dark)',
     darkBg: 'var(--dark-theme-bg)',
     blackBg: 'var(--black)',
+    activeBlue: 'var(--active-blue)',
   },
   colors: {
     main: 'var(--white)',
@@ -23,6 +24,7 @@ export const lightTheme = {
   background: {
     main: 'var(--white)',
     lightBg: 'var(--black)',
+    activeBlue: 'var(--active-blue)',
   },
   colors: {
     main: 'var(--dark)',
