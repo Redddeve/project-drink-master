@@ -43,8 +43,8 @@ const UserDrinkPage = () => {
   }, [dispatch, drinkId]);
 
   useEffect(() => {
-    setIsFavorite(!!favorites?.find(dr => dr.id === drink.id));
-  }, [favorites, drink.id]);
+    setIsFavorite(!!favorites?.find(dr => dr._id === drink._id));
+  }, [drink, favorites]);
 
   return (
     <>
