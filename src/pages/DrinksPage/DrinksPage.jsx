@@ -78,6 +78,7 @@ const DrinksPage = () => {
           <use href={`${sprite}#icon-search`} />
         </StyledSvg>
         <StyledSelect
+          theme={theme}
           classNamePrefix={'Select'}
           options={categoriesOptions}
           placeholder={'All categories'}
@@ -93,6 +94,7 @@ const DrinksPage = () => {
           styles={stylesDrink}
         />
         <StyledSelect
+          theme={theme}
           classNamePrefix={'Select'}
           options={ingredientsOptions}
           placeholder={'Ingredients'}

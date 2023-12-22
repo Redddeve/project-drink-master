@@ -137,29 +137,7 @@ export const StyledIngSelectLabel = styled.label`
     border-radius: 200px;
   }
 
-  .css-1mek91f-control {
-    color: ${({ theme }) =>
-      theme === 'dark' ? 'var(--white)' : 'var(--black)'};
-  }
-
-  .css-1s79r8j-menu {
-    background-color: ${({ theme }) =>
-      theme === 'dark' ? 'var(--light-theme-bg)' : 'var(--white)'};
-    color: ${({ theme }) =>
-      theme === 'dark' ? 'var(--white)' : 'var(--black)'};
-  }
-
-  .css-o508l4-option {
-    color: ${({ theme }) =>
-      theme === 'dark' ? 'var(--transp-white)' : 'var(--transp-dark)'};
-  }
-
-  .css-1cjjgcc-option {
-    color: ${({ theme }) =>
-      theme === 'dark' ? 'var(--white)' : 'var(--dark)'};
-  }
-
-  .css-o508l4-option:hover {
+  .css-1rh15wy-option:hover {
     color: ${({ theme }) =>
       theme === 'dark' ? 'var(--white)' : 'var(--dark)'};
     cursor: pointer;
@@ -180,13 +158,27 @@ export const StyledIngSelectLabel = styled.label`
       theme === 'dark' ? 'var(--white)' : 'var(--black)'};
   }
 
-  .css-i2rag0-control {
-    border-color: ${({ theme }) =>
-      theme === 'dark' ? 'var(--white)' : 'var(--dark)'};
-  }
-
   .css-tj5bde-Svg {
     fill: ${({ theme }) =>
       theme === 'dark' ? 'var(--white)' : 'var(--black)'};
+  }
+
+  .css-1df1nbw-menu {
+    background-color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--light-theme-bg)' : 'var(--white)'};
+  }
+
+  .css-1rh15wy-option {
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--transp-white)' : 'var(--transp-dark)'};
+  }
+
+  .css-1y6kdfa-option {
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--white)' : 'var(--dark)'};
+  }
+
+  .css-1y6kdfa-option {
+    background-color: none;
   }
 `;

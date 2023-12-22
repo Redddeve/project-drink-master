@@ -116,7 +116,7 @@ export const StyledSelect = styled(Select)`
       width: 199px;
     }
   }
-  
+
   .Select__placeholder {
     color: var(--white);
     display: flex;
@@ -140,22 +140,22 @@ export const StyledSelect = styled(Select)`
     padding: 4.5px 12px;
     background: none;
     cursor: pointer;
-    color: rgba(243, 243, 243, 0.4);
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--transp-white)' : 'var(--transp-dark)'};
     transition: var(--tran-fast);
   }
 
-  .Select__option--is-focused {
-    color: var(--white);
-  }
-  
-  .Select__input-container{
+  .Select__input-container {
     color: var(--white);
   }
 
   .Select__menu {
     height: ${props => (props.$small ? '240px' : '314px')};
     border-radius: 20px;
-    background: var(--black);
+    background-color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--light-theme-bg)' : 'var(--white)'};
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--white)' : 'var(--black)'};
     padding-right: 7px;
     overflow-y: hidden;
 
@@ -167,7 +167,7 @@ export const StyledSelect = styled(Select)`
 
     .Select__menu-list {
       max-height: ${props => (props.$small ? '295px' : '405px')};
-      
+
       &::-webkit-scrollbar {
         padding-right: 5px;
         padding-bottom: 5px;
@@ -193,6 +193,11 @@ export const StyledSelect = styled(Select)`
       color: var(--orange);
       cursor: pointer;
     }
+
+    /* .cqenAZ .Select__option--is-focused {
+      color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--transp-white)' : 'var(--transp-dark)'};
+    } */
   }
 `;
 

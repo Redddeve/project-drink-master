@@ -26,6 +26,9 @@ export const StyledDrinkImage = styled.img`
 `;
 
 export const StyledDrinkName = styled.span`
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.38;
   color: ${({ theme }) =>
     theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
 `;

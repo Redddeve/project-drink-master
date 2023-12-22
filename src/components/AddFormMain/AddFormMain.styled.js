@@ -38,6 +38,8 @@ export const StyledInfoDiv = styled.div`
 `;
 export const StyledRadioLabel = styled.label`
   display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   margin-bottom: 80px;
   input[type='radio']:checked + p {
@@ -48,21 +50,26 @@ export const StyledRadioLabel = styled.label`
       background-color: white;
       border: ${({ theme }) =>
         theme === 'dark'
-          ? '2px solid var(--transp-white)'
-          : '2px solid var(--black)'};
+          ? '1px solid var(--transp-white)'
+          : '1px solid var(--black)'};
     }
     &::after {
       content: '';
       display: flex;
       border-radius: 50%;
-      top: 2.5px;
-      left: 2px;
-      border: 2.9px solid black;
+      top: 3px;
+      left: 3px;
+      /* border: 2.9px solid black; */
+      border: ${({ theme }) =>
+        theme === 'dark' ? '1px solid var(--black)' : '2px solid var(--black)'};
       width: 12px;
       height: 12px;
       opacity: 1;
       position: absolute;
       z-index: 3;
+      /* background-color: black; */
+      background-color: ${({ theme }) =>
+        theme === 'dark' ? 'var(--white)' : 'var(--black)'};
     }
   }
   position: relative;
@@ -83,8 +90,8 @@ export const StyledRadioLabel = styled.label`
         theme === 'dark'
           ? '2px solid var(--transp-white)'
           : '2px solid var(--transp-dark)'};
-      width: 17px;
-      height: 17px;
+      width: 18px;
+      height: 18px;
       opacity: 1;
       position: absolute;
       z-index: 2;
@@ -127,29 +134,7 @@ export const StyledSelectLabel = styled.label`
     width: 352px;
   }
 
-  .css-1mek91f-control {
-    color: ${({ theme }) =>
-      theme === 'dark' ? 'var(--white)' : 'var(--black)'};
-  }
-
-  .css-1s79r8j-menu {
-    background-color: ${({ theme }) =>
-      theme === 'dark' ? 'var(--light-theme-bg)' : 'var(--white)'};
-    color: ${({ theme }) =>
-      theme === 'dark' ? 'var(--white)' : 'var(--black)'};
-  }
-
-  .css-o508l4-option {
-    color: ${({ theme }) =>
-      theme === 'dark' ? 'var(--transp-white)' : 'var(--transp-dark)'};
-  }
-
-  .css-1cjjgcc-option {
-    color: ${({ theme }) =>
-      theme === 'dark' ? 'var(--white)' : 'var(--dark)'};
-  }
-
-  .css-o508l4-option:hover {
+  .css-1rh15wy-option:hover {
     color: ${({ theme }) =>
       theme === 'dark' ? 'var(--white)' : 'var(--dark)'};
     cursor: pointer;
@@ -173,6 +158,25 @@ export const StyledSelectLabel = styled.label`
   .css-tj5bde-Svg {
     fill: ${({ theme }) =>
       theme === 'dark' ? 'var(--white)' : 'var(--black)'};
+  }
+
+  .css-14re6nr-menu {
+    background-color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--light-theme-bg)' : 'var(--white)'};
+  }
+
+  .css-1rh15wy-option {
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--transp-white)' : 'var(--transp-dark)'};
+  }
+
+  .css-1y6kdfa-option {
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--white)' : 'var(--dark)'};
+  }
+
+  .css-1y6kdfa-option {
+    background-color: none;
   }
 `;
 export const StyledTitleInput = styled.input`
