@@ -14,9 +14,12 @@ import {
 } from './CocktailItem.styled';
 import RemoveButton from '..//SharedComponents/RemoveButton/RemoveButton';
 import CommonBtn from '../SharedComponents/CommonBtn/CommonBtn';
+import { useSelector } from 'react-redux';
+import { selectTheme } from '../../redux/theme/selectors';
 
 const CocktailItem = ({ cocktail, page }) => {
   const { _id, drink, alcoholic, description, drinkThumb } = cocktail;
+  const theme = useSelector(selectTheme);
 
   const [imageLoadError, setImageLoadError] = useState(false);
 
@@ -34,10 +37,10 @@ const CocktailItem = ({ cocktail, page }) => {
         />
       )}
       <CocktailContainerTitle>
-        <CocktailTitle>{drink}</CocktailTitle>
-        <CocktailLabel>{alcoholic}</CocktailLabel>
+        <CocktailTitle theme={theme}>{drink}</CocktailTitle>
+        <CocktailLabel theme={theme}>{alcoholic}</CocktailLabel>
       </CocktailContainerTitle>
-      <CocktailDescription>{description}</CocktailDescription>
+      <CocktailDescription theme={theme}>{description}</CocktailDescription>
       <ButtonContainer>
         <CommonBtn as={Link} to={`/drink/${_id}`} variant="seeMoreItem">
           See more

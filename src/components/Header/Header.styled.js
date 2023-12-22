@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 import { device } from '../../styles/device';
+import { darkTheme, lightTheme } from '../../styles/theme';
 
 export const HeaderWrapper = styled.header`
-  border-bottom: 1px solid rgba(243, 243, 243, 0.2);
+  border-bottom: ${({ theme }) =>
+    theme === 'dark'
+      ? darkTheme.borderColor.main
+      : lightTheme.borderColor.main};
 `;
 
 export const HeaderContainer = styled.div`

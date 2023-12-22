@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { device } from '../../styles/device.js';
+import { darkTheme, lightTheme } from '../../styles/theme.js';
 
 export const StyledDrinkCard = styled.li`
   width: 335px;
@@ -24,6 +25,14 @@ export const StyledDrinkImage = styled.img`
   }
 `;
 
+export const StyledDrinkName = styled.span`
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.38;
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
+`;
+
 export const StyledTextContainerSmall = styled.div`
   width: 100%;
   margin-top: 14px;
@@ -32,6 +41,7 @@ export const StyledTextContainerSmall = styled.div`
 `;
 
 export const StyledSeeMoreSmall = styled(Link)`
-  color: var(--transp-white);
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.transp : lightTheme.colors.transp};
   cursor: pointer;
 `;

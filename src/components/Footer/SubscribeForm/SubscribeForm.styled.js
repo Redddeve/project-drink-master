@@ -18,7 +18,7 @@ export const SubscribeDesc = styled.div`
 
 export const SubscribeInput = styled.input`
   position: relative;
-  max-width: 335px;
+  width: 100%;
   height: 54px;
   padding-left: 24px;
 
@@ -35,6 +35,7 @@ export const SubscribeInput = styled.input`
   }
 `;
 export const InputMessage = styled.div`
+  position: relative;
   height: 18px;
   padding: 3px 0px 3px 20px;
   font-size: 12px;
@@ -43,5 +44,21 @@ export const InputMessage = styled.div`
   color: var(--error-red);
   .correct {
     color: var(--correct-green);
+  }
+`;
+export const StyledStatus = styled.svg`
+  z-index: 1;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  right: 14px;
+  top: -39px;
+  fill: none;
+  &.error {
+    fill: var(--error-red);
+  }
+
+  &.correct {
+    fill: var(--correct-green);
   }
 `;

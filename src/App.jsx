@@ -10,6 +10,8 @@ import Layout from './components/Layout/Layout';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { selectIsRefresh } from './redux/auth/selectors';
 import { Loader } from './components/Loader/Loader';
+import { selectTheme } from './redux/theme/selectors';
+import { StyledAppWrapper } from './styles/theme';
 
 const HomePage = lazy(() => import('./pages/Homepage/Homepage'));
 const DrinksPage = lazy(() => import('./pages/DrinksPage/DrinksPage'));
@@ -25,6 +27,7 @@ const AgreementPage = lazy(() => import('./pages/AgreementPage/AgreementPage'));
 const App = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsRefresh);
+  const theme = useSelector(selectTheme);
   useEffect(() => {
     dispatch(refreshThunk());
   }, [dispatch]);
@@ -34,86 +37,88 @@ const App = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <Routes>
-          <Route path="/welcome" element={<WelcomePage />} />
-          <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/signin" element={<SignInPage />} />
+        <StyledAppWrapper theme={theme}>
+          <Routes>
+            <Route path="/welcome" element={<WelcomePage />} />
+            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/signin" element={<SignInPage />} />
 
-          <Route path="/" element={<Layout />}>
-            <Route
-              index
-              element={
-                <PrivateRoute>
-                  <HomePage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/drinks"
-              element={
-                <PrivateRoute>
-                  <DrinksPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/add"
-              element={
-                <PrivateRoute>
-                  <AddDrinkPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/favorites"
-              element={
-                <PrivateRoute>
-                  <FavoriteDrinksPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/drink/:drinkId"
-              element={
-                <PrivateRoute>
-                  <UserDrinkPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/my"
-              element={
-                <PrivateRoute>
-                  <MyDrinksPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/agreement"
-              element={
-                <PrivateRoute>
-                  <AgreementPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/policy"
-              element={
-                <PrivateRoute>
-                  <PolicyPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="*"
-              element={
-                <PrivateRoute>
-                  <NotFoundPage />
-                </PrivateRoute>
-              }
-            />
-          </Route>
-        </Routes>
+            <Route path="/" element={<Layout />}>
+              <Route
+                index
+                element={
+                  <PrivateRoute>
+                    <HomePage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/drinks"
+                element={
+                  <PrivateRoute>
+                    <DrinksPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/add"
+                element={
+                  <PrivateRoute>
+                    <AddDrinkPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/favorites"
+                element={
+                  <PrivateRoute>
+                    <FavoriteDrinksPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/drink/:drinkId"
+                element={
+                  <PrivateRoute>
+                    <UserDrinkPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/my"
+                element={
+                  <PrivateRoute>
+                    <MyDrinksPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/agreement"
+                element={
+                  <PrivateRoute>
+                    <AgreementPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/policy"
+                element={
+                  <PrivateRoute>
+                    <PolicyPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="*"
+                element={
+                  <PrivateRoute>
+                    <NotFoundPage />
+                  </PrivateRoute>
+                }
+              />
+            </Route>
+          </Routes>
+        </StyledAppWrapper>
       )}
     </>
   );
