@@ -1,4 +1,4 @@
-import{s as e,d as t}from"./index-iWLKKpYj.js";const o=e.div`
+import{u as t,d as e,a,l as i}from"./index-X7_WEst2.js";const s=t.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -8,10 +8,10 @@ import{s as e,d as t}from"./index-iWLKKpYj.js";const o=e.div`
     font-weight: 600;
     padding-bottom: 30px;
 
-    @media ${t.tablet} {
+    @media ${e.tablet} {
       font-size: 56px;
     }
-    @media ${t.desktop} {
+    @media ${e.desktop} {
       font-size: 64px;
     }
   }
@@ -19,4 +19,6 @@ import{s as e,d as t}from"./index-iWLKKpYj.js";const o=e.div`
     text-align: justify;
     margin-bottom: 20px;
   }
-`;export{o as P};
+`,p=t.p`
+  color: ${({theme:o})=>o==="dark"?a.colors.main:i.colors.main};
+`;export{s as P,p as S};

@@ -1,4 +1,4 @@
-import{s as e,d as t}from"./index-iWLKKpYj.js";const a=e.div`
+import{u as a,d as t}from"./index-X7_WEst2.js";const o=a.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,13 +14,14 @@ import{s as e,d as t}from"./index-iWLKKpYj.js";const a=e.div`
   @media ${t.desktop} {
     margin: 67px auto 0;
   }
-`,p=e.img`
+`,p=a.img`
   height: 247px;
 
   @media ${t.tablet} {
     height: 326px;
   }
-`,o=e.p`
+`,r=a.p`
   text-align: center;
   font-weight: 500;
-`;export{a as E,p as a,o as b};
+  color: ${({theme:e})=>e==="dark"?"var(--white)":"var(--black)"};
+`;export{o as E,p as a,r as b};
