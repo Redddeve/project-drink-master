@@ -16,6 +16,7 @@ import {
   StyledFileTextPlus,
   StyledFileTextAdd,
   StyledRadioTest,
+  StyledInputSelectText,
 } from './AddFormMain.styled';
 import {
   stylesSelect,
@@ -139,7 +140,9 @@ const AddFormMain = ({
             )}
           </RelativeLabel>
           <StyledSelectLabel theme={theme}>
-            <p>Category</p>
+            <StyledInputSelectText theme={theme}>
+              Category
+            </StyledInputSelectText>
 
             <Controller
               name="category"
@@ -166,7 +169,7 @@ const AddFormMain = ({
             )}
           </StyledSelectLabel>
           <StyledSelectLabel theme={theme}>
-            <p>Glass</p>
+            <StyledInputSelectText theme={theme}>Glass</StyledInputSelectText>
             <Controller
               name="glass"
               control={control}

@@ -37,7 +37,6 @@ export const StyledInfoDiv = styled.div`
   }
 `;
 export const StyledRadioLabel = styled.label`
-  /* color: rgba(243, 243, 243, 0.5); */
   display: flex;
   cursor: pointer;
   margin-bottom: 80px;
@@ -50,7 +49,7 @@ export const StyledRadioLabel = styled.label`
       border: ${({ theme }) =>
         theme === 'dark'
           ? '2px solid var(--transp-white)'
-          : '2px solid var(--dark)'};
+          : '2px solid var(--black)'};
     }
     &::after {
       content: '';
@@ -83,8 +82,7 @@ export const StyledRadioLabel = styled.label`
       border: ${({ theme }) =>
         theme === 'dark'
           ? '2px solid var(--transp-white)'
-          : '2px solid var(--dark)'};
-      border: 2px solid var(--transp-white);
+          : '2px solid var(--transp-dark)'};
       width: 17px;
       height: 17px;
       opacity: 1;
@@ -104,6 +102,12 @@ export const StyledRadioLabelDiv = styled.label`
     max-height: 32px;
   }
 `;
+
+export const StyledInputSelectText = styled.p`
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.transp : lightTheme.colors.transp};
+`;
+
 export const StyledSelectLabel = styled.label`
   width: 335px;
   position: relative;
@@ -165,6 +169,11 @@ export const StyledSelectLabel = styled.label`
     color: ${({ theme }) =>
       theme === 'dark' ? 'var(--white)' : 'var(--black)'};
   }
+
+  .css-tj5bde-Svg {
+    fill: ${({ theme }) =>
+      theme === 'dark' ? 'var(--white)' : 'var(--black)'};
+  }
 `;
 export const StyledTitleInput = styled.input`
   width: 335px;
@@ -179,6 +188,11 @@ export const StyledTitleInput = styled.input`
   margin-bottom: 31px;
   color: ${({ theme }) =>
     theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
+
+  &::placeholder {
+    color: ${({ theme }) =>
+      theme === 'dark' ? darkTheme.colors.transp : lightTheme.colors.transp};
+  }
   @media ${device.tablet} {
     padding-bottom: 18px;
     width: 352px;

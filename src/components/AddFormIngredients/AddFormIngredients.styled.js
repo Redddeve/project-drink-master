@@ -78,9 +78,7 @@ export const StyledIngFieldInput = styled.input`
   height: 50px;
   border-radius: 200px;
   border: ${({ theme }) =>
-    theme === 'dark'
-      ? darkTheme.borderColor.main
-      : lightTheme.borderColor.main};
+    theme === 'dark' ? '1px solid var(--white)' : '1px solid var(--dark)'};
   background: transparent;
   color: ${({ theme }) => (theme === 'dark' ? 'var(--white)' : 'var(--dark)')};
   padding: 0 60px 0 24px;
@@ -93,7 +91,7 @@ export const StyledIngFieldInput = styled.input`
 export const StyledIngFieldLabel = styled.label`
   display: flex;
   margin-bottom: 18px;
-  gap: 8px;
+  gap: 14px;
 `;
 export const StyledIngFieldWrapper = styled.div`
   position: relative;
@@ -102,8 +100,88 @@ export const StyledIngFieldWrapper = styled.div`
 export const StyledIngTitleDiv = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
+`;
+
+export const StyledIngTitle = styled.h3`
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.38em;
+  margin-bottom: 24px;
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
 `;
 
 export const StyledIconCross = styled.svg`
   stroke: ${({ theme }) => (theme === 'dark' ? 'var(--white)' : 'var(--dark)')};
+`;
+
+export const StyledIngSelectLabel = styled.label`
+  width: 200px;
+  position: relative;
+  height: 35px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 3px;
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.transp : lightTheme.colors.transp};
+  @media ${device.tablet} {
+    padding-bottom: 18px;
+    width: 352px;
+    height: 50px;
+    border-radius: 200px;
+  }
+
+  .css-1mek91f-control {
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--white)' : 'var(--black)'};
+  }
+
+  .css-1s79r8j-menu {
+    background-color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--light-theme-bg)' : 'var(--white)'};
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--white)' : 'var(--black)'};
+  }
+
+  .css-o508l4-option {
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--transp-white)' : 'var(--transp-dark)'};
+  }
+
+  .css-1cjjgcc-option {
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--white)' : 'var(--dark)'};
+  }
+
+  .css-o508l4-option:hover {
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--white)' : 'var(--dark)'};
+    cursor: pointer;
+  }
+
+  .css-1diu2n5-indicatorContainer {
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--white)' : 'var(--dark)'};
+  }
+
+  .css-1u9des2-indicatorSeparator {
+    background-color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--dark)' : 'var(--white)'};
+  }
+
+  .css-1dimb5e-singleValue {
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--white)' : 'var(--black)'};
+  }
+
+  .css-i2rag0-control {
+    border-color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--white)' : 'var(--dark)'};
+  }
+
+  .css-tj5bde-Svg {
+    fill: ${({ theme }) =>
+      theme === 'dark' ? 'var(--white)' : 'var(--black)'};
+  }
 `;

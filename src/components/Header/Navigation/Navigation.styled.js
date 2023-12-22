@@ -39,7 +39,7 @@ export const Nav = styled.nav`
     background-color: ${({ theme }) =>
       theme === 'dark'
         ? lightTheme.background.main
-        : darkTheme.background.main};
+        : darkTheme.background.blackBg};
   }
 `;
 

@@ -61,7 +61,9 @@ export const AddDrinksNavLink = styled(NavLink)`
   padding: 14px 40px;
   border-radius: 42px;
   background-color: ${({ theme }) =>
-    theme === 'dark' ? lightTheme.background.main : darkTheme.background.main};
+    theme === 'dark'
+      ? lightTheme.background.main
+      : darkTheme.background.blackBg};
   display: inline-block;
 
   &:hover,

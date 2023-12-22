@@ -4,6 +4,7 @@ export const darkTheme = {
   background: {
     main: 'var(--dark)',
     darkBg: 'var(--dark-theme-bg)',
+    blackBg: 'var(--black)',
   },
   colors: {
     main: 'var(--white)',

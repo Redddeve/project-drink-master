@@ -6,9 +6,7 @@ import sprite from '../../images/sprite.svg';
 import { useEffect, useState } from 'react';
 import {
   ingStyles,
-  RelativeLabel,
   StyledValidIng,
-  StyledIngTitle,
 } from '../../pages/AddDrinkPage/AddDrinkPage.styled';
 import {
   StyledAddBtn,
@@ -19,6 +17,8 @@ import {
   StyledIngFieldInput,
   StyledIngFieldLabel,
   StyledIngFieldWrapper,
+  StyledIngSelectLabel,
+  StyledIngTitle,
   StyledIngTitleDiv,
   StyledIngredientsText,
 } from './AddFormIngredients.styled';
@@ -95,7 +95,7 @@ const AddFormIngredients = ({
         {ingNumber.map((el, index) => {
           return (
             <StyledIngFieldLabel theme={theme} key={ingNumber[index]}>
-              <RelativeLabel>
+              <StyledIngSelectLabel theme={theme}>
                 <Controller
                   name={`Ingredients${index}`}
                   control={control}
@@ -104,12 +104,6 @@ const AddFormIngredients = ({
                       styles={ingStyles}
                       {...field}
                       options={ingOptions}
-                      // theme={theme => ({
-                      //   ...theme,
-                      //   colors: {
-                      //     neutral50: 'rgba(243, 243, 243, 0.8)',
-                      //   },
-                      // })}
                       theme={theme}
                     />
                   )}
@@ -120,7 +114,7 @@ const AddFormIngredients = ({
                     {errors[`Ingredients${index}`].message}
                   </StyledValidIng>
                 )}
-              </RelativeLabel>
+              </StyledIngSelectLabel>
 
               <StyledIngFieldWrapper theme={theme}>
                 <StyledIngFieldInput
@@ -132,7 +126,7 @@ const AddFormIngredients = ({
                 />
               </StyledIngFieldWrapper>
               <StyledIngFieldBtn theme={theme} onClick={e => deleteIng(e, el)}>
-                <StyledIconCross width="18" height="18">
+                <StyledIconCross theme={theme} width="18" height="18">
                   <use href={`${sprite}#icon-X`} />
                 </StyledIconCross>
               </StyledIngFieldBtn>
