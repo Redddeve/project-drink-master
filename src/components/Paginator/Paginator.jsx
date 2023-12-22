@@ -10,6 +10,7 @@ import { selectTheme } from '../../redux/theme/selectors';
 function PaginatedItems({ items, destination, ListComponent, setPage }) {
   const [currentPage, setCurrentPage] = useState(0);
   const pageCount = useSelector(selectPages);
+  const theme = useSelector(selectTheme);
 
   const paginatorExpediency = pageCount > 1;
 
@@ -34,6 +35,7 @@ function PaginatedItems({ items, destination, ListComponent, setPage }) {
       <ListComponent cocktailData={items} destination={destination} />
       {paginatorExpediency && (
         <Paginator
+          theme={theme}
           breakLabel="..."
           nextLabel={<PaginationIcon iconId="icon-pagi-right" />}
           onPageChange={handlePageClick}
