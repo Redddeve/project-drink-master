@@ -5,13 +5,16 @@ import {
   StyledText,
   StyledTitle,
 } from './RecipePreparation.styled';
+import { useSelector } from 'react-redux';
+import { selectTheme } from '../../redux/theme/selectors';
 const RecipePreparation = ({ instructions }) => {
+  const theme = useSelector(selectTheme);
   return (
     <div>
-      <StyledTitle>Recipe Preparation</StyledTitle>
+      <StyledTitle theme={theme}>Recipe Preparation</StyledTitle>
       <StyledDiv>
         <StyledImgDiv></StyledImgDiv>
-        <StyledText>{instructions}</StyledText>
+        <StyledText theme={theme}>{instructions}</StyledText>
       </StyledDiv>
     </div>
   );
