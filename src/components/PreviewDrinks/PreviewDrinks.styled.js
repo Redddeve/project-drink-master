@@ -31,7 +31,7 @@ export const OtherDrinksNavLink = styled(NavLink)`
 
   &:hover,
   &:focus {
-    border: 2px solid rgba(64, 112, 205, 0.5);
+    box-shadow: 1px 1px 15px 3px gray;
     transition: var(--tran-fast);
   }
 
