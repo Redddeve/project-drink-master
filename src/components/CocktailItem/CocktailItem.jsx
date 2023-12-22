@@ -16,6 +16,7 @@ import RemoveButton from '../RemoveButton/RemoveButton';
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../../redux/theme/selectors';
 // import CommonBtn from '../SharedComponents/CommonBtn/CommonBtn';
+import LazyLoad from 'react-lazy-load';
 
 const CocktailItem = ({ cocktail, page }) => {
   const { _id, drink, alcoholic, description, drinkThumb } = cocktail;
@@ -30,11 +31,18 @@ const CocktailItem = ({ cocktail, page }) => {
       {imageLoadError ? (
         <CocktailImage srcSet={`${usual} 1x, ${retina} 2x`} alt={drink} />
       ) : (
-        <CocktailImage
-          src={drinkThumb}
-          alt={drink}
-          onError={handleImageError}
-        />
+        <LazyLoad
+          offset={100}
+          onContentVisible={() => {
+            console.log('loaded1!');
+          }}
+        >
+          <CocktailImage
+            src={drinkThumb}
+            alt={drink}
+            onError={handleImageError}
+          />
+        </LazyLoad>
       )}
       <CocktailContainerTitle>
         <CocktailTitle theme={theme}>{drink}</CocktailTitle>
