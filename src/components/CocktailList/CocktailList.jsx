@@ -1,4 +1,3 @@
-// import React from 'react';
 import PropTypes from 'prop-types';
 import CocktailItem from '../CocktailItem/CocktailItem';
 import { ListStyled } from './CocktailList.styled';
@@ -7,7 +6,7 @@ const CocktailList = ({ cocktailData, destination }) => {
   return (
     <>
       <ListStyled>
-        {cocktailData.map((cocktail, index) => (
+        {cocktailData?.map((cocktail, index) => (
           <CocktailItem
             key={cocktail._id || index}
             cocktail={cocktail}
