@@ -7,27 +7,32 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import { configureStore } from "@reduxjs/toolkit";
-import { drinksReducer } from "./drinks/slice";
-import { authReducer } from "./auth/slice";
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { configureStore } from '@reduxjs/toolkit';
+import { drinksReducer } from './drinks/slice';
+import { authReducer } from './auth/slice';
+import { themeReducer } from './theme/slice';
 
-const persistConfig = {
-  key: "root",
-  version: 1,
+const authPersistConfig = {
+  key: 'auth',
   storage,
-  whitelist: ["token"],
 };
 
-const persistedReducer = persistReducer(persistConfig, authReducer);
+const themePersistConfig = {
+  key: 'theme',
+  storage,
+};
+
+const rootReducer = {
+  drinks: drinksReducer,
+  auth: persistReducer(authPersistConfig, authReducer),
+  theme: persistReducer(themePersistConfig, themeReducer),
+};
 
 export const store = configureStore({
-  reducer: {
-    drinks: drinksReducer,
-    auth: persistedReducer,
-  },
-  middleware: (getDefaultMiddleware) =>
+  reducer: rootReducer,
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { selectPopular } from '../../redux/drinks/selectors';
 import FollowUs from '../SharedComponents/FollowUs/FollowUs/FollowUs';
 import { Link } from 'react-router-dom';
+import { selectTheme } from '../../redux/theme/selectors';
 import {
   TitleFollow,
   FollowUsContainer,
@@ -18,30 +19,32 @@ import {
 
 const PopularDrinks = () => {
   const popularDrinks = useSelector(selectPopular);
+  const theme = useSelector(selectTheme);
 
   return (
     <MainContainer>
       <FollowUsContainer>
-        <TitleFollow>Follow Us</TitleFollow>
-        <FollowUs />
+        <TitleFollow theme={theme}>Follow Us</TitleFollow>
+        <FollowUs theme={theme} />
       </FollowUsContainer>
 
-      <PopularDrinkTitle>Popular drinks</PopularDrinkTitle>
+      <PopularDrinkTitle theme={theme}>Popular drinks</PopularDrinkTitle>
 
       <PopDrinkContainer>
-  {popularDrinks.map((item, index) => (
-    <SpaceContainer key={item._id || index}>
-     
-      <Link to={`/drink/${item._id}`}>  
-        <ImgDrink src={item.drinkThumb} alt={item.drink} />
-      </Link>
-      <PositionContainer>
-        <DrinkTitle>{item.drink}</DrinkTitle>
-        <DescriptiontTitle>{item.description}</DescriptiontTitle>
-      </PositionContainer>
-    </SpaceContainer>
-  ))}
-</PopDrinkContainer>
+        {popularDrinks.map((item, index) => (
+          <SpaceContainer key={item._id || index}>
+            <Link to={`/drink/${item._id}`}>
+              <ImgDrink src={item.drinkThumb} alt={item.drink} />
+            </Link>
+            <PositionContainer>
+              <DrinkTitle theme={theme}>{item.drink}</DrinkTitle>
+              <DescriptiontTitle theme={theme}>
+                {item.description}
+              </DescriptiontTitle>
+            </PositionContainer>
+          </SpaceContainer>
+        ))}
+      </PopDrinkContainer>
     </MainContainer>
   );
 };

@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { HeaderWrapper, HeaderContainer } from "./Header.styled"
+import { HeaderWrapper, HeaderContainer } from './Header.styled';
 import Navigation from './Navigation/Navigation';
 import Logo from './Logo/Logo';
 import BurgerMenu from './Burger/Burger';
+import { selectTheme } from '../../redux/theme/selectors';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1440);
   const [isOpenBurgerMenu, setisOpenBurgerMenu] = useState(false);
+  const theme = useSelector(selectTheme);
 
   const location = useLocation();
 
@@ -22,25 +25,25 @@ const Header = () => {
     }
   };
 
-  const handlerEscClick = (e) => {
-    const target = e.key === "Escape";
+  const handlerEscClick = e => {
+    const target = e.key === 'Escape';
     if (target) {
       setisOpenBurgerMenu(false);
     }
   };
 
   useEffect(() => {
-    window.addEventListener("resize", updateMedia);
+    window.addEventListener('resize', updateMedia);
 
     if (isOpenBurgerMenu) {
-      window.addEventListener("keydown", handlerEscClick);
+      window.addEventListener('keydown', handlerEscClick);
     }
 
     return () => {
-      window.removeEventListener("resize", updateMedia);
+      window.removeEventListener('resize', updateMedia);
 
       if (isOpenBurgerMenu) {
-        window.removeEventListener("keydown", handlerEscClick);
+        window.removeEventListener('keydown', handlerEscClick);
       }
     };
   }, [isOpenBurgerMenu]);
@@ -50,11 +53,11 @@ const Header = () => {
   }, [location.pathname]);
 
   return (
-    <HeaderWrapper>
+    <HeaderWrapper theme={theme}>
       <HeaderContainer>
         <Logo />
-        {isDesktop ? (<Navigation />
-          
+        {isDesktop ? (
+          <Navigation />
         ) : (
           <BurgerMenu
             toggleMenu={toggleMenu}
@@ -65,6 +68,6 @@ const Header = () => {
       </HeaderContainer>
     </HeaderWrapper>
   );
-}
+};
 
 export default Header;

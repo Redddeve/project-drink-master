@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { device } from '../../styles/device';
 import mobileImg from '../../images/three-cocktails-mobile@1x.jpg';
 import tabletImg from '../../images/three-cocktails@1x.jpg';
+import { darkTheme, lightTheme } from '../../styles/theme';
 export const StyledDiv = styled.div`
   display: flex;
   flex-direction: column-reverse;
@@ -39,6 +40,8 @@ export const StyledTitle = styled.h3`
   font-weight: 600;
   line-height: 32px;
   margin-bottom: 40px;
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
   @media ${device.tablet} {
     font-size: 40px;
     line-height: 44px;
@@ -52,6 +55,8 @@ export const StyledText = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
   @media ${device.tablet} {
     font-size: 16px;
     font-weight: 400;
