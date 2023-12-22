@@ -1,19 +1,17 @@
-/* eslint-disable no-undef */
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { PaginateContainer, Paginator } from './Paginator.styled';
-import sprite from '../../images/sprite.svg';
-import { size } from '../../styles/device';
-import { useSelector } from 'react-redux';
 import { selectPages } from '../../redux/drinks/selectors';
+import { useSelector } from 'react-redux';
+import PaginationIcon from './PaginatorIcons/PaginatedIcons';
 import { selectTheme } from '../../redux/theme/selectors';
-
 
 function PaginatedItems({ items, destination, ListComponent, setPage }) {
   const [currentPage, setCurrentPage] = useState(0);
-  const pages = useSelector(selectPages);
-  const pageCount = pages;
+  const pageCount = useSelector(selectPages);
+
+  const paginatorExpediency = pageCount > 1;
 
   const handlePageClick = ({ selected }) => {
     setPage(selected + 1);
@@ -24,32 +22,29 @@ function PaginatedItems({ items, destination, ListComponent, setPage }) {
     });
 
     if (selected === pageCount - 1) {
-      toast.info("It's the end of the cocktail list... 😟");
+      toast.info(
+        'The final chapter of our cocktail symphony has been reached. 🍹🎉'
+      );
     }
+    setCurrentPage(selected);
   };
 
   return (
     <PaginateContainer>
       <ListComponent cocktailData={items} destination={destination} />
-      <Paginator
-        breakLabel="..."
-        nextLabel={
-          <svg width="8" height="15" fill="currentColor">
-            <use href={`${sprite}#icon-pagi-right`} />
-          </svg>
-        }
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={1}
-        pageCount={pageCount}
-        previousLabel={
-          <svg width="8" height="15" fill="currentColor">
-            <use href={`${sprite}#icon-pagi-left`} />
-          </svg>
-        }
-        renderOnZeroPageCount={null}
-        forcePage={currentPage}
-        forceDisplay={true}
-      />
+      {paginatorExpediency && (
+        <Paginator
+          breakLabel="..."
+          nextLabel={<PaginationIcon iconId="icon-pagi-right" />}
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={1}
+          pageCount={pageCount}
+          previousLabel={<PaginationIcon iconId="icon-pagi-left" />}
+          renderOnZeroPageCount={null}
+          forcePage={currentPage}
+          forceDisplay={true}
+        />
+      )}
     </PaginateContainer>
   );
 }
