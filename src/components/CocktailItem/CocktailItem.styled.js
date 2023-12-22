@@ -70,6 +70,7 @@ export const CocktailLabel = styled.p`
 
 export const CocktailDescription = styled.p`
   overflow: hidden;
+  height: 75px;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
@@ -77,10 +78,12 @@ export const CocktailDescription = styled.p`
     theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
 
   @media ${device.tablet} {
+    height: 110px;
     -webkit-line-clamp: 5;
   }
 
   @media ${device.desktop} {
+    height: 90px;
     -webkit-line-clamp: 4;
   }
 `;
