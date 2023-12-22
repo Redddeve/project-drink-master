@@ -63,7 +63,6 @@ const AddDrinkPage = () => {
   return (
     <>
       <PageTitle title="Add drink" />
-
       <div>
         <AddFormMain
           register={register}
@@ -73,7 +72,7 @@ const AddDrinkPage = () => {
           errors={errors}
           onSubmit={onSubmit}
           theme={theme}
-        ></AddFormMain>
+        />
 
         <AddFormIngredients
           ingNumber={ingNumber}

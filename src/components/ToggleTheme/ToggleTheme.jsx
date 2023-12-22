@@ -60,9 +60,9 @@ const ToggleTheme = () => {
   };
 
   return (
-    <div>
+    <>
       <MaterialUISwitch checked={theme === 'dark'} onChange={toggleTheme} />
-    </div>
+    </>
   );
 };
 
