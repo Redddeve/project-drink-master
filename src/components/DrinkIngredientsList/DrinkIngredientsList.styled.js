@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { device } from '../../styles/device';
+import { darkTheme, lightTheme } from '../../styles/theme';
 
 export const StyledList = styled.ul`
   display: flex;
@@ -27,7 +28,8 @@ export const StyledImgDiv = styled.div`
   border-radius: 8px;
   width: 157px;
   height: 157px;
-  background: rgba(22, 31, 55, 0.5);
+  background-color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.background.lightBg};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,6 +60,8 @@ export const StyledTextDiv = styled.div`
 export const StyledTextTitle = styled.p`
   font-size: 14px;
   line-height: 18px;
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
   @media ${device.tablet} {
     font-size: 18px;
     line-height: 24px;
@@ -66,10 +70,12 @@ export const StyledTextTitle = styled.p`
   }
 `;
 export const StyledTextMeasure = styled(StyledTextTitle)`
-  color: rgba(243, 243, 243, 0.5);
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.transp : lightTheme.colors.transp};
 `;
 export const StyledTitle = styled.h3`
-  color: rgba(243, 243, 243, 0.5);
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.transp : lightTheme.colors.transp};
   font-size: 16px;
   line-height: 20px;
   margin-bottom: 42px;

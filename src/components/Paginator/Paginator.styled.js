@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import ReactPaginate from 'react-paginate';
 import { device } from '../../styles/device';
+import { darkTheme, lightTheme } from '../../styles/theme';
 
 export const PaginateContainer = styled.div`
   display: flex;
@@ -38,6 +39,8 @@ export const Paginator = styled(ReactPaginate).attrs({
     font-size: 12px;
     font-weight: 500;
     cursor: pointer;
+    color: ${({ theme }) =>
+      theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
   }
 
   li.previous {
@@ -60,16 +63,24 @@ export const Paginator = styled(ReactPaginate).attrs({
   li.next a,
   li.break a {
     align-items: center;
+    color: ${({ theme }) =>
+      theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
   }
 
   li.active a {
-    background-color: var(--active-blue);
+    background-color: ${({ theme }) =>
+      theme === 'dark'
+        ? darkTheme.background.activeBlue
+        : lightTheme.background.activeBlue};
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--white)' : 'var(--white)'};
     align-items: center;
     padding-bottom: 0;
   }
 
   li.disabled a {
-    color: var(--transp-disabled);
+    color: ${({ theme }) =>
+      theme === 'dark' ? darkTheme.colors.transp : lightTheme.colors.transp};
   }
 
   li.disable,

@@ -21,8 +21,10 @@ import {
 } from './UserDrinkPage.styled.js';
 import DrinkIngredientsList from '../../components/DrinkIngredientsList/DrinkIngredientsList.jsx';
 import RecipePreparation from '../../components/RecipePreparation/RecipePreparation.jsx';
+import { selectTheme } from '../../redux/theme/selectors.js';
 
 const UserDrinkPage = () => {
+  const theme = useSelector(selectTheme);
   const { drinkId } = useParams();
   const dispatch = useDispatch();
 
@@ -43,17 +45,20 @@ const UserDrinkPage = () => {
   }, [dispatch, drinkId]);
 
   useEffect(() => {
-    setIsFavorite(!!favorites?.find(dr => dr.id === drink.id));
-  }, [favorites, drink.id]);
+    setIsFavorite(!!favorites?.find(dr => dr._id === drink._id));
+  }, [drink, favorites]);
 
   return (
     <>
       <StyledDrinkHero>
         <div>
-          <StyledDrinkHeader>{drink.drink}</StyledDrinkHeader>
-          <StyledDrinkType>{`${drink.glass} / ${drink.alcoholic}`}</StyledDrinkType>
-          <StyledDrinkDesc>{drink.description}</StyledDrinkDesc>
+          <StyledDrinkHeader theme={theme}>{drink.drink}</StyledDrinkHeader>
+          <StyledDrinkType
+            theme={theme}
+          >{`${drink.glass} / ${drink.alcoholic}`}</StyledDrinkType>
+          <StyledDrinkDesc theme={theme}>{drink.description}</StyledDrinkDesc>
           <StyledAddToFavButton
+            theme={theme}
             onClick={isFavorite ? handleRemoveFromFav : handleAddToFav}
           >
             {isFavorite
@@ -61,12 +66,13 @@ const UserDrinkPage = () => {
               : 'Add to favorite drinks'}
           </StyledAddToFavButton>
         </div>
-        <StyledDrinkImage src={drink.drinkThumb} />
+        <StyledDrinkImage theme={theme} src={drink.drinkThumb} />
       </StyledDrinkHero>
-
-      <DrinkIngredientsList ingredientsArray={drink ? drink.ingredients : []} />
-
-      <RecipePreparation instructions={drink.instructions} />
+      <DrinkIngredientsList
+        theme={theme}
+        ingredientsArray={drink ? drink.ingredients : []}
+      />
+      <RecipePreparation theme={theme} instructions={drink.instructions} />
     </>
   );
 };

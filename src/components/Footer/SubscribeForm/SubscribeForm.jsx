@@ -3,10 +3,12 @@ import {
   SubscribeDesc,
   SubscribeInput,
   InputMessage,
+  StyledStatus,
 } from './SubscribeForm.styled';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import CommonBtn from '../../SharedComponents/CommonBtn/CommonBtn';
+import sprite from '../../../images/sprite.svg';
 
 const SubscribeForm = () => {
   const {
@@ -51,10 +53,20 @@ const SubscribeForm = () => {
           />
           <InputMessage>
             {errors?.email && (
-              <p>{errors?.email?.message || 'This is an ERROR email'}</p>
+              <>
+                <StyledStatus className="error">
+                  <use href={`${sprite}#icon-error-outline`} />
+                </StyledStatus>
+                <p>{errors?.email?.message || 'This is an ERROR email'}</p>
+              </>
             )}
             {!errors?.email && isValid && (
-              <p className="correct">This is an CORRECT email</p>
+              <>
+                <StyledStatus className="correct">
+                  <use href={`${sprite}#icon-done-outline`} />
+                </StyledStatus>
+                <p className="correct">This is an CORRECT email</p>
+              </>
             )}
           </InputMessage>
         </label>

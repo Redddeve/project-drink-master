@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Select from 'react-select';
 import { device } from '../../styles/device.js';
+import { darkTheme, lightTheme } from '../../styles/theme.js';
 
 export const StyledHeader = styled.h2`
   margin-bottom: 40px;
@@ -59,11 +60,15 @@ export const StyledInput = styled.input`
   height: 54px;
   padding: 0 24px;
   border-radius: 200px;
-  border: 1px solid rgba(243, 243, 243, 0.2);
+  border: ${({ theme }) =>
+    theme === 'dark'
+      ? darkTheme.borderColor.main
+      : lightTheme.borderColor.main};
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
   opacity: 0.8;
   outline: none;
   background: transparent;
-  color: var(--white);
 
   @media ${device.tablet} {
     width: 264px;
@@ -76,7 +81,10 @@ export const StyledSvg = styled.svg`
   height: 20px;
   top: 18px;
   left: 220px;
-  stroke: white;
+  stroke: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
+  fill: ${({ theme }) =>
+    theme === 'dark' ? lightTheme.colors.main : darkTheme.colors.main};
 
   @media screen and (max-width: 767px) {
     width: 1px;
@@ -108,7 +116,7 @@ export const StyledSelect = styled(Select)`
       width: 199px;
     }
   }
-  
+
   .Select__placeholder {
     color: var(--white);
     display: flex;
@@ -132,22 +140,22 @@ export const StyledSelect = styled(Select)`
     padding: 4.5px 12px;
     background: none;
     cursor: pointer;
-    color: rgba(243, 243, 243, 0.4);
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--transp-white)' : 'var(--transp-dark)'};
     transition: var(--tran-fast);
   }
 
-  .Select__option--is-focused {
-    color: var(--white);
-  }
-  
-  .Select__input-container{
+  .Select__input-container {
     color: var(--white);
   }
 
   .Select__menu {
     height: ${props => (props.$small ? '240px' : '314px')};
     border-radius: 20px;
-    background: var(--black);
+    background-color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--light-theme-bg)' : 'var(--white)'};
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--white)' : 'var(--black)'};
     padding-right: 7px;
     overflow-y: hidden;
 
@@ -159,7 +167,7 @@ export const StyledSelect = styled(Select)`
 
     .Select__menu-list {
       max-height: ${props => (props.$small ? '295px' : '405px')};
-      
+
       &::-webkit-scrollbar {
         padding-right: 5px;
         padding-bottom: 5px;
@@ -185,6 +193,11 @@ export const StyledSelect = styled(Select)`
       color: var(--orange);
       cursor: pointer;
     }
+
+    /* .cqenAZ .Select__option--is-focused {
+      color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--transp-white)' : 'var(--transp-dark)'};
+    } */
   }
 `;
 

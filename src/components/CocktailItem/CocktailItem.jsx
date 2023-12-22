@@ -13,11 +13,14 @@ import {
   MoreLink,
 } from './CocktailItem.styled';
 import RemoveButton from '../RemoveButton/RemoveButton';
+import { useSelector } from 'react-redux';
+import { selectTheme } from '../../redux/theme/selectors';
 // import CommonBtn from '../SharedComponents/CommonBtn/CommonBtn';
 import LazyLoad from 'react-lazy-load';
 
 const CocktailItem = ({ cocktail, page }) => {
   const { _id, drink, alcoholic, description, drinkThumb } = cocktail;
+  const theme = useSelector(selectTheme);
 
   const [imageLoadError, setImageLoadError] = useState(false);
 
@@ -42,10 +45,10 @@ const CocktailItem = ({ cocktail, page }) => {
         </LazyLoad>
       )}
       <CocktailContainerTitle>
-        <CocktailTitle>{drink}</CocktailTitle>
-        <CocktailLabel>{alcoholic}</CocktailLabel>
+        <CocktailTitle theme={theme}>{drink}</CocktailTitle>
+        <CocktailLabel theme={theme}>{alcoholic}</CocktailLabel>
       </CocktailContainerTitle>
-      <CocktailDescription>{description}</CocktailDescription>
+      <CocktailDescription theme={theme}>{description}</CocktailDescription>
       <ButtonContainer>
         {/* <CommonBtn to={`/drink/${_id}`} type="submit" variant="seeMore">
           See more

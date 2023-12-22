@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { device } from '../../styles/device';
 import { Link } from 'react-router-dom';
+import { darkTheme, lightTheme } from '../../styles/theme';
 
 export const CocktailCard = styled.li`
   display: flex;
@@ -54,6 +55,8 @@ export const CocktailTitle = styled.h3`
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
 
   @media ${device.tablet} {
     font-size: 24px;
@@ -61,20 +64,26 @@ export const CocktailTitle = styled.h3`
 `;
 
 export const CocktailLabel = styled.p`
-  color: var(--transp-white);
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.transp : lightTheme.colors.transp};
 `;
 
 export const CocktailDescription = styled.p`
   overflow: hidden;
+  height: 75px;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
 
   @media ${device.tablet} {
+    height: 110px;
     -webkit-line-clamp: 5;
   }
 
   @media ${device.desktop} {
+    height: 90px;
     -webkit-line-clamp: 4;
   }
 `;

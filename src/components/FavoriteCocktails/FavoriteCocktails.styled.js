@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { device } from "../../styles/device";
+import styled from 'styled-components';
+import { device } from '../../styles/device';
 
 export const EmptyFavoritesContainer = styled.div`
   display: flex;
@@ -30,4 +30,5 @@ export const EmptyFavoritesImage = styled.img`
 export const EmptyDescription = styled.p`
   text-align: center;
   font-weight: 500;
+  color: ${({ theme }) => (theme === 'dark' ? 'var(--white)' : 'var(--black)')};
 `;
