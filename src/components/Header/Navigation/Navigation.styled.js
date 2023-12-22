@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { device } from '../../../styles/device';
+import { darkTheme, lightTheme } from '../../../styles/theme';
 
 export const Nav = styled.nav`
   position: absolute;
@@ -9,9 +10,10 @@ export const Nav = styled.nav`
   left: 0;
   right: 0;
   display: grid;
-  background-color: #0A0A11;
-  color: #F3F3F3;
- 
+  background-color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.background.main : lightTheme.background.main};
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
 
   @media ${device.desktop} {
     position: static;
@@ -21,15 +23,23 @@ export const Nav = styled.nav`
 
   & a {
     padding: 8px 16px;
-    border: 1px solid rgba(243, 243, 243, 0.2);
+    border: ${({ theme }) =>
+      theme === 'dark'
+        ? darkTheme.borderColor.main
+        : lightTheme.borderColor.main};
     border-radius: 40px;
-    color: #F3F3F3;
+    color: ${({ theme }) =>
+      theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
   }
 
   & a.active {
     padding: 8px 16px;
-    color: #F3F3F3;
-    background-color: #161F37;
+    color: ${({ theme }) =>
+      theme === 'dark' ? lightTheme.colors.main : darkTheme.colors.main};
+    background-color: ${({ theme }) =>
+      theme === 'dark'
+        ? lightTheme.background.main
+        : darkTheme.background.blackBg};
   }
 `;
 
@@ -60,6 +70,6 @@ export const Item = styled.li`
   &:hover,
   &:focus {
     transform: scale(1.1);
-    color: #F3F3F3;
+    color: #f3f3f3;
   }
 `;

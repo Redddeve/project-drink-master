@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { device } from '../../styles/device';
+import { darkTheme, lightTheme } from '../../styles/theme';
 
 export const PageContainer = styled.div`
   display: flex;
@@ -22,4 +23,9 @@ export const PageContainer = styled.div`
     text-align: justify;
     margin-bottom: 20px;
   }
+`;
+
+export const StyledAgreementText = styled.p`
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
 `;

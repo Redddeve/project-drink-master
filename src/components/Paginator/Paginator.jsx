@@ -4,13 +4,15 @@ import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { PaginateContainer, Paginator } from './Paginator.styled';
 import sprite from '../../images/sprite.svg';
-import { selectPages } from '../../redux/drinks/selectors';
+import { size } from '../../styles/device';
 import { useSelector } from 'react-redux';
+import { selectPages } from '../../redux/drinks/selectors';
+import { selectTheme } from '../../redux/theme/selectors';
+
 
 function PaginatedItems({ items, destination, ListComponent, setPage }) {
   const [currentPage, setCurrentPage] = useState(0);
   const pages = useSelector(selectPages);
-
   const pageCount = pages;
 
   const handlePageClick = ({ selected }) => {

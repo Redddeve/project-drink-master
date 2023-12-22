@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { device } from '../../styles/device';
 import { NavLink } from 'react-router-dom';
+import { darkTheme, lightTheme } from '../../styles/theme';
 
 export const Title = styled.h2`
   font-size: 28px;
@@ -8,6 +9,8 @@ export const Title = styled.h2`
   line-height: 1.14em;
   margin-top: 40px;
   margin-bottom: 24px;
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
 
   @media ${device.tablet} {
     font-size: 40px;
@@ -18,8 +21,13 @@ export const Title = styled.h2`
 
 export const OtherDrinksNavLink = styled(NavLink)`
   width: 163px;
-  color: var(--black);
-  background: var(--white);
+  color: ${({ theme }) =>
+    theme === 'dark' ? lightTheme.colors.main : darkTheme.colors.main};
+  /* background: var(--white); */
+  background-color: ${({ theme }) =>
+    theme === 'dark'
+      ? lightTheme.background.main
+      : darkTheme.background.blackBg};
   font-weight: 600;
   line-height: 1.28em;
   padding: 14px 40px;

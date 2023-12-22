@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { StyledSubmitBtn } from './AddDrinkPage.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   addOwnDrinkThunk,
   getPopularThunk,
@@ -14,6 +14,7 @@ import AddFormMain from '../../components/AddFormMain/AddFormMain';
 import AddFormIngredients from '../../components/AddFormIngredients/AddFormIngredients';
 import AddFormDesc from '../../components/AddFormDesc/AddFormDesc';
 import PopularDrinks from '../../components/PopularDrinks/PopularDrinks';
+import { selectTheme } from '../../redux/theme/selectors';
 
 const AddDrinkPage = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const AddDrinkPage = () => {
   }, [dispatch]);
 
   const navigate = useNavigate();
+  const theme = useSelector(selectTheme);
   const {
     register,
     control,
@@ -61,6 +63,7 @@ const AddDrinkPage = () => {
   return (
     <>
       <PageTitle title="Add drink" />
+
       <div>
         <AddFormMain
           register={register}
@@ -69,6 +72,7 @@ const AddDrinkPage = () => {
           handleSubmit={handleSubmit}
           errors={errors}
           onSubmit={onSubmit}
+          theme={theme}
         ></AddFormMain>
 
         <AddFormIngredients
@@ -79,6 +83,7 @@ const AddDrinkPage = () => {
           handleSubmit={handleSubmit}
           errors={errors}
           onSubmit={onSubmit}
+          theme={theme}
         />
 
         <AddFormDesc
@@ -87,14 +92,19 @@ const AddDrinkPage = () => {
           handleSubmit={handleSubmit}
           errors={errors}
           onSubmit={onSubmit}
+          theme={theme}
         />
 
-        <StyledSubmitBtn type="button" onClick={handleSubmit(onSubmit)}>
+        <StyledSubmitBtn
+          type="button"
+          onClick={handleSubmit(onSubmit)}
+          theme={theme}
+        >
           Add
         </StyledSubmitBtn>
       </div>
       <PopularDrinks />
-      <ButtonUpToTop />
+      <ButtonUpToTop theme={theme} />
     </>
   );
 };
