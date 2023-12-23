@@ -1,4 +1,4 @@
-import{u as t,d as e,a,l as i}from"./index-L0e07m4l.js";const s=t.div`
+import{u as o,d as t,a,l as i}from"./index-YYS55MOt.js";const s=o.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -8,17 +8,16 @@ import{u as t,d as e,a,l as i}from"./index-L0e07m4l.js";const s=t.div`
     font-weight: 600;
     padding-bottom: 30px;
 
-    @media ${e.tablet} {
+    @media ${t.tablet} {
       font-size: 56px;
     }
-    @media ${e.desktop} {
+    @media ${t.desktop} {
       font-size: 64px;
     }
   }
   > p {
     text-align: justify;
     margin-bottom: 20px;
+    color: ${({theme:e})=>e==="dark"?a.colors.main:i.colors.main};
   }
-`,p=t.p`
-  color: ${({theme:o})=>o==="dark"?a.colors.main:i.colors.main};
-`;export{s as P,p as S};
+`;export{s as P};
