@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { device } from '../../styles/device';
+import { darkTheme, lightTheme } from '../../styles/theme';
 
 export const PageContainer = styled.div`
   display: flex;
@@ -21,5 +22,7 @@ export const PageContainer = styled.div`
   > p {
     text-align: justify;
     margin-bottom: 20px;
+    color: ${({ theme }) =>
+      theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
   }
 `;

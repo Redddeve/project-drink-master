@@ -2,6 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize/modern-normalize.css';
 import { device } from './device';
 import fontObject from './fonts';
+import { darkTheme, lightTheme } from './theme';
 
 const { regular, medium, semiBold } = fontObject;
 
@@ -35,20 +36,30 @@ const GlobalStyles = createGlobalStyle`
   --green: #BCE6D2;
   --correct-green: #3CBC81;
   --error-red: #DA1414;
+  --dark-theme-bg:rgba(22, 31, 55, 0.50);
+  --light-theme-bg: #161F37;
+  
+
+
 
   // borders
   --dark-theme-common: 1px solid #F3F3F380;
   --light-theme-common: 1px solid #0A0A1180;
   --correct: 1px solid #3CBC8180;
   --error: 1px solid #DA141480;
+  --see-more-item: 1px solid #f3f3f320;
 
   // transitions
   --tran-fast: 0.3s ease
 } 
 
 body {
-  color: var(--white);
-  background-color: var(--dark);
+  color: ${props =>
+    props.theme === 'dark' ? lightTheme.colors.main : darkTheme.colors.main};
+  background-color: ${props =>
+    props.theme === 'dark'
+      ? darkTheme.background.main
+      : lightTheme.background.main};
   font-family: 'Manrope', sans-serif; 
   font-size: 14px;
   font-style: normal;
@@ -75,6 +86,7 @@ body {
   h6 {
     margin: 0;
     padding: 0;
+   
   }
 
   ul, 

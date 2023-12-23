@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { device } from '../../styles/device';
+import { darkTheme, lightTheme } from '../../styles/theme';
 
 export const StyledAddTitle = styled.h1`
   font-size: 32px;
@@ -17,15 +18,19 @@ export const StyledIngTitle = styled.p`
 export const StyledDescInput = styled.textarea`
   width: 335px;
   min-height: 184px;
-  margin-top: 40px;
   padding: 16px;
   margin-bottom: 20px;
   background: transparent;
   border-radius: 14px;
-  border: 1px solid var(--transp-white);
-  color: var(--white);
+  border: ${({ theme }) =>
+    theme === 'dark'
+      ? '1px solid var(--transp-white)'
+      : '1px solid var(--transp-dark)'};
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
   line-height: 1;
   vertical-align: top;
+  resize: none;
   @media ${device.tablet} {
     width: 480px;
   }
@@ -33,17 +38,20 @@ export const StyledDescInput = styled.textarea`
 
 export const StyledSubmitBtn = styled.button`
   border-radius: 42px;
-  background: var(--white);
+  background-color: ${({ theme }) =>
+    theme === 'dark' ? 'var(--white)' : 'var(--black)'};
   display: inline-flex;
   padding: 14px 40px;
   align-items: flex-start;
   gap: 10px;
-  color: var(--black);
+  color: ${({ theme }) =>
+    theme === 'dark' ? lightTheme.colors.main : darkTheme.colors.main};
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
   line-height: 18px;
   transition: all var(--tran-fast);
+  border: none;
   @media ${device.tablet} {
     display: block;
   }
@@ -65,7 +73,7 @@ export const stylesSelect = {
   }),
   option: (styles, state) => ({
     ...styles,
-    padding: '3px 10px',
+    padding: '4px 14px',
     fontSize: '12px',
     backgroundColor: state.isSelected ? 'rgba(255, 255, 255, 0.10)' : '',
     color: state.isSelected ? 'var(--white)' : 'var(--transp-white)',
@@ -80,8 +88,22 @@ export const stylesSelect = {
     border: 'none ',
     borderRadius: '12px ',
     maxHeight: '300px',
-    width: '131px',
+    width: '151px',
     right: '0',
+  }),
+  menuList: base => ({
+    ...base,
+
+    '::-webkit-scrollbar': {
+      width: '2px',
+      height: '0px',
+    },
+    '::-webkit-scrollbar-track': {
+      background: '#161F37',
+    },
+    '::-webkit-scrollbar-thumb': {
+      background: '#5d6b90',
+    },
   }),
 };
 export const ingStyles = {
@@ -123,6 +145,7 @@ export const StyledValidIng = styled(StyledValidText)`
   left: -15px;
   font-size: 26px;
   font-weight: 700;
+  width: 10px;
   &::after {
     content: 'This field is required';
     display: none;
@@ -149,4 +172,12 @@ export const StyledValidIng = styled(StyledValidText)`
 
 export const RelativeLabel = styled.label`
   position: relative;
+`;
+
+export const StyledValidationText = styled.p`
+  position: absolute;
+  top: 280px;
+  color: #ff7c31;
+  font-size: 13px;
+  width: 100%;
 `;

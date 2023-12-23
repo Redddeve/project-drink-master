@@ -12,8 +12,11 @@ import {
   Icon,
 } from './FooterDesc.styled.js';
 import sprite from '../../../images/sprite.svg';
+import { useSelector } from 'react-redux';
+import { selectTheme } from '../../../redux/theme/selectors.js';
 
 const FooterDesc = () => {
+  const theme = useSelector(selectTheme);
   return (
     <FooterWrap>
       <FooterContainer>
@@ -26,7 +29,7 @@ const FooterDesc = () => {
               <span>Drink Master</span>
             </StyledLogoLink>
 
-            <FollowUs />
+            <FollowUs theme={theme} />
           </LogoFlex>
 
           <nav>

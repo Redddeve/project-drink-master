@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { device } from '../../styles/device.js';
+import { darkTheme, lightTheme } from '../../styles/theme.js';
 
 export const StyledDrinkHero = styled.div`
   margin-bottom: 18px;
@@ -20,6 +21,8 @@ export const StyledDrinkHeader = styled.h2`
   font-weight: 600;
   line-height: 1.19;
   margin-bottom: 8px;
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
 
   @media ${device.tablet} {
     font-size: 56px;
@@ -29,11 +32,11 @@ export const StyledDrinkHeader = styled.h2`
   @media ${device.desktop} {
     font-size: 64px;
   }
-}
 `;
 
 export const StyledDrinkType = styled.p`
-  color: var(--transp-white);
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.transp : lightTheme.colors.transp};
   font-size: 12px;
   line-height: 1.17;
   margin-bottom: 20px;
@@ -45,11 +48,13 @@ export const StyledDrinkType = styled.p`
 `;
 
 export const StyledDrinkDesc = styled.p`
-  max-width: 335px;
+  width: 335px;
   margin-bottom: 40px;
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
 
   @media ${device.tablet} {
-    max-width: 600px;
+    width: 600px;
   }
 `;
 
@@ -59,8 +64,10 @@ export const StyledAddToFavButton = styled.button`
   padding: 14px 40px;
   align-items: center;
   border-radius: 42px;
-  background: #f3f3f3;
-  color: #161f37;
+  background-color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.background.lightBg};
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.background.main : lightTheme.background.main};
   border: 1px solid rgba(243, 243, 243, 0.2);
 
   font-weight: 600;

@@ -1,20 +1,44 @@
-import { selectOwnDrinks } from '../../redux/drinks/selectors';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import CocktailList from '../CocktailList/CocktailList';
+import { selectOwnDrinks } from '../../redux/drinks/selectors';
+import { getOwnDrinksThunk } from '../../redux/drinks/operations';
+import usual from '../../images/blue-iced-tea@1x.png';
+import retina from '../../images/blue-iced-tea@2x.png';
+import PaginatedItems from '../Paginator/Paginator';
 import {
   EmptyDescription,
-  EmptyMyCocktailsContainer,
-} from './MyCocktails.styled';
+  EmptyFavoritesContainer,
+  EmptyFavoritesImage,
+} from '../FavoriteCocktails/FavoriteCocktails.styled';
+import { selectTheme } from '../../redux/theme/selectors.js';
 
 const MyOwnCocktails = () => {
   const ownCocktailsList = useSelector(selectOwnDrinks);
+  const theme = useSelector(selectTheme);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getOwnDrinksThunk());
+  }, [dispatch]);
 
   return ownCocktailsList.length === 0 ? (
-    <EmptyMyCocktailsContainer>
-      <EmptyDescription>You have not added any own cocktails</EmptyDescription>
-    </EmptyMyCocktailsContainer>
+    <EmptyFavoritesContainer>
+      <EmptyFavoritesImage
+        srcSet={`${usual} 1x, ${retina} 2x`}
+        alt="Cocktail"
+      />
+      <EmptyDescription theme={theme}>
+        You haven&rsquo;t added any cocktails yet
+      </EmptyDescription>
+    </EmptyFavoritesContainer>
   ) : (
-    <CocktailList cocktailData={ownCocktailsList} page="my" />
+    <PaginatedItems
+      items={ownCocktailsList}
+      destination="my"
+      ListComponent={CocktailList}
+      itemsPerPageValue={{ mobile: 3, tablet: 3, desktop: 3, default: 9 }}
+    />
   );
 };
 

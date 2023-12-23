@@ -6,10 +6,12 @@ import { DrinkCard } from '../DrinkCard/DrinkCard';
 import { OtherDrinksNavLink, Title } from './PreviewDrinks.styled';
 import { StyledCardsContainer } from '../../pages/DrinksPage/DrinksPage.styled';
 import { useMediaQuery } from 'react-responsive';
+import { selectTheme } from '../../redux/theme/selectors';
 
 const PreviewDrinks = () => {
   const dispatch = useDispatch();
   const drinks = useSelector(selectAllDrinks);
+  const theme = useSelector(selectTheme);
 
   const isDesktop = useMediaQuery({
     query: '(min-width: 1440px)',
@@ -32,7 +34,7 @@ const PreviewDrinks = () => {
   return (
     <>
       <section>
-        <Title>Ordinary Drink</Title>
+        <Title theme={theme}>Ordinary Drink</Title>
         <StyledCardsContainer>
           {drinks['Ordinary Drink']?.map(drink => {
             return <DrinkCard key={drink._id} drink={drink} />;
@@ -50,13 +52,15 @@ const PreviewDrinks = () => {
             return <DrinkCard key={drink._id} drink={drink} />;
           })}
         </StyledCardsContainer>
-        <Title>Other/Unknow</Title>
+        <Title>Other/Unknown</Title>
         <StyledCardsContainer>
           {drinks['Other/Unknown']?.map(drink => {
             return <DrinkCard key={drink._id} drink={drink} />;
           })}
         </StyledCardsContainer>
-        <OtherDrinksNavLink to="/drinks">Other drinks</OtherDrinksNavLink>
+        <OtherDrinksNavLink theme={theme} to="/drinks">
+          Other drinks
+        </OtherDrinksNavLink>
       </section>
     </>
   );

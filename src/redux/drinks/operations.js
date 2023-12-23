@@ -7,12 +7,10 @@ import { toast } from 'react-toastify';
 export const fetchAllDrinks = createAsyncThunk(
   'drinks/fetchAllDrinks',
   async (body, { rejectWithValue, getState }) => {
-    const { page = 1, limit = 3 } = body;
+    const { limit = 3 } = body;
     try {
       setToken(getState().auth.token);
-      const { data } = await instance.get(
-        `/drinks/mainpage?limit=${limit}&page=${page}`
-      );
+      const { data } = await instance.get(`/drinks/mainpage?limit=${limit}`);
       return data;
     } catch (error) {
       toast.error(`Something went wrong. Please try again later.`);
@@ -122,10 +120,12 @@ export const deleteOwnDrinkThunk = createAsyncThunk(
 
 export const getFavoriteDrinksThunk = createAsyncThunk(
   'drinks/favorite',
-  async (_, { rejectWithValue, getState }) => {
+  async ({ page, itemsPerPage: limit }, { rejectWithValue, getState }) => {
     try {
       setToken(getState().auth.token);
-      const { data } = await instance.get('/drinks/favorite');
+      const { data } = await instance.get(
+        `/drinks/favorite?page=${page}&limit=${limit}`
+      );
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

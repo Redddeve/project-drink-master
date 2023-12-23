@@ -2,6 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import usual from '../../images/defaultImg/default@1x.webp';
 import retina from '../../images/defaultImg/default@2x.webp';
+import { Link } from 'react-router-dom';
 import {
   ButtonContainer,
   CocktailContainerTitle,
@@ -10,13 +11,18 @@ import {
   CocktailCard,
   CocktailLabel,
   CocktailTitle,
-  MoreLink,
 } from './CocktailItem.styled';
-import RemoveButton from '../RemoveButton/RemoveButton';
-// import CommonBtn from '../SharedComponents/CommonBtn/CommonBtn';
+import RemoveButton from '..//SharedComponents/RemoveButton/RemoveButton';
+import CommonBtn from '../SharedComponents/CommonBtn/CommonBtn';
+import { useSelector } from 'react-redux';
+import { selectTheme } from '../../redux/theme/selectors';
+
+import LazyLoad from 'react-lazy-load';
+
 
 const CocktailItem = ({ cocktail, page }) => {
   const { _id, drink, alcoholic, description, drinkThumb } = cocktail;
+  const theme = useSelector(selectTheme);
 
   const [imageLoadError, setImageLoadError] = useState(false);
 
@@ -27,22 +33,28 @@ const CocktailItem = ({ cocktail, page }) => {
       {imageLoadError ? (
         <CocktailImage srcSet={`${usual} 1x, ${retina} 2x`} alt={drink} />
       ) : (
-        <CocktailImage
-          src={drinkThumb}
-          alt={drink}
-          onError={handleImageError}
-        />
+        <LazyLoad
+          offset={100}
+          onContentVisible={() => {
+            console.log('loaded1!');
+          }}
+        >
+          <CocktailImage
+            src={drinkThumb}
+            alt={drink}
+            onError={handleImageError}
+          />
+        </LazyLoad>
       )}
       <CocktailContainerTitle>
-        <CocktailTitle>{drink}</CocktailTitle>
-        <CocktailLabel>{alcoholic}</CocktailLabel>
+        <CocktailTitle theme={theme}>{drink}</CocktailTitle>
+        <CocktailLabel theme={theme}>{alcoholic}</CocktailLabel>
       </CocktailContainerTitle>
-      <CocktailDescription>{description}</CocktailDescription>
+      <CocktailDescription theme={theme}>{description}</CocktailDescription>
       <ButtonContainer>
-        {/* <CommonBtn to={`/drink/${_id}`} type="submit" variant="seeMore">
+        <CommonBtn as={Link} to={`/drink/${_id}`} variant="seeMoreItem">
           See more
-        </CommonBtn> */}
-        <MoreLink to={`/drink/${_id}`}>See more</MoreLink>
+        </CommonBtn>
         <RemoveButton id={_id} page={page} />
       </ButtonContainer>
     </CocktailCard>

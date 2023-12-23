@@ -1,8 +1,12 @@
 import { PageContainer } from '../AgreementPage/AgreementPage.styled';
+import PageTitle from '../../components/PageTitle/PageTitle';
+import { useSelector } from 'react-redux';
+import { selectTheme } from '../../redux/theme/selectors';
 const PolicyPage = () => {
+  const theme = useSelector(selectTheme);
   return (
-    <PageContainer>
-      <h1>Privacy Policy</h1>
+    <PageContainer theme={theme}>
+      <PageTitle title="Privacy Policy" />
       <p>
         Your privacy is important to us. This section outlines how we collect,
         use, process, and protect your personal data. This Privacy Policy

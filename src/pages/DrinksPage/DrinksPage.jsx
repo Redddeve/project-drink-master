@@ -1,33 +1,41 @@
-import { DrinkCard } from '../../components/DrinkCard/DrinkCard.jsx';
-import {
-  StyledCardsContainer,
-  StyledFilterContainer,
-  StyledHeader,
-  StyledInput,
-  StyledSelect,
-  StyledSvg,
-  stylesDrink,
-} from './DrinksPage.styled';
-import sprite from '../../images/sprite.svg';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import sprite from '../../images/sprite.svg';
+import usual from '../../images/blue-iced-tea@1x.png';
+import retina from '../../images/blue-iced-tea@2x.png';
 import {
   selectCategories,
   selectIngredients,
   selectSearchDrinks,
 } from '../../redux/drinks/selectors.js';
-import { useEffect, useState } from 'react';
 import {
   getCategoriesThunk,
   getIngredientsThunk,
   searchDrinksThunk,
 } from '../../redux/drinks/operations.js';
-import ButtonUpToTop from '../../components/ButtonUpToTop/ButtonUpToTop.jsx';
+import {
+  StyledCardsContainer,
+  StyledFilterContainer,
+  StyledInput,
+  StyledSelect,
+  StyledSvg,
+  stylesDrink,
+} from './DrinksPage.styled';
+import { selectTheme } from '../../redux/theme/selectors.js';
+import PageTitle from '../../components/PageTitle/PageTitle.jsx';
+import { EmptyDescription } from '../../components/FavoriteCocktails/FavoriteCocktails.styled.js';
+import { DrinkCard } from '../../components/DrinkCard/DrinkCard.jsx';
+import {
+  EmptyFavoritesContainer,
+  EmptyFavoritesImage,
+} from '../../components/FavoriteCocktails/FavoriteCocktails.styled.js';
 
 const DrinksPage = () => {
   const dispatch = useDispatch();
   const drinks = useSelector(selectSearchDrinks);
   const ingredients = useSelector(selectIngredients);
   const categories = useSelector(selectCategories);
+  const theme = useSelector(selectTheme);
   const [name, setName] = useState('');
   const [ingredient, setIngredient] = useState('');
   const [category, setCategory] = useState('');
@@ -54,7 +62,7 @@ const DrinksPage = () => {
 
   return (
     <>
-      <StyledHeader>Drinks</StyledHeader>
+      <PageTitle title={'Drinks'} />
       <StyledFilterContainer>
         <form
           action=""
@@ -63,12 +71,13 @@ const DrinksPage = () => {
             setName(e.currentTarget.name.value);
           }}
         >
-          <StyledInput placeholder="Enter the text" name="name" />
+          <StyledInput theme={theme} placeholder="Enter the text" name="name" />
         </form>
-        <StyledSvg>
+        <StyledSvg theme={theme}>
           <use href={`${sprite}#icon-search`} />
         </StyledSvg>
         <StyledSelect
+          theme={theme}
           classNamePrefix={'Select'}
           options={categoriesOptions}
           placeholder={'All categories'}
@@ -84,10 +93,10 @@ const DrinksPage = () => {
           styles={stylesDrink}
         />
         <StyledSelect
+          theme={theme}
           classNamePrefix={'Select'}
           options={ingredientsOptions}
           placeholder={'Ingredients'}
-          isSearchable={false}
           onChange={value => {
             setIngredient(value.label);
           }}
@@ -101,17 +110,28 @@ const DrinksPage = () => {
         />
       </StyledFilterContainer>
       <StyledCardsContainer>
-        {drinks?.map(drink => {
-          return (
-            <DrinkCard
-              key={drink._id}
-              drink={drink}
-              // detailed={false}
+        {drinks.length !== 0 ? (
+          drinks?.map(drink => {
+            return (
+              <DrinkCard
+                key={drink._id}
+                drink={drink}
+                // detailed={false}
+              />
+            );
+          })
+        ) : (
+          <EmptyFavoritesContainer>
+            <EmptyFavoritesImage
+              srcSet={`${usual} 1x, ${retina} 2x`}
+              alt="Cocktail"
             />
-          );
-        })}
+            <EmptyDescription>
+              No cocktails found by your request
+            </EmptyDescription>
+          </EmptyFavoritesContainer>
+        )}
       </StyledCardsContainer>
-      <ButtonUpToTop />
     </>
   );
 };
