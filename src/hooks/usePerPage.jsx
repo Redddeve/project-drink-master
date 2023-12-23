@@ -7,14 +7,14 @@ const useResponsiveItemsPerPage = ({
   desktop,
   default: defaultPerPage,
 }) => {
-  const [currentDevice, setCurrentDevice] = useState('');
+  const [currentDevice, setCurrentDevice] = useState(getInitialDevice());
 
   useEffect(() => {
     const handleResize = () => {
       const windowWidth = window.innerWidth;
 
       if (windowWidth < parseInt(size.tablet)) {
-        setCurrentDevice('mobile');
+        setCurrentDevice('mobileM');
       } else if (windowWidth < parseInt(size.desktop)) {
         setCurrentDevice('tablet');
       } else {
@@ -31,9 +31,21 @@ const useResponsiveItemsPerPage = ({
     };
   }, []);
 
+  function getInitialDevice() {
+    const windowWidth = window.innerWidth;
+
+    if (windowWidth < parseInt(size.tablet)) {
+      return 'mobileM';
+    } else if (windowWidth < parseInt(size.desktop)) {
+      return 'tablet';
+    } else {
+      return 'desktop';
+    }
+  }
+
   const getItemsPerPage = () => {
     switch (currentDevice) {
-      case 'mobile':
+      case 'mobileM':
         return mobile || 9;
       case 'tablet':
         return tablet || 8;
@@ -46,7 +58,7 @@ const useResponsiveItemsPerPage = ({
 
   const itemsPerPage = getItemsPerPage();
 
-  return { itemsPerPage };
+  return itemsPerPage;
 };
 
 export default useResponsiveItemsPerPage;

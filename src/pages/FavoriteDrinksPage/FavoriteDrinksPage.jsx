@@ -9,7 +9,7 @@ const FavoriteDrinksPage = () => {
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
 
-  const { itemsPerPage } = useResponsiveItemsPerPage({
+  const itemsPerPage = useResponsiveItemsPerPage({
     mobile: 9,
     tablet: 8,
     desktop: 9,
