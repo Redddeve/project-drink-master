@@ -12,8 +12,10 @@ import {
   EmptyFavoritesImage,
 } from './FavoriteCocktails.styled';
 import PaginatedItems from '../Paginator/Paginator';
+import { selectTheme } from '../../redux/theme/selectors';
 
 const FavoriteCocktails = ({ destination, page, setPage }) => {
+  const theme = useSelector(selectTheme);
   const favorites = useSelector(selectFavoriteDrinks);
 
   return favorites.length === 0 ? (
@@ -22,7 +24,7 @@ const FavoriteCocktails = ({ destination, page, setPage }) => {
         srcSet={`${usual} 1x, ${retina} 2x`}
         alt="Cocktail"
       />
-      <EmptyDescription>
+      <EmptyDescription theme={theme}>
         You haven&rsquo;t added any favorite cocktails yet
       </EmptyDescription>
     </EmptyFavoritesContainer>
