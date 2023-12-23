@@ -1,11 +1,14 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { selectPopular } from '../../redux/drinks/selectors';
-import FollowUs from '../SharedComponents/FollowUs/FollowUs/FollowUs';
 import { Link } from 'react-router-dom';
 import { selectTheme } from '../../redux/theme/selectors';
 import {
   TitleFollow,
+  FollowUsWrap,
+  StyledFollowUsLink,
+  StyledFollowUsItem,
+  SvgSocial,
   FollowUsContainer,
   PopDrinkContainer,
   MainContainer,
@@ -16,6 +19,7 @@ import {
   SpaceContainer,
   PositionContainer,
 } from './PopularDrinks.styled';
+import sprite from '../../images/sprite.svg';
 
 const PopularDrinks = () => {
   const popularDrinks = useSelector(selectPopular);
@@ -25,7 +29,47 @@ const PopularDrinks = () => {
     <MainContainer>
       <FollowUsContainer>
         <TitleFollow theme={theme}>Follow Us</TitleFollow>
-        <FollowUs theme={theme} />
+
+        <FollowUsWrap>
+          <StyledFollowUsItem theme={theme}>
+            <StyledFollowUsLink
+              theme={theme}
+              href="https://www.facebook.com/goITclub/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <SvgSocial theme={theme}>
+                <use href={sprite + '#icon-facebook'} />
+              </SvgSocial>
+            </StyledFollowUsLink>
+          </StyledFollowUsItem>
+
+          <StyledFollowUsItem theme={theme}>
+            <StyledFollowUsLink
+              theme={theme}
+              href="https://www.instagram.com/goitclub/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <SvgSocial theme={theme}>
+                <use href={sprite + '#icon-instagram'} />
+              </SvgSocial>
+            </StyledFollowUsLink>
+          </StyledFollowUsItem>
+
+          <StyledFollowUsItem theme={theme}>
+            <StyledFollowUsLink
+              theme={theme}
+              href="https://www.youtube.com/c/GoIT"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <SvgSocial theme={theme}>
+                <use href={sprite + '#icon-youtube'} />
+              </SvgSocial>
+            </StyledFollowUsLink>
+          </StyledFollowUsItem>
+        </FollowUsWrap>
       </FollowUsContainer>
 
       <PopularDrinkTitle theme={theme}>Popular drinks</PopularDrinkTitle>
