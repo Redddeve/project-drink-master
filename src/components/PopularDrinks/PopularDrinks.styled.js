@@ -6,7 +6,6 @@ export const MainContainer = styled.div`
   margin-top: 80px;
 
   @media ${device.tablet} {
-    /* margin: 100px auto 0; */
     width: 261px;
   }
 
@@ -34,7 +33,7 @@ export const PopularDrinkTitle = styled.p`
   color: black;
   font-size: 18px;
 
-  line-height: 24px; /* 133.333% */
+  line-height: 1.33;
   color: ${({ theme }) =>
     theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
   border: none;
@@ -153,5 +152,69 @@ export const DescriptiontTitle = styled.p`
 
   @media ${device.tablet} {
     line-height: 20px;
+  }
+`;
+//================= FollowUs================
+export const FollowUsWrap = styled.ul`
+  display: flex;
+  gap: 14px;
+
+  @media ${device.tablet} {
+    gap: 16px;
+  }
+`;
+export const StyledFollowUsItem = styled.li`
+  display: flex;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 8px;
+  text-align: center;
+  border-radius: 10px;
+  border: ${({ theme }) =>
+    theme === 'dark'
+      ? '1px solid rgba(243, 243, 243, 0.2)'
+      : '1px solid rgba(22, 31, 55, 0.2)'};
+
+  transition: border var(--tran-fast);
+
+  &:hover {
+    border: ${({ theme }) =>
+      theme === 'dark'
+        ? '1px solid rgba(243, 243, 243, 0.5)'
+        : '1px solid var(--dark-theme-bg)'};
+    cursor: pointer;
+    svg {
+      fill: ${({ theme }) =>
+        theme === 'dark' ? 'var(--white)' : 'var(--black)'};
+    }
+  }
+  &:focus {
+    border: ${({ theme }) =>
+      theme === 'dark'
+        ? '1px solid rgba(243, 243, 243, 0.5)'
+        : '1px solid var(--dark-theme-bg)'};
+    svg {
+      fill: ${({ theme }) =>
+        theme === 'dark' ? 'var(--white)' : 'var(--black)'};
+    }
+  }
+
+  @media ${device.tablet} {
+    width: 44px;
+    height: 44px;
+  }
+`;
+export const StyledFollowUsLink = styled.a``;
+
+export const SvgSocial = styled.svg`
+  width: 22px;
+  height: 22px;
+  fill: ${({ theme }) =>
+    theme === 'dark' ? 'var(--transp-white)' : 'rgba(22, 31, 55, 0.8)'};
+  transition: fill(--tran-fast);
+  @media ${device.tablet} {
+    width: 28px;
+    height: 28px;
   }
 `;
