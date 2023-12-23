@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { darkTheme, lightTheme } from '../../../../styles/theme';
 import { device } from '../../../../styles/device';
 
 export const FollowUsWrap = styled.ul`
@@ -18,19 +17,19 @@ export const StyledFollowUsItem = styled.li`
   padding: 8px;
   text-align: center;
   border-radius: 10px;
-  border: ${({ theme }) =>
-    theme === 'dark'
-      ? '1px solid var(--transp-white)'
-      : '1px solid var(--transp-dark)'};
+  border: 1px solid rgba(243, 243, 243, 0.2);
+
   transition: border var(--tran-fast), opacity var(--tran-fast);
 
   &:hover {
+    border: 1px solid rgba(243, 243, 243, 0.5);
     cursor: pointer;
     svg {
       opacity: 1;
     }
   }
   &:focus {
+    border: 1px solid rgba(243, 243, 243, 0.5);
     svg {
       opacity: 1;
     }
@@ -47,9 +46,7 @@ export const StyledFollowUsLink = styled.a``;
 export const SvgSocial = styled.svg`
   width: 22px;
   height: 22px;
-  /* stroke: ${({ theme }) =>
-    theme === 'dark' ? darkTheme.colors.transp : lightTheme.colors.transp}; */
-  fill: ${({ theme }) => (theme === 'dark' ? 'var(--white)' : 'var(--black)')};
+  fill: var(--white);
 
   opacity: 0.5;
   transition: opacity;
