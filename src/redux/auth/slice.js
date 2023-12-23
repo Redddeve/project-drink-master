@@ -13,7 +13,6 @@ const initialState = {
     email: '',
     name: '',
     avatarURL: '',
-    subscribed: false,
     isAdult: false,
   },
   token: '',
@@ -45,9 +44,8 @@ export const slice = createSlice({
         state.user.avatarURL = payload.avatarURL || null;
         state.user.name = payload.name || null;
       })
-      .addCase(subscribeThunk.fulfilled, (state, { payload }) => {
+      .addCase(subscribeThunk.fulfilled, state => {
         state.isLoading = false;
-        state.user.subscribed = payload.subscribed;
       })
       .addCase(signoutThunk.fulfilled, state => {
         state.isLoading = false;
@@ -57,7 +55,6 @@ export const slice = createSlice({
           email: '',
           name: '',
           avatarURL: '',
-          subscribed: false,
         };
       })
       .addCase(refreshThunk.pending, state => {

@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import { StyledMain } from './Layout.styled';
 import { Loader } from '../Loader/Loader';
+import ButtonUpToTop from '../ButtonUpToTop/ButtonUpToTop';
 
 const Layout = () => {
   return (
@@ -13,6 +14,7 @@ const Layout = () => {
         <Suspense fallback={Loader}>
           <Outlet />
         </Suspense>
+        <ButtonUpToTop />
       </StyledMain>
       <Footer />
     </>

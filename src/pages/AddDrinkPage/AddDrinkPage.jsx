@@ -7,7 +7,6 @@ import {
   getPopularThunk,
 } from '../../redux/drinks/operations';
 import { useNavigate } from 'react-router-dom';
-import ButtonUpToTop from '../../components/ButtonUpToTop/ButtonUpToTop';
 
 import PageTitle from '../../components/PageTitle/PageTitle';
 import AddFormMain from '../../components/AddFormMain/AddFormMain';
@@ -63,7 +62,6 @@ const AddDrinkPage = () => {
   return (
     <>
       <PageTitle title="Add drink" />
-
       <div>
         <AddFormMain
           register={register}
@@ -72,8 +70,7 @@ const AddDrinkPage = () => {
           handleSubmit={handleSubmit}
           errors={errors}
           onSubmit={onSubmit}
-          theme={theme}
-        ></AddFormMain>
+        />
 
         <AddFormIngredients
           ingNumber={ingNumber}
@@ -83,7 +80,6 @@ const AddDrinkPage = () => {
           handleSubmit={handleSubmit}
           errors={errors}
           onSubmit={onSubmit}
-          theme={theme}
         />
 
         <AddFormDesc
@@ -92,7 +88,6 @@ const AddDrinkPage = () => {
           handleSubmit={handleSubmit}
           errors={errors}
           onSubmit={onSubmit}
-          theme={theme}
         />
 
         <StyledSubmitBtn
@@ -104,7 +99,6 @@ const AddDrinkPage = () => {
         </StyledSubmitBtn>
       </div>
       <PopularDrinks />
-      <ButtonUpToTop theme={theme} />
     </>
   );
 };
