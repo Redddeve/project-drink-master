@@ -5,7 +5,7 @@ export const StyledMain = styled.main`
   margin: 0 auto;
   min-width: 335px;
   max-width: 375px;
-  min-height: 100%;
+  min-height: 500px;
   padding: 80px 20px;
 
   @media ${device.tablet} {
