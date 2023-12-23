@@ -7,8 +7,7 @@ export const signupThunk = createAsyncThunk(
   'auth/signup',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await instance.post('auth/signup', credentials);
-      toast.success(`Welcome ${data.user.name}`);
+      await instance.post('auth/signup', credentials);
       const { email, password } = credentials;
       return { email, password };
     } catch (error) {
