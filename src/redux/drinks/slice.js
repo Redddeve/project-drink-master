@@ -19,6 +19,7 @@ const initialState = {
   drinks: [],
   byId: [],
   favorite: [],
+  pages: 1,
   own: [],
   popular: [],
   categories: [],
@@ -66,6 +67,7 @@ export const slice = createSlice({
         state.own = state.own.filter(({ _id }) => _id !== payload._id);
       })
       .addCase(getFavoriteDrinksThunk.fulfilled, (state, { payload }) => {
+        state.pages = payload.pages;
         state.favorite = payload.favorites;
         state.isLoading = false;
       })

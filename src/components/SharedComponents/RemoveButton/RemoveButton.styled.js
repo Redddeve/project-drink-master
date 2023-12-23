@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { device } from '../../styles/device';
+import { device } from '../../../styles/device';
 
 export const DeleteButton = styled.button`
   padding: 11px;
   border-radius: 40px;
   background: var(--black);
   cursor: pointer;
-  border: none;
+  border: var(--see-more-item);
   transition: var(--tran-fast);
 
   &:hover,

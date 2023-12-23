@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import sprite from '../../images/sprite.svg';
+import sprite from '../../../images/sprite.svg';
 import {
   deleteOwnDrinkThunk,
   removeFavoriteDrinkThunk,
-} from '../../redux/drinks/operations';
+} from '../../../redux/drinks/operations';
 import { DeleteButton } from './RemoveButton.styled';
 
 const RemoveButton = ({ id, page }) => {

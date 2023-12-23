@@ -7,6 +7,7 @@ import {
 } from './RecipePreparation.styled';
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../../redux/theme/selectors';
+
 const RecipePreparation = ({ instructions }) => {
   const theme = useSelector(selectTheme);
   return (

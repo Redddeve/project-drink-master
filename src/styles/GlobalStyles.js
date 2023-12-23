@@ -47,6 +47,7 @@ const GlobalStyles = createGlobalStyle`
   --light-theme-common: 1px solid #0A0A1180;
   --correct: 1px solid #3CBC8180;
   --error: 1px solid #DA141480;
+  --see-more-item: 1px solid #f3f3f320;
 
   // transitions
   --tran-fast: 0.3s ease

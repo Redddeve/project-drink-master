@@ -120,10 +120,12 @@ export const deleteOwnDrinkThunk = createAsyncThunk(
 
 export const getFavoriteDrinksThunk = createAsyncThunk(
   'drinks/favorite',
-  async (_, { rejectWithValue, getState }) => {
+  async ({ page, itemsPerPage: limit }, { rejectWithValue, getState }) => {
     try {
       setToken(getState().auth.token);
-      const { data } = await instance.get('/drinks/favorite');
+      const { data } = await instance.get(
+        `/drinks/favorite?page=${page}&limit=${limit}`
+      );
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

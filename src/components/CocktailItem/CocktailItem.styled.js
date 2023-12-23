@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { device } from '../../styles/device';
-import { Link } from 'react-router-dom';
 import { darkTheme, lightTheme } from '../../styles/theme';
 
 export const CocktailCard = styled.li`
@@ -70,6 +69,7 @@ export const CocktailLabel = styled.p`
 
 export const CocktailDescription = styled.p`
   overflow: hidden;
+  height: 75px;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
@@ -77,10 +77,12 @@ export const CocktailDescription = styled.p`
     theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
 
   @media ${device.tablet} {
+    height: 110px;
     -webkit-line-clamp: 5;
   }
 
   @media ${device.desktop} {
+    height: 90px;
     -webkit-line-clamp: 4;
   }
 `;
@@ -89,25 +91,4 @@ export const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-`;
-
-export const MoreLink = styled(Link)`
-  padding: 14px 40px;
-  border-radius: 42px;
-  background: var(--black);
-  color: inherit;
-  font-weight: 600;
-  font-size: 16px;
-  /* border: none; */
-  cursor: pointer;
-  transition: var(--tran-fast);
-
-  &:hover,
-  :focus {
-    transform: scale(1.02);
-  }
-
-  @media ${device.tablet} {
-    padding: 18px 44px;
-  }
 `;
