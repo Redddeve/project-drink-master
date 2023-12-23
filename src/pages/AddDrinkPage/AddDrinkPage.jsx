@@ -7,7 +7,6 @@ import {
   getPopularThunk,
 } from '../../redux/drinks/operations';
 import { useNavigate } from 'react-router-dom';
-import ButtonUpToTop from '../../components/ButtonUpToTop/ButtonUpToTop';
 
 import PageTitle from '../../components/PageTitle/PageTitle';
 import AddFormMain from '../../components/AddFormMain/AddFormMain';
@@ -103,7 +102,6 @@ const AddDrinkPage = () => {
         </StyledSubmitBtn>
       </div>
       <PopularDrinks />
-      <ButtonUpToTop theme={theme} />
     </>
   );
 };

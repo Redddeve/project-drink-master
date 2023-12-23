@@ -3,7 +3,6 @@ import { getFavoriteDrinksThunk } from '../../redux/drinks/operations';
 import { useDispatch } from 'react-redux';
 import useResponsiveItemsPerPage from '../../hooks/usePerPage';
 import FavoriteCocktails from '../../components/FavoriteCocktails/FavoriteCocktails';
-import ButtonUpToTop from '../../components/ButtonUpToTop/ButtonUpToTop';
 import PageTitle from '../../components/PageTitle/PageTitle';
 
 const FavoriteDrinksPage = () => {
@@ -30,7 +29,6 @@ const FavoriteDrinksPage = () => {
           page={page}
           setPage={setPage}
         />
-        <ButtonUpToTop />
       </section>
     </>
   );
