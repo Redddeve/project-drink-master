@@ -13,6 +13,7 @@ export const StyledPageWrap = styled.div`
   background-image: url(${bgMob});
   background-repeat: no-repeat;
   background-size: cover;
+  margin: 0 auto;
 
   @media ${device.tablet} {
     max-width: 768px;
