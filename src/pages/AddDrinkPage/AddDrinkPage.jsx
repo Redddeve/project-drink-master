@@ -70,7 +70,6 @@ const AddDrinkPage = () => {
           handleSubmit={handleSubmit}
           errors={errors}
           onSubmit={onSubmit}
-          theme={theme}
         />
 
         <AddFormIngredients
@@ -81,7 +80,6 @@ const AddDrinkPage = () => {
           handleSubmit={handleSubmit}
           errors={errors}
           onSubmit={onSubmit}
-          theme={theme}
         />
 
         <AddFormDesc
@@ -90,7 +88,6 @@ const AddDrinkPage = () => {
           handleSubmit={handleSubmit}
           errors={errors}
           onSubmit={onSubmit}
-          theme={theme}
         />
 
         <StyledSubmitBtn
