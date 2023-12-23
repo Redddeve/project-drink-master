@@ -1,4 +1,4 @@
-import{u as o,d as t,a as r,l as a,P as b,b as c,s as k,e as u,g as m,k as y,j as i,R as v,Q as T,S,T as D,U as z}from"./index-YYS55MOt.js";import{b as I,g as F,f as P}from"./selectors-KAzit_J-.js";const R=o.div`
+import{u as o,d as t,a as r,l as a,P as b,b as c,s as k,e as u,g as m,k as y,j as i,Q as v,O as T,R as S,S as D,T as z}from"./index-V2YLrXF5.js";import{b as I,g as F,f as P}from"./selectors-KAzit_J-.js";const R=o.div`
   margin-bottom: 18px;
 
   @media ${t.tablet} {
@@ -102,7 +102,7 @@ import{u as o,d as t,a as r,l as a,P as b,b as c,s as k,e as u,g as m,k as y,j a
     width: 220px;
     height: 258px;
   }
-`,U=o.div`
+`,O=o.div`
   border-radius: 8px;
   width: 157px;
   height: 157px;
@@ -155,7 +155,7 @@ import{u as o,d as t,a as r,l as a,P as b,b as c,s as k,e as u,g as m,k as y,j a
   }
   @media ${t.desktop} {
   }
-`,$=({ingredientsArray:e})=>{const s=c(k),d=u();m.useEffect(()=>{d(y())},[d]);const n=c(I),p=window.innerWidth<768,x=window.innerWidth>=768&&window.innerWidth<1440,g=l=>{if(n.length!==0)return n==null?void 0:n.find(h=>l===h.title)[p?"thumbSmall":x?"thumbMedium":"ingredientThumb"]};return i.jsxs("div",{children:[i.jsx(N,{theme:s,children:"Ingredients"}),i.jsx(H,{children:e==null?void 0:e.map(({title:l,measure:h})=>i.jsxs(L,{children:[i.jsx(U,{children:i.jsx(A,{src:g(l),alt:l})}),i.jsxs(C,{children:[i.jsx(f,{theme:s,children:l}),i.jsx(J,{theme:s,children:h})]})]},l))})]})};$.propTypes={ingredientsArray:b.array};const O="/project-drink-master/assets/three-cocktails-mobile@1x-Db068_xD.jpg",Q="/project-drink-master/assets/three-cocktails@1x-TzhNJt-O.jpg",q=o.div`
+`,$=({ingredientsArray:e})=>{const s=c(k),d=u();m.useEffect(()=>{d(y())},[d]);const n=c(I),p=window.innerWidth<768,x=window.innerWidth>=768&&window.innerWidth<1440,g=l=>{if(n.length!==0)return n==null?void 0:n.find(h=>l===h.title)[p?"thumbSmall":x?"thumbMedium":"ingredientThumb"]};return i.jsxs("div",{children:[i.jsx(N,{theme:s,children:"Ingredients"}),i.jsx(H,{children:e==null?void 0:e.map(({title:l,measure:h})=>i.jsxs(L,{children:[i.jsx(O,{children:i.jsx(A,{src:g(l),alt:l})}),i.jsxs(C,{children:[i.jsx(f,{theme:s,children:l}),i.jsx(J,{theme:s,children:h})]})]},l))})]})};$.propTypes={ingredientsArray:b.array};const Q="/project-drink-master/assets/three-cocktails-mobile@1x-Db068_xD.jpg",U="/project-drink-master/assets/three-cocktails@1x-TzhNJt-O.jpg",q=o.div`
   display: flex;
   flex-direction: column-reverse;
   gap: 40px;
@@ -166,7 +166,7 @@ import{u as o,d as t,a as r,l as a,P as b,b as c,s as k,e as u,g as m,k as y,j a
     gap: 60px;
   }
 `,G=o.div`
-  background: url(${O});
+  background: url(${Q});
   width: 335px;
   height: 430px;
   display: block;
@@ -174,7 +174,7 @@ import{u as o,d as t,a as r,l as a,P as b,b as c,s as k,e as u,g as m,k as y,j a
   background-size: cover;
   background-position: center;
   @media ${t.tablet} {
-    background: url(${Q});
+    background: url(${U});
     width: 704px;
     background-size: cover;
     border-radius: 10px;
