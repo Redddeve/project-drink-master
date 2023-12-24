@@ -1,4 +1,4 @@
-import{u as a,d as t}from"./index-UrwIVrRl.js";const o=a.div`
+import{u as a,d as t}from"./index-ByJ2JseQ.js";const o=a.div`
   display: flex;
   flex-direction: column;
   align-items: center;
