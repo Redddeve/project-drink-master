@@ -30,16 +30,17 @@ export const SearchFilterContainer = () => {
   const [categoryMenuIsOpen, setCategoryMenuIsOpen] = useState(false);
   const theme = useSelector(selectTheme);
 
-  useEffect(() => {
-    dispatch(getCategoriesThunk());
-    dispatch(getIngredientsThunk());
-  }, [dispatch]);
-
-  useEffect(() => {
+  const dispatchSearch = () => {
     dispatch(
       searchDrinksThunk({ drink: name, ingredients: ingredient, category })
     );
-  }, [ingredient, category, dispatch]);
+  };
+
+  useEffect(() => {
+    dispatch(getCategoriesThunk());
+    dispatch(getIngredientsThunk());
+    dispatch(searchDrinksThunk({ drink: '', ingredients: '', category: '' }));
+  }, [dispatch]);
 
   const ingredientsOptions = ingredients?.map(ing => {
     return { value: ing.title, label: ing.title };
@@ -48,19 +49,21 @@ export const SearchFilterContainer = () => {
     return { value: cat, label: cat };
   });
 
-  const dispatchSearch = () => {
-    dispatch(
-      searchDrinksThunk({ drink: name, ingredients: ingredient, category })
-    );
-  };
-
   return (
     <StyledFilterContainer>
       <StyledInput
         theme={theme}
         placeholder="Enter the text"
         onChange={e => setName(e.currentTarget.value)}
-        onBlur={() => dispatchSearch()}
+        onBlur={e =>
+          dispatch(
+            searchDrinksThunk({
+              drink: e.currentTarget.value,
+              ingredients: ingredient,
+              category,
+            })
+          )
+        }
         onKeyPress={key => {
           key.code === 'Enter' ? dispatchSearch() : null;
         }}
@@ -76,6 +79,13 @@ export const SearchFilterContainer = () => {
         isSearchable={false}
         onChange={value => {
           setCategory(value.label);
+          dispatch(
+            searchDrinksThunk({
+              drink: name,
+              ingredients: ingredient,
+              category: value.label,
+            })
+          );
         }}
         onMenuOpen={() => setCategoryMenuIsOpen(true)}
         onMenuClose={() => {
@@ -91,6 +101,13 @@ export const SearchFilterContainer = () => {
         placeholder={'Ingredients'}
         onChange={value => {
           setIngredient(value.label);
+          dispatch(
+            searchDrinksThunk({
+              drink: name,
+              ingredients: value.label,
+              category,
+            })
+          );
         }}
         onMenuOpen={() => setIngredientMenuIsOpen(true)}
         onMenuClose={() => {

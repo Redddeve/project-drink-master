@@ -24,8 +24,8 @@ export const StyledInput = styled.input`
   border-radius: 200px;
   border: ${({ theme }) =>
     theme === 'dark'
-        ? darkTheme.borderColor.main
-        : lightTheme.borderColor.main};
+      ? darkTheme.borderColor.main
+      : lightTheme.borderColor.main};
   color: ${({ theme }) =>
     theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
   opacity: 0.8;
@@ -98,12 +98,17 @@ export const StyledSelect = styled(Select)`
     display: none;
   }
 
+  .Select__single-value {
+    display: flex;
+    align-items: center;
+  }
+
   .Select__option {
     padding: 4.5px 12px;
     background: none;
     cursor: pointer;
     color: ${({ theme }) =>
-    theme === 'dark' ? 'var(--transp-white)' : 'var(--transp-dark)'};
+      theme === 'dark' ? 'var(--transp-white)' : 'var(--transp-dark)'};
     transition: var(--tran-fast);
   }
 
@@ -115,9 +120,9 @@ export const StyledSelect = styled(Select)`
     height: ${props => (props.$small ? '240px' : '314px')};
     border-radius: 20px;
     background-color: ${({ theme }) =>
-    theme === 'dark' ? 'var(--light-theme-bg)' : 'var(--white)'};
+      theme === 'dark' ? 'var(--light-theme-bg)' : 'var(--white)'};
     color: ${({ theme }) =>
-    theme === 'dark' ? 'var(--white)' : 'var(--black)'};
+      theme === 'dark' ? 'var(--white)' : 'var(--black)'};
     padding-right: 7px;
     overflow-y: hidden;
 
@@ -147,10 +152,6 @@ export const StyledSelect = styled(Select)`
       }
     }
 
-    .Select__value-container--has-value {
-      color: var(--white);
-    }
-
     .Select__option--is-selected {
       color: var(--orange);
       cursor: pointer;
@@ -158,17 +159,17 @@ export const StyledSelect = styled(Select)`
 
     /* .cqenAZ .Select__option--is-focused {
       color: ${({ theme }) =>
-    theme === 'dark' ? 'var(--transp-white)' : 'var(--transp-dark)'};
+      theme === 'dark' ? 'var(--transp-white)' : 'var(--transp-dark)'};
     } */
   }
 `;
 
 export const stylesDrink = {
-    singleValue: () => ({
-        color: 'var(--white)',
-    }),
-    valueContainer: () => ({
-        display: 'flex',
-        paddingLeft: '10px',
-    }),
+  singleValue: () => ({
+    color: 'var(--white)',
+  }),
+  valueContainer: () => ({
+    display: 'flex',
+    paddingLeft: '10px',
+  }),
 };
