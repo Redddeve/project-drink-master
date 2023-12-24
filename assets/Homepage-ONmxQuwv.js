@@ -1,4 +1,4 @@
-import{u as o,d as r,a,l as s,N as j,b as c,j as e,c as y,r as D,e as v,s as T,f as p,g as M,h as S}from"./index-mJLJR2b9.js";import{P as C}from"./PageTitle-ywKw7kOH.js";import{s as H}from"./selectors-KAzit_J-.js";import{S as d,D as m}from"./DrinksPage.styled-6BX2BXPY.js";import"./LazyLoad-MDPEcAvO.js";import"./react-select.esm-PZDec4qx.js";const O=o.section`
+import{u as o,d as r,a,l as s,N as j,b as p,j as e,c as y,r as D,e as v,s as T,f as c,g as M,h as S}from"./index-zO5ZuINf.js";import{P as C}from"./PageTitle-6vDrAKsd.js";import{s as H}from"./selectors--rgpZBpc.js";import{S as d,D as x}from"./SearchResultsContainer.styled-gUgqI9cF.js";import"./LazyLoad-Ua1W6dAu.js";const O=o.section`
   margin-bottom: 112px;
 
   @media ${r.tablet} {
@@ -69,7 +69,7 @@ import{u as o,d as r,a,l as s,N as j,b as c,j as e,c as y,r as D,e as v,s as T,f
     width: 359px;
     height: 445px;
   }
-`,_=()=>{const t=c(n=>n.theme.theme);return e.jsx(e.Fragment,{children:e.jsxs(O,{children:[e.jsxs(P,{children:[e.jsx(C,{mbMobile:"16",mbTablet:"28",mbDesktop:"28",title:"Craft Your Perfect Drink with Drink Master"}),e.jsx(A,{theme:t,children:"Unlock your inner mixologist with Drink Master, your one-stop destination for exploring, crafting, and mastering the world's finest beverages."}),e.jsx(E,{theme:t,to:"/add",children:"Add drinks"})]}),e.jsx(N,{children:e.jsx("img",{srcSet:`${y} 1x, ${D} 2x`,alt:"cocktail"})})]})})},x=o.h2`
+`,_=()=>{const t=p(n=>n.theme.theme);return e.jsx(e.Fragment,{children:e.jsxs(O,{children:[e.jsxs(P,{children:[e.jsx(C,{mbMobile:"16",mbTablet:"28",mbDesktop:"28",title:"Craft Your Perfect Drink with Drink Master"}),e.jsx(A,{theme:t,children:"Unlock your inner mixologist with Drink Master, your one-stop destination for exploring, crafting, and mastering the world's finest beverages."}),e.jsx(E,{theme:t,to:"/add",children:"Add drinks"})]}),e.jsx(N,{children:e.jsx("img",{srcSet:`${y} 1x, ${D} 2x`,alt:"cocktail"})})]})})},m=o.h2`
   font-size: 28px;
   font-weight: 600;
   line-height: 1.14em;
@@ -108,4 +108,4 @@ import{u as o,d as r,a,l as s,N as j,b as c,j as e,c as y,r as D,e as v,s as T,f
     line-height: 1.12em;
     margin-top: 80px;
   }
-`,z=()=>{var k,u,b,f;const t=v(),n=c(H),l=c(T),w=p.useMediaQuery({query:"(min-width: 1440px)"}),h=p.useMediaQuery({query:"(min-width: 768px) and (max-width: 1439px)"}),$=p.useMediaQuery({query:"(max-width: 767px)"}),g=w?3:h?2:1;return M.useEffect(()=>{t(S({limit:g}))},[t,$,h,g]),e.jsx(e.Fragment,{children:e.jsxs("section",{children:[e.jsx(x,{theme:l,children:"Ordinary Drink"}),e.jsx(d,{children:(k=n["Ordinary Drink"])==null?void 0:k.map(i=>e.jsx(m,{drink:i},i._id))}),e.jsx(x,{children:"Cocktail"}),e.jsx(d,{children:(u=n.Cocktail)==null?void 0:u.map(i=>e.jsx(m,{drink:i},i._id))}),e.jsx(x,{children:"Shake"}),e.jsx(d,{children:(b=n.Shake)==null?void 0:b.map(i=>e.jsx(m,{drink:i},i._id))}),e.jsx(x,{children:"Other/Unknown"}),e.jsx(d,{children:(f=n["Other/Unknown"])==null?void 0:f.map(i=>e.jsx(m,{drink:i},i._id))}),e.jsx(q,{theme:l,to:"/drinks",children:"Other drinks"})]})})},R=()=>e.jsxs(e.Fragment,{children:[e.jsx(_,{}),e.jsx(z,{})]});export{R as default};
+`,z=()=>{var k,u,b,f;const t=v(),n=p(H),l=p(T),w=c.useMediaQuery({query:"(min-width: 1440px)"}),h=c.useMediaQuery({query:"(min-width: 768px) and (max-width: 1439px)"}),$=c.useMediaQuery({query:"(max-width: 767px)"}),g=w?3:h?2:1;return M.useEffect(()=>{t(S({limit:g}))},[t,$,h,g]),e.jsx(e.Fragment,{children:e.jsxs("section",{children:[e.jsx(m,{theme:l,children:"Ordinary Drink"}),e.jsx(d,{children:(k=n["Ordinary Drink"])==null?void 0:k.map(i=>e.jsx(x,{drink:i},i._id))}),e.jsx(m,{children:"Cocktail"}),e.jsx(d,{children:(u=n.Cocktail)==null?void 0:u.map(i=>e.jsx(x,{drink:i},i._id))}),e.jsx(m,{children:"Shake"}),e.jsx(d,{children:(b=n.Shake)==null?void 0:b.map(i=>e.jsx(x,{drink:i},i._id))}),e.jsx(m,{children:"Other/Unknown"}),e.jsx(d,{children:(f=n["Other/Unknown"])==null?void 0:f.map(i=>e.jsx(x,{drink:i},i._id))}),e.jsx(q,{theme:l,to:"/drinks",children:"Other drinks"})]})})},I=()=>e.jsxs(e.Fragment,{children:[e.jsx(_,{}),e.jsx(z,{})]});export{I as default};
