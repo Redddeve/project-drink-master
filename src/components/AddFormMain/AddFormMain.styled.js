@@ -195,7 +195,21 @@ export const StyledTitleInput = styled.input`
   margin-bottom: 31px;
   color: ${({ theme }) =>
     theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
-
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: ${({ theme }) =>
+      theme === 'dark'
+        ? darkTheme.colors.main
+        : lightTheme.colors.main}; // колір тексту
+    -webkit-background-color: transparent !important;
+    -webkit-border-bottom: ${({ theme }) =>
+      theme === 'dark' ? '1px solid var(--white)' : '1px solid var(--dark)'};
+    transition: all 0s 50000s;
+    transition: background-color 5000s ease-in-out 0s;
+  }
   &::placeholder {
     color: ${({ theme }) =>
       theme === 'dark' ? darkTheme.colors.transp : lightTheme.colors.transp};
