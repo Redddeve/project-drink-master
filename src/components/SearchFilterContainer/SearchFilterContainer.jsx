@@ -34,8 +34,8 @@ export const SearchFilterContainer = () => {
     dispatch(
       searchDrinksThunk({
         drink: name,
-        ingredients: ingredient.value,
-        category: category.value,
+        ingredients: ingredient,
+        category: category,
       })
     );
   };
