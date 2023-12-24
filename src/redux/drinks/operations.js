@@ -56,13 +56,15 @@ export const searchDrinksThunk = createAsyncThunk(
 
 export const getDrinkbyIdThunk = createAsyncThunk(
   'drinks/id',
-  async (id, { rejectWithValue, getState }) => {
+  async (id, { getState }) => {
     try {
       setToken(getState().auth.token);
       const { data } = await instance.get(`/drinks/${id}`);
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return window.location.assign(
+        'https://redddeve.github.io/project-drink-master/'
+      );
     }
   }
 );
