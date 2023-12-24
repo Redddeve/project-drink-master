@@ -14,7 +14,6 @@ export const DrinkCard = ({ drink }) => {
   return (
     <StyledDrinkCard>
       <LazyLoad
-        height={400}
         offset={100}
         onContentVisible={() => {
           console.log('loaded!');
