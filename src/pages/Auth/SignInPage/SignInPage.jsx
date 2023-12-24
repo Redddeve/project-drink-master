@@ -1,11 +1,13 @@
 import SignIn from '../../../components/SignIn/SignIn';
-import { StyledPageWrap } from '../AuthPages.styled';
+import { StyledBgWrap, StyledPageWrap } from '../AuthPages.styled';
 
 const SignInPage = () => {
   return (
-    <StyledPageWrap>
-      <SignIn />
-    </StyledPageWrap>
+    <StyledBgWrap>
+      <StyledPageWrap>
+        <SignIn />
+      </StyledPageWrap>
+    </StyledBgWrap>
   );
 };
 

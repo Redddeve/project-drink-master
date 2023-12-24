@@ -86,6 +86,7 @@ const SignIn = () => {
               },
             })}
             placeholder="Email"
+            autoComplete="off"
             className={
               errors?.email ? 'error' : isFieldValid('email') ? 'correct' : ''
             }

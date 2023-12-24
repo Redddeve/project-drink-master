@@ -1,11 +1,13 @@
 import SignUp from '../../../components/SignUp/SignUp.jsx';
-import { StyledPageWrap } from '../AuthPages.styled';
+import { StyledBgWrap, StyledPageWrap } from '../AuthPages.styled';
 
 const SignUpPage = () => {
   return (
-    <StyledPageWrap>
-      <SignUp />
-    </StyledPageWrap>
+    <StyledBgWrap>
+      <StyledPageWrap>
+        <SignUp />
+      </StyledPageWrap>
+    </StyledBgWrap>
   );
 };
 
