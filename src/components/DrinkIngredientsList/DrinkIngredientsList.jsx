@@ -28,7 +28,7 @@ const DrinkIngredientsList = ({ ingredientsArray }) => {
 
   const imgSrc = title => {
     if (ingredientsState.length !== 0) {
-      return ingredientsState?.find(el => title === el.title)[
+      return ingredientsState?.find(el => title.toLowerCase() === el.title.toLowerCase())[
         isMobile ? 'thumbSmall' : isTablet ? 'thumbMedium' : 'ingredientThumb'
       ];
     }

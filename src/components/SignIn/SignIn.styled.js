@@ -91,7 +91,17 @@ export const StyledInput = styled.input`
   &.correct {
     border: 1px solid var(--correct-green);
   }
-
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: var(--white); // колір тексту
+    -webkit-background-color: transparent !important;
+    -webkit-border: 1px solid rgba(243, 243, 243, 0.2);
+    transition: all 0s 50000s;
+    transition: background-color 5000s ease-in-out 0s;
+  }
   @media ${device.tablet} {
     width: 400px;
     height: 56px;
