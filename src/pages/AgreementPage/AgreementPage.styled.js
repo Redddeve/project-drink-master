@@ -22,10 +22,7 @@ export const PageContainer = styled.div`
   > p {
     text-align: justify;
     margin-bottom: 20px;
+    color: ${({ theme }) =>
+      theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
   }
-`;
-
-export const StyledAgreementText = styled.p`
-  color: ${({ theme }) =>
-    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
 `;

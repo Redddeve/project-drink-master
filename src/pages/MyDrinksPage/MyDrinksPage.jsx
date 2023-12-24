@@ -3,7 +3,6 @@ import MyOwnCocktails from '../../components/MyCocktails/MyCocktails';
 import { useEffect } from 'react';
 import { getOwnDrinksThunk } from '../../redux/drinks/operations';
 import PageTitle from '../../components/PageTitle/PageTitle';
-import ButtonUpToTop from '../../components/ButtonUpToTop/ButtonUpToTop';
 
 const MyDrinksPage = () => {
   const dispatch = useDispatch();
@@ -15,7 +14,6 @@ const MyDrinksPage = () => {
     <section>
       <PageTitle title={'My drinks'}></PageTitle>
       <MyOwnCocktails />
-      <ButtonUpToTop />
     </section>
   );
 };

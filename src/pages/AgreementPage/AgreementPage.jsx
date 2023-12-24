@@ -1,34 +1,34 @@
 import { useSelector } from 'react-redux';
-import { PageContainer, StyledAgreementText } from './AgreementPage.styled';
+import { PageContainer } from './AgreementPage.styled';
 import { selectTheme } from '../../redux/theme/selectors';
 import PageTitle from '../../components/PageTitle/PageTitle';
 
 const AgreementPage = () => {
   const theme = useSelector(selectTheme);
   return (
-    <PageContainer>
+    <PageContainer theme={theme}>
       <PageTitle title="Terms of Service" />
-      <StyledAgreementText theme={theme}>
+      <p>
         This &quot;User Agreement&quot; (the &quot;Agreement&quot;) sets forth
         the terms and conditions governing the use of the Drink Master
         application (&quot;App&quot;) and its services.
-      </StyledAgreementText>
+      </p>
 
-      <StyledAgreementText theme={theme}>
+      <p>
         Acceptance of Terms: By accessing or using the Drink Master app, you
         agree to comply with and be bound by the terms and conditions of this
         Agreement. If you do not agree with any part of this Agreement, you
         should immediately discontinue the use of the App.
-      </StyledAgreementText>
+      </p>
 
-      <StyledAgreementText theme={theme}>
+      <p>
         App Features and Services: The Drink Master app provides users with
         access to a collection of cocktail recipes, both curated and
         user-generated. Users can explore, search, and create their own cocktail
         recipes using the provided tools.
-      </StyledAgreementText>
+      </p>
 
-      <StyledAgreementText theme={theme}>
+      <p>
         User Accounts and Content: To fully utilize the App&apos;s features, you
         may be required to create a user account. You are responsible for
         maintaining the confidentiality of your account credentials and any
@@ -36,31 +36,31 @@ const AgreementPage = () => {
         ownership of your content, but by submitting, you grant the App a
         non-exclusive, royalty-free license to use, modify, and distribute your
         content within the App.
-      </StyledAgreementText>
+      </p>
 
-      <StyledAgreementText theme={theme}>
+      <p>
         Intellectual Property: All content provided by the Cocktail Creations
         app, including cocktail recipes, images, and text, are protected by
         copyright and other intellectual property laws. Users may not reproduce,
         distribute, or use these materials for commercial purposes without
         explicit permission from the App&apos;s operators.
-      </StyledAgreementText>
+      </p>
 
-      <StyledAgreementText theme={theme}>
+      <p>
         User-Generated Content Guidelines: When creating and sharing
         user-generated cocktail recipes, you agree not to submit content that is
         offensive, unlawful, infringing, or harmful. The App reserves the right
         to remove or moderate user-generated content that violates these
         guidelines.
-      </StyledAgreementText>
+      </p>
 
-      <StyledAgreementText theme={theme}>
+      <p>
         App Updates and Changes: The features and functionality of the Drink
         Master app may evolve over time. The App reserves the right to modify,
         update, or discontinue any aspect of the App without prior notice.
-      </StyledAgreementText>
+      </p>
 
-      <StyledAgreementText theme={theme}>
+      <p>
         Disclaimer of Liability: While we strive to provide accurate and
         reliable information, the Drink Master app does not warrant the
         accuracy, completeness, or reliability of the content provided. Users
@@ -68,21 +68,21 @@ const AgreementPage = () => {
         potentially hazardous ingredients and should exercise caution when using
         the recipes. The App&apos;s liability is limited to the extent permitted
         by applicable law.
-      </StyledAgreementText>
+      </p>
 
-      <StyledAgreementText theme={theme}>
+      <p>
         Governing Law and Dispute Resolution: This Agreement shall be governed
         by the laws of [Country/State]. Any disputes arising from or related to
         this Agreement or the use of the App shall be subject to the exclusive
         jurisdiction of the courts in [City, Country/State].
-      </StyledAgreementText>
+      </p>
 
-      <StyledAgreementText theme={theme}>
+      <p>
         By accessing or using the Drink Master app, you acknowledge that you
         have read, understood, and agreed to be bound by this User Agreement. If
         you do not agree to these terms, you must cease using the App
         immediately.
-      </StyledAgreementText>
+      </p>
     </PageContainer>
   );
 };

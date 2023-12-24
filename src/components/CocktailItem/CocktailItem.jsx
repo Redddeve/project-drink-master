@@ -19,7 +19,6 @@ import { selectTheme } from '../../redux/theme/selectors';
 
 import LazyLoad from 'react-lazy-load';
 
-
 const CocktailItem = ({ cocktail, page }) => {
   const { _id, drink, alcoholic, description, drinkThumb } = cocktail;
   const theme = useSelector(selectTheme);
@@ -33,12 +32,7 @@ const CocktailItem = ({ cocktail, page }) => {
       {imageLoadError ? (
         <CocktailImage srcSet={`${usual} 1x, ${retina} 2x`} alt={drink} />
       ) : (
-        <LazyLoad
-          offset={100}
-          onContentVisible={() => {
-            console.log('loaded1!');
-          }}
-        >
+        <LazyLoad offset={100}>
           <CocktailImage
             src={drinkThumb}
             alt={drink}

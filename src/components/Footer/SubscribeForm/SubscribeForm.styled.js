@@ -28,6 +28,17 @@ export const SubscribeInput = styled.input`
   cursor: pointer;
   color: var(--white);
   line-height: 1.125;
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: var(--white);
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px #23232329;
+  }
+
   @media screen and (min-width: 768px) {
     height: 56px;
     font-size: 17px;

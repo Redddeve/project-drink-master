@@ -21,7 +21,6 @@ import {
   StyledSvg,
   stylesDrink,
 } from './DrinksPage.styled';
-import ButtonUpToTop from '../../components/ButtonUpToTop/ButtonUpToTop.jsx';
 import { selectTheme } from '../../redux/theme/selectors.js';
 import PageTitle from '../../components/PageTitle/PageTitle.jsx';
 import { EmptyDescription } from '../../components/FavoriteCocktails/FavoriteCocktails.styled.js';
@@ -133,7 +132,6 @@ const DrinksPage = () => {
           </EmptyFavoritesContainer>
         )}
       </StyledCardsContainer>
-      <ButtonUpToTop />
     </>
   );
 };
