@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Nav, List, Item } from './Navigation.styled.js';
+import { Nav, List, Item, Circle } from './Navigation.styled.js';
 import { useSelector } from 'react-redux';
 
 const Navigation = React.forwardRef(
@@ -9,7 +9,8 @@ const Navigation = React.forwardRef(
     const theme = useSelector(state => state.theme.theme);
     return (
       <Nav theme={theme}>
-        <List id="navigation">
+        <Circle></Circle>
+        <List id="navigation" theme={theme}>
           <Item>
             <NavLink to="/" className="link" activeclassname="active">
               Home

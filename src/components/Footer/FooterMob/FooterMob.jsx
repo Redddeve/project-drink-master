@@ -14,6 +14,9 @@ import {
 import sprite from '../../../images/sprite.svg';
 
 const FooterMob = () => {
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <FooterWrap>
       <FooterContainer>
@@ -30,16 +33,16 @@ const FooterMob = () => {
           </LogoFlex>
 
           <nav>
-            <StyledNavLink to="/drinks">
+            <StyledNavLink to="/drinks" onClick={handleLinkClick}>
               <span>Drinks</span>
             </StyledNavLink>
-            <StyledNavLink to="/add">
+            <StyledNavLink to="/add" onClick={handleLinkClick}>
               <span>Add drink</span>
             </StyledNavLink>
-            <StyledNavLink to="/my">
+            <StyledNavLink to="/my" onClick={handleLinkClick}>
               <span>My drinks</span>
             </StyledNavLink>
-            <StyledNavLink to="/favorites">
+            <StyledNavLink to="/favorites" onClick={handleLinkClick}>
               <span>Favorites drinks</span>
             </StyledNavLink>
           </nav>
@@ -48,8 +51,12 @@ const FooterMob = () => {
         <SubscribeForm />
 
         <Copy>©2023 Drink Master. All rights reserved.</Copy>
-        <StyledLink to="policy">Privacy Policy</StyledLink>
-        <StyledLink to="agreement">Terms of Service</StyledLink>
+        <StyledLink to="policy" onClick={handleLinkClick}>
+          Privacy Policy
+        </StyledLink>
+        <StyledLink to="agreement" onClick={handleLinkClick}>
+          Terms of Service
+        </StyledLink>
       </FooterContainer>
     </FooterWrap>
   );

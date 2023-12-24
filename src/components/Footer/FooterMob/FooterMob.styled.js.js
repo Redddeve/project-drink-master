@@ -5,6 +5,7 @@ export const FooterWrap = styled.footer`
   width: 100%;
   background-color: var(--dark);
   border-top: 1px solid rgba(243, 243, 243, 0.2);
+  overflow: hidden;
 `;
 
 export const FooterContainer = styled.div`
@@ -79,6 +80,8 @@ export const Copy = styled.div`
 `;
 
 export const StyledLink = styled(NavLink)`
+  position: relative;
+  z-index: 1;
   margin-right: 14px;
 
   color: rgba(243, 243, 243, 0.5);

@@ -16,6 +16,9 @@ import { useSelector } from 'react-redux';
 import { selectTheme } from '../../../redux/theme/selectors.js';
 
 const FooterDesc = () => {
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
   const theme = useSelector(selectTheme);
   return (
     <FooterWrap>
@@ -33,16 +36,16 @@ const FooterDesc = () => {
           </LogoFlex>
 
           <nav>
-            <StyledNavLink to="/drinks">
+            <StyledNavLink to="/drinks" onClick={handleLinkClick}>
               <span>Drinks</span>
             </StyledNavLink>
-            <StyledNavLink to="/add">
+            <StyledNavLink to="/add" onClick={handleLinkClick}>
               <span>Add drink</span>
             </StyledNavLink>
-            <StyledNavLink to="/my">
+            <StyledNavLink to="/my" onClick={handleLinkClick}>
               <span>My drinks</span>
             </StyledNavLink>
-            <StyledNavLink to="/favorites">
+            <StyledNavLink to="/favorites" onClick={handleLinkClick}>
               <span>Favorites drinks</span>
             </StyledNavLink>
           </nav>
@@ -51,8 +54,12 @@ const FooterDesc = () => {
         <FooterNavFlex>
           <Copy>©2023 Drink Master. All rights reserved.</Copy>
           <div>
-            <StyledLink to="policy">Privacy Policy</StyledLink>
-            <StyledLink to="agreement">Terms of Service</StyledLink>
+            <StyledLink to="policy" onClick={handleLinkClick}>
+              Privacy Policy
+            </StyledLink>
+            <StyledLink to="agreement" onClick={handleLinkClick}>
+              Terms of Service
+            </StyledLink>
           </div>
         </FooterNavFlex>
       </FooterContainer>
