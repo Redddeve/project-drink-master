@@ -46,6 +46,7 @@ const SignUp = () => {
     formState: { errors },
   } = useForm({
     mode: 'all',
+    // reValidateMode: 'onBlur',
   });
 
   const isFieldValid = fieldName => {
@@ -97,7 +98,7 @@ const SignUp = () => {
               },
             })}
             placeholder="Name"
-            autoComplete="off"
+            // autoComplete="off"
             className={
               errors?.name ? 'error' : isFieldValid('name') ? 'correct' : ''
             }
@@ -180,7 +181,7 @@ const SignUp = () => {
               },
             })}
             placeholder="Email"
-            autoComplete="off"
+            // autoComplete="off"
             className={
               errors?.email ? 'error' : isFieldValid('email') ? 'correct' : ''
             }
@@ -217,7 +218,7 @@ const SignUp = () => {
               },
             })}
             placeholder="Password"
-            autoComplete="off"
+            // autoComplete="off"
             type={type}
             className={
               errors?.password
