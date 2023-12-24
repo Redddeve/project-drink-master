@@ -32,7 +32,11 @@ export const SearchFilterContainer = () => {
 
   const dispatchSearch = () => {
     dispatch(
-      searchDrinksThunk({ drink: name, ingredients: ingredient, category })
+      searchDrinksThunk({
+        drink: name,
+        ingredients: ingredient.value,
+        category: category.value,
+      })
     );
   };
 
@@ -48,6 +52,50 @@ export const SearchFilterContainer = () => {
   const categoriesOptions = categories?.map(cat => {
     return { value: cat, label: cat };
   });
+
+  const handleCategoryChange = value => {
+    if (value) {
+      setCategory(value.value);
+      dispatch(
+        searchDrinksThunk({
+          drink: name,
+          ingredients: ingredient,
+          category: value.value,
+        })
+      );
+    } else {
+      setCategory('');
+      dispatch(
+        searchDrinksThunk({
+          drink: name,
+          ingredients: ingredient,
+          category: '',
+        })
+      );
+    }
+  };
+
+  const handleIngredientChange = value => {
+    if (value) {
+      setIngredient(value.value);
+      dispatch(
+        searchDrinksThunk({
+          drink: name,
+          ingredients: value.value,
+          category,
+        })
+      );
+    } else {
+      setIngredient('');
+      dispatch(
+        searchDrinksThunk({
+          drink: name,
+          ingredients: '',
+          category,
+        })
+      );
+    }
+  };
 
   return (
     <StyledFilterContainer>
@@ -77,16 +125,8 @@ export const SearchFilterContainer = () => {
         options={categoriesOptions}
         placeholder={'All categories'}
         isSearchable={false}
-        onChange={value => {
-          setCategory(value.label);
-          dispatch(
-            searchDrinksThunk({
-              drink: name,
-              ingredients: ingredient,
-              category: value.label,
-            })
-          );
-        }}
+        isClearable={true}
+        onChange={handleCategoryChange}
         onMenuOpen={() => setCategoryMenuIsOpen(true)}
         onMenuClose={() => {
           setCategoryMenuIsOpen(false);
@@ -99,16 +139,8 @@ export const SearchFilterContainer = () => {
         classNamePrefix={'Select'}
         options={ingredientsOptions}
         placeholder={'Ingredients'}
-        onChange={value => {
-          setIngredient(value.label);
-          dispatch(
-            searchDrinksThunk({
-              drink: name,
-              ingredients: value.label,
-              category,
-            })
-          );
-        }}
+        isClearable={true}
+        onChange={handleIngredientChange}
         onMenuOpen={() => setIngredientMenuIsOpen(true)}
         onMenuClose={() => {
           setIngredientMenuIsOpen(false);

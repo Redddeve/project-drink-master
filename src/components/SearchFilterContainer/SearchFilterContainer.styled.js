@@ -42,7 +42,7 @@ export const StyledSvg = styled.svg`
   width: 20px;
   height: 20px;
   top: 18px;
-  left: 220px;
+  left: 180px;
   stroke: ${({ theme }) =>
     theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
   fill: ${({ theme }) =>
@@ -75,7 +75,7 @@ export const StyledSelect = styled(Select)`
     background: var(--black);
 
     @media ${device.tablet} {
-      width: 199px;
+      width: 250px;
     }
   }
 
@@ -83,6 +83,7 @@ export const StyledSelect = styled(Select)`
     color: var(--white);
     display: flex;
     align-items: center;
+    margin: 0;
   }
 
   .Select__indicator {
@@ -92,6 +93,11 @@ export const StyledSelect = styled(Select)`
 
     transform: ${props => (props.$menuIsOpen ? 'rotate(180deg)' : 'none')};
     display: ${props => (props.$menuIsOpen ? 'block' : 'display')};
+  }
+
+  .Select__clear-indicator {
+    position: absolute;
+    right: 45px;
   }
 
   .Select__indicator-separator {
@@ -110,6 +116,11 @@ export const StyledSelect = styled(Select)`
     color: ${({ theme }) =>
       theme === 'dark' ? 'var(--transp-white)' : 'var(--transp-dark)'};
     transition: var(--tran-fast);
+  }
+
+  .Select__option:hover {
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'var(--white)' : 'var(--dark)'};
   }
 
   .Select__input-container {
