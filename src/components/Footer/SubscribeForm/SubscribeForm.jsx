@@ -37,7 +37,7 @@ const SubscribeForm = () => {
         offers, etc.
       </SubscribeDesc>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="email">
+        <label>
           <SubscribeInput
             {...register('email', {
               required: "Email can't be empty",
@@ -55,6 +55,7 @@ const SubscribeForm = () => {
             name="email"
             title="Enter an email"
             placeholder="Enter the email"
+            autoComplete="email"
           />
           <InputMessage>
             {errors?.email && (
