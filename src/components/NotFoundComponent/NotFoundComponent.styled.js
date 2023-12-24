@@ -48,7 +48,6 @@ export const Zero = styled.img`
   height: 156px;
   position: relative;
   pointer-events: auto;
-  z-index: 12;
   top: -13px;
   left: 70px;
 

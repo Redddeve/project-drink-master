@@ -16,6 +16,7 @@ const NotFoundComponent = () => {
   return (
     <NotFoundContainer theme={theme}>
       <Zero
+        style={{ zIndex: isPlaying ? 12 : 1 }}
         srcSet={`${usual} 1x, ${retina} 2x`}
         alt="Not Found"
         onClick={playSound}
