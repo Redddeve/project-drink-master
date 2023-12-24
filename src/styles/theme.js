@@ -40,6 +40,7 @@ export const lightTheme = {
 };
 
 export const StyledAppWrapper = styled.div`
+  overflow-x: hidden;
   background-color: ${({ theme }) =>
     theme === 'dark' ? darkTheme.background.main : lightTheme.background.main};
 `;
