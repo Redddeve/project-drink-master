@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { signinThunk, signupThunk } from '../../redux/auth/operations.js';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   StyledWrap,
@@ -20,6 +20,8 @@ import {
   StyledStatus,
 } from './SignUp.styled.js';
 import sprite from '../../images/sprite.svg';
+import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
+import moment from 'moment';
 
 const SignUp = () => {
   const [type, setType] = useState('password');
@@ -54,15 +56,15 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const submit = data => {
-    const inputDate = new Date(data.date);
-    const year = inputDate.getFullYear();
-    const month = (inputDate.getMonth() + 1).toString().padStart(2, '0');
-    const day = inputDate.getDate().toString().padStart(2, '0');
-    const outputDateString = `${year}-${month}-${day}`;
-
+    // const inputDate = new Date(data.date);
+    // const year = inputDate.getFullYear();
+    // const month = (inputDate.getMonth() + 1).toString().padStart(2, '0');
+    // const day = inputDate.getDate().toString().padStart(2, '0');
+    // const outputDateString = `${year}-${month}-${day}`;
+    const outputDate = moment(data.date).format('YYYY-MM-DD');
     const newData = {
       ...data,
-      date: outputDateString,
+      date: outputDate,
     };
     console.log(newData);
     dispatch(signupThunk(newData))
@@ -73,6 +75,12 @@ const SignUp = () => {
         reset();
       });
   };
+
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  if (isLoggedIn) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <StyledWrap>
