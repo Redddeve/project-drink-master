@@ -14,6 +14,8 @@ import AddFormIngredients from '../../components/AddFormIngredients/AddFormIngre
 import AddFormDesc from '../../components/AddFormDesc/AddFormDesc';
 import PopularDrinks from '../../components/PopularDrinks/PopularDrinks';
 import { selectTheme } from '../../redux/theme/selectors';
+import { selectIsLoading } from '../../redux/drinks/selectors';
+import { Loader } from '../../components/Loader/Loader';
 
 const AddDrinkPage = () => {
   const dispatch = useDispatch();
@@ -59,8 +61,11 @@ const AddDrinkPage = () => {
       .catch(error => console.log(error));
   };
 
+  const loading = useSelector(selectIsLoading);
+
   return (
     <>
+      {loading && <Loader />}
       <PageTitle title="Add drink" />
       <div>
         <AddFormMain

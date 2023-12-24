@@ -1,9 +1,9 @@
 import { LoaderStyle } from './Loader.styled';
-import { PuffLoader } from 'react-spinners';
+import { ClockLoader } from 'react-spinners';
 export const Loader = () => {
   return (
     <LoaderStyle>
-      <PuffLoader color="#dfdfdf" size={60} speedMultiplier={1.5} />
+      <ClockLoader color="#deeb00" size={200} speedMultiplier={2} />
     </LoaderStyle>
   );
 };

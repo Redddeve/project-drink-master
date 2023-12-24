@@ -26,7 +26,7 @@ const AgreementPage = lazy(() => import('./pages/AgreementPage/AgreementPage'));
 
 const App = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsRefresh);
+  const isRefresh = useSelector(selectIsRefresh);
   const theme = useSelector(selectTheme);
   useEffect(() => {
     dispatch(refreshThunk());
@@ -34,7 +34,7 @@ const App = () => {
 
   return (
     <>
-      {isLoading ? (
+      {isRefresh ? (
         <Loader />
       ) : (
         <StyledAppWrapper theme={theme}>

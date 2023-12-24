@@ -10,6 +10,7 @@ import {
 import {
   selectDrinkById,
   selectFavoriteDrinks,
+  selectIsLoading,
 } from '../../redux/drinks/selectors.js';
 import {
   StyledAddToFavButton,
@@ -22,6 +23,7 @@ import {
 import DrinkIngredientsList from '../../components/DrinkIngredientsList/DrinkIngredientsList.jsx';
 import RecipePreparation from '../../components/RecipePreparation/RecipePreparation.jsx';
 import { selectTheme } from '../../redux/theme/selectors.js';
+import { Loader } from '../../components/Loader/Loader.jsx';
 
 const UserDrinkPage = () => {
   const theme = useSelector(selectTheme);
@@ -40,7 +42,7 @@ const UserDrinkPage = () => {
   };
 
   useEffect(() => {
-    dispatch(getFavoriteDrinksThunk({page: 1, itemsPerPage: 1000}));
+    dispatch(getFavoriteDrinksThunk({ page: 1, itemsPerPage: 1000 }));
     dispatch(getDrinkbyIdThunk(drinkId));
     window.scrollTo({
       top: 0,
@@ -51,8 +53,12 @@ const UserDrinkPage = () => {
     setIsFavorite(!!favorites?.find(dr => dr._id === drink._id));
   }, [drink, favorites]);
 
+  const loading = useSelector(selectIsLoading);
+
   return (
     <>
+      {loading && <Loader />}
+
       <StyledDrinkHero>
         <div>
           <StyledDrinkHeader theme={theme}>{drink.drink}</StyledDrinkHeader>
