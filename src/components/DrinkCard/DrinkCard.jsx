@@ -13,12 +13,7 @@ export const DrinkCard = ({ drink }) => {
   const theme = useSelector(state => state.theme.theme);
   return (
     <StyledDrinkCard>
-      <LazyLoad
-        offset={100}
-        onContentVisible={() => {
-          console.log('loaded!');
-        }}
-      >
+      <LazyLoad offset={100}>
         <StyledDrinkImage
           src={drink.drinkThumb}
           alt={drink.drink}
