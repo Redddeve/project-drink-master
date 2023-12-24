@@ -40,8 +40,11 @@ const UserDrinkPage = () => {
   };
 
   useEffect(() => {
-    dispatch(getFavoriteDrinksThunk());
+    dispatch(getFavoriteDrinksThunk({page: 1, itemsPerPage: 1000}));
     dispatch(getDrinkbyIdThunk(drinkId));
+    window.scrollTo({
+      top: 0,
+    });
   }, [dispatch, drinkId]);
 
   useEffect(() => {
