@@ -54,6 +54,9 @@ export const HeroText = styled.p`
 `;
 
 export const AddDrinksNavLink = styled(NavLink)`
+  position: relative;
+  z-index: 1;
+
   color: ${({ theme }) =>
     theme === 'dark' ? lightTheme.colors.main : darkTheme.colors.main};
   font-weight: 600;
