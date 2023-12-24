@@ -133,9 +133,12 @@ const SignUp = () => {
                     <use href={`${sprite}#icon-calendar`} />
                   </StyledCalendarIcon>
                 }
-                placeholderText="dd/mm/yyyy"
+                placeholderText="Your date of birth"
                 maxDate={new Date()}
                 style={{ float: 'left' }}
+                calendarStartDay={1}
+                showYearDropdown
+                showMonthDropdown
                 className={
                   errors?.date ? 'error' : isFieldValid('date') ? 'correct' : ''
                 }
@@ -169,6 +172,7 @@ const SignUp = () => {
               },
             })}
             placeholder="Email"
+            autoComplete="off"
             className={
               errors?.email ? 'error' : isFieldValid('email') ? 'correct' : ''
             }
