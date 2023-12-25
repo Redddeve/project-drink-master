@@ -19,6 +19,9 @@ const AddDrinkPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPopularThunk());
+    window.scrollTo({
+      top: 0,
+    });
   }, [dispatch]);
 
   const navigate = useNavigate();
@@ -62,42 +65,42 @@ const AddDrinkPage = () => {
   return (
     <>
       <PageTitle title="Add drink" />
-      <div>
-        <AddFormMain
-          register={register}
-          control={control}
-          setValue={setValue}
-          handleSubmit={handleSubmit}
-          errors={errors}
-          onSubmit={onSubmit}
-        />
 
-        <AddFormIngredients
-          ingNumber={ingNumber}
-          setIngNumber={setIngNumber}
-          register={register}
-          control={control}
-          handleSubmit={handleSubmit}
-          errors={errors}
-          onSubmit={onSubmit}
-        />
+      <AddFormMain
+        register={register}
+        control={control}
+        setValue={setValue}
+        handleSubmit={handleSubmit}
+        errors={errors}
+        onSubmit={onSubmit}
+      />
 
-        <AddFormDesc
-          register={register}
-          control={control}
-          handleSubmit={handleSubmit}
-          errors={errors}
-          onSubmit={onSubmit}
-        />
+      <AddFormIngredients
+        ingNumber={ingNumber}
+        setIngNumber={setIngNumber}
+        register={register}
+        control={control}
+        handleSubmit={handleSubmit}
+        errors={errors}
+        onSubmit={onSubmit}
+      />
 
-        <StyledSubmitBtn
-          type="button"
-          onClick={handleSubmit(onSubmit)}
-          theme={theme}
-        >
-          Add
-        </StyledSubmitBtn>
-      </div>
+      <AddFormDesc
+        register={register}
+        control={control}
+        handleSubmit={handleSubmit}
+        errors={errors}
+        onSubmit={onSubmit}
+      />
+
+      <StyledSubmitBtn
+        type="button"
+        onClick={handleSubmit(onSubmit)}
+        theme={theme}
+      >
+        Add
+      </StyledSubmitBtn>
+
       <PopularDrinks />
     </>
   );

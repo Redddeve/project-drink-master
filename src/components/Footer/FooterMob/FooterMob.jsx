@@ -22,7 +22,7 @@ const FooterMob = () => {
       <FooterContainer>
         <FooterNavFlex>
           <LogoFlex>
-            <StyledLogoLink href="/">
+            <StyledLogoLink to="/">
               <Icon>
                 <use href={sprite + '#icon-logo'} />
               </Icon>
