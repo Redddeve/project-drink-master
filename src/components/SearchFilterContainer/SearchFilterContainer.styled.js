@@ -75,7 +75,13 @@ export const StyledSelect = styled(Select)`
     background: var(--black);
 
     @media ${device.tablet} {
+      width: 223px;
+      font-size: 14px;
+    }
+
+    @media ${device.desktop} {
       width: 250px;
+      font-size: 16px;
     }
   }
 
