@@ -61,7 +61,11 @@ const ToggleTheme = () => {
 
   return (
     <>
-      <MaterialUISwitch checked={theme === 'dark'} onChange={toggleTheme} />
+      <MaterialUISwitch
+        name="themeToggle"
+        checked={theme === 'dark'}
+        onChange={toggleTheme}
+      />
     </>
   );
 };
