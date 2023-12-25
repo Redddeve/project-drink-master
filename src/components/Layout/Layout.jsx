@@ -14,7 +14,7 @@ const Layout = () => {
       <Header />
       <StyledMain>
         <Circle theme={theme}></Circle>
-        <Suspense fallback={Loader}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
         <ButtonUpToTop />
