@@ -27,7 +27,7 @@ const Hero = () => {
             destination for exploring, crafting, and mastering the world&apos;s
             finest beverages.
           </HeroText>
-          <AddDrinksNavLink theme={theme} to="/add">
+          <AddDrinksNavLink theme={theme} to="/add" aria-label="Add drinks">
             Add drinks
           </AddDrinksNavLink>
         </HeroInfo>

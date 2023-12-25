@@ -11,6 +11,7 @@ const FollowUs = () => {
     <FollowUsWrap>
       <StyledFollowUsItem>
         <StyledFollowUsLink
+          aria-label="facebook"
           href="https://www.facebook.com/goITclub/"
           target="_blank"
           rel="noopener noreferrer"
@@ -23,6 +24,7 @@ const FollowUs = () => {
 
       <StyledFollowUsItem>
         <StyledFollowUsLink
+          aria-label="instagram"
           href="https://www.instagram.com/goitclub/"
           target="_blank"
           rel="noopener noreferrer"
@@ -35,6 +37,7 @@ const FollowUs = () => {
 
       <StyledFollowUsItem>
         <StyledFollowUsLink
+          aria-label="youtube"
           href="https://www.youtube.com/c/GoIT"
           target="_blank"
           rel="noopener noreferrer"

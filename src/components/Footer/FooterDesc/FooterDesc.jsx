@@ -25,7 +25,7 @@ const FooterDesc = () => {
       <FooterContainer>
         <div>
           <LogoFlex>
-            <StyledLogoLink to="/">
+            <StyledLogoLink to="/" aria-label="Logo Drink Master">
               <Icon>
                 <use href={sprite + '#icon-logo'} />
               </Icon>
@@ -36,16 +36,32 @@ const FooterDesc = () => {
           </LogoFlex>
 
           <nav>
-            <StyledNavLink to="/drinks" onClick={handleLinkClick}>
+            <StyledNavLink
+              aria-label="To Drinks page"
+              to="/drinks"
+              onClick={handleLinkClick}
+            >
               <span>Drinks</span>
             </StyledNavLink>
-            <StyledNavLink to="/add" onClick={handleLinkClick}>
+            <StyledNavLink
+              aria-label="To Add drink page"
+              to="/add"
+              onClick={handleLinkClick}
+            >
               <span>Add drink</span>
             </StyledNavLink>
-            <StyledNavLink to="/my" onClick={handleLinkClick}>
+            <StyledNavLink
+              aria-label="To My drinks page"
+              to="/my"
+              onClick={handleLinkClick}
+            >
               <span>My drinks</span>
             </StyledNavLink>
-            <StyledNavLink to="/favorites" onClick={handleLinkClick}>
+            <StyledNavLink
+              aria-label="To Favorites drinks page"
+              to="/favorites"
+              onClick={handleLinkClick}
+            >
               <span>Favorites drinks</span>
             </StyledNavLink>
           </nav>
@@ -54,10 +70,18 @@ const FooterDesc = () => {
         <FooterNavFlex>
           <Copy>©2023 Drink Master. All rights reserved.</Copy>
           <div>
-            <StyledLink to="policy" onClick={handleLinkClick}>
+            <StyledLink
+              aria-label="To Privacy Policy page"
+              to="policy"
+              onClick={handleLinkClick}
+            >
               Privacy Policy
             </StyledLink>
-            <StyledLink to="agreement" onClick={handleLinkClick}>
+            <StyledLink
+              aria-label="To Terms of Service page"
+              to="agreement"
+              onClick={handleLinkClick}
+            >
               Terms of Service
             </StyledLink>
           </div>
