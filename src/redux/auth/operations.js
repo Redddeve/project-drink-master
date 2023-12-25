@@ -45,7 +45,7 @@ export const signoutThunk = createAsyncThunk(
   'auth/signout',
   async (_, { rejectWithValue, getState }) => {
     try {
-      await instance.delete('auth/signout');
+      await instance.get('auth/logout');
       clearToken();
       toast.info(`Bye, ${getState().auth.user.name} `);
     } catch (error) {
@@ -84,7 +84,7 @@ export const updateThunk = createAsyncThunk(
 
 export const refreshThunk = createAsyncThunk(
   'users/refresh',
-  async (_, { rejectWithValue, getState, dispatch }) => {
+  async (_, { rejectWithValue, getState }) => {
     const savedToken = getState().auth.token;
     if (!savedToken) {
       return rejectWithValue('token was not found');
@@ -94,9 +94,6 @@ export const refreshThunk = createAsyncThunk(
       const { data } = await instance.get('users/current');
       return data;
     } catch (error) {
-      if (error.response && error.response.status === 401) {
-        dispatch(signoutThunk());
-      }
       return rejectWithValue(error.message);
     }
   }
