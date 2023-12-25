@@ -3,19 +3,23 @@ import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { PaginateContainer, Paginator } from './Paginator.styled';
 import { selectPages } from '../../redux/drinks/selectors';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import PaginationIcon from './PaginatorIcons/PaginatedIcons';
 import { selectTheme } from '../../redux/theme/selectors';
+import { setSearchPage } from '../../redux/drinks/operations';
 
 function PaginatedItems({ items, destination, ListComponent, setPage }) {
   const [currentPage, setCurrentPage] = useState(0);
   const pageCount = useSelector(selectPages);
+  const dispatch = useDispatch();
+  // const pageCount = 2;
   const theme = useSelector(selectTheme);
 
-  const paginatorExpediency = pageCount > 1;
+  const paginatorExpediency = true;
 
   const handlePageClick = ({ selected }) => {
     setPage(selected + 1);
+    dispatch(setSearchPage(selected + 1));
 
     window.scrollTo({
       top: 0,

@@ -32,6 +32,17 @@ export const getPopularThunk = createAsyncThunk(
   }
 );
 
+export const setSearchPage = createAsyncThunk(
+  'drinks/searchPage',
+  async (page, { rejectWithValue }) => {
+    try {
+      return page;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export const searchDrinksThunk = createAsyncThunk(
   'drinks/search',
   async (body, { rejectWithValue, getState }) => {

@@ -18,6 +18,7 @@ import {
 } from '../../redux/drinks/operations.js';
 import { useEffect, useState } from 'react';
 import { selectTheme } from '../../redux/theme/selectors.js';
+import useResponsiveItemsPerPage from '../../hooks/usePerPage.jsx';
 
 export const SearchFilterContainer = () => {
   const dispatch = useDispatch();
@@ -30,12 +31,20 @@ export const SearchFilterContainer = () => {
   const [categoryMenuIsOpen, setCategoryMenuIsOpen] = useState(false);
   const theme = useSelector(selectTheme);
 
+  const itemsPerPage = useResponsiveItemsPerPage({
+    mobile: 10,
+    tablet: 10,
+    desktop: 9,
+    default: 9,
+  });
+
   const dispatchSearch = () => {
     dispatch(
       searchDrinksThunk({
         drink: name,
         ingredients: ingredient,
         category: category,
+        itemsPerPage,
       })
     );
   };
@@ -43,8 +52,15 @@ export const SearchFilterContainer = () => {
   useEffect(() => {
     dispatch(getCategoriesThunk());
     dispatch(getIngredientsThunk());
-    dispatch(searchDrinksThunk({ drink: '', ingredients: '', category: '' }));
-  }, [dispatch]);
+    dispatch(
+      searchDrinksThunk({
+        drink: '',
+        ingredients: '',
+        category: '',
+        itemsPerPage,
+      })
+    );
+  }, [dispatch, itemsPerPage]);
 
   const ingredientsOptions = ingredients?.map(ing => {
     return { value: ing.title, label: ing.title };
@@ -61,6 +77,7 @@ export const SearchFilterContainer = () => {
           drink: name,
           ingredients: ingredient,
           category: value.value,
+          itemsPerPage,
         })
       );
     } else {
@@ -70,6 +87,7 @@ export const SearchFilterContainer = () => {
           drink: name,
           ingredients: ingredient,
           category: '',
+          itemsPerPage,
         })
       );
     }
@@ -83,6 +101,7 @@ export const SearchFilterContainer = () => {
           drink: name,
           ingredients: value.value,
           category,
+          itemsPerPage,
         })
       );
     } else {
@@ -92,6 +111,7 @@ export const SearchFilterContainer = () => {
           drink: name,
           ingredients: '',
           category,
+          itemsPerPage,
         })
       );
     }
@@ -109,6 +129,7 @@ export const SearchFilterContainer = () => {
               drink: e.currentTarget.value,
               ingredients: ingredient,
               category,
+              itemsPerPage,
             })
           )
         }
