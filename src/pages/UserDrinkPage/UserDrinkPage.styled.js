@@ -59,6 +59,9 @@ export const StyledDrinkDesc = styled.p`
 `;
 
 export const StyledAddToFavButton = styled.button`
+  position: relative;
+  z-index: 1;
+
   display: flex;
   width: 222px;
   padding: 14px 40px;

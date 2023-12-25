@@ -1,5 +1,14 @@
-import styled from 'styled-components';
 import { device } from '../../../styles/device';
+import styled, { keyframes } from 'styled-components';
+
+const fireAnimation = keyframes`
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+`;
 
 export const DeleteButton = styled.button`
   padding: 11px;
@@ -7,11 +16,11 @@ export const DeleteButton = styled.button`
   background: var(--black);
   cursor: pointer;
   border: var(--see-more-item);
-  transition: var(--tran-fast);
 
   &:hover,
   :focus {
-    transform: scale(1.08);
+    transition: var(--tran-fast);
+    animation: ${fireAnimation} 1.5s infinite;
   }
 
   & > svg {

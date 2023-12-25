@@ -13,13 +13,7 @@ export const DrinkCard = ({ drink }) => {
   const theme = useSelector(state => state.theme.theme);
   return (
     <StyledDrinkCard>
-      <LazyLoad
-        height={400}
-        offset={100}
-        onContentVisible={() => {
-          console.log('loaded!');
-        }}
-      >
+      <LazyLoad offset={100}>
         <StyledDrinkImage
           src={drink.drinkThumb}
           alt={drink.drink}
@@ -30,7 +24,11 @@ export const DrinkCard = ({ drink }) => {
       {/*) : (*/}
       <StyledTextContainerSmall>
         <StyledDrinkName theme={theme}>{drink.drink}</StyledDrinkName>
-        <StyledSeeMoreSmall theme={theme} to={`../drink/${drink._id}`}>
+        <StyledSeeMoreSmall
+          theme={theme}
+          to={`../drink/${drink._id}`}
+          aria-label="See more"
+        >
           See more
         </StyledSeeMoreSmall>
       </StyledTextContainerSmall>

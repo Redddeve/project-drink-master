@@ -12,11 +12,13 @@ const GlobalStyles = createGlobalStyle`
   font-family: 'Manrope';
   src: url(${regular}), url(${semiBold}) ;
   font-weight: 400, 600;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Manrope';
   src: url(${medium}) ;
   font-weight: 500;
+  font-display: swap;
 }
 
 :root {
@@ -25,6 +27,7 @@ const GlobalStyles = createGlobalStyle`
   --sub-white: #FAFAFA;
   --transp-white: #F3F3F380; // rgba(243, 243, 243, 0.80)
   --transp-not-found:#F3F3F310;
+  --transp-not-found-light:#4070CD10;
   --transp-disabled:#F3F3F330;
   --dark: #0A0A11;
   --transp-dark: #0A0A1166; // light theme
@@ -38,6 +41,7 @@ const GlobalStyles = createGlobalStyle`
   --error-red: #DA1414;
   --dark-theme-bg:rgba(22, 31, 55, 0.50);
   --light-theme-bg: #161F37;
+ 
   
 
 

@@ -41,6 +41,8 @@ export const StyledTextContainerSmall = styled.div`
 `;
 
 export const StyledSeeMoreSmall = styled(Link)`
+  position: relative;
+  z-index: 1;
   color: ${({ theme }) =>
     theme === 'dark' ? darkTheme.colors.transp : lightTheme.colors.transp};
   cursor: pointer;

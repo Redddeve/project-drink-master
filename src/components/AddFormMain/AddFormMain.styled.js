@@ -5,6 +5,9 @@ export const StyledFileInput = styled.input`
   display: none;
 `;
 export const StyledFileLabel = styled.label`
+  position: relative;
+  z-index: 1;
+
   width: 335px;
   height: 320px;
   cursor: pointer;

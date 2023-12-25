@@ -11,6 +11,7 @@ export const darkTheme = {
     main: 'var(--white)',
     sub: 'var(--sub-white)',
     transp: 'var(--transp-white)',
+    notFound: 'var(--transp-not-found)',
   },
   logo: {
     main: 'var(--white)',
@@ -30,6 +31,7 @@ export const lightTheme = {
     main: 'var(--dark)',
     sub: 'var(--transp-dark)',
     transp: 'var(--transp-dark)',
+    notFound: 'var(--transp-not-found-light)',
   },
   logo: {
     main: 'var(--black)',
@@ -40,6 +42,7 @@ export const lightTheme = {
 };
 
 export const StyledAppWrapper = styled.div`
+  overflow-x: hidden;
   background-color: ${({ theme }) =>
     theme === 'dark' ? darkTheme.background.main : lightTheme.background.main};
 `;

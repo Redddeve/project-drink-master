@@ -55,7 +55,7 @@ const Header = () => {
 
   return (
     <HeaderWrapper theme={theme}>
-      <HeaderContainer>
+      <HeaderContainer theme={theme}>
         <Logo />
         <UserMenu />
         {isDesktop ? (

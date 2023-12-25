@@ -1,10 +1,33 @@
 import styled from 'styled-components';
+import { device } from '../../../styles/device';
 
 export const FormWrap = styled.div`
+  position: relative;
   max-width: 335px;
   margin-bottom: 80px;
-  @media screen and (min-width: 768px) {
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -775px;
+    left: -410px;
+    width: 774px;
+    height: 762px;
+    border-radius: 774px;
+    background: rgba(188, 230, 210, 0.4);
+    filter: blur(104.8543701171875px);
+  }
+  @media ${device.tablet} {
     max-width: 309px;
+    &::after {
+      bottom: -790px;
+      left: -525px;
+    }
+  }
+  @media ${device.desktop} {
+    &::after {
+      left: -810px;
+    }
   }
 `;
 export const SubscribeDesc = styled.div`

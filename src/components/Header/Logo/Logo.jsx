@@ -8,7 +8,7 @@ const Logo = () => {
   const theme = useSelector(state => state.theme.theme);
   return (
     <>
-      <Link to="/">
+      <Link to="/" aria-label="Logo Drink Master">
         <LogoGroup>
           <Icon theme={theme}>
             <svg width="22" height="22">

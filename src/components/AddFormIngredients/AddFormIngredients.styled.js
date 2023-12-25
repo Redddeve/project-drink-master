@@ -46,6 +46,8 @@ export const StyledIngredientsText = styled.p`
 `;
 
 export const StyledAddDiv = styled.div`
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -59,6 +61,8 @@ export const StyledAddDiv = styled.div`
   margin-bottom: 34px;
 `;
 export const StyledIngFieldBtn = styled.button`
+  position: relative;
+  z-index: 1;
   background: transparent;
   border: none;
   padding: 0;
