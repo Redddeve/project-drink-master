@@ -1,4 +1,4 @@
-import instance, { setToken } from '../instance';
+import instance, { clearToken, setToken } from '../instance';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
@@ -14,6 +14,10 @@ export const fetchAllDrinks = createAsyncThunk(
       return data;
     } catch (error) {
       toast.error(`Something went wrong. Please try again later.`);
+      if (error.response.status === 401) {
+        clearToken();
+        location.reload();
+      }
       return rejectWithValue(error.message);
     }
   }
@@ -90,6 +94,10 @@ export const getOwnDrinksThunk = createAsyncThunk(
       const { data } = await instance.get('/drinks/own');
       return data;
     } catch (error) {
+      if (error.response.status === 401) {
+        clearToken();
+        location.reload();
+      }
       return rejectWithValue(error.message);
     }
   }
@@ -108,6 +116,10 @@ export const addOwnDrinkThunk = createAsyncThunk(
       toast.success(`Drink added successfully`);
       return data;
     } catch (error) {
+      if (error.response.status === 401) {
+        clearToken();
+        location.reload();
+      }
       toast.error(`Something went wrong. Please try again later.`);
       return rejectWithValue(error.message);
     }
@@ -123,6 +135,10 @@ export const deleteOwnDrinkThunk = createAsyncThunk(
       toast.success(`Drink deleted successfully`);
       return data;
     } catch (error) {
+      if (error.response.status === 401) {
+        clearToken();
+        location.reload();
+      }
       toast.error(`Something went wrong. Please try again later.`);
       return rejectWithValue(error.message);
     }
@@ -141,6 +157,10 @@ export const getFavoriteDrinksThunk = createAsyncThunk(
       );
       return data;
     } catch (error) {
+      if (error.response.status === 401) {
+        clearToken();
+        location.reload();
+      }
       return rejectWithValue(error.message);
     }
   }
@@ -157,6 +177,10 @@ export const addFavoriteDrinkThunk = createAsyncThunk(
       toast.success(`Drink added to favorites`);
       return data;
     } catch (error) {
+      if (error.response.status === 401) {
+        clearToken();
+        location.reload();
+      }
       toast.error(`Something went wrong. Please try again later.`);
       return rejectWithValue(error.message);
     }
@@ -175,6 +199,10 @@ export const removeFavoriteDrinkThunk = createAsyncThunk(
       toast.success(`Drink removed from favorites`);
       return id;
     } catch (error) {
+      if (error.response.status === 401) {
+        clearToken();
+        location.reload();
+      }
       toast.error(`Something went wrong. Please try again later.`);
       return rejectWithValue(error.message);
     }
@@ -191,6 +219,10 @@ export const getCategoriesThunk = createAsyncThunk(
       const { data } = await instance.get('/filters/categories');
       return data;
     } catch (error) {
+      if (error.response.status === 401) {
+        clearToken();
+        location.reload();
+      }
       return rejectWithValue(error.message);
     }
   }

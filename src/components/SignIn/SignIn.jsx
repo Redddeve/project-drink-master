@@ -149,7 +149,9 @@ const SignIn = () => {
         </StyledInputWrap>
         <StyledSignInBtn>Sign In</StyledSignInBtn>
 
-        <StyledLink to="/signup">Sign Up</StyledLink>
+        <StyledLink to="/signup" aria-label="Go to sign up page">
+          Sign Up
+        </StyledLink>
       </StyledFormWrap>
     </StyledWrap>
   );

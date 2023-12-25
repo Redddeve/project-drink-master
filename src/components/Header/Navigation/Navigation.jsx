@@ -12,27 +12,52 @@ const Navigation = React.forwardRef(
         <Circle></Circle>
         <List id="navigation" theme={theme}>
           <Item>
-            <NavLink to="/" className="link" activeclassname="active">
+            <NavLink
+              aria-label="To Home page"
+              to="/"
+              className="link"
+              activeclassname="active"
+            >
               Home
             </NavLink>
           </Item>
           <Item>
-            <NavLink to="/drinks" className="link" activeclassname="active">
+            <NavLink
+              aria-label="To Drinks page"
+              to="/drinks"
+              className="link"
+              activeclassname="active"
+            >
               Drinks
             </NavLink>
           </Item>
           <Item>
-            <NavLink to="/add" className="link" activeclassname="active">
+            <NavLink
+              aria-label="To Add drink page"
+              to="/add"
+              className="link"
+              activeclassname="active"
+            >
               Add drink
             </NavLink>
           </Item>
           <Item>
-            <NavLink to="/my" className="link" activeclassname="active">
+            <NavLink
+              aria-label="To My drinks page"
+              to="/my"
+              className="link"
+              activeclassname="active"
+            >
               My drinks
             </NavLink>
           </Item>
           <Item>
-            <NavLink to="/favorites" className="link" activeclassname="active">
+            <NavLink
+              aria-label="To Favorites page"
+              to="/favorites"
+              className="link"
+              activeclassname="active"
+            >
               Favorites
             </NavLink>
           </Item>
