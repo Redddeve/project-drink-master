@@ -1,13 +1,19 @@
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { getFavoriteDrinksThunk } from '../../redux/drinks/operations';
-import { useDispatch } from 'react-redux';
 import useResponsiveItemsPerPage from '../../hooks/usePerPage';
 import FavoriteCocktails from '../../components/FavoriteCocktails/FavoriteCocktails';
 import PageTitle from '../../components/PageTitle/PageTitle';
+import { selectPages } from '../../redux/drinks/selectors';
+import { selectTheme } from '../../redux/theme/selectors';
 
 const FavoriteDrinksPage = () => {
-  const [page, setPage] = useState(1);
+  const [selectedPage, setSelectedPage] = useState(0);
   const dispatch = useDispatch();
+  const pageCount = useSelector(selectPages);
+  const favorites = useSelector(state => state.drinks.favorite);
+  const theme = useSelector(selectTheme);
+  console.log(selectedPage);
 
   const itemsPerPage = useResponsiveItemsPerPage({
     mobile: 9,
@@ -17,17 +23,28 @@ const FavoriteDrinksPage = () => {
   });
 
   useEffect(() => {
-    dispatch(getFavoriteDrinksThunk({ page, itemsPerPage }));
-  }, [dispatch, itemsPerPage, page]);
+    dispatch(
+      getFavoriteDrinksThunk({ page: selectedPage, limit: itemsPerPage })
+    );
+  }, [dispatch, itemsPerPage, selectedPage]);
+
+  useEffect(() => {
+    if (favorites.length === 0 && pageCount > 1 && selectedPage > 1) {
+      setSelectedPage(selectedPage - 1);
+    }
+  }, [favorites.length, pageCount, selectedPage, setSelectedPage]);
 
   return (
     <>
       <section>
-        <PageTitle title="Favorites" mbMobile={0} mbTablet={0} mbDesktop={0} />
+        <PageTitle title="Favorites" />
         <FavoriteCocktails
+          favorites={favorites}
           destination="favorite"
-          page={page}
-          setPage={setPage}
+          pageCount={pageCount}
+          setSelectedPage={setSelectedPage}
+          selectedPage={selectedPage}
+          theme={theme}
         />
       </section>
     </>

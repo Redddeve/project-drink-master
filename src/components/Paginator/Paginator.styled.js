@@ -1,7 +1,16 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import ReactPaginate from 'react-paginate';
 import { device } from '../../styles/device';
 import { darkTheme, lightTheme } from '../../styles/theme';
+
+const fireAnimation = keyframes`
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+`;
 
 export const PaginateContainer = styled.div`
   display: flex;
@@ -68,6 +77,8 @@ export const Paginator = styled(ReactPaginate).attrs({
   }
 
   li.active a {
+    transition: var(--tran-fast);
+    animation: ${fireAnimation} 1.5s infinite;
     background-color: ${({ theme }) =>
       theme === 'dark'
         ? darkTheme.background.activeBlue
