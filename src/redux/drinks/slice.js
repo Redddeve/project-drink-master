@@ -13,6 +13,7 @@ import {
   getPopularThunk,
   removeFavoriteDrinkThunk,
   searchDrinksThunk,
+  setSearchPage,
 } from './operations';
 
 const initialState = {
@@ -20,6 +21,7 @@ const initialState = {
   byId: [],
   favorite: [],
   pages: 1,
+  page: 1,
   own: [],
   popular: [],
   categories: [],
@@ -35,6 +37,9 @@ export const slice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
+      .addCase(setSearchPage.fulfilled, (state, { payload }) => {
+        state.page = payload;
+      })
       .addCase(fetchAllDrinks.fulfilled, (state, { payload }) => {
         state.drinks = payload;
         state.isLoading = false;
@@ -44,7 +49,8 @@ export const slice = createSlice({
         state.isLoading = false;
       })
       .addCase(searchDrinksThunk.fulfilled, (state, { payload }) => {
-        state.searchDrinks = payload;
+        state.searchDrinks = payload.result;
+        state.pages = payload.pages;
         state.isLoading = false;
       })
       .addCase(searchDrinksThunk.rejected, state => {

@@ -1,17 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFavoriteDrinksThunk } from '../../redux/drinks/operations';
+import {
+  getFavoriteDrinksThunk,
+  setSearchPage,
+} from '../../redux/drinks/operations';
 import useResponsiveItemsPerPage from '../../hooks/usePerPage';
 import FavoriteCocktails from '../../components/FavoriteCocktails/FavoriteCocktails';
 import PageTitle from '../../components/PageTitle/PageTitle';
-import { selectPages } from '../../redux/drinks/selectors';
+import {
+  selectFavoriteDrinks,
+  selectPage,
+  selectPages,
+} from '../../redux/drinks/selectors';
 import { selectTheme } from '../../redux/theme/selectors';
 
 const FavoriteDrinksPage = () => {
-  const [selectedPage, setSelectedPage] = useState(0);
   const dispatch = useDispatch();
-  const pageCount = useSelector(selectPages);
-  const favorites = useSelector(state => state.drinks.favorite);
+  const selectedPage = useSelector(selectPage);
+  const pageCount = useSelector(selectPages) || 0;
+  const favorites = useSelector(selectFavoriteDrinks);
+  const { length } = favorites;
   const theme = useSelector(selectTheme);
 
   const itemsPerPage = useResponsiveItemsPerPage({
@@ -22,16 +30,23 @@ const FavoriteDrinksPage = () => {
   });
 
   useEffect(() => {
+    dispatch(setSearchPage(1));
+  }, [dispatch]);
+
+  useEffect(() => {
     dispatch(
       getFavoriteDrinksThunk({ page: selectedPage, limit: itemsPerPage })
     );
   }, [dispatch, itemsPerPage, selectedPage]);
 
   useEffect(() => {
-    if (favorites.length === 0 && pageCount > 1 && selectedPage > 1) {
-      setSelectedPage(selectedPage - 1);
+    if (length === 0 && selectedPage === pageCount) {
+      dispatch(setSearchPage(pageCount - 2));
     }
-  }, [favorites.length, pageCount, selectedPage, setSelectedPage]);
+    if (length === 0 && selectedPage === 0) {
+      dispatch(setSearchPage(pageCount + 2));
+    }
+  }, [dispatch, length, pageCount, selectedPage]);
 
   return (
     <>
@@ -41,8 +56,6 @@ const FavoriteDrinksPage = () => {
           favorites={favorites}
           destination="favorite"
           pageCount={pageCount}
-          setSelectedPage={setSelectedPage}
-          selectedPage={selectedPage}
           theme={theme}
         />
       </section>
