@@ -2,23 +2,23 @@ import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { PaginateContainer, Paginator } from './Paginator.styled';
 import PaginationIcon from './PaginatorIcons/PaginatedIcons';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSearchPage } from '../../redux/drinks/operations';
+import { selectPage } from '../../redux/drinks/selectors';
 
 function PaginatedItems({
   items,
   destination,
   ListComponent,
   pageCount,
-  setSelectedPage,
   theme,
-  selectedPage,
 }) {
   const dispatch = useDispatch();
-  const currentPage = selectedPage;
+  const selectedPage = useSelector(selectPage);
 
-  const paginatorExpediency = true;
+  const paginatorExpediency = pageCount > 1;
 
   const handlePageClick = ({ selected }) => {
-    setSelectedPage(selected);
     dispatch(setSearchPage(selected + 1));
 
     window.scrollTo({
@@ -26,7 +26,7 @@ function PaginatedItems({
       behavior: 'smooth',
     });
 
-    if (selected === pageCount - 1) {
+    if (selected === pageCount - 1 && pageCount >= 5) {
       toast.info(
         'The final chapter of our cocktail symphony has been reached. 🍹🎉'
       );
@@ -50,7 +50,7 @@ function PaginatedItems({
           pageCount={pageCount}
           previousLabel={<PaginationIcon iconId="icon-pagi-left" />}
           renderOnZeroPageCount={null}
-          forcePage={currentPage}
+          forcePage={selectedPage - 1}
           forceDisplay={true}
         />
       )}

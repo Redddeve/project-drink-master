@@ -12,14 +12,7 @@ import PaginatedItems from '../Paginator/Paginator';
 import { useSelector } from 'react-redux';
 import { Loader } from '../Loader/Loader';
 
-const FavoriteCocktails = ({
-  destination,
-  pageCount,
-  setSelectedPage,
-  favorites,
-  theme,
-  selectedPage,
-}) => {
+const FavoriteCocktails = ({ destination, pageCount, favorites, theme }) => {
   const isLoading = useSelector(selectIsLoading);
   return isLoading ? (
     <Loader />
@@ -39,9 +32,7 @@ const FavoriteCocktails = ({
       items={favorites}
       destination={destination}
       ListComponent={CocktailList}
-      setSelectedPage={setSelectedPage}
       theme={theme}
-      selectedPage={selectedPage}
     />
   );
 };
