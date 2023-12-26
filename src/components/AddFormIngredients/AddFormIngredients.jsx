@@ -118,8 +118,9 @@ const AddFormIngredients = ({
                 )}
               </StyledIngSelectLabel>
 
-              <StyledIngFieldWrapper theme={theme}>
+              <StyledIngFieldWrapper>
                 <StyledIngFieldInput
+                  theme={theme}
                   type="text"
                   placeholder="1 cl"
                   {...register(`IngNumber${index}`, { required: true })}

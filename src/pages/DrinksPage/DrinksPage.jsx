@@ -141,7 +141,7 @@ const DrinksPage = () => {
       </StyledFilterContainer>
       <StyledCardsContainer>
         {drinks.length !== 0 ? (
-          drinks?.result.map(drink => {
+          drinks?.map(drink => {
             return (
               <DrinkCard
                 key={drink._id}

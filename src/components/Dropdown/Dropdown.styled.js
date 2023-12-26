@@ -1,5 +1,19 @@
+import { useSelector } from 'react-redux';
+
+import { selectTheme } from '../../redux/theme/selectors';
+export const GetMenuStyles = element => {
+  const theme = useSelector(selectTheme);
+  if (element === 'color') {
+    return theme === 'dark' ? 'var(transp-white)' : 'var(--transp-dark)';
+  } else if (element === 'background') {
+    return theme === 'dark' ? 'var(--black)' : 'var(--white)';
+  } else if (element === 'hover') {
+    return theme === 'dark' ? 'var(--white)' : 'var(--black)';
+  }
+};
+
 export const stylesSelect = {
-  control: baseStyles => ({
+  control: (baseStyles, { isFocused }) => ({
     ...baseStyles,
     width: 200,
     height: 50,
@@ -7,6 +21,8 @@ export const stylesSelect = {
     border: 'none',
     textAlign: 'right',
     background: 'transparent',
+    boxShadow: isFocused ? 'none' : baseStyles.boxShadow,
+    borderColor: isFocused ? 'transparent' : baseStyles.borderColor,
   }),
   option: (styles, state) => ({
     ...styles,
@@ -21,7 +37,9 @@ export const stylesSelect = {
   }),
   menu: baseStyles => ({
     ...baseStyles,
-    background: '#161F37',
+    background: GetMenuStyles('background'),
+    position: 'absolute',
+    zIndex: '20',
     border: 'none ',
     borderRadius: '12px ',
     maxHeight: '300px',
@@ -30,7 +48,7 @@ export const stylesSelect = {
   }),
   menuList: base => ({
     ...base,
-
+    zIndex: '20px',
     '::-webkit-scrollbar': {
       width: '2px',
       height: '0px',
@@ -58,10 +76,15 @@ export const ingStyles = {
       ...stylesSelect['@media only screen and (min-width: 768px)'],
       width: 332,
     },
+    ':focus': {
+      outline: 'transparent',
+      border: 'transparent',
+      boxShadow: 'none',
+    },
   }),
   menu: baseStyles => ({
     ...baseStyles,
-    background: '#161F37',
+    background: GetMenuStyles('background'),
     border: 'none ',
     borderRadius: '12px ',
     maxHeight: '300px',
@@ -95,7 +118,7 @@ export const drinkStyles = {
   }),
   menu: baseStyles => ({
     ...baseStyles,
-    background: 'var(--black)',
+    background: GetMenuStyles('background'),
     borderRadius: '20px ',
     width: '100%',
     overflowY: 'hidden',
@@ -111,10 +134,10 @@ export const drinkStyles = {
     ...stylesSelect,
     padding: '4px 23px',
     backgroundColor: state.isSelected ? 'rgba(255, 255, 255, 0.10)' : '',
-    color: state.isSelected ? 'var(--white)' : 'var(--transp-white)',
+    color: GetMenuStyles('color'),
     ':hover': {
       background: 'rgba(255, 255, 255, 0.10)',
-      color: '#F3F3F3',
+      color: GetMenuStyles('hover'),
     },
   }),
 };

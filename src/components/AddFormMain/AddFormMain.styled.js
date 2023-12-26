@@ -109,10 +109,14 @@ export const StyledRadioLabel = styled.label`
 export const StyledRadioLabelDiv = styled.label`
   display: flex;
   gap: 30px;
+  align-items: center;
   position: relative;
   @media ${device.tablet} {
-    padding-top: 20px;
+    padding-top: 80px;
     max-height: 32px;
+  }
+  @media ${device.desktop} {
+    padding-top: 50px;
   }
 `;
 
