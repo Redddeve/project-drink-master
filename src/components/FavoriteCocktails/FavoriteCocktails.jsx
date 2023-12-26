@@ -1,24 +1,29 @@
-import { useSelector } from 'react-redux';
-
 import PropTypes from 'prop-types';
-import { selectFavoriteDrinks } from '../../redux/drinks/selectors';
-
 import CocktailList from '../CocktailList/CocktailList';
 import usual from '../../images/blue-iced-tea@1x.png';
 import retina from '../../images/blue-iced-tea@2x.png';
+import { selectIsLoading } from '../../redux/drinks/selectors';
 import {
   EmptyDescription,
   EmptyFavoritesContainer,
   EmptyFavoritesImage,
 } from './FavoriteCocktails.styled';
 import PaginatedItems from '../Paginator/Paginator';
-import { selectTheme } from '../../redux/theme/selectors';
+import { useSelector } from 'react-redux';
+import { Loader } from '../Loader/Loader';
 
-const FavoriteCocktails = ({ destination, page, setPage }) => {
-  const theme = useSelector(selectTheme);
-  const favorites = useSelector(selectFavoriteDrinks);
-
-  return favorites.length === 0 ? (
+const FavoriteCocktails = ({
+  destination,
+  pageCount,
+  setSelectedPage,
+  favorites,
+  theme,
+  selectedPage,
+}) => {
+  const isLoading = useSelector(selectIsLoading);
+  return isLoading ? (
+    <Loader />
+  ) : favorites.length === 0 ? (
     <EmptyFavoritesContainer>
       <EmptyFavoritesImage
         srcSet={`${usual} 1x, ${retina} 2x`}
@@ -30,19 +35,24 @@ const FavoriteCocktails = ({ destination, page, setPage }) => {
     </EmptyFavoritesContainer>
   ) : (
     <PaginatedItems
-      page={page}
+      pageCount={pageCount}
       items={favorites}
       destination={destination}
       ListComponent={CocktailList}
-      setPage={setPage}
+      setSelectedPage={setSelectedPage}
+      theme={theme}
+      selectedPage={selectedPage}
     />
   );
 };
 
 FavoriteCocktails.propTypes = {
   destination: PropTypes.string.isRequired,
-  page: PropTypes.number.isRequired,
-  setPage: PropTypes.func,
+  pageCount: PropTypes.number.isRequired,
+  setSelectedPage: PropTypes.func,
+  favorites: PropTypes.array.isRequired,
+  theme: PropTypes.string.isRequired,
+  selectedPage: PropTypes.number,
 };
 
 export default FavoriteCocktails;

@@ -6,7 +6,7 @@ export const LoaderStyle = styled.div`
   padding-top: 20px;
   padding-bottom: 20px;
   position: absolute;
-  top: 25%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 `;
