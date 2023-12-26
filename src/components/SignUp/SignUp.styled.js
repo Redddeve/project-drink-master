@@ -131,11 +131,37 @@ export const StyledInputWrap = styled.div`
   .react-datepicker__navigation--years-previous {
     visibility: visible;
     border-color: var(--black);
-    /* background-color: var(--black); */
   }
-  /* .react-datepicker__year-dropdown {
-    height: 250px;
-  } */
+
+  .react-datepicker__navigation--years-previous {
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    transform: translateY(-10px) rotate(45deg);
+    color: var(--black);
+    width: 10px;
+    height: 10px;
+    margin: 10px auto;
+    display: block;
+  }
+
+  .react-datepicker__navigation--years-upcoming {
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    transform: translateY(10px) rotate(45deg);
+    color: var(--black);
+    width: 10px;
+    height: 10px;
+    margin: 10px auto;
+    display: block;
+  }
+
+  /* react-datepicker__navigation 
+  react-datepicker__navigation--years 
+  react-datepicker__navigation--years-upcoming */
+
+  /* react-datepicker__navigation 
+  react-datepicker__navigation--years 
+  react-datepicker__navigation--years-previous */
 `;
 
 export const StyledInput = styled.input`

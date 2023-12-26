@@ -46,7 +46,6 @@ const SignUp = () => {
     formState: { errors },
   } = useForm({
     mode: 'all',
-    // reValidateMode: 'onBlur',
   });
 
   const isFieldValid = fieldName => {
@@ -57,11 +56,6 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const submit = data => {
-    // const inputDate = new Date(data.date);
-    // const year = inputDate.getFullYear();
-    // const month = (inputDate.getMonth() + 1).toString().padStart(2, '0');
-    // const day = inputDate.getDate().toString().padStart(2, '0');
-    // const outputDateString = `${year}-${month}-${day}`;
     const outputDate = moment(data.date).format('YYYY-MM-DD');
     const newData = {
       ...data,
@@ -98,7 +92,6 @@ const SignUp = () => {
               },
             })}
             placeholder="Name"
-            // autoComplete="off"
             className={
               errors?.name ? 'error' : isFieldValid('name') ? 'correct' : ''
             }
@@ -181,7 +174,6 @@ const SignUp = () => {
               },
             })}
             placeholder="Email"
-            // autoComplete="off"
             className={
               errors?.email ? 'error' : isFieldValid('email') ? 'correct' : ''
             }
@@ -218,7 +210,6 @@ const SignUp = () => {
               },
             })}
             placeholder="Password"
-            // autoComplete="off"
             type={type}
             className={
               errors?.password
