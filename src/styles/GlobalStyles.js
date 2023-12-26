@@ -12,11 +12,13 @@ const GlobalStyles = createGlobalStyle`
   font-family: 'Manrope';
   src: url(${regular}), url(${semiBold}) ;
   font-weight: 400, 600;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Manrope';
   src: url(${medium}) ;
   font-weight: 500;
+  font-display: swap;
 }
 
 :root {

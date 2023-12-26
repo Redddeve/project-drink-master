@@ -34,8 +34,12 @@ const Welcome = () => {
         </StyledText>
       </StyledTextWrap>
       <StyledBtnWrap>
-        <StyledBtnSignUp to="/signup">Sign Up</StyledBtnSignUp>
-        <StyledBtnSignIn to="/signin">Sign In</StyledBtnSignIn>
+        <StyledBtnSignUp to="/signup" aria-label="Go to sign up page">
+          Sign Up
+        </StyledBtnSignUp>
+        <StyledBtnSignIn to="/signin" aria-label="Go to sign in page">
+          Sign In
+        </StyledBtnSignIn>
       </StyledBtnWrap>
     </StyledWrap>
   );

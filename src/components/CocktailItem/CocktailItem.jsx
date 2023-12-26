@@ -14,17 +14,12 @@ import {
 } from './CocktailItem.styled';
 import RemoveButton from '..//SharedComponents/RemoveButton/RemoveButton';
 import CommonBtn from '../SharedComponents/CommonBtn/CommonBtn';
-import { useSelector } from 'react-redux';
-import { selectTheme } from '../../redux/theme/selectors';
 
 import LazyLoad from 'react-lazy-load';
 
-const CocktailItem = ({ cocktail, page }) => {
+const CocktailItem = ({ cocktail, page, theme }) => {
   const { _id, drink, alcoholic, description, drinkThumb } = cocktail;
-  const theme = useSelector(selectTheme);
-
   const [imageLoadError, setImageLoadError] = useState(false);
-
   const handleImageError = () => setImageLoadError(true);
 
   return (
@@ -64,6 +59,7 @@ CocktailItem.propTypes = {
     drinkThumb: PropTypes.string.isRequired,
   }).isRequired,
   page: PropTypes.string.isRequired,
+  theme: PropTypes.string.isRequired,
 };
 
 export default CocktailItem;

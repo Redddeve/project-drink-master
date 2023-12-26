@@ -58,7 +58,11 @@ const PreviewDrinks = () => {
             return <DrinkCard key={drink._id} drink={drink} />;
           })}
         </StyledCardsContainer>
-        <OtherDrinksNavLink theme={theme} to="/drinks">
+        <OtherDrinksNavLink
+          theme={theme}
+          to="/drinks"
+          aria-label="Other drinks"
+        >
           Other drinks
         </OtherDrinksNavLink>
       </section>

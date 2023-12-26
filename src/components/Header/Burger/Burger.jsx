@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect, useCallback, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Navigation from '../Navigation/Navigation';
 import PropTypes from 'prop-types';
@@ -23,16 +23,31 @@ const BurgerMenu = ({ toggleMenu, isOpenBurgerMenu, isDesktop }) => {
     [isOpenBurgerMenu, toggleMenu]
   );
 
+  const [isScrollLocked, setIsScrollLocked] = useState(false);
+
   useEffect(() => {
     document.addEventListener('keydown', handleEscKey);
+
+     if (isOpenBurgerMenu) {
+      document.body.style.overflow = 'hidden';
+      setIsScrollLocked(true);
+    }
+
     return () => {
       document.removeEventListener('keydown', handleEscKey);
+
+      document.body.style.overflow = "auto";
+      setIsScrollLocked(false);
     };
   }, [handleEscKey, isOpenBurgerMenu]);
 
   return (
     <BurgerMenuWrapper>
-      <BurgerIcon onClick={closeMenu} id="burger_menu" theme={theme}>
+      <BurgerIcon
+        onClick={closeMenu}
+        id="burger_menu"
+        theme={theme}
+        className={isScrollLocked ? 'scroll-locked' : ''}>
         <svg width="32" height="32">
           <use
             href={

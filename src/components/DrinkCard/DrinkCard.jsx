@@ -24,7 +24,11 @@ export const DrinkCard = ({ drink }) => {
       {/*) : (*/}
       <StyledTextContainerSmall>
         <StyledDrinkName theme={theme}>{drink.drink}</StyledDrinkName>
-        <StyledSeeMoreSmall theme={theme} to={`../drink/${drink._id}`}>
+        <StyledSeeMoreSmall
+          theme={theme}
+          to={`../drink/${drink._id}`}
+          aria-label="See more"
+        >
           See more
         </StyledSeeMoreSmall>
       </StyledTextContainerSmall>
