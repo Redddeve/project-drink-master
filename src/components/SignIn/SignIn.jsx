@@ -22,6 +22,9 @@ import sprite from '../../images/sprite.svg';
 import { useState } from 'react';
 
 const SignIn = () => {
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState('eye-off');
 
@@ -51,9 +54,7 @@ const SignIn = () => {
   };
 
   // const isLoading = useSelector(selectLoading);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const location = useLocation();
+
   const submit = data => {
     dispatch(signinThunk(data))
       .unwrap()
@@ -153,6 +154,9 @@ const SignIn = () => {
           Sign Up
         </StyledLink>
       </StyledFormWrap>
+      <a href={'https://shaking-code-api-lifuss.onrender.com/api/auth/google'}>
+        Google
+      </a>
     </StyledWrap>
   );
 };
