@@ -84,13 +84,13 @@ export const updateThunk = createAsyncThunk(
 
 export const refreshThunk = createAsyncThunk(
   'users/refresh',
-  async (_, { rejectWithValue, getState }) => {
-    const savedToken = getState().auth.token;
-    if (!savedToken) {
-      return rejectWithValue('token was not found');
+  async (bodyToken, { rejectWithValue, getState }) => {
+    if (bodyToken) {
+      setToken(bodyToken);
+    } else {
+      setToken(getState().auth.token);
     }
     try {
-      setToken(savedToken);
       const { data } = await instance.get('users/current');
       return data;
     } catch (error) {

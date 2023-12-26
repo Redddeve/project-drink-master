@@ -249,6 +249,9 @@ const SignUp = () => {
           Sign In
         </StyledLink>
       </StyledFormWrap>
+      <a href={'https://shaking-code-api-lifuss.onrender.com/api/auth/google'}>
+        Google
+      </a>
     </StyledWrap>
   );
 };
