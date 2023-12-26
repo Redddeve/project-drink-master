@@ -4,6 +4,10 @@ import sprite from '../../images/sprite.svg';
 import usual from '../../images/blue-iced-tea@1x.png';
 import retina from '../../images/blue-iced-tea@2x.png';
 import {
+  drinkStyles,
+  drinkIngStyles,
+} from '../../components/Dropdown/Dropdown.styled.js';
+import {
   selectCategories,
   selectIngredients,
   selectSearchDrinks,
@@ -18,9 +22,7 @@ import {
   StyledFilterContainer,
   StyledHeader,
   StyledInput,
-  StyledSelect,
   StyledSvg,
-  stylesDrink,
 } from './DrinksPage.styled';
 import ButtonUpToTop from '../../components/ButtonUpToTop/ButtonUpToTop.jsx';
 import { EmptyDescription } from '../../components/FavoriteCocktails/FavoriteCocktails.styled.js';
@@ -29,6 +31,7 @@ import {
   EmptyFavoritesContainer,
   EmptyFavoritesImage,
 } from '../../components/FavoriteCocktails/FavoriteCocktails.styled.js';
+import Select from 'react-select';
 
 const DrinksPage = () => {
   const dispatch = useDispatch();
@@ -59,6 +62,25 @@ const DrinksPage = () => {
     return { value: cat, label: cat };
   });
 
+  // *** SELECT STYLES ***
+  const newDrinkStyles = {
+    ...drinkStyles,
+    dropdownIndicator: provided => ({
+      ...provided,
+      transition: 'transform 0.2s ease',
+      transform: categoryMenuIsOpen ? 'rotate(180deg)' : null,
+    }),
+  };
+  const newIngStyles = {
+    ...drinkIngStyles,
+    dropdownIndicator: provided => ({
+      ...provided,
+      transition: 'transform 0.2s ease',
+      transform: ingredientMenuIsOpen ? 'rotate(180deg)' : null,
+    }),
+  };
+  // *** SELECT STYLES ***
+
   return (
     <>
       <StyledHeader>Drinks</StyledHeader>
@@ -75,8 +97,7 @@ const DrinksPage = () => {
         <StyledSvg>
           <use href={`${sprite}#icon-search`} />
         </StyledSvg>
-        <StyledSelect
-          classNamePrefix={'Select'}
+        <Select
           options={categoriesOptions}
           placeholder={'All categories'}
           isSearchable={false}
@@ -88,10 +109,16 @@ const DrinksPage = () => {
             setCategoryMenuIsOpen(false);
           }}
           $menuIsOpen={categoryMenuIsOpen}
-          styles={stylesDrink}
-        />
-        <StyledSelect
+          styles={newDrinkStyles}
           classNamePrefix={'Select'}
+          theme={theme => ({
+            ...theme,
+            colors: {
+              neutral50: '#fff',
+            },
+          })}
+        />
+        <Select
           options={ingredientsOptions}
           placeholder={'Ingredients'}
           onChange={value => {
@@ -102,13 +129,19 @@ const DrinksPage = () => {
             setIngredientMenuIsOpen(false);
           }}
           $menuIsOpen={ingredientMenuIsOpen}
-          styles={stylesDrink}
+          styles={newIngStyles}
           $small={true}
+          theme={theme => ({
+            ...theme,
+            colors: {
+              neutral50: '#fff',
+            },
+          })}
         />
       </StyledFilterContainer>
       <StyledCardsContainer>
         {drinks.length !== 0 ? (
-          drinks?.map(drink => {
+          drinks?.result.map(drink => {
             return (
               <DrinkCard
                 key={drink._id}

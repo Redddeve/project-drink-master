@@ -3,6 +3,9 @@ import { device } from '../../styles/device';
 export const StyledFileInput = styled.input`
   display: none;
 `;
+export const StyledForm = styled.form`
+  max-width: 850px;
+`;
 export const StyledFileLabel = styled.label`
   width: 335px;
   height: 320px;

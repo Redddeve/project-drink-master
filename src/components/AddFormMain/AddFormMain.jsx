@@ -4,6 +4,7 @@ import Select from 'react-select';
 import { selectCategories, selectGlasses } from '../../redux/drinks/selectors';
 import { selectIsAdult } from '../../redux/auth/selectors';
 import { useEffect, useState } from 'react';
+import { stylesSelect } from '../Dropdown/Dropdown.styled';
 import {
   StyledFileInput,
   StyledFileLabel,
@@ -17,7 +18,6 @@ import {
   StyledFileTextAdd,
 } from './AddFormMain.styled';
 import {
-  stylesSelect,
   StyledValidText,
   RelativeLabel,
 } from '../../pages/AddDrinkPage/AddDrinkPage.styled';
