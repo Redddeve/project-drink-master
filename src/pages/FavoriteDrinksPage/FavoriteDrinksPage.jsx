@@ -7,6 +7,7 @@ import {
 import useResponsiveItemsPerPage from '../../hooks/usePerPage';
 import FavoriteCocktails from '../../components/FavoriteCocktails/FavoriteCocktails';
 import PageTitle from '../../components/PageTitle/PageTitle';
+import CircleBg from '../../components/SharedComponents/circleBg/CircleBg';
 import {
   selectFavoriteDrinks,
   selectPage,
@@ -50,6 +51,7 @@ const FavoriteDrinksPage = () => {
 
   return (
     <>
+      <CircleBg />
       <section>
         <PageTitle title="Favorites" />
         <FavoriteCocktails

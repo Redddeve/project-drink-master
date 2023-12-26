@@ -2,10 +2,12 @@ import { PageContainer } from '../AgreementPage/AgreementPage.styled';
 import PageTitle from '../../components/PageTitle/PageTitle';
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../../redux/theme/selectors';
+import CircleBg from '../../components/SharedComponents/circleBg/CircleBg';
 const PolicyPage = () => {
   const theme = useSelector(selectTheme);
   return (
     <PageContainer theme={theme}>
+      <CircleBg />
       <PageTitle title="Privacy Policy" />
       <p>
         Your privacy is important to us. This section outlines how we collect,
