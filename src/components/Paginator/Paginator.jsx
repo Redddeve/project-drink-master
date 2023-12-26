@@ -1,107 +1,57 @@
-import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
-
 import { PaginateContainer, Paginator } from './Paginator.styled';
-import sprite from '../../images/sprite.svg';
-import { size } from '../../styles/device';
+import PaginationIcon from './PaginatorIcons/PaginatedIcons';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSearchPage } from '../../redux/drinks/operations';
+import { selectPage } from '../../redux/drinks/selectors';
 
 function PaginatedItems({
   items,
   destination,
   ListComponent,
-  itemsPerPageValue,
+  pageCount,
+  theme,
 }) {
-  const [currentPage, setCurrentPage] = useState(0);
-  const [currentDevice, setCurrentDevice] = useState('');
+  const dispatch = useDispatch();
+  const selectedPage = useSelector(selectPage);
 
-  useEffect(() => {
-    const handleResize = () => {
-      const windowWidth = window.innerWidth;
-
-      if (windowWidth < parseInt(size.tablet)) {
-        setCurrentDevice('mobile');
-      } else if (windowWidth < parseInt(size.desktop)) {
-        setCurrentDevice('tablet');
-      } else {
-        setCurrentDevice('desktop');
-      }
-    };
-
-    handleResize();
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  const getItemsPerPage = () => {
-    switch (currentDevice) {
-      case 'mobile':
-        return itemsPerPageValue.mobile || 9;
-      case 'tablet':
-        return itemsPerPageValue.tablet || 8;
-      case 'desktop':
-        return itemsPerPageValue.desktop || 9;
-      default:
-        return itemsPerPageValue.default || 9;
-    }
-  };
-
-  const itemsPerPage = getItemsPerPage();
-
-  const uniqueItems = Array.from(new Set(items));
-  const pageCount = Math.ceil(uniqueItems.length / itemsPerPage);
-  const paginatorExpediency = uniqueItems.length > itemsPerPage;
+  const paginatorExpediency = pageCount > 1;
 
   const handlePageClick = ({ selected }) => {
-    setCurrentPage(selected);
-
-    if (selected === pageCount - 1) {
-      toast.info("It's the end of the cocktail list... 😟");
-    }
+    dispatch(setSearchPage(selected + 1));
 
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
-  };
 
-  useEffect(() => {
-    if (currentPage >= pageCount) {
-      setCurrentPage(Math.max(0, pageCount - 1));
+    if (selected === pageCount - 1 && pageCount >= 5) {
+      toast.info(
+        'The final chapter of our cocktail symphony has been reached. 🍹🎉'
+      );
     }
-  }, [currentPage, pageCount, currentDevice]);
+  };
 
   return (
     <PaginateContainer>
       <ListComponent
-        cocktailData={uniqueItems.slice(
-          currentPage * itemsPerPage,
-          (currentPage + 1) * itemsPerPage
-        )}
+        cocktailData={items}
         destination={destination}
+        theme={theme}
       />
       {paginatorExpediency && (
         <Paginator
+          theme={theme}
           breakLabel="..."
-          nextLabel={
-            <svg width="8" height="15" fill="currentColor">
-              <use href={`${sprite}#icon-pagi-right`} />
-            </svg>
-          }
+          nextLabel={<PaginationIcon iconId="icon-pagi-right" />}
           onPageChange={handlePageClick}
           pageRangeDisplayed={1}
           pageCount={pageCount}
-          previousLabel={
-            <svg width="8" height="15" fill="currentColor">
-              <use href={`${sprite}#icon-pagi-left`} />
-            </svg>
-          }
+          previousLabel={<PaginationIcon iconId="icon-pagi-left" />}
           renderOnZeroPageCount={null}
-          forcePage={currentPage}
+          forcePage={selectedPage - 1}
+          forceDisplay={true}
         />
       )}
     </PaginateContainer>
@@ -118,6 +68,10 @@ PaginatedItems.propTypes = {
     desktop: PropTypes.number,
     default: PropTypes.number,
   }),
+  pageCount: PropTypes.number.isRequired,
+  setSelectedPage: PropTypes.func,
+  theme: PropTypes.string.isRequired,
+  selectedPage: PropTypes.number,
 };
 
 export default PaginatedItems;

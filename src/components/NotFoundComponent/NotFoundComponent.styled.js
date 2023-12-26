@@ -1,17 +1,22 @@
-import styled from "styled-components";
-import { device } from "../../styles/device";
+import styled from 'styled-components';
+import { device } from '../../styles/device';
+import { darkTheme, lightTheme } from '../../styles/theme';
 
 export const NotFoundContainer = styled.div`
   display: flex;
   align-items: center;
   width: 241px;
   height: 156px;
-  padding: 116px 0 180px;
+  padding: 160px 0 180px;
 
   & > svg {
     width: 241px;
     height: 123px;
     fill: var(--transp-not-found);
+    fill: ${({ theme }) =>
+      theme === 'dark'
+        ? darkTheme.colors.notFound
+        : lightTheme.colors.notFound};
     position: absolute;
 
     @media ${device.tablet} {
@@ -42,6 +47,7 @@ export const Zero = styled.img`
   width: 123px;
   height: 156px;
   position: relative;
+  pointer-events: auto;
   top: -13px;
   left: 70px;
 

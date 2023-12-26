@@ -18,6 +18,7 @@ CommonBtn.propTypes = {
     'none',
     'subscribe',
     'seeMore',
+    'seeMoreItem',
     'addFavorite',
     'add',
     'addDrink',

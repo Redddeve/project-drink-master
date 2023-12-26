@@ -1,10 +1,33 @@
 import styled from 'styled-components';
+import { device } from '../../../styles/device';
 
 export const FormWrap = styled.div`
+  position: relative;
   max-width: 335px;
   margin-bottom: 80px;
-  @media screen and (min-width: 768px) {
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -775px;
+    left: -410px;
+    width: 774px;
+    height: 762px;
+    border-radius: 774px;
+    background: rgba(188, 230, 210, 0.4);
+    filter: blur(104.8543701171875px);
+  }
+  @media ${device.tablet} {
     max-width: 309px;
+    &::after {
+      bottom: -790px;
+      left: -525px;
+    }
+  }
+  @media ${device.desktop} {
+    &::after {
+      left: -810px;
+    }
   }
 `;
 export const SubscribeDesc = styled.div`
@@ -18,7 +41,7 @@ export const SubscribeDesc = styled.div`
 
 export const SubscribeInput = styled.input`
   position: relative;
-  max-width: 335px;
+  width: 100%;
   height: 54px;
   padding-left: 24px;
 
@@ -28,6 +51,17 @@ export const SubscribeInput = styled.input`
   cursor: pointer;
   color: var(--white);
   line-height: 1.125;
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: var(--white);
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px #23232329;
+  }
+
   @media screen and (min-width: 768px) {
     height: 56px;
     font-size: 17px;
@@ -35,6 +69,7 @@ export const SubscribeInput = styled.input`
   }
 `;
 export const InputMessage = styled.div`
+  position: relative;
   height: 18px;
   padding: 3px 0px 3px 20px;
   font-size: 12px;
@@ -43,5 +78,21 @@ export const InputMessage = styled.div`
   color: var(--error-red);
   .correct {
     color: var(--correct-green);
+  }
+`;
+export const StyledStatus = styled.svg`
+  z-index: 1;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  right: 14px;
+  top: -39px;
+  fill: none;
+  &.error {
+    fill: var(--error-red);
+  }
+
+  &.correct {
+    fill: var(--correct-green);
   }
 `;

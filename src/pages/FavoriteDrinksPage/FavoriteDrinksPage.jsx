@@ -1,22 +1,63 @@
-import FavoriteCocktails from '../../components/FavoriteCocktails/FavoriteCocktails';
-
 import { useEffect } from 'react';
-import { getFavoriteDrinksThunk } from '../../redux/drinks/operations';
-import { useDispatch } from 'react-redux';
-import ButtonUpToTop from '../../components/ButtonUpToTop/ButtonUpToTop';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  getFavoriteDrinksThunk,
+  setSearchPage,
+} from '../../redux/drinks/operations';
+import useResponsiveItemsPerPage from '../../hooks/usePerPage';
+import FavoriteCocktails from '../../components/FavoriteCocktails/FavoriteCocktails';
 import PageTitle from '../../components/PageTitle/PageTitle';
+import {
+  selectFavoriteDrinks,
+  selectPage,
+  selectPages,
+} from '../../redux/drinks/selectors';
+import { selectTheme } from '../../redux/theme/selectors';
 
 const FavoriteDrinksPage = () => {
   const dispatch = useDispatch();
+  const selectedPage = useSelector(selectPage);
+  const pageCount = useSelector(selectPages) || 0;
+  const favorites = useSelector(selectFavoriteDrinks);
+  const { length } = favorites;
+  const theme = useSelector(selectTheme);
+
+  const itemsPerPage = useResponsiveItemsPerPage({
+    mobile: 9,
+    tablet: 8,
+    desktop: 9,
+    default: 9,
+  });
+
   useEffect(() => {
-    dispatch(getFavoriteDrinksThunk());
+    dispatch(setSearchPage(1));
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(
+      getFavoriteDrinksThunk({ page: selectedPage, limit: itemsPerPage })
+    );
+  }, [dispatch, itemsPerPage, selectedPage]);
+
+  useEffect(() => {
+    if (length === 0 && selectedPage === pageCount) {
+      dispatch(setSearchPage(pageCount - 2));
+    }
+    if (length === 0 && selectedPage === 0) {
+      dispatch(setSearchPage(pageCount + 2));
+    }
+  }, [dispatch, length, pageCount, selectedPage]);
+
   return (
     <>
       <section>
-        <PageTitle title="Favorites" mbMobile={1} mbTablet={1} mbDesktop={1} />
-        <FavoriteCocktails />
-        <ButtonUpToTop />
+        <PageTitle title="Favorites" />
+        <FavoriteCocktails
+          favorites={favorites}
+          destination="favorite"
+          pageCount={pageCount}
+          theme={theme}
+        />
       </section>
     </>
   );

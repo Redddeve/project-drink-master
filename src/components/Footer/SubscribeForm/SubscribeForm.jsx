@@ -3,12 +3,18 @@ import {
   SubscribeDesc,
   SubscribeInput,
   InputMessage,
+  StyledStatus,
 } from './SubscribeForm.styled';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import CommonBtn from '../../SharedComponents/CommonBtn/CommonBtn';
+import sprite from '../../../images/sprite.svg';
+
+import { useDispatch } from 'react-redux';
+import { subscribeThunk } from '../../../redux/auth/operations';
 
 const SubscribeForm = () => {
+  const dispatch = useDispatch();
   const {
     register,
     formState: { errors, isValid },
@@ -19,6 +25,7 @@ const SubscribeForm = () => {
   });
 
   const onSubmit = data => {
+    dispatch(subscribeThunk(data));
     toast.success(`Subscription ${data.email} completed successfully!`);
     reset();
   };
@@ -30,7 +37,7 @@ const SubscribeForm = () => {
         offers, etc.
       </SubscribeDesc>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="email">
+        <label>
           <SubscribeInput
             {...register('email', {
               required: "Email can't be empty",
@@ -48,13 +55,24 @@ const SubscribeForm = () => {
             name="email"
             title="Enter an email"
             placeholder="Enter the email"
+            autoComplete="email"
           />
           <InputMessage>
             {errors?.email && (
-              <p>{errors?.email?.message || 'This is an ERROR email'}</p>
+              <>
+                <StyledStatus className="error">
+                  <use href={`${sprite}#icon-error-outline`} />
+                </StyledStatus>
+                <p>{errors?.email?.message || 'This is an ERROR email'}</p>
+              </>
             )}
             {!errors?.email && isValid && (
-              <p className="correct">This is an CORRECT email</p>
+              <>
+                <StyledStatus className="correct">
+                  <use href={`${sprite}#icon-done-outline`} />
+                </StyledStatus>
+                <p className="correct">This is an CORRECT email</p>
+              </>
             )}
           </InputMessage>
         </label>

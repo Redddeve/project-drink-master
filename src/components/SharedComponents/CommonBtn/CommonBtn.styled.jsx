@@ -55,6 +55,31 @@ export const ButtonStyle = styled.button`
     }
   }
   // =============== btn seeMore (nav??) ==========
+
+  &.seeMoreItem {
+    padding: 14px 40px;
+    border-radius: 42px;
+    background: var(--black);
+    color: inherit;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: var(--tran-fast);
+    cursor: pointer;
+    text-align: center;
+    border: var(--see-more-item);
+
+    &:hover,
+    :focus {
+      transform: scale(1.02);
+    }
+
+    @media screen and (min-width: 768px) {
+      padding: 18px 44px;
+      width: calc(100% - 60px);
+    }
+  }
+
   &.seeMore {
     width: 143px;
     height: 46px;

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Select from 'react-select';
 import { device } from '../../styles/device.js';
 
 export const StyledHeader = styled.h2`

@@ -14,7 +14,9 @@ import {
   StyledTextTitle,
   StyledTitle,
 } from './DrinkIngredientsList.styled';
+import { selectTheme } from '../../redux/theme/selectors';
 const DrinkIngredientsList = ({ ingredientsArray }) => {
+  const theme = useSelector(selectTheme);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getIngredientsThunk());
@@ -26,7 +28,7 @@ const DrinkIngredientsList = ({ ingredientsArray }) => {
 
   const imgSrc = title => {
     if (ingredientsState.length !== 0) {
-      return ingredientsState?.find(el => title === el.title)[
+      return ingredientsState?.find(el => title.toLowerCase() === el.title.toLowerCase())[
         isMobile ? 'thumbSmall' : isTablet ? 'thumbMedium' : 'ingredientThumb'
       ];
     }
@@ -34,7 +36,7 @@ const DrinkIngredientsList = ({ ingredientsArray }) => {
 
   return (
     <div>
-      <StyledTitle>Ingredients</StyledTitle>
+      <StyledTitle theme={theme}>Ingredients</StyledTitle>
       <StyledList>
         {ingredientsArray?.map(({ title, measure }) => {
           return (
@@ -43,8 +45,8 @@ const DrinkIngredientsList = ({ ingredientsArray }) => {
                 <StyledImg src={imgSrc(title)} alt={title} />
               </StyledImgDiv>
               <StyledTextDiv>
-                <StyledTextTitle>{title}</StyledTextTitle>
-                <StyledTextMeasure>{measure}</StyledTextMeasure>
+                <StyledTextTitle theme={theme}>{title}</StyledTextTitle>
+                <StyledTextMeasure theme={theme}>{measure}</StyledTextMeasure>
               </StyledTextDiv>
             </StyledItem>
           );

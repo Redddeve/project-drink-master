@@ -87,6 +87,13 @@ export const StyledInputWrap = styled.div`
   .react-datepicker__current-month {
     color: var(--white);
   }
+
+  .react-datepicker__current-month,
+  .react-datepicker__navigation {
+    visibility: hidden;
+    /* width: 0px; */
+  }
+
   .react-datepicker__day:hover {
     background: var(--white);
     color: var(--black);
@@ -114,6 +121,21 @@ export const StyledInputWrap = styled.div`
     color: var(--black);
     border-radius: 50%;
   }
+  .react-datepicker__month-read-view,
+  .react-datepicker__year-read-view {
+    color: var(--white);
+    font-size: 16px;
+  }
+
+  .react-datepicker__navigation--years,
+  .react-datepicker__navigation--years-previous {
+    visibility: visible;
+    border-color: var(--black);
+    /* background-color: var(--black); */
+  }
+  /* .react-datepicker__year-dropdown {
+    height: 250px;
+  } */
 `;
 
 export const StyledInput = styled.input`
@@ -134,7 +156,17 @@ export const StyledInput = styled.input`
   font-style: normal;
   font-weight: 400;
   line-height: 18px; /* 128.571% */
-
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: var(--white); // колір тексту
+    -webkit-background-color: transparent !important;
+    -webkit-border: 1px solid rgba(243, 243, 243, 0.2);
+    transition: all 0s 50000s;
+    transition: background-color 5000s ease-in-out 0s;
+  }
   &::placeholder {
     color: rgba(243, 243, 243, 0.5);
   }

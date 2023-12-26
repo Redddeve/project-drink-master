@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { signinThunk, signupThunk } from '../../redux/auth/operations.js';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   StyledWrap,
@@ -20,6 +20,8 @@ import {
   StyledStatus,
 } from './SignUp.styled.js';
 import sprite from '../../images/sprite.svg';
+import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
+import moment from 'moment';
 
 const SignUp = () => {
   const [type, setType] = useState('password');
@@ -44,6 +46,7 @@ const SignUp = () => {
     formState: { errors },
   } = useForm({
     mode: 'all',
+    // reValidateMode: 'onBlur',
   });
 
   const isFieldValid = fieldName => {
@@ -54,15 +57,15 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const submit = data => {
-    const inputDate = new Date(data.date);
-    const year = inputDate.getFullYear();
-    const month = (inputDate.getMonth() + 1).toString().padStart(2, '0');
-    const day = inputDate.getDate().toString().padStart(2, '0');
-    const outputDateString = `${year}-${month}-${day}`;
-
+    // const inputDate = new Date(data.date);
+    // const year = inputDate.getFullYear();
+    // const month = (inputDate.getMonth() + 1).toString().padStart(2, '0');
+    // const day = inputDate.getDate().toString().padStart(2, '0');
+    // const outputDateString = `${year}-${month}-${day}`;
+    const outputDate = moment(data.date).format('YYYY-MM-DD');
     const newData = {
       ...data,
-      date: outputDateString,
+      date: outputDate,
     };
     console.log(newData);
     dispatch(signupThunk(newData))
@@ -73,6 +76,12 @@ const SignUp = () => {
         reset();
       });
   };
+
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  if (isLoggedIn) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <StyledWrap>
@@ -89,7 +98,7 @@ const SignUp = () => {
               },
             })}
             placeholder="Name"
-            autoComplete="off"
+            // autoComplete="off"
             className={
               errors?.name ? 'error' : isFieldValid('name') ? 'correct' : ''
             }
@@ -133,9 +142,12 @@ const SignUp = () => {
                     <use href={`${sprite}#icon-calendar`} />
                   </StyledCalendarIcon>
                 }
-                placeholderText="dd/mm/yyyy"
+                placeholderText="Your date of birth"
                 maxDate={new Date()}
                 style={{ float: 'left' }}
+                calendarStartDay={1}
+                showYearDropdown
+                showMonthDropdown
                 className={
                   errors?.date ? 'error' : isFieldValid('date') ? 'correct' : ''
                 }
@@ -169,6 +181,7 @@ const SignUp = () => {
               },
             })}
             placeholder="Email"
+            // autoComplete="off"
             className={
               errors?.email ? 'error' : isFieldValid('email') ? 'correct' : ''
             }
@@ -205,7 +218,7 @@ const SignUp = () => {
               },
             })}
             placeholder="Password"
-            autoComplete="off"
+            // autoComplete="off"
             type={type}
             className={
               errors?.password
@@ -232,7 +245,9 @@ const SignUp = () => {
 
         <StyledSignInBtn>Sign Up</StyledSignInBtn>
 
-        <StyledLink to="/signin">Sign In</StyledLink>
+        <StyledLink to="/signin" aria-label="Go to sign in page">
+          Sign In
+        </StyledLink>
       </StyledFormWrap>
     </StyledWrap>
   );

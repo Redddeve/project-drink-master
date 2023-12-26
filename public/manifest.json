@@ -1,0 +1,15 @@
+{
+  "short_name": "Drink Master",
+  "name": "Drink Master application",
+  "description": "An application for browsing different kinds of drinks and adding your own recipes",
+  "icons": [
+    {
+      "src": "vite.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0A0A11"
+}

@@ -1,11 +1,13 @@
 import Welcome from '../../../components/Welcome/Welcome';
-import { StyledPageWrap } from '../AuthPages.styled';
+import { StyledBgWrap, StyledPageWrap } from '../AuthPages.styled';
 
 const WelcomePage = () => {
   return (
-    <StyledPageWrap>
-      <Welcome />;
-    </StyledPageWrap>
+    <StyledBgWrap>
+      <StyledPageWrap>
+        <Welcome />
+      </StyledPageWrap>
+    </StyledBgWrap>
   );
 };
 

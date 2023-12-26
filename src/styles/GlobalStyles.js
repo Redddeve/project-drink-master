@@ -2,6 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize/modern-normalize.css';
 import { device } from './device';
 import fontObject from './fonts';
+import { darkTheme, lightTheme } from './theme';
 
 const { regular, medium, semiBold } = fontObject;
 
@@ -11,11 +12,13 @@ const GlobalStyles = createGlobalStyle`
   font-family: 'Manrope';
   src: url(${regular}), url(${semiBold}) ;
   font-weight: 400, 600;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Manrope';
   src: url(${medium}) ;
   font-weight: 500;
+  font-display: swap;
 }
 
 :root {
@@ -24,6 +27,7 @@ const GlobalStyles = createGlobalStyle`
   --sub-white: #FAFAFA;
   --transp-white: #F3F3F380; // rgba(243, 243, 243, 0.80)
   --transp-not-found:#F3F3F310;
+  --transp-not-found-light:#4070CD10;
   --transp-disabled:#F3F3F330;
   --dark: #0A0A11;
   --transp-dark: #0A0A1166; // light theme
@@ -35,20 +39,31 @@ const GlobalStyles = createGlobalStyle`
   --green: #BCE6D2;
   --correct-green: #3CBC81;
   --error-red: #DA1414;
+  --dark-theme-bg:rgba(22, 31, 55, 0.50);
+  --light-theme-bg: #161F37;
+ 
+  
+
+
 
   // borders
   --dark-theme-common: 1px solid #F3F3F380;
   --light-theme-common: 1px solid #0A0A1180;
   --correct: 1px solid #3CBC8180;
   --error: 1px solid #DA141480;
+  --see-more-item: 1px solid #f3f3f320;
 
   // transitions
   --tran-fast: 0.3s ease
 } 
 
 body {
-  color: var(--white);
-  background-color: var(--dark);
+  color: ${props =>
+    props.theme === 'dark' ? lightTheme.colors.main : darkTheme.colors.main};
+  background-color: ${props =>
+    props.theme === 'dark'
+      ? darkTheme.background.main
+      : lightTheme.background.main};
   font-family: 'Manrope', sans-serif; 
   font-size: 14px;
   font-style: normal;
@@ -75,6 +90,7 @@ body {
   h6 {
     margin: 0;
     padding: 0;
+   
   }
 
   ul, 

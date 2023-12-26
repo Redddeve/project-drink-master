@@ -13,12 +13,15 @@ import {
   getPopularThunk,
   removeFavoriteDrinkThunk,
   searchDrinksThunk,
+  setSearchPage,
 } from './operations';
 
 const initialState = {
   drinks: [],
   byId: [],
   favorite: [],
+  pages: 1,
+  page: 1,
   own: [],
   popular: [],
   categories: [],
@@ -34,6 +37,9 @@ export const slice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
+      .addCase(setSearchPage.fulfilled, (state, { payload }) => {
+        state.page = payload;
+      })
       .addCase(fetchAllDrinks.fulfilled, (state, { payload }) => {
         state.drinks = payload;
         state.isLoading = false;
@@ -43,7 +49,8 @@ export const slice = createSlice({
         state.isLoading = false;
       })
       .addCase(searchDrinksThunk.fulfilled, (state, { payload }) => {
-        state.searchDrinks = payload;
+        state.searchDrinks = payload.result;
+        state.pages = payload.pages;
         state.isLoading = false;
       })
       .addCase(searchDrinksThunk.rejected, state => {
@@ -66,11 +73,12 @@ export const slice = createSlice({
         state.own = state.own.filter(({ _id }) => _id !== payload._id);
       })
       .addCase(getFavoriteDrinksThunk.fulfilled, (state, { payload }) => {
+        state.pages = payload.pages;
         state.favorite = payload.favorites;
         state.isLoading = false;
       })
       .addCase(addFavoriteDrinkThunk.fulfilled, (state, { payload }) => {
-        state.favorite.push(payload);
+        state.favorite.push(payload.drink);
         state.isLoading = false;
       })
       .addCase(removeFavoriteDrinkThunk.fulfilled, (state, { payload }) => {

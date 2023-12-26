@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { device } from '../../styles/device';
+import { darkTheme, lightTheme } from '../../styles/theme';
 
 export const HeroSection = styled.section`
   margin-bottom: 112px;
@@ -36,6 +37,8 @@ export const HeroInfo = styled.div`
 export const HeroText = styled.p`
   line-height: 1.42em;
   margin-bottom: 32px;
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
 
   @media ${device.tablet} {
     width: 619px;
@@ -51,17 +54,24 @@ export const HeroText = styled.p`
 `;
 
 export const AddDrinksNavLink = styled(NavLink)`
-  color: var(--black);
+  position: relative;
+  z-index: 1;
+
+  color: ${({ theme }) =>
+    theme === 'dark' ? lightTheme.colors.main : darkTheme.colors.main};
   font-weight: 600;
   line-height: 1.28em;
   padding: 14px 40px;
   border-radius: 42px;
-  background: var(--white);
+  background-color: ${({ theme }) =>
+    theme === 'dark'
+      ? lightTheme.background.main
+      : darkTheme.background.blackBg};
   display: inline-block;
 
   &:hover,
   &:focus {
-    border: 2px solid rgba(64, 112, 205, 0.5);
+    box-shadow: 0 0 15px 3px gray;
     transition: var(--tran-fast);
   }
 

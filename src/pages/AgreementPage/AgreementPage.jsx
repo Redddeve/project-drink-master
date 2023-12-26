@@ -1,9 +1,13 @@
+import { useSelector } from 'react-redux';
 import { PageContainer } from './AgreementPage.styled';
+import { selectTheme } from '../../redux/theme/selectors';
+import PageTitle from '../../components/PageTitle/PageTitle';
 
 const AgreementPage = () => {
+  const theme = useSelector(selectTheme);
   return (
-    <PageContainer>
-      <h1>Terms of Service</h1>
+    <PageContainer theme={theme}>
+      <PageTitle title="Terms of Service" />
       <p>
         This &quot;User Agreement&quot; (the &quot;Agreement&quot;) sets forth
         the terms and conditions governing the use of the Drink Master

@@ -8,21 +8,25 @@ import { ingStyles } from '../Dropdown/Dropdown.styled';
 import {
   RelativeLabel,
   StyledValidIng,
-  StyledIngTitle,
 } from '../../pages/AddDrinkPage/AddDrinkPage.styled';
 import {
   MeasureValidText,
   StyledAddBtn,
   StyledAddDiv,
+  StyledIconCross,
   StyledIngDiv,
   StyledIngFieldBtn,
   StyledIngFieldInput,
   StyledIngFieldLabel,
   StyledIngFieldWrapper,
+  StyledIngSelectLabel,
+  StyledIngTitle,
   StyledIngTitleDiv,
+  StyledIngredientsText,
 } from './AddFormIngredients.styled';
 import { getIngredientsThunk } from '../../redux/drinks/operations';
 import { Controller } from 'react-hook-form';
+import { selectTheme } from '../../redux/theme/selectors';
 
 const AddFormIngredients = ({
   ingNumber,
@@ -33,6 +37,7 @@ const AddFormIngredients = ({
   errors,
   onSubmit,
 }) => {
+  const theme = useSelector(selectTheme);
   const dispatch = useDispatch();
   const ingredientsState = useSelector(selectIngredients);
   const [ingCount, setIngCount] = useState(3);
@@ -69,9 +74,10 @@ const AddFormIngredients = ({
     <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
       <StyledIngDiv>
         <StyledIngTitleDiv>
-          <StyledIngTitle>Ingredients</StyledIngTitle>
-          <StyledAddDiv>
+          <StyledIngTitle theme={theme}>Ingredients</StyledIngTitle>
+          <StyledAddDiv theme={theme}>
             <StyledAddBtn
+              theme={theme}
               onClick={e => {
                 deleteIngField(e);
               }}
@@ -79,15 +85,19 @@ const AddFormIngredients = ({
             >
               -
             </StyledAddBtn>
-            <p>{ingNumber.length}</p>
-            <StyledAddBtn onClick={e => addIngField(e)}>+</StyledAddBtn>
+            <StyledIngredientsText theme={theme}>
+              {ingNumber.length}
+            </StyledIngredientsText>
+            <StyledAddBtn theme={theme} onClick={e => addIngField(e)}>
+              +
+            </StyledAddBtn>
           </StyledAddDiv>
         </StyledIngTitleDiv>
 
         {ingNumber.map((el, index) => {
           return (
-            <StyledIngFieldLabel key={ingNumber[index]}>
-              <RelativeLabel>
+            <StyledIngFieldLabel theme={theme} key={ingNumber[index]}>
+              <StyledIngSelectLabel theme={theme}>
                 <Controller
                   name={`Ingredients${index}`}
                   control={control}
@@ -96,12 +106,7 @@ const AddFormIngredients = ({
                       styles={ingStyles}
                       {...field}
                       options={ingOptions}
-                      theme={theme => ({
-                        ...theme,
-                        colors: {
-                          neutral50: 'rgba(243, 243, 243, 0.8)',
-                        },
-                      })}
+                      theme={theme}
                     />
                   )}
                   rules={{ required: '!' }}
@@ -111,9 +116,9 @@ const AddFormIngredients = ({
                     {errors[`Ingredients${index}`].message}
                   </StyledValidIng>
                 )}
-              </RelativeLabel>
+              </StyledIngSelectLabel>
 
-              <StyledIngFieldWrapper>
+              <StyledIngFieldWrapper theme={theme}>
                 <StyledIngFieldInput
                   type="text"
                   placeholder="1 cl"
@@ -123,15 +128,10 @@ const AddFormIngredients = ({
                   <MeasureValidText>measure is required.</MeasureValidText>
                 )}
               </StyledIngFieldWrapper>
-              <StyledIngFieldBtn onClick={e => deleteIng(e, el)}>
-                <svg width="18" height="18">
-                  <use
-                    href={`${sprite}#icon-X`}
-                    style={{
-                      stroke: 'white',
-                    }}
-                  />
-                </svg>
+              <StyledIngFieldBtn theme={theme} onClick={e => deleteIng(e, el)}>
+                <StyledIconCross theme={theme} width="18" height="18">
+                  <use href={`${sprite}#icon-X`} />
+                </StyledIconCross>
               </StyledIngFieldBtn>
             </StyledIngFieldLabel>
           );

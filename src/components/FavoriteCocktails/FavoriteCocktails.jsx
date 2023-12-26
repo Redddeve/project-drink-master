@@ -1,38 +1,49 @@
-import { useSelector } from 'react-redux';
-import { selectFavoriteDrinks } from '../../redux/drinks/selectors';
+import PropTypes from 'prop-types';
 import CocktailList from '../CocktailList/CocktailList';
 import usual from '../../images/blue-iced-tea@1x.png';
 import retina from '../../images/blue-iced-tea@2x.png';
-import datas from './cocktail.json';
-
+import { selectIsLoading } from '../../redux/drinks/selectors';
 import {
   EmptyDescription,
   EmptyFavoritesContainer,
   EmptyFavoritesImage,
 } from './FavoriteCocktails.styled';
 import PaginatedItems from '../Paginator/Paginator';
+import { useSelector } from 'react-redux';
+import { Loader } from '../Loader/Loader';
 
-const FavoriteCocktails = () => {
-  const yourCocktail = useSelector(selectFavoriteDrinks) && datas;
-
-  return yourCocktail.length === 0 ? (
+const FavoriteCocktails = ({ destination, pageCount, favorites, theme }) => {
+  const isLoading = useSelector(selectIsLoading);
+  return isLoading ? (
+    <Loader />
+  ) : favorites.length === 0 ? (
     <EmptyFavoritesContainer>
       <EmptyFavoritesImage
         srcSet={`${usual} 1x, ${retina} 2x`}
         alt="Cocktail"
       />
-      <EmptyDescription>
+      <EmptyDescription theme={theme}>
         You haven&rsquo;t added any favorite cocktails yet
       </EmptyDescription>
     </EmptyFavoritesContainer>
   ) : (
     <PaginatedItems
-      items={yourCocktail}
-      destination="favorite"
+      pageCount={pageCount}
+      items={favorites}
+      destination={destination}
       ListComponent={CocktailList}
-      itemsPerPageValue={{ mobile: 9, tablet: 8, desktop: 9, default: 9 }}
+      theme={theme}
     />
   );
+};
+
+FavoriteCocktails.propTypes = {
+  destination: PropTypes.string.isRequired,
+  pageCount: PropTypes.number.isRequired,
+  setSelectedPage: PropTypes.func,
+  favorites: PropTypes.array.isRequired,
+  theme: PropTypes.string.isRequired,
+  selectedPage: PropTypes.number,
 };
 
 export default FavoriteCocktails;

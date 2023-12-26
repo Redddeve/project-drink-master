@@ -1,10 +1,11 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 export const FooterWrap = styled.footer`
   width: 100%;
   background-color: var(--dark);
   border-top: 1px solid rgba(243, 243, 243, 0.2);
+  overflow: hidden;
 `;
 
 export const FooterContainer = styled.div`
@@ -35,7 +36,7 @@ export const LogoFlex = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const StyledLogoLink = styled.a`
+export const StyledLogoLink = styled(Link)`
   display: flex;
   gap: 14px;
   align-items: center;

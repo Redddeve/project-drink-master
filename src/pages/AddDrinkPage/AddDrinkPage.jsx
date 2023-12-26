@@ -1,27 +1,31 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { StyledSubmitBtn } from './AddDrinkPage.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   addOwnDrinkThunk,
   getPopularThunk,
 } from '../../redux/drinks/operations';
 import { useNavigate } from 'react-router-dom';
-import ButtonUpToTop from '../../components/ButtonUpToTop/ButtonUpToTop';
 
 import PageTitle from '../../components/PageTitle/PageTitle';
 import AddFormMain from '../../components/AddFormMain/AddFormMain';
 import AddFormIngredients from '../../components/AddFormIngredients/AddFormIngredients';
 import AddFormDesc from '../../components/AddFormDesc/AddFormDesc';
 import PopularDrinks from '../../components/PopularDrinks/PopularDrinks';
+import { selectTheme } from '../../redux/theme/selectors';
 
 const AddDrinkPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPopularThunk());
+    window.scrollTo({
+      top: 0,
+    });
   }, [dispatch]);
 
   const navigate = useNavigate();
+  const theme = useSelector(selectTheme);
   const {
     register,
     control,
@@ -61,40 +65,43 @@ const AddDrinkPage = () => {
   return (
     <>
       <PageTitle title="Add drink" />
-      <div>
-        <AddFormMain
-          register={register}
-          control={control}
-          setValue={setValue}
-          handleSubmit={handleSubmit}
-          errors={errors}
-          onSubmit={onSubmit}
-        ></AddFormMain>
 
-        <AddFormIngredients
-          ingNumber={ingNumber}
-          setIngNumber={setIngNumber}
-          register={register}
-          control={control}
-          handleSubmit={handleSubmit}
-          errors={errors}
-          onSubmit={onSubmit}
-        />
+      <AddFormMain
+        register={register}
+        control={control}
+        setValue={setValue}
+        handleSubmit={handleSubmit}
+        errors={errors}
+        onSubmit={onSubmit}
+      />
 
-        <AddFormDesc
-          register={register}
-          control={control}
-          handleSubmit={handleSubmit}
-          errors={errors}
-          onSubmit={onSubmit}
-        />
+      <AddFormIngredients
+        ingNumber={ingNumber}
+        setIngNumber={setIngNumber}
+        register={register}
+        control={control}
+        handleSubmit={handleSubmit}
+        errors={errors}
+        onSubmit={onSubmit}
+      />
 
-        <StyledSubmitBtn type="button" onClick={handleSubmit(onSubmit)}>
-          Add
-        </StyledSubmitBtn>
-      </div>
+      <AddFormDesc
+        register={register}
+        control={control}
+        handleSubmit={handleSubmit}
+        errors={errors}
+        onSubmit={onSubmit}
+      />
+
+      <StyledSubmitBtn
+        type="button"
+        onClick={handleSubmit(onSubmit)}
+        theme={theme}
+      >
+        Add
+      </StyledSubmitBtn>
+
       <PopularDrinks />
-      <ButtonUpToTop />
     </>
   );
 };
