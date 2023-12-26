@@ -7,6 +7,7 @@ import {
   Heading,
   EditProfileButton,
   PenIcon,
+  StyledLogoutButton
 } from "./UserDropdown.styled";
 
 const UserDropdown = forwardRef(({ handlerEditProfileClick, handlerLogoutDropdownClick }, ref) => {
@@ -22,11 +23,11 @@ const UserDropdown = forwardRef(({ handlerEditProfileClick, handlerLogoutDropdow
           </PenIcon>
         </EditProfileButton>
       </Heading>
-      <CommonBtn
-        propClass={CommonBtn.dropdownButton}
-        title="Log out"
-        onClick={handlerLogoutDropdownClick}
-      />
+     <StyledLogoutButton
+      propClass={CommonBtn.dropdownButton}
+      onClick={handlerLogoutDropdownClick}
+      >Log out
+        </StyledLogoutButton>
     </DropdownContainer>
   );
 });

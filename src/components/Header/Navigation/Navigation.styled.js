@@ -10,10 +10,12 @@ export const Nav = styled.nav`
   left: 0;
   right: 0;
   display: grid;
+  height: 100%;
   background-color: ${({ theme }) =>
     theme === 'dark' ? darkTheme.background.main : lightTheme.background.main};
   color: ${({ theme }) =>
     theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
+  
   @media ${device.tablet} {
     top: 79px;
   }

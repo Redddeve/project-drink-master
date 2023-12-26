@@ -9,36 +9,40 @@ import {
   PlusIcon,
   InputContainer,
   Input,
-  InputPenIcon
+  InputPenIcon, 
+  SaveBtn,
 } from "./EditProfile.styled";
 import sprite from "../../../../images/sprite.svg"
 import PropTypes from "prop-types";
-import { Formik, Field, Form } from "formik";
 import { forwardRef, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../../../redux/auth/selectors";
 import { updateThunk } from "../../../../redux/auth/operations";
 import { Notify } from "notiflix";
+import { useForm, Controller } from "react-hook-form";
 
 const EditProfile = forwardRef(
   ({ handlerEditProfileClick, handlerUserDropdownClick }, ref) => {
     const dispatch = useDispatch();
     const { name, avatarURL } = useSelector(selectUser);
 
-    const [userName, setUserName] = useState(name);
+    // eslint-disable-next-line no-unused-vars
+    const { register, handleSubmit, setValue, control } = useForm({
+      defaultValues: { avatarURL: "", name: `${name}` },
+    });
+
     const [image, setImage] = useState(null);
     const [imgURL, setImageURL] = useState(null);
     const [isButtonEnabled, setIsButtonEnabled] = useState(false);
 
-    const userInfoFormSubmit = values => {
+    const userInfoFormSubmit = data => {
       if (!isButtonEnabled) {
-        setIsButtonEnabled(false);
-        Notify.failure("Дані не були змінені");
+        Notify.failure("Data wasn't changed");
         return;
       }
 
       const formData = new FormData();
-      formData.append("name", values.name);
+      formData.append("name", data.name);
       if (image) {
         formData.append("avatarURL", image);
       }
@@ -56,7 +60,7 @@ const EditProfile = forwardRef(
     };
 
     const onNameChange = e => {
-      setUserName(e.target.value);
+      setValue('name', e.target.value);
       if (name !== e.target.value) {
         setIsButtonEnabled(true);
       } else if (name === e.target.value && imgURL === null) {
@@ -81,57 +85,72 @@ const EditProfile = forwardRef(
         <CloseButton onClick={handlerEditProfileClick}>
           <CloseIcon>
             <svg width="24" height="24">
-          <use href={sprite + "#icon-X"} />
-        </svg>
+              <use href={sprite + "#icon-X"} />
+            </svg>
           </CloseIcon>
         </CloseButton>
-        <Formik
-          initialValues={{ avatarURL: "", name: `${userName}` }}
-          enableReinitialize={true}
-          onSubmit={userInfoFormSubmit}
-        >
-          <Form>
-            <IconContainer>
-              <UserLargeIcon
-                src={avatarURL}
-                alt="User's photo"
-                id="user_image"
-              />
-              <Field
-                id="file_upload"
-                type="file"
-                name="avatarURL"
-                onChange={onImageChange}
-                as={FileInput}
-              />
-              <label htmlFor="file_upload">
-                <PlusIcon viewBox="-5 -5 70 100">
-                 <svg width="28" height="28">
-                    <use href={sprite + "#icon-mini-plus"} />
-                </svg>
-                </PlusIcon>
-              </label>
-            </IconContainer>
-            <InputContainer>
-              <Input
-                id="name"
-                name="name"
-                type="text"
-                onChange={onNameChange}
-              />
-              <InputPenIcon>
-               <svg width="16" height="16">
-                    <use href={sprite + "#icon-pen"} />
-                </svg>
-              </InputPenIcon>
-            </InputContainer>
-            <CommonBtn
-              disabled={!isButtonEnabled}
-              propClass={CommonBtn.largeButton}
-              title="Save changes"
+        <form onSubmit={handleSubmit(userInfoFormSubmit)}>
+          <IconContainer>
+            <UserLargeIcon
+              src={avatarURL}
+              alt="User's photo"
+              id="user_image"
             />
-          </Form>
-        </Formik>
+            <Controller
+              name="avatarURL"
+              control={control}
+              render={({ field }) => (
+                <>
+                  <FileInput
+                    id="file_upload"
+                    type="file"
+                    onChange={(e) => {
+                      field.onChange(e);
+                      onImageChange(e);
+                    }}
+                  />
+                  <label htmlFor="file_upload">
+                    <PlusIcon >
+                      <svg width="18" height="18">
+                        <use href={sprite + "#icon-mini-plus"} />
+                      </svg>
+                    </PlusIcon>
+                  </label>
+                </>
+              )}
+            />
+          </IconContainer>
+          <InputContainer>
+            <Controller
+              name="name"
+              control={control}
+              render={({ field }) => (
+                <>
+                  <Input
+                    {...field}
+                    id="name"
+                    type="text"
+                    onChange={(e) => {
+                      field.onChange(e);
+                      onNameChange(e);
+                    }}
+                  />
+                  <InputPenIcon>
+                    <svg width="16" height="16">
+                      <use href={sprite + "#icon-pen"} />
+                    </svg>
+                  </InputPenIcon>
+                </>
+              )}
+            />
+          </InputContainer>
+          <SaveBtn
+            disabled={!isButtonEnabled}
+            propClass={CommonBtn.largeButton}
+            type="submit"
+          > Save changes
+            </SaveBtn>
+        </form>
       </EditContainer>
     );
   },
@@ -145,3 +164,4 @@ EditProfile.propTypes = {
   handlerEditProfileClick: PropTypes.func,
   handlerUserDropdownClick: PropTypes.func,
 };
+

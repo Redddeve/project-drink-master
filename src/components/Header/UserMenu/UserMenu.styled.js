@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { device } from '../../../styles/device';
 
 
+
 export const UserGroup = styled.div`
   position: relative;
   margin-right: 14px;

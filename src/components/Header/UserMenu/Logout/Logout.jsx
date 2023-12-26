@@ -9,6 +9,8 @@ import {
   CloseButton,
   CloseIcon,
   ButtonContainer,
+  LogoutBtn,
+  CancelBtn,
 } from "./Logout.styled";
 import sprite from "../../../../images/sprite.svg"
 
@@ -33,16 +35,16 @@ const Logout = forwardRef(({ handlerLogoutDropdownClick }, ref) => {
       </CloseButton>
       <p>Are you sure you want to log out?</p>
       <ButtonContainer>
-        <CommonBtn
+        <LogoutBtn
           onClick={handlerLogoutClick}
           propClass={CommonBtn.biggerButton}
-          title="Logout"
-        />
-        <CommonBtn
+        > Log out
+          </LogoutBtn>
+        <CancelBtn
           onClick={handlerLogoutDropdownClick}
           propClass={CommonBtn.cancelButton}
-          title="Cancel"
-        />
+        > Cancel
+         </CancelBtn>
       </ButtonContainer>
     </LogoutContainer>
   );
