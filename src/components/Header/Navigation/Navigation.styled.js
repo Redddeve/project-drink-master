@@ -10,10 +10,12 @@ export const Nav = styled.nav`
   left: 0;
   right: 0;
   display: grid;
+  height: 100%;
   background-color: ${({ theme }) =>
     theme === 'dark' ? darkTheme.background.main : lightTheme.background.main};
   color: ${({ theme }) =>
     theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
+
   @media ${device.tablet} {
     top: 79px;
   }
@@ -25,10 +27,7 @@ export const Nav = styled.nav`
 
   & a {
     padding: 8px 16px;
-    border: ${({ theme }) =>
-      theme === 'dark'
-        ? darkTheme.borderColor.main
-        : lightTheme.borderColor.main};
+
     border-radius: 40px;
     color: ${({ theme }) =>
       theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
@@ -36,12 +35,9 @@ export const Nav = styled.nav`
 
   & a.active {
     padding: 8px 16px;
-    color: ${({ theme }) =>
-      theme === 'dark' ? lightTheme.colors.main : darkTheme.colors.main};
-    background-color: ${({ theme }) =>
-      theme === 'dark'
-        ? lightTheme.background.main
-        : darkTheme.background.blackBg};
+    color: var(--white);
+    background-color: var(--black);
+    border: none;
   }
 `;
 export const Circle = styled.div`
@@ -111,12 +107,17 @@ export const Item = styled.li`
   font-size: 14px;
   font-weight: 500;
 
-  transition-property: transform;
   transition: 0.3s ease;
 
   &:hover,
   &:focus {
-    transform: scale(1.1);
-    color: #f3f3f3;
+    background-color: var(--black);
+  }
+  &:hover,
+  :focus a {
+    color: var(--white);
+  }
+  &:has(a.active) {
+    border: none;
   }
 `;

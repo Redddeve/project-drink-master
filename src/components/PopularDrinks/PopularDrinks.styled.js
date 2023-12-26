@@ -11,7 +11,7 @@ export const MainContainer = styled.div`
 
   @media ${device.desktop} {
     position: absolute;
-    top: 40%;
+    top: 14%;
     right: 15%;
   }
 `;

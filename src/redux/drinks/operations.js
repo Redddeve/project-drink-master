@@ -36,6 +36,17 @@ export const getPopularThunk = createAsyncThunk(
   }
 );
 
+export const setSearchPage = createAsyncThunk(
+  'drinks/searchPage',
+  async (page, { rejectWithValue }) => {
+    try {
+      return page;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export const searchDrinksThunk = createAsyncThunk(
   'drinks/search',
   async (body, { rejectWithValue, getState }) => {
@@ -138,7 +149,7 @@ export const deleteOwnDrinkThunk = createAsyncThunk(
 
 export const getFavoriteDrinksThunk = createAsyncThunk(
   'drinks/favorite',
-  async ({ page, itemsPerPage: limit }, { rejectWithValue, getState }) => {
+  async ({ page, limit }, { rejectWithValue, getState }) => {
     try {
       setToken(getState().auth.token);
       const { data } = await instance.get(

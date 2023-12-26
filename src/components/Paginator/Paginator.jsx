@@ -1,38 +1,45 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { PaginateContainer, Paginator } from './Paginator.styled';
-import { selectPages } from '../../redux/drinks/selectors';
-import { useSelector } from 'react-redux';
 import PaginationIcon from './PaginatorIcons/PaginatedIcons';
-import { selectTheme } from '../../redux/theme/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSearchPage } from '../../redux/drinks/operations';
+import { selectPage } from '../../redux/drinks/selectors';
 
-function PaginatedItems({ items, destination, ListComponent, setPage }) {
-  const [currentPage, setCurrentPage] = useState(0);
-  const pageCount = useSelector(selectPages);
-  const theme = useSelector(selectTheme);
+function PaginatedItems({
+  items,
+  destination,
+  ListComponent,
+  pageCount,
+  theme,
+}) {
+  const dispatch = useDispatch();
+  const selectedPage = useSelector(selectPage);
 
   const paginatorExpediency = pageCount > 1;
 
   const handlePageClick = ({ selected }) => {
-    setPage(selected + 1);
+    dispatch(setSearchPage(selected + 1));
 
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
 
-    if (selected === pageCount - 1) {
+    if (selected === pageCount - 1 && pageCount >= 5) {
       toast.info(
         'The final chapter of our cocktail symphony has been reached. 🍹🎉'
       );
     }
-    setCurrentPage(selected);
   };
 
   return (
     <PaginateContainer>
-      <ListComponent cocktailData={items} destination={destination} />
+      <ListComponent
+        cocktailData={items}
+        destination={destination}
+        theme={theme}
+      />
       {paginatorExpediency && (
         <Paginator
           theme={theme}
@@ -43,7 +50,7 @@ function PaginatedItems({ items, destination, ListComponent, setPage }) {
           pageCount={pageCount}
           previousLabel={<PaginationIcon iconId="icon-pagi-left" />}
           renderOnZeroPageCount={null}
-          forcePage={currentPage}
+          forcePage={selectedPage - 1}
           forceDisplay={true}
         />
       )}
@@ -61,8 +68,10 @@ PaginatedItems.propTypes = {
     desktop: PropTypes.number,
     default: PropTypes.number,
   }),
-  page: PropTypes.number.isRequired,
-  setPage: PropTypes.func,
+  pageCount: PropTypes.number.isRequired,
+  setSelectedPage: PropTypes.func,
+  theme: PropTypes.string.isRequired,
+  selectedPage: PropTypes.number,
 };
 
 export default PaginatedItems;

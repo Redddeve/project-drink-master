@@ -10,19 +10,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   selectCategories,
   selectIngredients,
+  selectPage,
 } from '../../redux/drinks/selectors.js';
 import {
   getCategoriesThunk,
   getIngredientsThunk,
   searchDrinksThunk,
+  setSearchPage,
 } from '../../redux/drinks/operations.js';
 import { useEffect, useState } from 'react';
 import { selectTheme } from '../../redux/theme/selectors.js';
+import useResponsiveItemsPerPage from '../../hooks/usePerPage.jsx';
 
 export const SearchFilterContainer = () => {
   const dispatch = useDispatch();
   const ingredients = useSelector(selectIngredients);
   const categories = useSelector(selectCategories);
+  const page = useSelector(selectPage);
   const [name, setName] = useState('');
   const [ingredient, setIngredient] = useState('');
   const [category, setCategory] = useState('');
@@ -30,12 +34,21 @@ export const SearchFilterContainer = () => {
   const [categoryMenuIsOpen, setCategoryMenuIsOpen] = useState(false);
   const theme = useSelector(selectTheme);
 
+  const itemsPerPage = useResponsiveItemsPerPage({
+    mobile: 10,
+    tablet: 10,
+    desktop: 9,
+    default: 9,
+  });
+
   const dispatchSearch = () => {
     dispatch(
       searchDrinksThunk({
         drink: name,
         ingredients: ingredient,
         category: category,
+        limit: itemsPerPage,
+        page,
       })
     );
   };
@@ -43,8 +56,30 @@ export const SearchFilterContainer = () => {
   useEffect(() => {
     dispatch(getCategoriesThunk());
     dispatch(getIngredientsThunk());
-    dispatch(searchDrinksThunk({ drink: '', ingredients: '', category: '' }));
-  }, [dispatch]);
+    dispatch(setSearchPage(1));
+    dispatch(
+      searchDrinksThunk({
+        drink: '',
+        ingredients: '',
+        category: '',
+        limit: itemsPerPage,
+        page: 1,
+      })
+    );
+  }, [dispatch, itemsPerPage]);
+
+  useEffect(() => {
+    dispatch(
+      searchDrinksThunk({
+        drink: name,
+        ingredients: ingredient,
+        category: category,
+        limit: itemsPerPage,
+        page,
+      })
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
 
   const ingredientsOptions = ingredients?.map(ing => {
     return { value: ing.title, label: ing.title };
@@ -56,20 +91,26 @@ export const SearchFilterContainer = () => {
   const handleCategoryChange = value => {
     if (value) {
       setCategory(value.value);
+      dispatch(setSearchPage(1));
       dispatch(
         searchDrinksThunk({
           drink: name,
           ingredients: ingredient,
           category: value.value,
+          limit: itemsPerPage,
+          page,
         })
       );
     } else {
       setCategory('');
+      dispatch(setSearchPage(1));
       dispatch(
         searchDrinksThunk({
           drink: name,
           ingredients: ingredient,
           category: '',
+          limit: itemsPerPage,
+          page,
         })
       );
     }
@@ -78,20 +119,26 @@ export const SearchFilterContainer = () => {
   const handleIngredientChange = value => {
     if (value) {
       setIngredient(value.value);
+      dispatch(setSearchPage(1));
       dispatch(
         searchDrinksThunk({
           drink: name,
           ingredients: value.value,
           category,
+          limit: itemsPerPage,
+          page,
         })
       );
     } else {
       setIngredient('');
+      dispatch(setSearchPage(1));
       dispatch(
         searchDrinksThunk({
           drink: name,
           ingredients: '',
           category,
+          limit: itemsPerPage,
+          page,
         })
       );
     }
@@ -103,15 +150,18 @@ export const SearchFilterContainer = () => {
         theme={theme}
         placeholder="Enter the text"
         onChange={e => setName(e.currentTarget.value)}
-        onBlur={e =>
+        onBlur={e => {
+          dispatch(setSearchPage(1));
           dispatch(
             searchDrinksThunk({
               drink: e.currentTarget.value,
               ingredients: ingredient,
               category,
+              limit: itemsPerPage,
+              page,
             })
-          )
-        }
+          );
+        }}
         onKeyPress={key => {
           key.code === 'Enter' ? dispatchSearch() : null;
         }}
