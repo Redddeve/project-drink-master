@@ -5,6 +5,7 @@ import { darkTheme, lightTheme } from '../../../styles/theme';
 export const BurgerMenuWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 `;
 
 export const BurgerIcon = styled.div`
@@ -12,6 +13,10 @@ export const BurgerIcon = styled.div`
     theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
   width: 32px;
   height: 32px;
+
+  &.scroll-locked {
+    overflow: hidden;
+  }
 
   @media ${device.tablet} {
     width: 38px;
