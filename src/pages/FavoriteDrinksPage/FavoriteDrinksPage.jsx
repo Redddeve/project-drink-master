@@ -13,7 +13,6 @@ const FavoriteDrinksPage = () => {
   const pageCount = useSelector(selectPages);
   const favorites = useSelector(state => state.drinks.favorite);
   const theme = useSelector(selectTheme);
-  console.log(selectedPage);
 
   const itemsPerPage = useResponsiveItemsPerPage({
     mobile: 9,
