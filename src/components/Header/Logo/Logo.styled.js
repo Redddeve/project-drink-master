@@ -6,6 +6,7 @@ export const LogoGroup = styled.div`
   display: flex;
   gap: 8px;
   margin-right: auto;
+  align-items: center;
 
   &:hover,
   &:focus {
@@ -14,6 +15,7 @@ export const LogoGroup = styled.div`
 
   @media ${device.tablet} {
     gap: 14px;
+    align-items: flex-start;
   }
 
   @media ${device.desktop} {

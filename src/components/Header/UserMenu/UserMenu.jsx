@@ -1,19 +1,16 @@
-import { createRef, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../../redux/auth/selectors";
-import { CSSTransition } from "react-transition-group";
-import UserDropdown from "./UserDropdown/UserDropdown";
-import EditProfile from "./EditProfile/EditProfile";
-import Logout from "./Logout/Logout";
-import {
-    UserGroup,
-    UserButton,
-    UserIcon,
-    UserName
-} from './UserMenu.styled'; 
+import { createRef, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../redux/auth/selectors';
+import { CSSTransition } from 'react-transition-group';
+import UserDropdown from './UserDropdown/UserDropdown';
+import EditProfile from './EditProfile/EditProfile';
+import Logout from './Logout/Logout';
+import { UserGroup, UserButton, UserIcon, UserName } from './UserMenu.styled';
+import { selectTheme } from '../../../redux/theme/selectors';
 
 export default function UserMenu() {
   const { name, avatarURL } = useSelector(selectUser);
+  const theme = useSelector(selectTheme);
 
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
   const [isOpenLogout, setIsOpenLogout] = useState(false);
@@ -24,7 +21,8 @@ export default function UserMenu() {
 
   const handlerLogoutDropdownClick = () => setIsOpenLogout(!isOpenLogout);
 
-  const handlerEditProfileClick = () => setIsOpenEditProfile(!isOpenEditProfile);
+  const handlerEditProfileClick = () =>
+    setIsOpenEditProfile(!isOpenEditProfile);
 
   const handlerUserDropdownClick = () => {
     if (isOpenEditProfile || isOpenLogout) {
@@ -37,9 +35,9 @@ export default function UserMenu() {
     setIsOpenEditProfile(false);
   };
 
-  const handlerBackdropClicks = (e) => {
-    const backdrop = e.target.closest("#user_group") === null;
-    const esc = e.key === "Escape";
+  const handlerBackdropClicks = e => {
+    const backdrop = e.target.closest('#user_group') === null;
+    const esc = e.key === 'Escape';
     setTransitionTimeout(250);
     if (backdrop || esc) {
       if (isOpenEditProfile || isOpenLogout) {
@@ -55,13 +53,13 @@ export default function UserMenu() {
 
   useEffect(() => {
     if (isOpenDropdown) {
-      window.addEventListener("click", handlerBackdropClicks);
-      window.addEventListener("keydown", handlerBackdropClicks);
+      window.addEventListener('click', handlerBackdropClicks);
+      window.addEventListener('keydown', handlerBackdropClicks);
     }
 
     return () => {
-      window.removeEventListener("click", handlerBackdropClicks);
-      window.removeEventListener("keydown", handlerBackdropClicks);
+      window.removeEventListener('click', handlerBackdropClicks);
+      window.removeEventListener('keydown', handlerBackdropClicks);
     };
   });
 
@@ -69,7 +67,7 @@ export default function UserMenu() {
     <UserGroup id="user_group">
       <UserButton onClick={handlerUserDropdownClick}>
         <UserIcon src={avatarURL} alt="User photo" />
-        <UserName>{name}</UserName>
+        <UserName theme={theme}>{name}</UserName>
       </UserButton>
 
       <CSSTransition

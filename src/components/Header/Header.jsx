@@ -7,6 +7,7 @@ import BurgerMenu from './Burger/Burger';
 import { selectTheme } from '../../redux/theme/selectors';
 import { useSelector } from 'react-redux';
 import UserMenu from './UserMenu/UserMenu';
+import ToggleTheme from '../ToggleTheme/ToggleTheme';
 
 const Header = () => {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1440);
@@ -57,15 +58,23 @@ const Header = () => {
     <HeaderWrapper theme={theme}>
       <HeaderContainer theme={theme}>
         <Logo />
-        <UserMenu />
+
         {isDesktop ? (
-          <Navigation /> 
+          <>
+            <Navigation />
+            <ToggleTheme />
+            <UserMenu />
+          </>
         ) : (
-          <BurgerMenu
-            toggleMenu={toggleMenu}
-            isOpenBurgerMenu={isOpenBurgerMenu}
-            isDesktop={isDesktop}
-          />
+          <>
+            {!isOpenBurgerMenu && <UserMenu />}
+            {isOpenBurgerMenu && <ToggleTheme />}
+            <BurgerMenu
+              toggleMenu={toggleMenu}
+              isOpenBurgerMenu={isOpenBurgerMenu}
+              isDesktop={isDesktop}
+            />
+          </>
         )}
       </HeaderContainer>
     </HeaderWrapper>

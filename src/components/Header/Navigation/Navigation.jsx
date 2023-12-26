@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Nav, List, Item, Circle } from './Navigation.styled.js';
 import { useSelector } from 'react-redux';
-
 const Navigation = React.forwardRef(
   // eslint-disable-next-line no-unused-vars
   (props, ref) => {
