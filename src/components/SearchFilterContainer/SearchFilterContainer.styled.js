@@ -31,6 +31,23 @@ export const StyledInput = styled.input`
   opacity: 0.8;
   outline: none;
   background: transparent;
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: ${({ theme }) =>
+      theme === 'dark'
+        ? darkTheme.colors.main
+        : lightTheme.colors.main}; // колір тексту
+    -webkit-background-color: transparent !important;
+    -webkit-border: ${({ theme }) =>
+      theme === 'dark'
+        ? darkTheme.borderColor.main
+        : lightTheme.borderColor.main};
+    transition: all 0s 50000s;
+    transition: background-color 5000s ease-in-out 0s;
+  }
 
   @media ${device.tablet} {
     width: 264px;
@@ -43,6 +60,7 @@ export const StyledSvg = styled.svg`
   height: 20px;
   top: 18px;
   left: 180px;
+  cursor: pointer;
   stroke: ${({ theme }) =>
     theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
   fill: ${({ theme }) =>
