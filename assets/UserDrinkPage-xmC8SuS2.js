@@ -1,4 +1,4 @@
-import{u as o,d as i,a as s,l as r,P as g,b as m,s as j,e as T,g as p,k as B,j as t,n as C,f as q,R as O,Q as H,S as N,T as U,U as _}from"./index-5RPvxaon.js";import{a as A,h as G,i as J}from"./selectors-TdiZ4hRJ.js";const K=o.div`
+import{u as o,d as i,a as s,l as r,P as g,b as m,s as j,e as T,g as p,k as B,j as t,o as C,f as q,S as O,Q as H,T as N,U,V as _}from"./index-dOFwbAIk.js";import{a as A,j as G,i as J}from"./selectors-g1FrcWxq.js";const K=o.div`
   margin-bottom: 18px;
 
   @media ${i.tablet} {
@@ -35,7 +35,7 @@ import{u as o,d as i,a as s,l as r,P as g,b as m,s as j,e as T,g as p,k as B,j a
     font-size: 16px;
     line-height: 1.25;
   }
-`,X=o.p`
+`,V=o.p`
   width: 335px;
   margin-bottom: 40px;
   color: ${({theme:e})=>e==="dark"?s.colors.main:r.colors.main};
@@ -43,7 +43,7 @@ import{u as o,d as i,a as s,l as r,P as g,b as m,s as j,e as T,g as p,k as B,j a
   @media ${i.tablet} {
     width: 600px;
   }
-`,V=o.button`
+`,X=o.button`
   position: relative;
   z-index: 1;
 
@@ -271,4 +271,4 @@ import{u as o,d as i,a as s,l as r,P as g,b as m,s as j,e as T,g as p,k as B,j a
   display: flex;
   align-items: center;
   justify-content: center;
-`,z=({isOpen:e,onClose:n,message:l,background:x})=>{const d=p.useCallback(u=>{u.key==="Escape"&&n()},[n]);return p.useEffect(()=>(e?(document.addEventListener("keydown",d),document.body.style.overflow="hidden"):(document.removeEventListener("keydown",d),document.body.style.overflow="auto"),()=>{document.removeEventListener("keydown",d),document.body.style.overflow="auto"}),[e,d]),e?t.jsx(t.Fragment,{children:t.jsx(he,{onClick:n,children:t.jsx(ge,{background:x,children:t.jsxs(me,{children:[t.jsx(ue,{children:l}),t.jsx(be,{onClick:n,children:t.jsx("svg",{width:28,height:28,children:t.jsx("use",{href:`${C}#icon-X`,style:{stroke:"white"}})})})]})})})}):null};z.propTypes={isOpen:g.bool.isRequired,onClose:g.func.isRequired,message:g.string.isRequired,background:g.string.isRequired};const ke="/project-drink-master/assets/Motivation-mob3@2x-1EibcH2o.jpg",fe="/project-drink-master/assets/motivation3@2x-WSNNf0lv.jpg",ve="/project-drink-master/assets/Motivation-mob2@2x-i2WMUKAM.jpg",we="/project-drink-master/assets/motivation2@2x-3J2W25Lp.jpg",$e=()=>{const e=q.useMediaQuery({query:"(max-width: 767px)"}),[n,l]=p.useState(""),[x,d]=p.useState(!1),[u,b]=p.useState(""),c=()=>{d(!0)},k=()=>{d(!1)},h=m(j),{drinkId:w}=O(),f=T(),a=m(G),y=m(J),[$,F]=p.useState(!1),I=()=>{f(U(w)).then(v=>{const{sendFirstFavGreeting:R,sendTenthFavGreeting:L}=v.payload,P=R===!0,W=L===!0;P&&(c(),b("Wow! You have added the first recipe to your favorites!"),l(e?ke:fe)),W&&(c(),b("Wow! You have added 10 recipes to your favorites!"),l(e?ve:we))}).catch(v=>{console.error("Error in addFavoriteDrinkThunk:",v)})},E=()=>{f(_(w))};return p.useEffect(()=>{f(H({page:1,itemsPerPage:1e3})),f(N(w)),window.scrollTo({top:0})},[f,w]),p.useEffect(()=>{F(!!(y!=null&&y.find(v=>v._id===a._id)))},[a,y]),t.jsxs(t.Fragment,{children:[t.jsxs(K,{children:[t.jsxs("div",{children:[t.jsx(Q,{theme:h,children:a.drink}),t.jsx(Y,{theme:h,children:`${a.glass} / ${a.alcoholic}`}),t.jsx(X,{theme:h,children:a.description}),t.jsx(V,{theme:h,onClick:$?E:I,children:$?"Remove from favorite drinks":"Add to favorite drinks"})]}),t.jsx(Z,{theme:h,src:a.drinkThumb})]}),t.jsx(D,{theme:h,ingredientsArray:a?a.ingredients:[]}),t.jsx(M,{theme:h,instructions:a.instructions}),t.jsx(z,{isOpen:x,onClose:()=>{k(),b(""),l("")},message:u,background:n})]})};export{$e as default};
+`,z=({isOpen:e,onClose:n,message:l,background:x})=>{const d=p.useCallback(u=>{u.key==="Escape"&&n()},[n]);return p.useEffect(()=>(e?(document.addEventListener("keydown",d),document.body.style.overflow="hidden"):(document.removeEventListener("keydown",d),document.body.style.overflow="auto"),()=>{document.removeEventListener("keydown",d),document.body.style.overflow="auto"}),[e,d]),e?t.jsx(t.Fragment,{children:t.jsx(he,{onClick:n,children:t.jsx(ge,{background:x,children:t.jsxs(me,{children:[t.jsx(ue,{children:l}),t.jsx(be,{onClick:n,children:t.jsx("svg",{width:28,height:28,children:t.jsx("use",{href:`${C}#icon-X`,style:{stroke:"white"}})})})]})})})}):null};z.propTypes={isOpen:g.bool.isRequired,onClose:g.func.isRequired,message:g.string.isRequired,background:g.string.isRequired};const ke="/project-drink-master/assets/Motivation-mob3@2x-1EibcH2o.jpg",fe="/project-drink-master/assets/motivation3@2x-WSNNf0lv.jpg",ve="/project-drink-master/assets/Motivation-mob2@2x-i2WMUKAM.jpg",we="/project-drink-master/assets/motivation2@2x-3J2W25Lp.jpg",$e=()=>{const e=q.useMediaQuery({query:"(max-width: 767px)"}),[n,l]=p.useState(""),[x,d]=p.useState(!1),[u,b]=p.useState(""),c=()=>{d(!0)},k=()=>{d(!1)},h=m(j),{drinkId:w}=O(),f=T(),a=m(G),y=m(J),[$,F]=p.useState(!1),I=()=>{f(U(w)).then(v=>{const{sendFirstFavGreeting:R,sendTenthFavGreeting:L}=v.payload,P=R===!0,W=L===!0;P&&(c(),b("Wow! You have added the first recipe to your favorites!"),l(e?ke:fe)),W&&(c(),b("Wow! You have added 10 recipes to your favorites!"),l(e?ve:we))}).catch(v=>{console.error("Error in addFavoriteDrinkThunk:",v)})},E=()=>{f(_(w))};return p.useEffect(()=>{f(H({page:1,itemsPerPage:1e3})),f(N(w)),window.scrollTo({top:0})},[f,w]),p.useEffect(()=>{F(!!(y!=null&&y.find(v=>v._id===a._id)))},[a,y]),t.jsxs(t.Fragment,{children:[t.jsxs(K,{children:[t.jsxs("div",{children:[t.jsx(Q,{theme:h,children:a.drink}),t.jsx(Y,{theme:h,children:`${a.glass} / ${a.alcoholic}`}),t.jsx(V,{theme:h,children:a.description}),t.jsx(X,{theme:h,onClick:$?E:I,children:$?"Remove from favorite drinks":"Add to favorite drinks"})]}),t.jsx(Z,{theme:h,src:a.drinkThumb})]}),t.jsx(D,{theme:h,ingredientsArray:a?a.ingredients:[]}),t.jsx(M,{theme:h,instructions:a.instructions}),t.jsx(z,{isOpen:x,onClose:()=>{k(),b(""),l("")},message:u,background:n})]})};export{$e as default};
