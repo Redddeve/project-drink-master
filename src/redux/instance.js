@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const baseUrl = 'https://shaking-code-api-lifuss.onrender.com';
-// const baseUrl = 'http://localhost:3002';
 
 const instance = axios.create({
   baseURL: baseUrl + '/api',
