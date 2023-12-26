@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import useResponsiveItemsPerPage from '../../hooks/usePerPage';
 import FavoriteCocktails from '../../components/FavoriteCocktails/FavoriteCocktails';
 import PageTitle from '../../components/PageTitle/PageTitle';
+import CircleBg from '../../components/SharedComponents/circleBg/CircleBg';
 
 const FavoriteDrinksPage = () => {
   const [page, setPage] = useState(1);
@@ -22,6 +23,7 @@ const FavoriteDrinksPage = () => {
 
   return (
     <>
+      <CircleBg />
       <section>
         <PageTitle title="Favorites" mbMobile={0} mbTablet={0} mbDesktop={0} />
         <FavoriteCocktails

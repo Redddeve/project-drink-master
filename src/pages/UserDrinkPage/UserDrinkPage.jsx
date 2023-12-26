@@ -22,6 +22,7 @@ import {
 import DrinkIngredientsList from '../../components/DrinkIngredientsList/DrinkIngredientsList.jsx';
 import RecipePreparation from '../../components/RecipePreparation/RecipePreparation.jsx';
 import { selectTheme } from '../../redux/theme/selectors.js';
+import CircleBg from '../../components/SharedComponents/circleBg/CircleBg.jsx';
 
 const UserDrinkPage = () => {
   const theme = useSelector(selectTheme);
@@ -40,7 +41,7 @@ const UserDrinkPage = () => {
   };
 
   useEffect(() => {
-    dispatch(getFavoriteDrinksThunk({page: 1, itemsPerPage: 1000}));
+    dispatch(getFavoriteDrinksThunk({ page: 1, itemsPerPage: 1000 }));
     dispatch(getDrinkbyIdThunk(drinkId));
     window.scrollTo({
       top: 0,
@@ -53,6 +54,7 @@ const UserDrinkPage = () => {
 
   return (
     <>
+      <CircleBg />
       <StyledDrinkHero>
         <div>
           <StyledDrinkHeader theme={theme}>{drink.drink}</StyledDrinkHeader>

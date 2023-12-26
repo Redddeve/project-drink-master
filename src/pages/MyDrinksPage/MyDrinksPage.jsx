@@ -3,6 +3,7 @@ import MyOwnCocktails from '../../components/MyCocktails/MyCocktails';
 import { useEffect } from 'react';
 import { getOwnDrinksThunk } from '../../redux/drinks/operations';
 import PageTitle from '../../components/PageTitle/PageTitle';
+import CircleBg from '../../components/SharedComponents/circleBg/CircleBg';
 
 const MyDrinksPage = () => {
   const dispatch = useDispatch();
@@ -11,10 +12,13 @@ const MyDrinksPage = () => {
   }, [dispatch]);
 
   return (
-    <section>
-      <PageTitle title={'My drinks'}></PageTitle>
-      <MyOwnCocktails />
-    </section>
+    <>
+      <CircleBg />
+      <section>
+        <PageTitle title={'My drinks'}></PageTitle>
+        <MyOwnCocktails />
+      </section>
+    </>
   );
 };
 

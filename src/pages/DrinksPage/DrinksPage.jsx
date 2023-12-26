@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import PageTitle from '../../components/PageTitle/PageTitle.jsx';
 import { SearchFilterContainer } from '../../components/SearchFilterContainer/SearchFilterContainer.jsx';
 import { SearchResultsContainer } from '../../components/SearchResultsContainer/SearchResultsContainer';
+import CircleBg from '../../components/SharedComponents/circleBg/CircleBg.jsx';
 
 const DrinksPage = () => {
   useEffect(() => {
@@ -12,6 +13,7 @@ const DrinksPage = () => {
 
   return (
     <>
+      <CircleBg />
       <PageTitle title={'Drinks'} />
       <SearchFilterContainer />
       <SearchResultsContainer />
