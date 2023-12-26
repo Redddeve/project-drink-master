@@ -10,13 +10,13 @@ export const EditContainer = styled.div`
   padding: 50px 25px;
   border-radius: 8px;
   text-align: center;
-  background-color: #161F37;
- 
- @media ${device.tablet} {
+  background-color: #161f37;
+
+  @media ${device.tablet} {
     top: 67px;
     width: 500px;
     padding: 50px 50px 75px 50px;
-    font-size: 18px; 
+    font-size: 18px;
   }
 `;
 
@@ -30,7 +30,7 @@ export const CloseButton = styled.button`
   border: none;
   outline: none;
   background-color: transparent;
-  
+
   @media ${device.tablet} {
     gap: 14px;
   }
@@ -44,7 +44,7 @@ export const CloseButton = styled.button`
 export const CloseIcon = styled.svg`
   width: 24px;
   height: 24px;
-  stroke: #F3F3F3;
+  stroke: #f3f3f3;
   cursor: pointer;
   justify-content: center;
   align-items: center;
@@ -79,15 +79,14 @@ export const FileInput = styled.input`
 
 export const PlusIcon = styled.svg`
   position: absolute;
+  padding: 5px;
   bottom: -15%;
   left: 46%;
   width: 28px;
   height: 28px;
-  stroke: #F3F3F3;;
+  stroke: #f3f3f3;
   background-color: #546081;
   border-radius: 50%;
-  
-
 
   &:hover,
   &:focus {
@@ -97,6 +96,7 @@ export const PlusIcon = styled.svg`
   @media ${device.tablet} {
     width: 32px;
     height: 32px;
+    padding: 7px;
   }
 `;
 
@@ -112,7 +112,7 @@ export const Input = styled.input`
   border-radius: 200px;
   outline: none;
   opacity: 0.8;
-  color: #F3F3F3;
+  color: #f3f3f3;
   background-color: transparent;
 
   @media ${device.tablet} {
@@ -135,7 +135,7 @@ export const InputPenIcon = styled.svg`
   display: none;
   width: 20px;
   height: 20px;
-  stroke: #F3F3F3;
+  stroke: #f3f3f3;
   cursor: pointer;
 
   @media ${device.tablet} {
@@ -146,22 +146,22 @@ export const InputPenIcon = styled.svg`
 export const SaveBtn = styled.button`
   width: 285px;
   margin-bottom: 18px;
-  padding: 18px 24px;
+  text-align: center;
   border-radius: 42px;
+  padding: 18px 0;
   outline: none;
-  color: #161F37;
-  background-color: #F3F3F3;
+  color: #161f37;
+  background-color: #f3f3f3;
   cursor: pointer;
 
   @media ${device.tablet} {
     width: 400px;
-    padding: 18px 68px 18px 24px;
     margin-bottom: 25px;
     font-size: 17px;
   }
 
   &:hover,
   &:focus {
-    border: 1px solid rgba(243, 243, 243, 0.5);
+    box-shadow: 0 0 15px 3px gray;
   }
-  `;
+`;

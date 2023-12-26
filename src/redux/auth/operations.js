@@ -68,7 +68,7 @@ export const updateThunk = createAsyncThunk(
   'auth/update',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await instance.put('users/update', credentials, {
+      const { data } = await instance.patch('users/update', credentials, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

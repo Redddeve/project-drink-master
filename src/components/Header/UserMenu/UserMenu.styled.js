@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { device } from '../../../styles/device';
-
-
+import { darkTheme, lightTheme } from '../../../styles/theme';
 
 export const UserGroup = styled.div`
   position: relative;
@@ -11,7 +10,7 @@ export const UserGroup = styled.div`
     margin-right: 24px;
   }
 
-  @media ${device.desktop}  {
+  @media ${device.desktop} {
     margin-right: 0;
   }
 `;
@@ -25,10 +24,9 @@ export const UserButton = styled.button`
   background-color: transparent;
   cursor: pointer;
 
-  @media ${device.desktop}  {
+  @media ${device.desktop} {
     gap: 14px;
   }
-
 `;
 
 export const UserIcon = styled.img`
@@ -44,7 +42,9 @@ export const UserIcon = styled.img`
 
 export const UserName = styled.span`
   font-size: 14px;
-  color: var(--white);
+  font-weight: 500;
+  color: ${({ theme }) =>
+    theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
 
   @media ${device.tablet} {
     font-size: 16px;

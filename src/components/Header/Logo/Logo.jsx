@@ -1,6 +1,5 @@
 import { LogoGroup, Icon, Name } from './Logo.styled';
 import sprite from '../../../images/sprite.svg';
-import ToggleTheme from '../../ToggleTheme/ToggleTheme';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -18,7 +17,6 @@ const Logo = () => {
           <Name theme={theme}>Drink Master</Name>
         </LogoGroup>
       </Link>
-      <ToggleTheme />
     </>
   );
 };
