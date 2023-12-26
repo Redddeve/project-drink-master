@@ -22,6 +22,7 @@ import {
 import DrinkIngredientsList from '../../components/DrinkIngredientsList/DrinkIngredientsList.jsx';
 import RecipePreparation from '../../components/RecipePreparation/RecipePreparation.jsx';
 import { selectTheme } from '../../redux/theme/selectors.js';
+import CircleBg from '../../components/SharedComponents/circleBg/CircleBg.jsx';
 import Modal from '../../components/Modal/Modal.jsx';
 import { useMediaQuery } from 'react-responsive';
 import firstFavMob from '../../images/motivation/Motivation-mob3@2x.jpg';
@@ -93,6 +94,7 @@ const UserDrinkPage = () => {
 
   return (
     <>
+      <CircleBg />
       <StyledDrinkHero>
         <div>
           <StyledDrinkHeader theme={theme}>{drink.drink}</StyledDrinkHeader>

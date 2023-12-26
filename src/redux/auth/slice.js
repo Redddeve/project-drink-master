@@ -42,7 +42,7 @@ export const slice = createSlice({
       })
       .addCase(updateThunk.fulfilled, (state, { payload }) => {
         state.user.avatarURL = payload.avatarURL || null;
-        state.user.name = payload.name || null;
+        state.user.name = payload.user || null;
       })
       .addCase(subscribeThunk.fulfilled, state => {
         state.isLoading = false;

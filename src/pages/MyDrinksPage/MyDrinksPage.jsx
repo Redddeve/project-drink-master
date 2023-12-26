@@ -13,6 +13,7 @@ import {
 } from '../../redux/drinks/selectors';
 import { selectTheme } from '../../redux/theme/selectors';
 import useResponsiveItemsPerPage from '../../hooks/usePerPage';
+import CircleBg from '../../components/SharedComponents/circleBg/CircleBg';
 
 const MyDrinksPage = () => {
   const dispatch = useDispatch();
