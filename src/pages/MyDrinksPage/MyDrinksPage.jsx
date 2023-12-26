@@ -13,7 +13,6 @@ import {
 } from '../../redux/drinks/selectors';
 import { selectTheme } from '../../redux/theme/selectors';
 import useResponsiveItemsPerPage from '../../hooks/usePerPage';
-import CircleBg from '../../components/SharedComponents/circleBg/CircleBg';
 
 const MyDrinksPage = () => {
   const dispatch = useDispatch();
@@ -36,7 +35,7 @@ const MyDrinksPage = () => {
     if (length === 0 && selectedPage === pageCount && pageCount > 1) {
       dispatch(setSearchPage(pageCount - 1));
     }
-  }, [dispatch, length, pageCount, selectedPage]);
+  }, [dispatch, pageCount, selectedPage]);
 
   return (
     <section>
