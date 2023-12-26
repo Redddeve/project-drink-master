@@ -7,27 +7,33 @@ import {
 } from './Modal.styled';
 import sprite from '../../images/sprite.svg';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 
 const Modal = ({ isOpen, onClose, message, background }) => {
-  if (!isOpen) {
-    return null;
-  }
-  const handleKeyDown = e => {
-    if (e.key === 'Escape') {
-      onClose();
-    }
-  };
+  const handleKeyDown = useCallback(
+    e => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    },
+    [onClose]
+  );
   useEffect(() => {
     if (isOpen) {
       document.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
     } else {
       document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'auto';
     }
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'auto';
     };
   }, [isOpen, handleKeyDown]);
+  if (!isOpen) {
+    return null;
+  }
   return (
     <>
       <ModalOverlay onClick={onClose}>
