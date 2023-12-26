@@ -21,7 +21,6 @@ const FavoriteDrinksPage = () => {
   const favorites = useSelector(selectFavoriteDrinks);
   const { length } = favorites;
   const theme = useSelector(selectTheme);
-
   const itemsPerPage = useResponsiveItemsPerPage({
     mobile: 9,
     tablet: 8,
@@ -40,11 +39,8 @@ const FavoriteDrinksPage = () => {
   }, [dispatch, itemsPerPage, selectedPage]);
 
   useEffect(() => {
-    if (length === 0 && selectedPage === pageCount) {
-      dispatch(setSearchPage(pageCount - 2));
-    }
-    if (length === 0 && selectedPage === 0) {
-      dispatch(setSearchPage(pageCount + 2));
+    if (length === 0 && selectedPage === pageCount && pageCount > 1) {
+      dispatch(setSearchPage(pageCount - 1));
     }
   }, [dispatch, length, pageCount, selectedPage]);
 

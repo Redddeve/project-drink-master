@@ -67,7 +67,6 @@ const SignUp = () => {
       ...data,
       date: outputDate,
     };
-    console.log(newData);
     dispatch(signupThunk(newData))
       .unwrap()
       .then(res => dispatch(signinThunk(res)))

@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import CocktailList from '../CocktailList/CocktailList';
-import { selectOwnDrinks } from '../../redux/drinks/selectors';
-import { getOwnDrinksThunk } from '../../redux/drinks/operations';
+
 import usual from '../../images/blue-iced-tea@1x.png';
 import retina from '../../images/blue-iced-tea@2x.png';
 import PaginatedItems from '../Paginator/Paginator';
@@ -11,18 +10,9 @@ import {
   EmptyFavoritesContainer,
   EmptyFavoritesImage,
 } from '../FavoriteCocktails/FavoriteCocktails.styled';
-import { selectTheme } from '../../redux/theme/selectors.js';
 
-const MyOwnCocktails = () => {
-  const ownCocktailsList = useSelector(selectOwnDrinks);
-  const theme = useSelector(selectTheme);
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getOwnDrinksThunk());
-  }, [dispatch]);
-
-  return ownCocktailsList.length === 0 ? (
+const MyOwnCocktails = ({ pageCount, theme, items, destination }) => {
+  return items.length === 0 ? (
     <EmptyFavoritesContainer>
       <EmptyFavoritesImage
         srcSet={`${usual} 1x, ${retina} 2x`}
@@ -34,12 +24,22 @@ const MyOwnCocktails = () => {
     </EmptyFavoritesContainer>
   ) : (
     <PaginatedItems
-      items={ownCocktailsList}
-      destination="my"
+      pageCount={pageCount}
+      items={items}
+      destination={destination}
       ListComponent={CocktailList}
-      itemsPerPageValue={{ mobile: 3, tablet: 3, desktop: 3, default: 9 }}
+      theme={theme}
     />
   );
+};
+
+MyOwnCocktails.propTypes = {
+  destination: PropTypes.string.isRequired,
+  pageCount: PropTypes.number.isRequired,
+  setSelectedPage: PropTypes.func,
+  theme: PropTypes.string.isRequired,
+  selectedPage: PropTypes.number,
+  items: PropTypes.array.isRequired,
 };
 
 export default MyOwnCocktails;

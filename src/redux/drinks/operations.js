@@ -88,10 +88,13 @@ export const getDrinkbyIdThunk = createAsyncThunk(
 
 export const getOwnDrinksThunk = createAsyncThunk(
   'drinks/own',
-  async (_, { rejectWithValue, getState }) => {
+  async ({ page, limit }, { rejectWithValue, getState }) => {
     try {
       setToken(getState().auth.token);
-      const { data } = await instance.get('/drinks/own');
+      const { data } = await instance.get(
+        `/drinks/own?page=${page}&limit=${limit}`
+      );
+
       return data;
     } catch (error) {
       if (error.response.status === 401) {
@@ -131,9 +134,9 @@ export const deleteOwnDrinkThunk = createAsyncThunk(
   async (id, { rejectWithValue, getState }) => {
     try {
       setToken(getState().auth.token);
-      const { data } = await instance.delete(`/drinks/own/remove/${id}`);
+      await instance.delete(`/drinks/own/remove/${id}`);
       toast.success(`Drink deleted successfully`);
-      return data;
+      return id;
     } catch (error) {
       if (error.response.status === 401) {
         clearToken();

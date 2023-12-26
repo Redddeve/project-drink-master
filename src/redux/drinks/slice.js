@@ -62,7 +62,8 @@ export const slice = createSlice({
         state.isLoading = false;
       })
       .addCase(getOwnDrinksThunk.fulfilled, (state, { payload }) => {
-        state.own = payload;
+        state.pages = payload.pages;
+        state.own = payload.cocktails;
         state.isLoading = false;
       })
       .addCase(addOwnDrinkThunk.fulfilled, (state, { payload }) => {
@@ -70,7 +71,7 @@ export const slice = createSlice({
         state.isLoading = false;
       })
       .addCase(deleteOwnDrinkThunk.fulfilled, (state, { payload }) => {
-        state.own = state.own.filter(({ _id }) => _id !== payload._id);
+        state.own = state.own.filter(({ _id }) => _id !== payload);
       })
       .addCase(getFavoriteDrinksThunk.fulfilled, (state, { payload }) => {
         state.pages = payload.pages;
