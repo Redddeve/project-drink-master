@@ -10,8 +10,8 @@ export const HeaderWrapper = styled.header`
 `;
 
 export const HeaderContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
   align-items: center;
   padding: 20px;
 
@@ -40,6 +40,9 @@ export const HeaderContainer = styled.div`
     }
   }
   @media ${device.desktop} {
+    padding-right: 100px;
+    padding-left: 100px;
+    grid-template-columns: 1.2fr 2fr auto auto;
     &::before {
       top: 20px;
       left: -685px;
@@ -55,7 +58,7 @@ export const HeaderContainer = styled.div`
 
   @media ${device.desktop} {
     justify-content: space-between;
-    padding: 20px;
+    padding: 20px 100px;
     margin-left: auto;
     margin-right: auto;
   }
