@@ -3,6 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import sprite from '../../images/sprite.svg';
 import usual from '../../images/blue-iced-tea@1x.png';
 import retina from '../../images/blue-iced-tea@2x.png';
+import PageTitle from '../../components/PageTitle/PageTitle.jsx';
+import { SearchFilterContainer } from '../../components/SearchFilterContainer/SearchFilterContainer.jsx';
+import { SearchResultsContainer } from '../../components/SearchResultsContainer/SearchResultsContainer';
+import CircleBg from '../../components/SharedComponents/circleBg/CircleBg.jsx';
+import PaginatedItems from '../../components/Paginator/Paginator.jsx';
 import {
   drinkStyles,
   drinkIngStyles,

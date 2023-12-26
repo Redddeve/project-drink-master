@@ -14,6 +14,7 @@ import AddFormIngredients from '../../components/AddFormIngredients/AddFormIngre
 import AddFormDesc from '../../components/AddFormDesc/AddFormDesc';
 import PopularDrinks from '../../components/PopularDrinks/PopularDrinks';
 import { selectTheme } from '../../redux/theme/selectors';
+import CircleBg from '../../components/SharedComponents/circleBg/CircleBg';
 
 const AddDrinkPage = () => {
   const dispatch = useDispatch();
@@ -64,6 +65,7 @@ const AddDrinkPage = () => {
 
   return (
     <>
+      <CircleBg />
       <PageTitle title="Add drink" />
 
       <AddFormMain
