@@ -154,14 +154,6 @@ export const StyledInputWrap = styled.div`
     margin: 10px auto;
     display: block;
   }
-
-  /* react-datepicker__navigation 
-  react-datepicker__navigation--years 
-  react-datepicker__navigation--years-upcoming */
-
-  /* react-datepicker__navigation 
-  react-datepicker__navigation--years 
-  react-datepicker__navigation--years-previous */
 `;
 
 export const StyledInput = styled.input`
@@ -254,12 +246,10 @@ export const StyledStatus = styled.svg`
   top: 14px;
   fill: none;
   &.error {
-    /* stroke: var(--error-red); */
     fill: var(--error-red);
   }
 
   &.correct {
-    /* stroke: var(--correct-green); */
     fill: var(--correct-green);
   }
 `;
