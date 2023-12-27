@@ -41,7 +41,12 @@ const CocktailItem = ({ cocktail, page, theme }) => {
       </CocktailContainerTitle>
       <CocktailDescription theme={theme}>{description}</CocktailDescription>
       <ButtonContainer>
-        <CommonBtn as={Link} to={`/drink/${_id}`} variant="seeMoreItem">
+        <CommonBtn
+          as={Link}
+          to={`/drink/${_id}`}
+          variant="seeMoreItem"
+          aria-label="See more details about this cocktail"
+        >
           See more
         </CommonBtn>
         <RemoveButton id={_id} page={page} />
