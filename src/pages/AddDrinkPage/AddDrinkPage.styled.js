@@ -52,6 +52,7 @@ export const StyledSubmitBtn = styled.button`
   line-height: 18px;
   transition: all var(--tran-fast);
   border: none;
+  cursor: pointer;
   @media ${device.tablet} {
     display: block;
   }

@@ -12,6 +12,7 @@ import { selectIsRefresh } from './redux/auth/selectors';
 import { Loader } from './components/Loader/Loader';
 import { selectTheme } from './redux/theme/selectors';
 import { StyledAppWrapper } from './styles/theme';
+import { useLocation } from 'react-router-dom';
 
 const HomePage = lazy(() => import('./pages/Homepage/Homepage'));
 const DrinksPage = lazy(() => import('./pages/DrinksPage/DrinksPage'));
@@ -28,9 +29,17 @@ const App = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsRefresh);
   const theme = useSelector(selectTheme);
+  const location = useLocation();
+
   useEffect(() => {
-    dispatch(refreshThunk());
-  }, [dispatch]);
+    const queryParams = new URLSearchParams(location.search);
+    const token = queryParams.get('token');
+    if (token) {
+      dispatch(refreshThunk(token));
+    } else {
+      dispatch(refreshThunk());
+    }
+  }, [location, dispatch]);
 
   return (
     <>

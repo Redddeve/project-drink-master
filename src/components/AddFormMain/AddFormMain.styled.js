@@ -42,6 +42,7 @@ export const StyledInfoDiv = styled.div`
     max-width: 833px;
   }
 `;
+
 export const StyledRadioLabel = styled.label`
   display: flex;
   justify-content: center;
@@ -79,6 +80,10 @@ export const StyledRadioLabel = styled.label`
     }
   }
   position: relative;
+  :hover {
+    text-shadow: 0px 0px 12px white;
+    transition: var(--tran-fast);
+  }
 
   input[type='radio'] {
     opacity: 0;
@@ -111,6 +116,7 @@ export const StyledRadioLabelDiv = styled.label`
   gap: 30px;
   align-items: center;
   position: relative;
+
   @media ${device.tablet} {
     padding-top: 80px;
     max-height: 32px;
@@ -202,7 +208,21 @@ export const StyledTitleInput = styled.input`
   margin-bottom: 31px;
   color: ${({ theme }) =>
     theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
-
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: ${({ theme }) =>
+      theme === 'dark'
+        ? darkTheme.colors.main
+        : lightTheme.colors.main}; // колір тексту
+    -webkit-background-color: transparent !important;
+    -webkit-border-bottom: ${({ theme }) =>
+      theme === 'dark' ? '1px solid var(--white)' : '1px solid var(--dark)'};
+    transition: all 0s 50000s;
+    transition: background-color 5000s ease-in-out 0s;
+  }
   &::placeholder {
     color: ${({ theme }) =>
       theme === 'dark' ? darkTheme.colors.transp : lightTheme.colors.transp};

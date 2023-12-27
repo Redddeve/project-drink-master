@@ -1,4 +1,3 @@
-import React from 'react';
 import { Circle } from './CircleBg.styled';
 import { selectTheme } from '../../../redux/theme/selectors';
 import { useSelector } from 'react-redux';
