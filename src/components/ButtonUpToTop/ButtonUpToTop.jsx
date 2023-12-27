@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
-import { ArrowUp } from 'lucide-react';
+import { MoveUp } from 'lucide-react';
 import { StyledUpToTopButton } from './ButtonUpToTop.styled';
+import { selectTheme } from '../../redux/theme/selectors';
+import { useSelector } from 'react-redux';
 
 const ButtonUpToTop = () => {
   const [visible, setVisible] = useState(false);
+  const theme = useSelector(selectTheme);
 
   const toggleVisible = () => {
     const scrolled = document.documentElement.scrollTop;
@@ -28,8 +31,11 @@ const ButtonUpToTop = () => {
     };
   }, []);
   return (
-    <StyledUpToTopButton style={{ display: visible ? 'inline-block' : 'none' }}>
-      <ArrowUp size={35} color="#0f0f0f" onClick={scrollToTop} />
+    <StyledUpToTopButton
+      theme={theme}
+      style={{ display: visible ? 'inline-block' : 'none' }}
+    >
+      <MoveUp size={25} color="#0A0A11" onClick={scrollToTop} />
     </StyledUpToTopButton>
   );
 };
