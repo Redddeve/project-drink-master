@@ -16,7 +16,6 @@ export const fetchAllDrinks = createAsyncThunk(
       toast.error(`Something went wrong. Please try again later.`);
       if (error.response.status === 401) {
         clearToken();
-        location.reload();
       }
       return rejectWithValue(error.message);
     }
@@ -135,7 +134,6 @@ export const deleteOwnDrinkThunk = createAsyncThunk(
     try {
       setToken(getState().auth.token);
       await instance.delete(`/drinks/own/remove/${id}`);
-      toast.success(`Drink deleted successfully`);
       return id;
     } catch (error) {
       if (error.response.status === 401) {
@@ -177,7 +175,6 @@ export const addFavoriteDrinkThunk = createAsyncThunk(
       const { data } = await instance.post(`/drinks/favorite/add`, {
         cocktailId: id,
       });
-      toast.success(`Drink added to favorites`);
       return data;
     } catch (error) {
       if (error.response.status === 401) {
@@ -199,7 +196,6 @@ export const removeFavoriteDrinkThunk = createAsyncThunk(
         headers: {},
         data: { cocktailId: id },
       });
-      toast.success(`Drink removed from favorites`);
       return id;
     } catch (error) {
       if (error.response.status === 401) {

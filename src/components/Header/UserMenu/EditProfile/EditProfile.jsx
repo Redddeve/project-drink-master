@@ -25,10 +25,11 @@ const EditProfile = forwardRef(
   ({ handlerEditProfileClick, handlerUserDropdownClick }, ref) => {
     const dispatch = useDispatch();
     const { name, avatarURL } = useSelector(selectUser);
+    console.log('avatarURL :>> ', avatarURL);
 
     // eslint-disable-next-line no-unused-vars
     const { register, handleSubmit, setValue, control } = useForm({
-      defaultValues: { avatarURL: '', name: `${name}` },
+      defaultValues: { avatarThumb: '', name: `${name}` },
     });
 
     const [image, setImage] = useState(null);
@@ -44,7 +45,7 @@ const EditProfile = forwardRef(
       const formData = new FormData();
       formData.append('name', data.name);
       if (image) {
-        formData.append('avatarURL', image);
+        formData.append('avatarThumb', image);
       }
 
       dispatch(updateThunk(formData));
@@ -89,7 +90,10 @@ const EditProfile = forwardRef(
             </svg>
           </CloseIcon>
         </CloseButton>
-        <form onSubmit={handleSubmit(userInfoFormSubmit)}>
+        <form
+          onSubmit={handleSubmit(userInfoFormSubmit)}
+          encType="multipart/form-data"
+        >
           <IconContainer>
             <UserLargeIcon src={avatarURL} alt="User's photo" id="user_image" />
             <Controller
