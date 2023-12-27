@@ -13,9 +13,16 @@ const HomePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    if (visitCount === 10 || visitCount === 50 || visitCount === 100) {
+    const currentDate = new Date().toDateString();
+    const lastModalDate = sessionStorage.getItem('lastModalShown');
+
+    if (
+      (visitCount === 10 || visitCount === 50 || visitCount === 100) &&
+      lastModalDate !== currentDate
+    ) {
       setTimeout(() => {
         setIsModalOpen(true);
+        sessionStorage.setItem('lastModalShown', currentDate);
       }, 2000);
     }
   }, [visitCount]);
