@@ -18,6 +18,8 @@ import CircleBg from '../../components/SharedComponents/circleBg/CircleBg';
 
 const AddDrinkPage = () => {
   const dispatch = useDispatch();
+  const [isPending, setPending] = useState(false);
+
   useEffect(() => {
     dispatch(getPopularThunk());
     window.scrollTo({
@@ -56,10 +58,13 @@ const AddDrinkPage = () => {
     dataToSend.append('instructions', data.aboutRecipe);
     dataToSend.append('alcoholic', data.alcohol);
     dataToSend.append('drink', data.itemTitle);
-
+    setPending(true);
     dispatch(addOwnDrinkThunk(dataToSend))
       .unwrap()
-      .then(() => navigate('/my'))
+      .then(() => {
+        setPending(false);
+        navigate('/my');
+      })
       .catch(error => console.log(error));
   };
 
@@ -99,6 +104,7 @@ const AddDrinkPage = () => {
         type="button"
         onClick={handleSubmit(onSubmit)}
         theme={theme}
+        disabled={isPending}
       >
         Add
       </StyledSubmitBtn>

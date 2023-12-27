@@ -33,7 +33,7 @@ export const Paginator = styled(ReactPaginate).attrs({
     width: 27px;
     height: 27px;
     &:not(:nth-child(-n + 2)) {
-      margin-left: 24px;
+      margin-left: ${({ pageCount }) => (pageCount >= 6 ? '5px' : '24px')};
     }
   }
 
@@ -53,7 +53,7 @@ export const Paginator = styled(ReactPaginate).attrs({
   }
 
   li.previous {
-    margin-right: 48px;
+    margin-right: ${({ pageCount }) => (pageCount >= 6 ? '7px' : '48px')};
 
     @media ${device.tablet} {
       margin-right: 40px;
@@ -61,7 +61,7 @@ export const Paginator = styled(ReactPaginate).attrs({
   }
 
   li.next {
-    margin-left: 48px;
+    margin-left: ${({ pageCount }) => (pageCount >= 6 ? '7px' : '48px')};
 
     @media ${device.tablet} {
       margin-left: 40px;

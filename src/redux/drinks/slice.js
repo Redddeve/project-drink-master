@@ -72,6 +72,7 @@ export const slice = createSlice({
       })
       .addCase(deleteOwnDrinkThunk.fulfilled, (state, { payload }) => {
         state.own = state.own.filter(({ _id }) => _id !== payload);
+        state.isLoading = false;
       })
       .addCase(getFavoriteDrinksThunk.fulfilled, (state, { payload }) => {
         state.pages = payload.pages;
