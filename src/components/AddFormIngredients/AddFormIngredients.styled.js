@@ -1,12 +1,4 @@
-// StyledAddBtn,
-//   StyledAddDiv,
-//   StyledIngDiv,
-//   StyledIngFieldBtn,
-//   StyledIngFieldInput,
-//   StyledIngFieldLabel,
-//   StyledIngFieldWrapper,
-//   StyledIngTitle,
-//   StyledIngTitleDiv,
+import { StyledValidText } from '../../pages/AddDrinkPage/AddDrinkPage.styled';
 import styled from 'styled-components';
 import { device } from '../../styles/device';
 import { darkTheme, lightTheme } from '../../styles/theme';
@@ -30,6 +22,7 @@ export const StyledAddBtn = styled.button`
       theme === 'dark' ? 'var(--transp-white)' : 'var(--transp-dark)'};
   }
 `;
+
 export const StyledIngDiv = styled.div`
   padding-bottom: 80px;
   @media ${device.tablet} {
@@ -194,5 +187,13 @@ export const StyledIngSelectLabel = styled.label`
 
   .css-1y6kdfa-option {
     background-color: none;
+  }
+`;
+export const MeasureValidText = styled(StyledValidText)`
+  font-size: 11px;
+  top: 51px;
+  width: 120px;
+  @media ${device.tablet} {
+    left: 25px;
   }
 `;
