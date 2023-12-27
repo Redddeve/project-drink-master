@@ -1,4 +1,4 @@
-import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v as re,k as ie,j as t,C as L,m as oe,p as D,q as ne,w as ae,x as se,y as le,z as de}from"./index-1Jp54_Yu.js";import{P as ce}from"./PageTitle-0a7LLQ68.js";import{S as M,s as B,i as pe}from"./Dropdown.styled-YrWYJwdt.js";import{g as xe,b as he,a as ue,h as ge}from"./selectors-qXS8ERoX.js";import{C as be}from"./CircleBg-BqvFcOr1.js";r.h1`
+import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v as re,k as ie,j as t,C as L,m as oe,p as D,q as ne,w as ae,x as se,y as le,z as de}from"./index-2D4OfEnP.js";import{P as ce}from"./PageTitle-DxZKxkFu.js";import{S as M,s as B,i as pe}from"./Dropdown.styled-tzIgVyju.js";import{g as xe,b as he,a as ue,h as ge}from"./selectors-0j7a_aEh.js";import{C as be}from"./CircleBg-gl7AfEh4.js";r.h1`
   font-size: 32px;
   font-weight: 600;
   line-height: 38px;
@@ -467,7 +467,7 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
 
   @media ${i.desktop} {
     position: absolute;
-    top: 14%;
+    top: 208px;
     right: 15%;
   }
 `,Ve=r.div`
