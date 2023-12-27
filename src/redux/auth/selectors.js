@@ -6,3 +6,4 @@ export const selectIsRefresh = state => state.auth.isRefresh;
 export const selectError = state => state.auth.error;
 export const selectAvatar = state => state.auth.user.avatarURL;
 export const selectIsAdult = state => state.auth.user.isAdult;
+export const selectVisitCount = state => state.auth.visitCount;

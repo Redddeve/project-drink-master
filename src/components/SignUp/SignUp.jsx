@@ -22,7 +22,7 @@ import {
 import sprite from '../../images/sprite.svg';
 import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 import moment from 'moment';
-import GoogleButton from 'react-google-button';
+import { StyledGoogleBtn } from '../SignIn/SignIn.styled.js';
 
 const SignUp = () => {
   const [type, setType] = useState('password');
@@ -239,8 +239,7 @@ const SignUp = () => {
         <StyledLink to="/signin" aria-label="Go to sign in page">
           Sign In
         </StyledLink>
-        <GoogleButton
-          style={{ width: '400px', marginTop: '20px', borderRadius: '5px' }}
+        <StyledGoogleBtn
           label="Sign up with Google"
           onClick={() =>
             (window.location.href =
