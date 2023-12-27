@@ -5,10 +5,7 @@ import { selectIngredients } from '../../redux/drinks/selectors';
 import sprite from '../../images/sprite.svg';
 import { useEffect, useState } from 'react';
 import { ingStyles } from '../Dropdown/Dropdown.styled';
-import {
-  RelativeLabel,
-  StyledValidIng,
-} from '../../pages/AddDrinkPage/AddDrinkPage.styled';
+import { StyledValidIng } from '../../pages/AddDrinkPage/AddDrinkPage.styled';
 import {
   MeasureValidText,
   StyledAddBtn,

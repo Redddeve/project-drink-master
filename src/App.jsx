@@ -31,15 +31,15 @@ const App = () => {
   const theme = useSelector(selectTheme);
   const location = useLocation();
 
+  const queryParams = new URLSearchParams(location.search);
+  const token = queryParams.get('token');
   useEffect(() => {
-    const queryParams = new URLSearchParams(location.search);
-    const token = queryParams.get('token');
     if (token) {
       dispatch(refreshThunk(token));
     } else {
       dispatch(refreshThunk());
     }
-  }, [location, dispatch]);
+  }, [token, dispatch]);
 
   return (
     <>
