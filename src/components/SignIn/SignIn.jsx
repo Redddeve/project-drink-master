@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signinThunk } from '../../redux/auth/operations.js';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
+import GoogleButton from 'react-google-button';
 
 import {
   StyledWrap,
@@ -154,9 +155,14 @@ const SignIn = () => {
           Sign Up
         </StyledLink>
       </StyledFormWrap>
-      <a href={'https://shaking-code-api-lifuss.onrender.com/api/auth/google'}>
-        Google
-      </a>
+      <GoogleButton
+        style={{ width: '400px', borderRadius: '8px', marginTop: '20px' }}
+        label="Sign in with Google"
+        onClick={() => {
+          window.location.href =
+            'https://shaking-code-api-lifuss.onrender.com/api/auth/google';
+        }}
+      />
     </StyledWrap>
   );
 };
