@@ -214,9 +214,7 @@ export const StyledTitleInput = styled.input`
   &:-webkit-autofill:active {
     -webkit-background-clip: text;
     -webkit-text-fill-color: ${({ theme }) =>
-      theme === 'dark'
-        ? darkTheme.colors.main
-        : lightTheme.colors.main}; // колір тексту
+      theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
     -webkit-background-color: transparent !important;
     -webkit-border-bottom: ${({ theme }) =>
       theme === 'dark' ? '1px solid var(--white)' : '1px solid var(--dark)'};

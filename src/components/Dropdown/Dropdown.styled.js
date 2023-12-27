@@ -50,14 +50,17 @@ export const stylesSelect = {
     ...base,
     zIndex: '20px',
     '::-webkit-scrollbar': {
-      width: '2px',
-      height: '0px',
+      width: '8px',
+      paddingRight: '5px',
+      paddingBottom: '5px',
     },
     '::-webkit-scrollbar-track': {
-      background: '#161F37',
+      marginTop: '10px',
+      marginBottom: '13px',
     },
     '::-webkit-scrollbar-thumb': {
-      background: '#5d6b90',
+      background: 'var(--gray)',
+      borderRadius: '12px',
     },
   }),
 };
@@ -148,14 +151,17 @@ export const drinkIngStyles = {
     ...provided,
     maxHeight: '300px',
     '::-webkit-scrollbar': {
-      width: '2px',
-      height: '0px',
+      width: '8px',
+      paddingRight: '5px',
+      paddingBottom: '5px',
     },
     '::-webkit-scrollbar-track': {
-      background: '#161F37',
+      marginTop: '10px',
+      marginBottom: '13px',
     },
     '::-webkit-scrollbar-thumb': {
-      background: '#5d6b90',
+      background: 'var(--gray)',
+      borderRadius: '12px',
     },
   }),
 };

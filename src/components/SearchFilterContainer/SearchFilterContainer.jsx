@@ -1,10 +1,9 @@
 import {
   StyledFilterContainer,
   StyledInput,
-  StyledSelect,
   StyledSvg,
-  stylesDrink,
 } from './SearchFilterContainer.styled.js';
+import Select from 'react-select';
 import sprite from '../../images/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -21,6 +20,7 @@ import {
 import { useEffect, useState } from 'react';
 import { selectTheme } from '../../redux/theme/selectors.js';
 import useResponsiveItemsPerPage from '../../hooks/usePerPage.jsx';
+import { drinkStyles, drinkIngStyles } from '../Dropdown/Dropdown.styled.js';
 
 export const SearchFilterContainer = () => {
   const dispatch = useDispatch();
@@ -144,6 +144,24 @@ export const SearchFilterContainer = () => {
     }
   };
 
+  // *** SELECT STYLES ***
+  const newDrinkStyles = {
+    ...drinkStyles,
+    dropdownIndicator: provided => ({
+      ...provided,
+      transition: 'transform 0.2s ease',
+      transform: categoryMenuIsOpen ? 'rotate(180deg)' : null,
+    }),
+  };
+  const newIngStyles = {
+    ...drinkIngStyles,
+    dropdownIndicator: provided => ({
+      ...provided,
+      transition: 'transform 0.2s ease',
+      transform: ingredientMenuIsOpen ? 'rotate(180deg)' : null,
+    }),
+  };
+  // *** SELECT STYLES ***
   return (
     <StyledFilterContainer>
       <StyledInput
@@ -169,9 +187,7 @@ export const SearchFilterContainer = () => {
       <StyledSvg theme={theme}>
         <use href={`${sprite}#icon-search`} />
       </StyledSvg>
-      <StyledSelect
-        theme={theme}
-        classNamePrefix={'Select'}
+      <Select
         options={categoriesOptions}
         placeholder={'All categories'}
         isSearchable={false}
@@ -182,11 +198,15 @@ export const SearchFilterContainer = () => {
           setCategoryMenuIsOpen(false);
         }}
         $menuIsOpen={categoryMenuIsOpen}
-        styles={stylesDrink}
+        styles={newDrinkStyles}
+        theme={theme => ({
+          ...theme,
+          colors: {
+            neutral50: '#fff',
+          },
+        })}
       />
-      <StyledSelect
-        theme={theme}
-        classNamePrefix={'Select'}
+      <Select
         options={ingredientsOptions}
         placeholder={'Ingredients'}
         isClearable={true}
@@ -196,8 +216,14 @@ export const SearchFilterContainer = () => {
           setIngredientMenuIsOpen(false);
         }}
         $menuIsOpen={ingredientMenuIsOpen}
-        styles={stylesDrink}
+        styles={newIngStyles}
         $small={true}
+        theme={theme => ({
+          ...theme,
+          colors: {
+            neutral50: '#fff',
+          },
+        })}
       />
     </StyledFilterContainer>
   );
