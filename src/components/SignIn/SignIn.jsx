@@ -15,12 +15,12 @@ import {
   StyledMessage,
   StyledEye,
   StyledStatus,
+  StyledGoogleBtn,
 } from './SignIn.styled.js';
 
 import sprite from '../../images/sprite.svg';
 
 import { useState } from 'react';
-import GoogleButton from 'react-google-button';
 
 const SignIn = () => {
   const location = useLocation();
@@ -154,8 +154,7 @@ const SignIn = () => {
         <StyledLink to="/signup" aria-label="Go to sign up page">
           Sign Up
         </StyledLink>
-        <GoogleButton
-          style={{ width: '400px', marginTop: '20px', borderRadius: '5px' }}
+        <StyledGoogleBtn
           label="Sign in with Google"
           onClick={() =>
             (window.location.href =

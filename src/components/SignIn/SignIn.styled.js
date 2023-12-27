@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { device } from '../../styles/device';
+import GoogleButton from 'react-google-button';
 
 export const StyledWrap = styled.div`
   display: flex;
@@ -203,5 +204,15 @@ export const StyledLink = styled(Link)`
   @media ${device.tablet} {
     font-size: 14px;
     line-height: 18px; /* 128.571% */
+  }
+`;
+
+export const StyledGoogleBtn = styled(GoogleButton)`
+  width: 330px !important;
+  margin-top: 20px;
+  border-radius: 8px;
+
+  @media ${device.tablet} {
+    width: 400px !important;
   }
 `;

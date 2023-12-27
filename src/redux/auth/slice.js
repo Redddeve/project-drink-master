@@ -15,6 +15,7 @@ const initialState = {
     avatarURL: '',
     isAdult: false,
   },
+  visitCount: null,
   token: '',
   isLoggedIn: false,
   isLoading: false,
@@ -32,6 +33,7 @@ export const slice = createSlice({
         state.isLoggedIn = true;
         state.token = payload.token;
         state.user = payload.user;
+        state.visitCount = payload.visitCount;
       })
       .addCase(refreshThunk.fulfilled, (state, { payload }) => {
         state.isRefresh = false;
