@@ -1,6 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import { device } from '../../../../styles/device';
-
 
 export const DropdownContainer = styled.div`
   position: absolute;
@@ -10,9 +9,11 @@ export const DropdownContainer = styled.div`
   width: 177px;
   padding: 18px;
   border-radius: 8px;
-  background-color: var( --black);
+  background-color: var(--black);
+  box-shadow: ${({ theme }) =>
+    theme === 'dark' ? '-3px 3px 7px 1px #161718' : '-3px 3px 7px 1px gray'};
 
- @media ${device.tablet} {
+  @media ${device.tablet} {
     top: 70px;
   }
 `;
@@ -21,6 +22,10 @@ export const Heading = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 38px;
+
+  p {
+    cursor: pointer;
+  }
 `;
 
 export const EditProfileButton = styled.button`
@@ -32,8 +37,7 @@ export const EditProfileButton = styled.button`
   background-color: transparent;
   cursor: pointer;
 
-
-  @media ${device.tablet}  {
+  @media ${device.tablet} {
     gap: 14px;
   }
 
@@ -49,22 +53,22 @@ export const PenIcon = styled.svg`
   stroke: var(--white);
 `;
 
-
 export const StyledLogoutButton = styled.button`
-display: inline-flex;
-width: 141px;
-padding: 12px 39px;
-align-items: flex-start;
-gap: 10px;
-border-radius: 42px;
-font-size: 14px;
-font-style: normal;
-font-weight: 600;
-color: #161F37; 
-background: var(--white);
-cursor: pointer;
+  display: inline-flex;
+  width: 141px;
+  padding: 12px 39px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 42px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  color: #161f37;
+  background: var(--white);
+  cursor: pointer;
 
-@media ${device.tablet}  {
+  @media ${device.tablet} {
     gap: 14px;
   }
 

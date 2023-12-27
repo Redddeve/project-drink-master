@@ -1,9 +1,9 @@
-import { forwardRef } from "react";
-import PropTypes from "prop-types";
-import CommonBtn from "../../../SharedComponents/CommonBtn/CommonBtn";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { signoutThunk } from "../../../../redux/auth/operations";
+import { forwardRef } from 'react';
+import PropTypes from 'prop-types';
+import CommonBtn from '../../../SharedComponents/CommonBtn/CommonBtn';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { signoutThunk } from '../../../../redux/auth/operations';
 import {
   LogoutContainer,
   CloseButton,
@@ -11,26 +11,26 @@ import {
   ButtonContainer,
   LogoutBtn,
   CancelBtn,
-} from "./Logout.styled";
-import sprite from "../../../../images/sprite.svg"
-
+} from './Logout.styled';
+import sprite from '../../../../images/sprite.svg';
 
 const Logout = forwardRef(({ handlerLogoutDropdownClick }, ref) => {
+  const theme = useSelector(state => state.theme.theme);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handlerLogoutClick = () => {
     dispatch(signoutThunk());
-    navigate("/welcome");
+    navigate('/welcome');
   };
 
   return (
-    <LogoutContainer ref={ref}>
+    <LogoutContainer ref={ref} theme={theme}>
       <CloseButton onClick={handlerLogoutDropdownClick}>
         <CloseIcon>
           <svg width="24" height="24">
-            <use href={sprite + "#icon-X"} />
-           </svg>       
+            <use href={sprite + '#icon-X'} />
+          </svg>
         </CloseIcon>
       </CloseButton>
       <p>Are you sure you want to log out?</p>
@@ -38,19 +38,23 @@ const Logout = forwardRef(({ handlerLogoutDropdownClick }, ref) => {
         <LogoutBtn
           onClick={handlerLogoutClick}
           propClass={CommonBtn.biggerButton}
-        > Log out
-          </LogoutBtn>
+        >
+          {' '}
+          Log out
+        </LogoutBtn>
         <CancelBtn
           onClick={handlerLogoutDropdownClick}
           propClass={CommonBtn.cancelButton}
-        > Cancel
-         </CancelBtn>
+        >
+          {' '}
+          Cancel
+        </CancelBtn>
       </ButtonContainer>
     </LogoutContainer>
   );
 });
 
-Logout.displayName = "Logout";
+Logout.displayName = 'Logout';
 
 Logout.propTypes = {
   handlerLogoutDropdownClick: PropTypes.func,

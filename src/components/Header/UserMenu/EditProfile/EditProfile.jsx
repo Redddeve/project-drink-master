@@ -23,6 +23,7 @@ import { useForm, Controller } from 'react-hook-form';
 
 const EditProfile = forwardRef(
   ({ handlerEditProfileClick, handlerUserDropdownClick }, ref) => {
+    const theme = useSelector(state => state.theme.theme);
     const dispatch = useDispatch();
     const { name, avatarURL } = useSelector(selectUser);
     console.log('avatarURL :>> ', avatarURL);
@@ -82,7 +83,7 @@ const EditProfile = forwardRef(
     }, [imgURL]);
 
     return (
-      <EditContainer ref={ref}>
+      <EditContainer ref={ref} theme={theme}>
         <CloseButton onClick={handlerEditProfileClick}>
           <CloseIcon>
             <svg width="24" height="24">

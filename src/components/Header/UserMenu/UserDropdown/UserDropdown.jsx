@@ -9,11 +9,13 @@ import {
   PenIcon,
   StyledLogoutButton,
 } from './UserDropdown.styled';
+import { useSelector } from 'react-redux';
 
 const UserDropdown = forwardRef(
   ({ handlerEditProfileClick, handlerLogoutDropdownClick }, ref) => {
+    const theme = useSelector(state => state.theme.theme);
     return (
-      <DropdownContainer ref={ref}>
+      <DropdownContainer ref={ref} theme={theme}>
         <Heading onClick={handlerEditProfileClick}>
           <p>Edit profile</p>
           <EditProfileButton>
