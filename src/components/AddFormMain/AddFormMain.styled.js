@@ -39,6 +39,9 @@ export const StyledInfoDiv = styled.div`
     max-width: 833px;
   }
 `;
+
+export const Input = styled.input``;
+
 export const StyledRadioLabel = styled.label`
   display: flex;
   justify-content: center;
@@ -76,6 +79,10 @@ export const StyledRadioLabel = styled.label`
     }
   }
   position: relative;
+  :hover {
+    text-shadow: 0px 0px 12px white;
+    transition: var(--tran-fast);
+  }
 
   input[type='radio'] {
     opacity: 0;
@@ -107,6 +114,7 @@ export const StyledRadioLabelDiv = styled.label`
   display: flex;
   gap: 30px;
   position: relative;
+
   @media ${device.tablet} {
     padding-top: 20px;
     max-height: 32px;
