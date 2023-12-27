@@ -58,7 +58,7 @@ export const StyledSvg = styled.svg`
   width: 20px;
   height: 20px;
   top: 18px;
-  left: 180px;
+  left: 220px;
   cursor: pointer;
   stroke: ${({ theme }) =>
     theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
