@@ -17,7 +17,6 @@ import {
   StyledFileTextAdd,
   StyledRadioTest,
   StyledInputSelectText,
-  Input,
 } from './AddFormMain.styled';
 import {
   stylesSelect,
@@ -196,7 +195,7 @@ const AddFormMain = ({
           </StyledSelectLabel>
           <StyledRadioLabelDiv>
             <StyledRadioLabel theme={theme}>
-              <Input
+              <input
                 type="radio"
                 value={'Non alcoholic'}
                 name="alcohol"
@@ -207,7 +206,7 @@ const AddFormMain = ({
             </StyledRadioLabel>
             {isAdult && (
               <StyledRadioLabel theme={theme}>
-                <Input
+                <input
                   type="radio"
                   name="alcohol"
                   value={'Alcoholic'}
