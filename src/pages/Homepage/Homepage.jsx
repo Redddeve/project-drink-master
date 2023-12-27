@@ -13,7 +13,7 @@ const HomePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    if (visitCount === 10) {
+    if (visitCount === 10 || visitCount === 50 || visitCount === 100) {
       setTimeout(() => {
         setIsModalOpen(true);
       }, 2000);
