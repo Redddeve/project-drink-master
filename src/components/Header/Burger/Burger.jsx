@@ -28,15 +28,19 @@ const BurgerMenu = ({ toggleMenu, isOpenBurgerMenu, isDesktop }) => {
   useEffect(() => {
     document.addEventListener('keydown', handleEscKey);
 
-     if (isOpenBurgerMenu) {
+    if (isOpenBurgerMenu) {
+      document.body.style.position = 'fixed';
       document.body.style.overflow = 'hidden';
+      document.body.style.width = '100%';
       setIsScrollLocked(true);
     }
 
     return () => {
       document.removeEventListener('keydown', handleEscKey);
 
-      document.body.style.overflow = "auto";
+      document.body.style.position = '';
+      document.body.style.overflow = 'auto';
+
       setIsScrollLocked(false);
     };
   }, [handleEscKey, isOpenBurgerMenu]);
@@ -47,7 +51,8 @@ const BurgerMenu = ({ toggleMenu, isOpenBurgerMenu, isDesktop }) => {
         onClick={closeMenu}
         id="burger_menu"
         theme={theme}
-        className={isScrollLocked ? 'scroll-locked' : ''}>
+        className={isScrollLocked ? 'scroll-locked' : ''}
+      >
         <svg width="32" height="32">
           <use
             href={

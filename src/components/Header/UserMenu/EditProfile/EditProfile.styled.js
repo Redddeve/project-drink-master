@@ -11,6 +11,8 @@ export const EditContainer = styled.div`
   border-radius: 8px;
   text-align: center;
   background-color: #161f37;
+  box-shadow: ${({ theme }) =>
+    theme === 'dark' ? '-3px 3px 7px 1px #161718' : '-3px 3px 7px 1px gray'};
 
   @media ${device.tablet} {
     top: 67px;

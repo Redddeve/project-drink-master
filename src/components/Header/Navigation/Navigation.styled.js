@@ -113,8 +113,8 @@ export const Item = styled.li`
   &:focus {
     background-color: var(--black);
   }
-  &:hover,
-  :focus a {
+  &:hover a,
+  &:focus a {
     color: var(--white);
   }
   &:has(a.active) {
