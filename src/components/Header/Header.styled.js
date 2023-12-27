@@ -3,6 +3,7 @@ import { device } from '../../styles/device';
 import { darkTheme, lightTheme } from '../../styles/theme';
 
 export const HeaderWrapper = styled.header`
+  width: 100%;
   border-bottom: ${({ theme }) =>
     theme === 'dark'
       ? darkTheme.borderColor.main
@@ -10,6 +11,8 @@ export const HeaderWrapper = styled.header`
 `;
 
 export const HeaderContainer = styled.div`
+  max-width: 375px;
+  margin: auto;
   display: grid;
   grid-template-columns: 1fr auto auto;
   align-items: center;
@@ -54,9 +57,11 @@ export const HeaderContainer = styled.div`
 
   @media ${device.tablet} {
     padding: 20px 32px;
+    max-width: 768px;
   }
 
   @media ${device.desktop} {
+    max-width: 1440px;
     justify-content: space-between;
     padding: 20px 100px;
     margin-left: auto;

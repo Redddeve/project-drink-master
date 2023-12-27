@@ -4,6 +4,9 @@ import { darkTheme, lightTheme } from '../../styles/theme';
 export const StyledFileInput = styled.input`
   display: none;
 `;
+export const StyledForm = styled.form`
+  max-width: 850px;
+`;
 export const StyledFileLabel = styled.label`
   position: relative;
   z-index: 1;
@@ -111,11 +114,15 @@ export const StyledRadioLabel = styled.label`
 export const StyledRadioLabelDiv = styled.label`
   display: flex;
   gap: 30px;
+  align-items: center;
   position: relative;
 
   @media ${device.tablet} {
-    padding-top: 20px;
+    padding-top: 80px;
     max-height: 32px;
+  }
+  @media ${device.desktop} {
+    padding-top: 50px;
   }
 `;
 
@@ -207,9 +214,7 @@ export const StyledTitleInput = styled.input`
   &:-webkit-autofill:active {
     -webkit-background-clip: text;
     -webkit-text-fill-color: ${({ theme }) =>
-      theme === 'dark'
-        ? darkTheme.colors.main
-        : lightTheme.colors.main}; // колір тексту
+      theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
     -webkit-background-color: transparent !important;
     -webkit-border-bottom: ${({ theme }) =>
       theme === 'dark' ? '1px solid var(--white)' : '1px solid var(--dark)'};

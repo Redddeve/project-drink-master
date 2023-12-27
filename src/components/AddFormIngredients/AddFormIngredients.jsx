@@ -4,11 +4,10 @@ import Select from 'react-select';
 import { selectIngredients } from '../../redux/drinks/selectors';
 import sprite from '../../images/sprite.svg';
 import { useEffect, useState } from 'react';
+import { ingStyles } from '../Dropdown/Dropdown.styled';
+import { StyledValidIng } from '../../pages/AddDrinkPage/AddDrinkPage.styled';
 import {
-  ingStyles,
-  StyledValidIng,
-} from '../../pages/AddDrinkPage/AddDrinkPage.styled';
-import {
+  MeasureValidText,
   StyledAddBtn,
   StyledAddDiv,
   StyledIconCross,
@@ -116,14 +115,16 @@ const AddFormIngredients = ({
                 )}
               </StyledIngSelectLabel>
 
-              <StyledIngFieldWrapper theme={theme}>
+              <StyledIngFieldWrapper>
                 <StyledIngFieldInput
+                  theme={theme}
                   type="text"
                   placeholder="1 cl"
-                  minLength={2}
-                  {...register(`IngNumber${index}`)}
-                  theme={theme}
+                  {...register(`IngNumber${index}`, { required: true })}
                 />
+                {errors[`IngNumber${index}`] && (
+                  <MeasureValidText>measure is required.</MeasureValidText>
+                )}
               </StyledIngFieldWrapper>
               <StyledIngFieldBtn theme={theme} onClick={e => deleteIng(e, el)}>
                 <StyledIconCross theme={theme} width="18" height="18">
