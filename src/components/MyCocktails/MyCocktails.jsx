@@ -10,9 +10,15 @@ import {
   EmptyFavoritesContainer,
   EmptyFavoritesImage,
 } from '../FavoriteCocktails/FavoriteCocktails.styled';
+import { selectIsLoading } from '../../redux/drinks/selectors';
+import { useSelector } from 'react-redux';
+import { Loader } from '../Loader/Loader';
 
 const MyOwnCocktails = ({ pageCount, theme, items, destination }) => {
-  return items.length === 0 ? (
+  const isLoading = useSelector(selectIsLoading);
+  return isLoading ? (
+    <Loader />
+  ) : items.length === 0 ? (
     <EmptyFavoritesContainer>
       <EmptyFavoritesImage
         srcSet={`${usual} 1x, ${retina} 2x`}
