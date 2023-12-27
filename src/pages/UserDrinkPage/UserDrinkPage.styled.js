@@ -96,6 +96,7 @@ export const StyledAddToFavButton = styled.button`
 export const StyledDrinkImage = styled.img`
   width: 335px;
   height: 400px;
+  object-fit: cover;
 
   @media ${device.tablet} {
     width: 704px;
