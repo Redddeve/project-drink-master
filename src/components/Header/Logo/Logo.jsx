@@ -10,7 +10,7 @@ const Logo = () => {
       <Link to="/" aria-label="Logo Drink Master">
         <LogoGroup>
           <Icon theme={theme}>
-            <svg width="22" height="22">
+            <svg>
               <use href={sprite + '#icon-logo'} />
             </svg>
           </Icon>
