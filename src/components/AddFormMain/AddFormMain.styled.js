@@ -40,8 +40,6 @@ export const StyledInfoDiv = styled.div`
   }
 `;
 
-export const Input = styled.input``;
-
 export const StyledRadioLabel = styled.label`
   display: flex;
   justify-content: center;
