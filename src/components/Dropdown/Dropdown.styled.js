@@ -24,6 +24,11 @@ export const stylesSelect = {
     boxShadow: isFocused ? 'none' : baseStyles.boxShadow,
     borderColor: isFocused ? 'transparent' : baseStyles.borderColor,
   }),
+  input: base => ({
+    ...base,
+    color: 'white', // Define the color for the placeholder text
+    // Other placeholder styles...
+  }),
   option: (styles, state) => ({
     ...styles,
     padding: '4px 14px',

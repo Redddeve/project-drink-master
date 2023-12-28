@@ -19,13 +19,7 @@ export const SearchResultsContainer = () => {
     <StyledCardsContainer>
       {drinks.length !== 0 ? (
         drinks?.map(drink => {
-          return (
-            <DrinkCard
-              key={drink._id}
-              drink={drink}
-              // detailed={false}
-            />
-          );
+          return <DrinkCard key={drink._id} drink={drink} />;
         })
       ) : (
         <EmptyFavoritesContainer>

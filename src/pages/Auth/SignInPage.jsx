@@ -1,5 +1,5 @@
-import SignIn from '../../../components/SignIn/SignIn';
-import { StyledBgWrap, StyledPageWrap } from '../AuthPages.styled';
+import SignIn from '../../components/AuthComponents/SignIn';
+import { StyledBgWrap, StyledPageWrap } from './AuthPages.styled';
 
 const SignInPage = () => {
   return (
