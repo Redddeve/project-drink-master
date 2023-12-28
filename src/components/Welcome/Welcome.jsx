@@ -13,11 +13,6 @@ import {
 
 const Welcome = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  // const navigate = useNavigate();
-
-  // if (isLoggedIn) {
-  //   navigate('/');
-  // }
 
   if (isLoggedIn) {
     return <Navigate to="/" />;

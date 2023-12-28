@@ -144,7 +144,6 @@ export const SearchFilterContainer = () => {
     }
   };
 
-  // *** SELECT STYLES ***
   const newDrinkStyles = {
     ...drinkStyles,
     dropdownIndicator: provided => ({
@@ -161,7 +160,7 @@ export const SearchFilterContainer = () => {
       transform: ingredientMenuIsOpen ? 'rotate(180deg)' : null,
     }),
   };
-  // *** SELECT STYLES ***
+
   return (
     <StyledFilterContainer>
       <StyledInput

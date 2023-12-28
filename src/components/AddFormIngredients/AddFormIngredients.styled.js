@@ -85,7 +85,7 @@ export const StyledIngFieldInput = styled.input`
   &:-webkit-autofill:focus,
   &:-webkit-autofill:active {
     -webkit-background-clip: text;
-    -webkit-text-fill-color: var(--white); // колір тексту
+    -webkit-text-fill-color: var(--white);
     -webkit-background-color: transparent !important;
     -webkit-border: 1px solid rgba(243, 243, 243, 0.2);
     transition: all 0s 50000s;

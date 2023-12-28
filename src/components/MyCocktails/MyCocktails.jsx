@@ -12,30 +12,34 @@ import {
 } from '../FavoriteCocktails/FavoriteCocktails.styled';
 import { selectIsLoading } from '../../redux/drinks/selectors';
 import { useSelector } from 'react-redux';
-import { Loader } from '../Loader/Loader';
+import { GalleryLoader } from '../Loader/GalleryLoader';
 
 const MyOwnCocktails = ({ pageCount, theme, items, destination }) => {
   const isLoading = useSelector(selectIsLoading);
-  return isLoading ? (
-    <Loader />
-  ) : items.length === 0 ? (
-    <EmptyFavoritesContainer>
-      <EmptyFavoritesImage
-        srcSet={`${usual} 1x, ${retina} 2x`}
-        alt="Cocktail"
-      />
-      <EmptyDescription theme={theme}>
-        You haven&rsquo;t added any cocktails yet
-      </EmptyDescription>
-    </EmptyFavoritesContainer>
-  ) : (
-    <PaginatedItems
-      pageCount={pageCount}
-      items={items}
-      destination={destination}
-      ListComponent={CocktailList}
-      theme={theme}
-    />
+
+  return (
+    <>
+      {isLoading && <GalleryLoader />}
+      {items.length === 0 ? (
+        <EmptyFavoritesContainer>
+          <EmptyFavoritesImage
+            srcSet={`${usual} 1x, ${retina} 2x`}
+            alt="Cocktail"
+          />
+          <EmptyDescription theme={theme}>
+            You haven&rsquo;t added any cocktails yet
+          </EmptyDescription>
+        </EmptyFavoritesContainer>
+      ) : (
+        <PaginatedItems
+          pageCount={pageCount}
+          items={items}
+          destination={destination}
+          ListComponent={CocktailList}
+          theme={theme}
+        />
+      )}
+    </>
   );
 };
 

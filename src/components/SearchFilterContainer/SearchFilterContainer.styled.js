@@ -36,9 +36,7 @@ export const StyledInput = styled.input`
   &:-webkit-autofill:active {
     -webkit-background-clip: text;
     -webkit-text-fill-color: ${({ theme }) =>
-      theme === 'dark'
-        ? darkTheme.colors.main
-        : lightTheme.colors.main}; // колір тексту
+      theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
     -webkit-background-color: transparent !important;
     -webkit-border: ${({ theme }) =>
       theme === 'dark'

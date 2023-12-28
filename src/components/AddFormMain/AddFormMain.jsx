@@ -47,7 +47,6 @@ const AddFormMain = ({
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [glassMenuIsOpen, setGlassMenuIsOpen] = useState();
 
-  // ****   STYLES FOR SELECT  ****
   const styles = {
     ...stylesSelect,
     dropdownIndicator: provided => ({
@@ -64,8 +63,6 @@ const AddFormMain = ({
       transform: glassMenuIsOpen ? 'rotate(180deg)' : null,
     }),
   };
-
-  // ****   STYLES FOR SELECT  ****
 
   const glassOptions = glassesState?.map(el => {
     return { label: el, value: el };

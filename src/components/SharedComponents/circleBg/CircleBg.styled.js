@@ -18,7 +18,7 @@ export const Circle = styled.div`
     filter: blur(104.8543701171875px);
   }
   @media ${device.desktop} {
-    top: 425px;
+    top: 385px;
     right: -300px;
   }
 `;

@@ -14,7 +14,6 @@ import {
 } from './CocktailItem.styled';
 import RemoveButton from '..//SharedComponents/RemoveButton/RemoveButton';
 import CommonBtn from '../SharedComponents/CommonBtn/CommonBtn';
-
 import LazyLoad from 'react-lazy-load';
 
 const CocktailItem = ({ cocktail, page, theme }) => {
