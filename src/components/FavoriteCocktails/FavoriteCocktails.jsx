@@ -10,30 +10,33 @@ import {
 } from './FavoriteCocktails.styled';
 import PaginatedItems from '../Paginator/Paginator';
 import { useSelector } from 'react-redux';
-import { Loader } from '../Loader/Loader';
+import { GalleryLoader } from '../Loader/GalleryLoader';
 
 const FavoriteCocktails = ({ destination, pageCount, favorites, theme }) => {
   const isLoading = useSelector(selectIsLoading);
-  return isLoading ? (
-    <Loader />
-  ) : favorites.length === 0 ? (
-    <EmptyFavoritesContainer>
-      <EmptyFavoritesImage
-        srcSet={`${usual} 1x, ${retina} 2x`}
-        alt="Cocktail"
-      />
-      <EmptyDescription theme={theme}>
-        You haven&rsquo;t added any favorite cocktails yet
-      </EmptyDescription>
-    </EmptyFavoritesContainer>
-  ) : (
-    <PaginatedItems
-      pageCount={pageCount}
-      items={favorites}
-      destination={destination}
-      ListComponent={CocktailList}
-      theme={theme}
-    />
+  return (
+    <>
+      {isLoading && <GalleryLoader />}
+      {favorites.length === 0 ? (
+        <EmptyFavoritesContainer>
+          <EmptyFavoritesImage
+            srcSet={`${usual} 1x, ${retina} 2x`}
+            alt="Cocktail"
+          />
+          <EmptyDescription theme={theme}>
+            You haven&rsquo;t added any favorite cocktails yet
+          </EmptyDescription>
+        </EmptyFavoritesContainer>
+      ) : (
+        <PaginatedItems
+          pageCount={pageCount}
+          items={favorites}
+          destination={destination}
+          ListComponent={CocktailList}
+          theme={theme}
+        />
+      )}
+    </>
   );
 };
 

@@ -1,9 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectIngredients } from '../../redux/drinks/selectors';
 import PropTypes from 'prop-types';
-
-import { useEffect } from 'react';
-import { getIngredientsThunk } from '../../redux/drinks/operations';
 import {
   StyledImg,
   StyledImgDiv,
@@ -17,10 +14,6 @@ import {
 import { selectTheme } from '../../redux/theme/selectors';
 const DrinkIngredientsList = ({ ingredientsArray }) => {
   const theme = useSelector(selectTheme);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getIngredientsThunk());
-  }, [dispatch]);
   const ingredientsState = useSelector(selectIngredients);
 
   const isMobile = window.innerWidth < 768;
@@ -28,9 +21,9 @@ const DrinkIngredientsList = ({ ingredientsArray }) => {
 
   const imgSrc = title => {
     if (ingredientsState.length !== 0) {
-      return ingredientsState?.find(el => title.toLowerCase() === el.title.toLowerCase())[
-        isMobile ? 'thumbSmall' : isTablet ? 'thumbMedium' : 'ingredientThumb'
-      ];
+      return ingredientsState?.find(
+        el => title.toLowerCase() === el.title.toLowerCase()
+      )[isMobile ? 'thumbSmall' : isTablet ? 'thumbMedium' : 'ingredientThumb'];
     }
   };
 

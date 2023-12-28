@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import PageTitle from '../../components/PageTitle/PageTitle.jsx';
 import { SearchFilterContainer } from '../../components/SearchFilterContainer/SearchFilterContainer.jsx';
 import { SearchResultsContainer } from '../../components/SearchResultsContainer/SearchResultsContainer';
+import { Loader } from '../../components/Loader/Loader.jsx';
 import CircleBg from '../../components/SharedComponents/circleBg/CircleBg.jsx';
 import PaginatedItems from '../../components/Paginator/Paginator.jsx';
 import { useSelector } from 'react-redux';
@@ -10,7 +11,6 @@ import {
   selectPages,
   selectSearchDrinks,
 } from '../../redux/drinks/selectors.js';
-import { Loader } from '../../components/Loader/Loader.jsx';
 import { selectTheme } from '../../redux/theme/selectors.js';
 
 const DrinksPage = () => {

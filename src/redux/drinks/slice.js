@@ -28,6 +28,7 @@ const initialState = {
   glasses: [],
   ingredients: [],
   searchDrinks: [],
+  favPending: false,
   isLoading: false,
   error: null,
 };
@@ -81,11 +82,11 @@ export const slice = createSlice({
       })
       .addCase(addFavoriteDrinkThunk.fulfilled, (state, { payload }) => {
         state.favorite.push(payload.drink);
-        state.isLoading = false;
+        state.favPending = false;
       })
       .addCase(removeFavoriteDrinkThunk.fulfilled, (state, { payload }) => {
         state.favorite = state.favorite.filter(({ _id }) => _id !== payload);
-        state.isLoading = false;
+        state.favPending = false;
       })
       .addCase(getCategoriesThunk.fulfilled, (state, { payload }) => {
         state.categories = payload.categories;
@@ -98,6 +99,25 @@ export const slice = createSlice({
       })
       .addMatcher(
         isAnyOf(
+          addFavoriteDrinkThunk.pending,
+          removeFavoriteDrinkThunk.pending
+        ),
+        state => {
+          state.favPending = true;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          addFavoriteDrinkThunk.rejected,
+          removeFavoriteDrinkThunk.rejected
+        ),
+        (state, { payload }) => {
+          state.error = payload;
+          state.favPending = false;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
           fetchAllDrinks.pending,
           getPopularThunk.pending,
           searchDrinksThunk.pending,
@@ -106,8 +126,6 @@ export const slice = createSlice({
           addOwnDrinkThunk.pending,
           deleteOwnDrinkThunk.pending,
           getFavoriteDrinksThunk.pending,
-          addFavoriteDrinkThunk.pending,
-          removeFavoriteDrinkThunk.pending,
           getCategoriesThunk.pending,
           getIngredientsThunk.pending,
           getGlassesThunk.pending
@@ -125,8 +143,6 @@ export const slice = createSlice({
           addOwnDrinkThunk.rejected,
           deleteOwnDrinkThunk.rejected,
           getFavoriteDrinksThunk.rejected,
-          addFavoriteDrinkThunk.rejected,
-          removeFavoriteDrinkThunk.rejected,
           getCategoriesThunk.rejected,
           getIngredientsThunk.rejected,
           getGlassesThunk.rejected
