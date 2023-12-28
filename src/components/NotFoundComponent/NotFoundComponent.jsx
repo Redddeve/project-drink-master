@@ -2,7 +2,7 @@ import sprite from '../../images/sprite.svg';
 import usual from '../../images/blue-iced-tea@1x.png';
 import retina from '../../images/blue-iced-tea@2x.png';
 import { NotFoundContainer, Zero } from './NotFoundComponent.styled';
-import useSomeHock from './SomeComponent/SomeHook'; // Import the custom hook
+import useSomeHock from './SomeComponent/SomeHook';
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../../redux/theme/selectors';
 
@@ -16,7 +16,7 @@ const NotFoundComponent = () => {
   return (
     <NotFoundContainer theme={theme}>
       <Zero
-        style={{ zIndex: isPlaying ? 12 : 1 }}
+        $isPlaying={isPlaying}
         srcSet={`${usual} 1x, ${retina} 2x`}
         alt="Not Found"
         onClick={playSound}
