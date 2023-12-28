@@ -88,7 +88,7 @@ const UserDrinkPage = () => {
 
   useEffect(() => {
     dispatch(getIngredientsThunk());
-    dispatch(getFavoriteDrinksThunk({ page: 1, itemsPerPage: 1000 }));
+    dispatch(getFavoriteDrinksThunk({ page: 1, limit: 1000 }));
     dispatch(getDrinkbyIdThunk(drinkId));
     window.scrollTo({
       top: 0,
