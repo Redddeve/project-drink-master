@@ -168,16 +168,18 @@ export const SearchFilterContainer = () => {
         placeholder="Enter the text"
         onChange={e => setName(e.currentTarget.value)}
         onBlur={e => {
-          dispatch(setSearchPage(1));
-          dispatch(
-            searchDrinksThunk({
-              drink: e.currentTarget.value,
-              ingredients: ingredient,
-              category,
-              limit: itemsPerPage,
-              page,
-            })
-          );
+          if (e.currentTarget.value) {
+            dispatch(setSearchPage(1));
+            dispatch(
+              searchDrinksThunk({
+                drink: e.currentTarget.value,
+                ingredients: ingredient,
+                category,
+                limit: itemsPerPage,
+                page,
+              })
+            );
+          }
         }}
         onKeyPress={key => {
           key.code === 'Enter' ? dispatchSearch() : null;
