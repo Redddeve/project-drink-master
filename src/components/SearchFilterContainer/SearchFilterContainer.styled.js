@@ -36,9 +36,7 @@ export const StyledInput = styled.input`
   &:-webkit-autofill:active {
     -webkit-background-clip: text;
     -webkit-text-fill-color: ${({ theme }) =>
-      theme === 'dark'
-        ? darkTheme.colors.main
-        : lightTheme.colors.main}; // колір тексту
+      theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};
     -webkit-background-color: transparent !important;
     -webkit-border: ${({ theme }) =>
       theme === 'dark'
@@ -58,7 +56,7 @@ export const StyledSvg = styled.svg`
   width: 20px;
   height: 20px;
   top: 18px;
-  left: 180px;
+  left: 220px;
   cursor: pointer;
   stroke: ${({ theme }) =>
     theme === 'dark' ? darkTheme.colors.main : lightTheme.colors.main};

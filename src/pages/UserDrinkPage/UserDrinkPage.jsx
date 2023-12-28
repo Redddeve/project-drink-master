@@ -5,11 +5,14 @@ import {
   addFavoriteDrinkThunk,
   getDrinkbyIdThunk,
   getFavoriteDrinksThunk,
+  getIngredientsThunk,
   removeFavoriteDrinkThunk,
 } from '../../redux/drinks/operations.js';
 import {
   selectDrinkById,
+  selectFavPending,
   selectFavoriteDrinks,
+  selectIsLoading,
 } from '../../redux/drinks/selectors.js';
 import {
   StyledAddToFavButton,
@@ -29,6 +32,7 @@ import firstFavMob from '../../images/motivation/Motivation-mob3@2x.jpg';
 import firstFavTabDesc from '../../images/motivation/motivation3@2x.jpg';
 import tenthFavMob from '../../images/motivation/Motivation-mob2@2x.jpg';
 import tenthFavTabDesc from '../../images/motivation/motivation2@2x.jpg';
+import { Loader } from '../../components/Loader/Loader.jsx';
 
 const UserDrinkPage = () => {
   const isMobile = useMediaQuery({
@@ -49,6 +53,8 @@ const UserDrinkPage = () => {
 
   const drink = useSelector(selectDrinkById);
   const favorites = useSelector(selectFavoriteDrinks);
+  const isPending = useSelector(selectFavPending);
+  const isLoading = useSelector(selectIsLoading);
   const [isFavorite, setIsFavorite] = useState(false);
 
   const handleAddToFav = () => {
@@ -81,6 +87,7 @@ const UserDrinkPage = () => {
   };
 
   useEffect(() => {
+    dispatch(getIngredientsThunk());
     dispatch(getFavoriteDrinksThunk({ page: 1, itemsPerPage: 1000 }));
     dispatch(getDrinkbyIdThunk(drinkId));
     window.scrollTo({
@@ -95,39 +102,48 @@ const UserDrinkPage = () => {
   return (
     <>
       <CircleBg />
-      <StyledDrinkHero>
-        <div>
-          <StyledDrinkHeader theme={theme}>{drink.drink}</StyledDrinkHeader>
-          <StyledDrinkType
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <StyledDrinkHero>
+            <div>
+              <StyledDrinkHeader theme={theme}>{drink.drink}</StyledDrinkHeader>
+              <StyledDrinkType
+                theme={theme}
+              >{`${drink.glass} / ${drink.alcoholic}`}</StyledDrinkType>
+              <StyledDrinkDesc theme={theme}>
+                {drink.description}
+              </StyledDrinkDesc>
+              <StyledAddToFavButton
+                theme={theme}
+                onClick={isFavorite ? handleRemoveFromFav : handleAddToFav}
+                disabled={isPending}
+              >
+                {isFavorite
+                  ? 'Remove from favorite drinks'
+                  : 'Add to favorite drinks'}
+              </StyledAddToFavButton>
+            </div>
+            <StyledDrinkImage theme={theme} src={drink.drinkThumb} />
+          </StyledDrinkHero>
+          <DrinkIngredientsList
             theme={theme}
-          >{`${drink.glass} / ${drink.alcoholic}`}</StyledDrinkType>
-          <StyledDrinkDesc theme={theme}>{drink.description}</StyledDrinkDesc>
-          <StyledAddToFavButton
-            theme={theme}
-            onClick={isFavorite ? handleRemoveFromFav : handleAddToFav}
-          >
-            {isFavorite
-              ? 'Remove from favorite drinks'
-              : 'Add to favorite drinks'}
-          </StyledAddToFavButton>
-        </div>
-        <StyledDrinkImage theme={theme} src={drink.drinkThumb} />
-      </StyledDrinkHero>
-      <DrinkIngredientsList
-        theme={theme}
-        ingredientsArray={drink ? drink.ingredients : []}
-      />
-      <RecipePreparation theme={theme} instructions={drink.instructions} />
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => {
-          closeModal();
-          setModalMessage('');
-          setBackground('');
-        }}
-        message={modalMessage}
-        background={background}
-      />
+            ingredientsArray={drink ? drink.ingredients : []}
+          />
+          <RecipePreparation theme={theme} instructions={drink.instructions} />
+          <Modal
+            isOpen={isModalOpen}
+            onClose={() => {
+              closeModal();
+              setModalMessage('');
+              setBackground('');
+            }}
+            message={modalMessage}
+            background={background}
+          />
+        </>
+      )}
     </>
   );
 };

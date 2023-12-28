@@ -28,7 +28,11 @@ const RemoveButton = ({ id, page }) => {
   };
 
   return (
-    <DeleteButton type="button" onClick={onHandleRemove}>
+    <DeleteButton
+      type="button"
+      onClick={onHandleRemove}
+      aria-label="Are you sure you want to remove this cocktail?"
+    >
       <svg width="24" height="22">
         <use href={sprite + '#icon-trash'} />
       </svg>

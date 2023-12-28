@@ -43,25 +43,28 @@ export const NotFoundContainer = styled.div`
   }
 `;
 
-export const Zero = styled.img`
+export const Zero = styled.img.attrs(props => ({
+  $$isPlaying: props.$isPlaying,
+}))`
   width: 123px;
   height: 156px;
-  position: relative;
+  position: ${props => (props.$isPlaying ? 'fixed' : 'relative')};
+  z-index: ${props => (props.$isPlaying ? '12' : '1')};
   pointer-events: auto;
-  top: -13px;
-  left: 70px;
+  top: ${props => (props.$isPlaying ? '27%' : '-13px')};
+  left: ${props => (props.$isPlaying ? 'calc(50% - 51px)' : '70px')};
 
   @media ${device.tablet} {
     width: 158px;
     height: 201px;
-    top: -5px;
-    left: 77px;
+    top: ${props => (props.$isPlaying ? '28%' : '-5px')};
+    left: ${props => (props.$isPlaying ? 'calc(50% - 69px)' : '77px')};
   }
 
   @media ${device.desktop} {
     width: 158px;
     height: 201px;
-    top: -5px;
-    left: 129px;
+    top: ${props => (props.$isPlaying ? '28%' : '-5px')};
+    left: ${props => (props.$isPlaying ? 'calc(50% - 69px)' : '129px')};
   }
 `;
