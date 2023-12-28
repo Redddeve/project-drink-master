@@ -1,4 +1,4 @@
-import{u as x,d as v,a as m,l as u,e as R,b as r,g as l,s as f,k as B,m as N,n as p,o as i,j as s,p as q,c as A,r as K,L as _}from"./index-mfwUlT7G.js";import{P as z}from"./PageTitle-zwtzf5PE.js";import{S as j,d as G,a as H}from"./Dropdown.styled-hyzdZOdY.js";import{a as J,b as Q,c as U,d as $,e as V,f as W}from"./selectors-QSo4Kgn-.js";import{u as X,E as Y,a as Z,b as ee,P as te}from"./Paginator-uGhDiBHu.js";import{S as se,D as ne}from"./SearchResultsContainer.styled-GE8f1CeS.js";import{C as re}from"./CircleBg-f6u2UAeC.js";import"./LazyLoad-UGY74-A7.js";const ae=x.div`
+import{u as x,d as v,a as m,l as u,e as R,b as r,g as l,s as f,k as B,m as N,n as p,o as i,j as s,p as q,c as A,r as K,L as _}from"./index-pQgUnWTP.js";import{P as z}from"./PageTitle-2ooZCz3X.js";import{S as j,d as G,a as H}from"./Dropdown.styled-foI9-wLT.js";import{a as J,b as Q,c as U,d as $,e as V,f as W}from"./selectors-SaLozOcY.js";import{u as X,E as Y,a as Z,b as ee,P as te}from"./Paginator-agDO85Py.js";import{S as se,D as ne}from"./SearchResultsContainer.styled-wQCcSNp9.js";import{C as re}from"./CircleBg-ErYhBCSd.js";import"./LazyLoad-_IRujCKC.js";const ae=x.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@ import{u as x,d as v,a as m,l as u,e as R,b as r,g as l,s as f,k as B,m as N,n a
   &:-webkit-autofill:focus,
   &:-webkit-autofill:active {
     -webkit-background-clip: text;
-    -webkit-text-fill-color: ${({theme:e})=>e==="dark"?m.colors.main:u.colors.main}; // колір тексту
+    -webkit-text-fill-color: ${({theme:e})=>e==="dark"?m.colors.main:u.colors.main};
     -webkit-background-color: transparent !important;
     -webkit-border: ${({theme:e})=>e==="dark"?m.borderColor.main:u.borderColor.main};
     transition: all 0s 50000s;

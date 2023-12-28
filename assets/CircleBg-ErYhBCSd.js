@@ -1,4 +1,4 @@
-import{u as s,d as t,b as r,s as i,j as o}from"./index-mfwUlT7G.js";const a=s.div`
+import{u as s,d as t,b as r,s as i,j as o}from"./index-pQgUnWTP.js";const a=s.div`
   display: none;
 
   @media ${t.tablet} {
@@ -14,7 +14,7 @@ import{u as s,d as t,b as r,s as i,j as o}from"./index-mfwUlT7G.js";const a=s.di
     filter: blur(104.8543701171875px);
   }
   @media ${t.desktop} {
-    top: 425px;
+    top: 385px;
     right: -300px;
   }
 `,d=()=>{const e=r(i);return o.jsx(a,{theme:e})};export{d as C};
