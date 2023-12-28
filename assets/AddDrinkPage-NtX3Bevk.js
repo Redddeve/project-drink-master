@@ -1,4 +1,4 @@
-import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v as re,k as ie,j as t,C as L,m as oe,p as D,q as ne,w as ae,x as se,y as le,z as de}from"./index-nFllLbSz.js";import{P as ce}from"./PageTitle-zyqyRMSL.js";import{S as M,s as B,i as pe}from"./Dropdown.styled-TsT8g5j-.js";import{g as xe,b as he,a as ue,h as ge}from"./selectors-3874gCLe.js";import{C as be}from"./CircleBg-H6IfQKsH.js";r.h1`
+import{u as r,a as d,l as p,d as i,P as o,e as V,b as k,t as te,s as R,g as f,v as re,k as ie,j as t,C as L,m as oe,p as D,q as ne,w as ae,x as se,y as le,z as de}from"./index-6TI-_iKw.js";import{P as pe}from"./PageTitle-REuUtEtE.js";import{S as M,s as B,i as ce}from"./Dropdown.styled-2EBBPzwo.js";import{g as xe,b as he,a as ue,h as ge}from"./selectors-cfyUtb0L.js";import{C as be}from"./CircleBg-2jNdGRKY.js";r.h1`
   font-size: 32px;
   font-weight: 600;
   line-height: 38px;
@@ -15,21 +15,21 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
   background: transparent;
   border-radius: 14px;
   border: ${({theme:e})=>e==="dark"?"1px solid var(--transp-white)":"1px solid var(--transp-dark)"};
-  color: ${({theme:e})=>e==="dark"?d.colors.main:c.colors.main};
+  color: ${({theme:e})=>e==="dark"?d.colors.main:p.colors.main};
   line-height: 1;
   vertical-align: top;
   resize: none;
   @media ${i.tablet} {
     width: 480px;
   }
-`,ke=r.button`
+`,fe=r.button`
   border-radius: 42px;
   background-color: ${({theme:e})=>e==="dark"?"var(--white)":"var(--black)"};
   display: inline-flex;
   padding: 14px 40px;
   align-items: flex-start;
   gap: 10px;
-  color: ${({theme:e})=>e==="dark"?c.colors.main:d.colors.main};
+  color: ${({theme:e})=>e==="dark"?p.colors.main:d.colors.main};
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
@@ -51,7 +51,7 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
   color: #ff7c31;
   font-size: 13px;
   width: 100%;
-`,fe=r(C)`
+`,ke=r(C)`
   top: 7px;
   left: -15px;
   font-size: 26px;
@@ -87,11 +87,27 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
   color: #ff7c31;
   font-size: 13px;
   width: 100%;
-`,ve=r.input`
+`,ve=r.div`
+  border: 3px solid lightblue;
+  border-top: 3px blue solid;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  animation: spin 2s linear infinite;
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`,ye=r.input`
   display: none;
 `;r.form`
   max-width: 850px;
-`;const ye=r.label`
+`;const je=r.label`
   position: relative;
   z-index: 1;
 
@@ -103,7 +119,7 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  background-color: ${({theme:e})=>e==="dark"?d.background.darkBg:c.background.lightBg};
+  background-color: ${({theme:e})=>e==="dark"?d.background.darkBg:p.background.lightBg};
   margin-bottom: 40px;
   background-repeat: no-repeat;
   background-size: cover;
@@ -114,7 +130,7 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
   @media ${i.desktop} {
     min-width: 400px;
   }
-`,je=r.div`
+`,$e=r.div`
   @media ${i.tablet} {
     display: flex;
     gap: 32px;
@@ -128,7 +144,7 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
   cursor: pointer;
   margin-bottom: 80px;
   input[type='radio']:checked + p {
-    color: ${({theme:e})=>e==="dark"?d.colors.main:c.colors.main};
+    color: ${({theme:e})=>e==="dark"?d.colors.main:p.colors.main};
     &::before {
       content: '';
       background-color: white;
@@ -179,7 +195,7 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
       left: 0;
     }
   }
-`,$e=r.label`
+`,Se=r.label`
   display: flex;
   gap: 30px;
   align-items: center;
@@ -193,7 +209,7 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
     padding-top: 50px;
   }
 `,U=r.p`
-  color: ${({theme:e})=>e==="dark"?d.colors.transp:c.colors.transp};
+  color: ${({theme:e})=>e==="dark"?d.colors.transp:p.colors.transp};
 `,_=r.label`
   width: 335px;
   position: relative;
@@ -204,7 +220,7 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
   margin-bottom: 31px;
   justify-content: space-between;
   border-bottom: ${({theme:e})=>e==="dark"?"1px solid var(--white)":"1px solid var(--dark)"};
-  color: ${({theme:e})=>e==="dark"?d.colors.transp:c.colors.transp};
+  color: ${({theme:e})=>e==="dark"?d.colors.transp:p.colors.transp};
   padding-left: 3px;
   @media ${i.tablet} {
     padding-bottom: 18px;
@@ -257,31 +273,31 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
   border-bottom: ${({theme:e})=>e==="dark"?"1px solid var(--white)":"1px solid var(--dark)"};
   padding-bottom: 14px;
   margin-bottom: 31px;
-  color: ${({theme:e})=>e==="dark"?d.colors.main:c.colors.main};
+  color: ${({theme:e})=>e==="dark"?d.colors.main:p.colors.main};
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus,
   &:-webkit-autofill:active {
     -webkit-background-clip: text;
-    -webkit-text-fill-color: ${({theme:e})=>e==="dark"?d.colors.main:c.colors.main};
+    -webkit-text-fill-color: ${({theme:e})=>e==="dark"?d.colors.main:p.colors.main};
     -webkit-background-color: transparent !important;
     -webkit-border-bottom: ${({theme:e})=>e==="dark"?"1px solid var(--white)":"1px solid var(--dark)"};
     transition: all 0s 50000s;
     transition: background-color 5000s ease-in-out 0s;
   }
   &::placeholder {
-    color: ${({theme:e})=>e==="dark"?d.colors.transp:c.colors.transp};
+    color: ${({theme:e})=>e==="dark"?d.colors.transp:p.colors.transp};
   }
   @media ${i.tablet} {
     padding-bottom: 18px;
     width: 352px;
   }
-`,Se=r.div`
+`,Ie=r.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`,Ie=r.p`
+`,Te=r.p`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -293,14 +309,14 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
   color: black;
   padding: 11px;
   margin-bottom: 18px;
-`,Te=r.p`
+`,qe=r.p`
   color: var(--white);
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
 `,W=r.p`
-  color: ${({theme:e})=>e==="dark"?d.colors.transp:c.colors.transp};
-`,H=({register:e,control:a,handleSubmit:h,setValue:w,errors:b,onSubmit:v})=>{const m=V(),l=f(xe),j=f(he),y=f(te),n=f(R),[T,$]=k.useState(""),[u,q]=k.useState(!1),[g,s]=k.useState(),p={...B,dropdownIndicator:x=>({...x,transition:"transform 0.2s ease",transform:u?"rotate(180deg)":null})},S={...B,dropdownIndicator:x=>({...x,transition:"transform 0.2s ease",transform:g?"rotate(180deg)":null})},z=l==null?void 0:l.map(x=>({label:x,value:x})),Z=j==null?void 0:j.map(x=>({label:x,value:x}));k.useEffect(()=>{m(re())},[m]),k.useEffect(()=>{m(ie())},[m]);const ee=x=>{const I=x.target.files[0];if(w("photo",I),I){const F=new FileReader;F.onloadend=()=>{$(F.result)},F.readAsDataURL(I)}};return t.jsx("form",{onSubmit:h(v),encType:"multipart/form-data",children:t.jsxs(je,{children:[t.jsxs(ye,{theme:n,style:{backgroundImage:`url(${T})`},children:[t.jsx(ve,{theme:n,type:"file",accept:".png, .jpeg, .jpg",...e("photo"),onChange:ee}),!T&&t.jsxs(Se,{theme:n,children:[t.jsx(Ie,{theme:n,children:"+"}),t.jsx(Te,{theme:n,children:"Add image"})]})]}),t.jsxs("div",{children:[t.jsxs(E,{theme:n,children:[t.jsx(N,{theme:n,type:"text",...e("itemTitle",{required:!0}),placeholder:"Enter item title"}),b.itemTitle&&t.jsx(C,{theme:n,children:"Item title is required."})]}),t.jsxs(E,{children:[t.jsx(N,{theme:n,type:"text",...e("aboutRecipe",{required:!0}),placeholder:"Enter about recipe"}),b.aboutRecipe&&t.jsx(C,{children:"About recipe field is required."})]}),t.jsxs(_,{theme:n,children:[t.jsx(U,{theme:n,children:"Category"}),t.jsx(L,{name:"category",control:a,render:({field:x})=>t.jsx(M,{...x,styles:p,options:Z,isSearchable:!1,onChange:I=>{x.onChange(I)},theme:n,menuIsOpen:u,onMenuOpen:()=>q(!0),onMenuClose:()=>q(!1)}),rules:{required:"Category field is required"}}),b.category&&t.jsx(C,{children:b.category.message})]}),t.jsxs(_,{theme:n,children:[t.jsx(U,{theme:n,children:"Glass"}),t.jsx(L,{name:"glass",control:a,render:({field:x})=>t.jsx(M,{styles:S,...x,options:z,onChange:I=>{x.onChange(I)},theme:n,menuIsOpen:g,onMenuOpen:()=>s(!0),onMenuClose:()=>s(!1)}),rules:{required:"Glass field is required"}}),b.glass&&t.jsx(C,{children:b.glass.message})]}),t.jsxs($e,{children:[t.jsxs(G,{theme:n,children:[t.jsx("input",{type:"radio",value:"Non alcoholic",name:"alcohol",...e("alcohol",{required:!0}),defaultChecked:!0}),t.jsx(W,{theme:n,children:"Non alcoholic"})]}),y&&t.jsxs(G,{theme:n,children:[t.jsx("input",{type:"radio",name:"alcohol",value:"Alcoholic",...e("alcohol",{required:!0})}),t.jsx(W,{theme:n,children:"Alcoholic"})]})]})]})]})})};H.propTypes={register:o.func.isRequired,control:o.object.isRequired,handleSubmit:o.func.isRequired,errors:o.object.isRequired,setValue:o.func,onSubmit:o.func.isRequired};const X=r.button`
+  color: ${({theme:e})=>e==="dark"?d.colors.transp:p.colors.transp};
+`,H=({register:e,control:n,handleSubmit:h,setValue:w,errors:b,onSubmit:v})=>{const m=V(),l=k(xe),j=k(he),y=k(te),a=k(R),[T,$]=f.useState(""),[u,q]=f.useState(!1),[g,s]=f.useState(),c={...B,dropdownIndicator:x=>({...x,transition:"transform 0.2s ease",transform:u?"rotate(180deg)":null})},S={...B,dropdownIndicator:x=>({...x,transition:"transform 0.2s ease",transform:g?"rotate(180deg)":null})},z=l==null?void 0:l.map(x=>({label:x,value:x})),Z=j==null?void 0:j.map(x=>({label:x,value:x}));f.useEffect(()=>{m(re())},[m]),f.useEffect(()=>{m(ie())},[m]);const ee=x=>{const I=x.target.files[0];if(w("photo",I),I){const F=new FileReader;F.onloadend=()=>{$(F.result)},F.readAsDataURL(I)}};return t.jsx("form",{onSubmit:h(v),encType:"multipart/form-data",children:t.jsxs($e,{children:[t.jsxs(je,{theme:a,style:{backgroundImage:`url(${T})`},children:[t.jsx(ye,{theme:a,type:"file",accept:".png, .jpeg, .jpg",...e("photo"),onChange:ee}),!T&&t.jsxs(Ie,{theme:a,children:[t.jsx(Te,{theme:a,children:"+"}),t.jsx(qe,{theme:a,children:"Add image"})]})]}),t.jsxs("div",{children:[t.jsxs(E,{theme:a,children:[t.jsx(N,{theme:a,type:"text",...e("itemTitle",{required:!0}),placeholder:"Enter item title"}),b.itemTitle&&t.jsx(C,{theme:a,children:"Item title is required."})]}),t.jsxs(E,{children:[t.jsx(N,{theme:a,type:"text",...e("aboutRecipe",{required:!0}),placeholder:"Enter about recipe"}),b.aboutRecipe&&t.jsx(C,{children:"About recipe field is required."})]}),t.jsxs(_,{theme:a,children:[t.jsx(U,{theme:a,children:"Category"}),t.jsx(L,{name:"category",control:n,render:({field:x})=>t.jsx(M,{...x,styles:c,options:Z,isSearchable:!1,onChange:I=>{x.onChange(I)},theme:a,menuIsOpen:u,onMenuOpen:()=>q(!0),onMenuClose:()=>q(!1)}),rules:{required:"Category field is required"}}),b.category&&t.jsx(C,{children:b.category.message})]}),t.jsxs(_,{theme:a,children:[t.jsx(U,{theme:a,children:"Glass"}),t.jsx(L,{name:"glass",control:n,render:({field:x})=>t.jsx(M,{styles:S,...x,options:z,onChange:I=>{x.onChange(I)},theme:a,menuIsOpen:g,onMenuOpen:()=>s(!0),onMenuClose:()=>s(!1)}),rules:{required:"Glass field is required"}}),b.glass&&t.jsx(C,{children:b.glass.message})]}),t.jsxs(Se,{children:[t.jsxs(G,{theme:a,children:[t.jsx("input",{type:"radio",value:"Non alcoholic",name:"alcohol",...e("alcohol",{required:!0}),defaultChecked:!0}),t.jsx(W,{theme:a,children:"Non alcoholic"})]}),y&&t.jsxs(G,{theme:a,children:[t.jsx("input",{type:"radio",name:"alcohol",value:"Alcoholic",...e("alcohol",{required:!0})}),t.jsx(W,{theme:a,children:"Alcoholic"})]})]})]})]})})};H.propTypes={register:o.func.isRequired,control:o.object.isRequired,handleSubmit:o.func.isRequired,errors:o.object.isRequired,setValue:o.func,onSubmit:o.func.isRequired};const X=r.button`
   background-color: transparent;
   border: none;
   width: 16px;
@@ -313,11 +329,11 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
   color: inherit;
   font-family: inherit;
   cursor: pointer;
-  color: ${({theme:e})=>e==="dark"?d.colors.main:c.colors.main};
+  color: ${({theme:e})=>e==="dark"?d.colors.main:p.colors.main};
   &:disabled {
     color: ${({theme:e})=>e==="dark"?"var(--transp-white)":"var(--transp-dark)"};
   }
-`,qe=r.div`
+`,Ce=r.div`
   padding-bottom: 80px;
   @media ${i.tablet} {
     max-width: 704px;
@@ -325,9 +341,9 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
   @media ${i.desktop} {
     max-width: 540px;
   }
-`,Ce=r.p`
-  color: ${({theme:e})=>e==="dark"?d.colors.main:c.colors.main};
-`,Re=r.div`
+`,Re=r.p`
+  color: ${({theme:e})=>e==="dark"?d.colors.main:p.colors.main};
+`,De=r.div`
   position: relative;
   z-index: 1;
   display: flex;
@@ -335,10 +351,10 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
   align-items: center;
   width: 104px;
   border-radius: 200px;
-  border: ${({theme:e})=>e==="dark"?d.borderColor.main:c.borderColor.main};
+  border: ${({theme:e})=>e==="dark"?d.borderColor.main:p.borderColor.main};
   height: 38px;
   margin-bottom: 34px;
-`,De=r.button`
+`,ze=r.button`
   position: relative;
   z-index: 1;
   background: transparent;
@@ -354,7 +370,7 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
   @media ${i.desktop} {
     margin-left: 20px;
   }
-`,ze=r.input`
+`,Fe=r.input`
   width: 101px;
   height: 50px;
   border-radius: 200px;
@@ -377,13 +393,13 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
   @media ${i.tablet} {
     width: 150px;
   }
-`,Fe=r.label`
+`,Pe=r.label`
   display: flex;
   margin-bottom: 18px;
   gap: 14px;
-`,Pe=r.div`
-  position: relative;
 `,Ae=r.div`
+  position: relative;
+`,Oe=r.div`
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -392,22 +408,22 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
   font-weight: 600;
   line-height: 1.38em;
   margin-bottom: 40px;
-  color: ${({theme:e})=>e==="dark"?d.colors.main:c.colors.main};
+  color: ${({theme:e})=>e==="dark"?d.colors.main:p.colors.main};
 
   @media ${i.tablet} {
     font-size: 40px;
     line-height: 1.38em;
   }
-`,Oe=r.svg`
+`,Le=r.svg`
   stroke: ${({theme:e})=>e==="dark"?"var(--white)":"var(--dark)"};
-`,Le=r.label`
+`,Me=r.label`
   width: 200px;
   position: relative;
   height: 35px;
   display: flex;
   justify-content: space-between;
   padding-left: 3px;
-  color: ${({theme:e})=>e==="dark"?d.colors.transp:c.colors.transp};
+  color: ${({theme:e})=>e==="dark"?d.colors.transp:p.colors.transp};
   @media ${i.tablet} {
     padding-bottom: 18px;
     width: 352px;
@@ -451,14 +467,14 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
   .css-1y6kdfa-option {
     background-color: none;
   }
-`,Me=r(C)`
+`,Ee=r(C)`
   font-size: 11px;
   top: 51px;
   width: 120px;
   @media ${i.tablet} {
     left: 25px;
   }
-`,K=({ingNumber:e,setIngNumber:a,register:h,control:w,handleSubmit:b,errors:v,onSubmit:m})=>{const l=f(R),j=V(),y=f(ue),[n,T]=k.useState(3);k.useEffect(()=>{j(oe())},[j]);const $=y==null?void 0:y.map(({title:s})=>({label:s,value:s})),u=s=>{s.preventDefault(),a([...e,n]),T(n+1)},q=s=>{s.preventDefault();const p=e.slice(0,e.length-1);a(p)},g=(s,p)=>{if(s.preventDefault(),e.length<=2)return;const S=e.filter(z=>z!==p);a(S)};return t.jsx("form",{onSubmit:b(m),encType:"multipart/form-data",children:t.jsxs(qe,{children:[t.jsxs(Ae,{children:[t.jsx(J,{theme:l,children:"Ingredients"}),t.jsxs(Re,{theme:l,children:[t.jsx(X,{theme:l,onClick:s=>{q(s)},disabled:e.length<=2,children:"-"}),t.jsx(Ce,{theme:l,children:e.length}),t.jsx(X,{theme:l,onClick:s=>u(s),children:"+"})]})]}),e.map((s,p)=>t.jsxs(Fe,{theme:l,children:[t.jsxs(Le,{theme:l,children:[t.jsx(L,{name:`Ingredients${p}`,control:w,render:({field:S})=>t.jsx(M,{styles:pe,...S,options:$,theme:l}),rules:{required:"!"}}),v[`Ingredients${p}`]&&t.jsx(fe,{children:v[`Ingredients${p}`].message})]}),t.jsxs(Pe,{children:[t.jsx(ze,{theme:l,type:"text",placeholder:"1 cl",...h(`IngNumber${p}`,{required:!0})}),v[`IngNumber${p}`]&&t.jsx(Me,{children:"measure is required."})]}),t.jsx(De,{theme:l,onClick:S=>g(S,s),children:t.jsx(Oe,{theme:l,width:"18",height:"18",children:t.jsx("use",{href:`${D}#icon-X`})})})]},e[p]))]})})};K.propTypes={ingNumber:o.array.isRequired,setIngNumber:o.func.isRequired,register:o.func.isRequired,control:o.object.isRequired,handleSubmit:o.func.isRequired,errors:o.object.isRequired,onSubmit:o.func.isRequired};const Q=({register:e,handleSubmit:a,errors:h,onSubmit:w})=>{const b=f(R);return t.jsx("form",{onSubmit:a(w),encType:"multipart/form-data",children:t.jsxs(E,{children:[t.jsx(J,{theme:b,children:"Recipe Preparation"}),t.jsx(me,{theme:b,type:"text",...e("recipeDesc",{required:!0}),placeholder:"Enter the recipe",minLength:7}),h.recipeDesc&&t.jsx(we,{children:"This field is required and must contain minimum 7 symbols"})]})})};Q.propTypes={register:o.func.isRequired,control:o.object.isRequired,handleSubmit:o.func.isRequired,errors:o.object.isRequired,onSubmit:o.func.isRequired};const Ee=r.div`
+`,K=({ingNumber:e,setIngNumber:n,register:h,control:w,handleSubmit:b,errors:v,onSubmit:m})=>{const l=k(R),j=V(),y=k(ue),[a,T]=f.useState(3);f.useEffect(()=>{j(oe())},[j]);const $=y==null?void 0:y.map(({title:s})=>({label:s,value:s})),u=s=>{s.preventDefault(),n([...e,a]),T(a+1)},q=s=>{s.preventDefault();const c=e.slice(0,e.length-1);n(c)},g=(s,c)=>{if(s.preventDefault(),e.length<=2)return;const S=e.filter(z=>z!==c);n(S)};return t.jsx("form",{onSubmit:b(m),encType:"multipart/form-data",children:t.jsxs(Ce,{children:[t.jsxs(Oe,{children:[t.jsx(J,{theme:l,children:"Ingredients"}),t.jsxs(De,{theme:l,children:[t.jsx(X,{theme:l,onClick:s=>{q(s)},disabled:e.length<=2,children:"-"}),t.jsx(Re,{theme:l,children:e.length}),t.jsx(X,{theme:l,onClick:s=>u(s),children:"+"})]})]}),e.map((s,c)=>t.jsxs(Pe,{theme:l,children:[t.jsxs(Me,{theme:l,children:[t.jsx(L,{name:`Ingredients${c}`,control:w,render:({field:S})=>t.jsx(M,{styles:ce,...S,options:$,theme:l}),rules:{required:"!"}}),v[`Ingredients${c}`]&&t.jsx(ke,{children:v[`Ingredients${c}`].message})]}),t.jsxs(Ae,{children:[t.jsx(Fe,{theme:l,type:"text",placeholder:"1 cl",...h(`IngNumber${c}`,{required:!0})}),v[`IngNumber${c}`]&&t.jsx(Ee,{children:"measure is required."})]}),t.jsx(ze,{theme:l,onClick:S=>g(S,s),children:t.jsx(Le,{theme:l,width:"18",height:"18",children:t.jsx("use",{href:`${D}#icon-X`})})})]},e[c]))]})})};K.propTypes={ingNumber:o.array.isRequired,setIngNumber:o.func.isRequired,register:o.func.isRequired,control:o.object.isRequired,handleSubmit:o.func.isRequired,errors:o.object.isRequired,onSubmit:o.func.isRequired};const Q=({register:e,handleSubmit:n,errors:h,onSubmit:w})=>{const b=k(R);return t.jsx("form",{onSubmit:n(w),encType:"multipart/form-data",children:t.jsxs(E,{children:[t.jsx(J,{theme:b,children:"Recipe Preparation"}),t.jsx(me,{theme:b,type:"text",...e("recipeDesc",{required:!0}),placeholder:"Enter the recipe",minLength:7}),h.recipeDesc&&t.jsx(we,{children:"This field is required and must contain minimum 7 symbols"})]})})};Q.propTypes={register:o.func.isRequired,control:o.object.isRequired,handleSubmit:o.func.isRequired,errors:o.object.isRequired,onSubmit:o.func.isRequired};const Ve=r.div`
   margin-top: 80px;
 
   @media ${i.tablet} {
@@ -470,20 +486,20 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
     top: 208px;
     right: 15%;
   }
-`,Ve=r.div`
+`,Be=r.div`
   margin-bottom: 40px;
-`,Be=r.p`
-  color: ${({theme:e})=>e==="dark"?d.colors.main:c.colors.main};
+`,Ge=r.p`
+  color: ${({theme:e})=>e==="dark"?d.colors.main:p.colors.main};
   font-size: 18px;
   line-height: 24px;
   margin-bottom: 20px;
-`,Ge=r.p`
+`,Ue=r.p`
   margin-bottom: 28px;
   color: black;
   font-size: 18px;
 
   line-height: 1.33;
-  color: ${({theme:e})=>e==="dark"?d.colors.main:c.colors.main};
+  color: ${({theme:e})=>e==="dark"?d.colors.main:p.colors.main};
   border: none;
   border-radius: 6px;
   width: fit-content;
@@ -496,7 +512,7 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
   }
   @media ${i.desktop} {
   }
-`,Ue=r.div`
+`,_e=r.div`
   @media ${i.tablet} {
     display: flex;
     flex-wrap: wrap;
@@ -508,7 +524,7 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
     flex-direction: column;
     width: 340px;
   }
-`,_e=r.div`
+`,Ne=r.div`
   margin-bottom: 24px;
   display: flex;
   gap: 14px;
@@ -545,7 +561,7 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
       opacity: 1;
     }
   }
-`,Ne=r.div`
+`,We=r.div`
   width: 232px;
   display: flex;
   flex-direction: column;
@@ -555,28 +571,28 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
   }
   @media ${i.desktop} {
   }
-`,We=r.img`
+`,Xe=r.img`
   width: 90px;
   height: 90px;
   border-radius: 12px;
 
   @media ${i.tablet} {
   }
-`,Xe=r.p`
+`,He=r.p`
   font-size: 16px;
   line-height: 22px;
   width: 232px;
   margin: 0;
-  color: ${({theme:e})=>e==="dark"?d.colors.main:c.colors.main};
+  color: ${({theme:e})=>e==="dark"?d.colors.main:p.colors.main};
   @media ${i.tablet} {
   }
   @media ${i.desktop} {
   }
-`,He=r.p`
+`,Je=r.p`
   font-size: 14px;
   line-height: 18px;
   font-weight: 400;
-  color: ${({theme:e})=>e==="dark"?d.colors.transp:c.colors.transp};
+  color: ${({theme:e})=>e==="dark"?d.colors.transp:p.colors.transp};
   text-overflow: ellipsis;
   line-height: 18px;
   overflow: hidden;
@@ -587,7 +603,7 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
   @media ${i.tablet} {
     line-height: 20px;
   }
-`,Je=r.ul`
+`,Ke=r.ul`
   display: flex;
   gap: 14px;
 
@@ -633,4 +649,4 @@ import{u as r,a as d,l as c,d as i,P as o,e as V,b as f,t as te,s as R,g as k,v 
     width: 28px;
     height: 28px;
   }
-`,Y=()=>{const e=f(ge),a=f(R);return t.jsxs(Ee,{children:[t.jsxs(Ve,{children:[t.jsx(Be,{theme:a,children:"Follow Us"}),t.jsxs(Je,{children:[t.jsx(P,{theme:a,children:t.jsx(A,{theme:a,href:"https://www.facebook.com/goITclub/",target:"_blank",rel:"noopener noreferrer",children:t.jsx(O,{theme:a,children:t.jsx("use",{href:D+"#icon-facebook"})})})}),t.jsx(P,{theme:a,children:t.jsx(A,{theme:a,href:"https://www.instagram.com/goitclub/",target:"_blank",rel:"noopener noreferrer",children:t.jsx(O,{theme:a,children:t.jsx("use",{href:D+"#icon-instagram"})})})}),t.jsx(P,{theme:a,children:t.jsx(A,{theme:a,href:"https://www.youtube.com/c/GoIT",target:"_blank",rel:"noopener noreferrer",children:t.jsx(O,{theme:a,children:t.jsx("use",{href:D+"#icon-youtube"})})})})]})]}),t.jsx(Ge,{theme:a,children:"Popular drinks"}),t.jsx(Ue,{children:e.map((h,w)=>t.jsxs(_e,{children:[t.jsx(ne,{to:`/drink/${h._id}`,children:t.jsx(We,{src:h.drinkThumb,alt:h.drink})}),t.jsxs(Ne,{children:[t.jsx(Xe,{theme:a,children:h.drink}),t.jsx(He,{theme:a,children:h.description})]})]},h._id||w))})]})};Y.propTypes={popularDrinks:o.arrayOf(o.shape({_id:o.oneOfType([o.string,o.number]),drinkThumb:o.string,drink:o.string,description:o.string}))};const tt=()=>{const e=V(),[a,h]=k.useState(!1);k.useEffect(()=>{e(ae()),window.scrollTo({top:0})},[e]);const w=se(),b=f(R),{register:v,control:m,handleSubmit:l,setValue:j,formState:{errors:y}}=le(),[n,T]=k.useState([0,1]),$=u=>{const q=n.map((s,p)=>({title:u[`Ingredients${p}`].value,measure:u[`IngNumber${p}`]})),g=new FormData;q.forEach((s,p)=>{g.append(`ingredients[${p}][title]`,s.title),g.append(`ingredients[${p}][measure]`,s.measure)}),u.photo&&g.append("drinkThumb",u.photo),g.append("category",u.category.label),g.append("glass",u.glass.label),g.append("description",u.recipeDesc),g.append("instructions",u.aboutRecipe),g.append("alcoholic",u.alcohol),g.append("drink",u.itemTitle),h(!0),e(de(g)).unwrap().then(()=>{h(!1),w("/my")}).catch(s=>console.log(s))};return t.jsxs(t.Fragment,{children:[t.jsx(be,{}),t.jsx(ce,{title:"Add drink"}),t.jsx(H,{register:v,control:m,setValue:j,handleSubmit:l,errors:y,onSubmit:$}),t.jsx(K,{ingNumber:n,setIngNumber:T,register:v,control:m,handleSubmit:l,errors:y,onSubmit:$}),t.jsx(Q,{register:v,control:m,handleSubmit:l,errors:y,onSubmit:$}),t.jsx(ke,{type:"button",onClick:l($),theme:b,disabled:a,children:"Add"}),t.jsx(Y,{})]})};export{tt as default};
+`,Y=()=>{const e=k(ge),n=k(R);return t.jsxs(Ve,{children:[t.jsxs(Be,{children:[t.jsx(Ge,{theme:n,children:"Follow Us"}),t.jsxs(Ke,{children:[t.jsx(P,{theme:n,children:t.jsx(A,{theme:n,href:"https://www.facebook.com/goITclub/",target:"_blank",rel:"noopener noreferrer",children:t.jsx(O,{theme:n,children:t.jsx("use",{href:D+"#icon-facebook"})})})}),t.jsx(P,{theme:n,children:t.jsx(A,{theme:n,href:"https://www.instagram.com/goitclub/",target:"_blank",rel:"noopener noreferrer",children:t.jsx(O,{theme:n,children:t.jsx("use",{href:D+"#icon-instagram"})})})}),t.jsx(P,{theme:n,children:t.jsx(A,{theme:n,href:"https://www.youtube.com/c/GoIT",target:"_blank",rel:"noopener noreferrer",children:t.jsx(O,{theme:n,children:t.jsx("use",{href:D+"#icon-youtube"})})})})]})]}),t.jsx(Ue,{theme:n,children:"Popular drinks"}),t.jsx(_e,{children:e.map((h,w)=>t.jsxs(Ne,{children:[t.jsx(ne,{to:`/drink/${h._id}`,children:t.jsx(Xe,{src:h.drinkThumb,alt:h.drink})}),t.jsxs(We,{children:[t.jsx(He,{theme:n,children:h.drink}),t.jsx(Je,{theme:n,children:h.description})]})]},h._id||w))})]})};Y.propTypes={popularDrinks:o.arrayOf(o.shape({_id:o.oneOfType([o.string,o.number]),drinkThumb:o.string,drink:o.string,description:o.string}))};const rt=()=>{const e=V(),[n,h]=f.useState(!1);f.useEffect(()=>{e(ae()),window.scrollTo({top:0})},[e]);const w=se(),b=k(R),{register:v,control:m,handleSubmit:l,setValue:j,formState:{errors:y}}=le(),[a,T]=f.useState([0,1]),$=u=>{const q=a.map((s,c)=>({title:u[`Ingredients${c}`].value,measure:u[`IngNumber${c}`]})),g=new FormData;q.forEach((s,c)=>{g.append(`ingredients[${c}][title]`,s.title),g.append(`ingredients[${c}][measure]`,s.measure)}),u.photo&&g.append("drinkThumb",u.photo),g.append("category",u.category.label),g.append("glass",u.glass.label),g.append("description",u.recipeDesc),g.append("instructions",u.aboutRecipe),g.append("alcoholic",u.alcohol),g.append("drink",u.itemTitle),h(!0),e(de(g)).unwrap().then(()=>{h(!1),w("/my")}).catch(s=>console.log(s))};return t.jsxs(t.Fragment,{children:[t.jsx(be,{}),t.jsx(pe,{title:"Add drink"}),t.jsx(H,{register:v,control:m,setValue:j,handleSubmit:l,errors:y,onSubmit:$}),t.jsx(K,{ingNumber:a,setIngNumber:T,register:v,control:m,handleSubmit:l,errors:y,onSubmit:$}),t.jsx(Q,{register:v,control:m,handleSubmit:l,errors:y,onSubmit:$}),t.jsx(fe,{type:"button",onClick:l($),theme:b,disabled:n,children:n?t.jsx(ve,{}):"Add"}),t.jsx(Y,{})]})};export{rt as default};
