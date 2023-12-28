@@ -41,31 +41,10 @@ export const SearchFilterContainer = () => {
     default: 9,
   });
 
-  const dispatchSearch = () => {
-    dispatch(
-      searchDrinksThunk({
-        drink: name,
-        ingredients: ingredient,
-        category: category,
-        limit: itemsPerPage,
-        page,
-      })
-    );
-  };
-
   useEffect(() => {
     dispatch(getCategoriesThunk());
     dispatch(getIngredientsThunk());
     dispatch(setSearchPage(1));
-    dispatch(
-      searchDrinksThunk({
-        drink: '',
-        ingredients: '',
-        category: '',
-        limit: itemsPerPage,
-        page: 1,
-      })
-    );
   }, [dispatch, itemsPerPage]);
 
   useEffect(() => {
@@ -73,7 +52,7 @@ export const SearchFilterContainer = () => {
       searchDrinksThunk({
         drink: name,
         ingredients: ingredient,
-        category: category,
+        category,
         limit: itemsPerPage,
         page,
       })
@@ -144,6 +123,39 @@ export const SearchFilterContainer = () => {
     }
   };
 
+  const handleInputOnBlur = e => {
+    if (e.currentTarget.value !== name) {
+      setName(e.currentTarget.value);
+      dispatch(
+        searchDrinksThunk({
+          drink: e.currentTarget.value,
+          ingredients: ingredient,
+          category,
+          limit: itemsPerPage,
+          page: 1,
+        })
+      );
+      dispatch(setSearchPage(1));
+    }
+  };
+
+  const handleSumbit = e => {
+    e.preventDefault();
+    if (e.currentTarget.name.value !== name) {
+      setName(e.currentTarget.name.value);
+      dispatch(
+        searchDrinksThunk({
+          drink: e.currentTarget.name.value,
+          ingredients: ingredient,
+          category,
+          limit: itemsPerPage,
+          page: 1,
+        })
+      );
+      dispatch(setSearchPage(1));
+    }
+  };
+
   // *** SELECT STYLES ***
   const newDrinkStyles = {
     ...drinkStyles,
@@ -164,26 +176,14 @@ export const SearchFilterContainer = () => {
   // *** SELECT STYLES ***
   return (
     <StyledFilterContainer>
-      <StyledInput
-        theme={theme}
-        placeholder="Enter the text"
-        onChange={e => setName(e.currentTarget.value)}
-        onBlur={e => {
-          dispatch(setSearchPage(1));
-          dispatch(
-            searchDrinksThunk({
-              drink: e.currentTarget.value,
-              ingredients: ingredient,
-              category,
-              limit: itemsPerPage,
-              page,
-            })
-          );
-        }}
-        onKeyPress={key => {
-          key.code === 'Enter' ? dispatchSearch() : null;
-        }}
-      />
+      <form onSubmit={handleSumbit}>
+        <StyledInput
+          theme={theme}
+          placeholder="Enter the text"
+          onBlur={handleInputOnBlur}
+          name="name"
+        />
+      </form>
       <StyledSvg theme={theme}>
         <use href={`${sprite}#icon-search`} />
       </StyledSvg>
