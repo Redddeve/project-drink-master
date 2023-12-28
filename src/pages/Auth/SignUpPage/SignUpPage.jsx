@@ -1,4 +1,4 @@
-import SignUp from '../../../components/SignUp/SignUp.jsx';
+import SignUp from '../../../components/AuthComponents/SignUp';
 import { StyledBgWrap, StyledPageWrap } from '../AuthPages.styled';
 
 const SignUpPage = () => {

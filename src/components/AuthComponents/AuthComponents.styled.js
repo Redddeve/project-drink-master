@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import { device } from '../../styles/device';
+import GoogleButton from 'react-google-button';
 
 export const StyledWrap = styled.div`
   display: flex;
@@ -9,7 +10,6 @@ export const StyledWrap = styled.div`
   align-items: center;
   justify-content: center;
   height: 100%;
-
   margin: 0 auto;
 
   @media ${device.tablet} {
@@ -24,11 +24,11 @@ export const StyledWrap = styled.div`
 
 export const StyledFormWrap = styled.form`
   display: flex;
-
   width: 335px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   @media ${device.tablet} {
     max-width: 400px;
   }
@@ -42,6 +42,7 @@ export const StyledHead = styled.h2`
   line-height: 32px; /* 114.286% */
   letter-spacing: -0.56px;
   margin-bottom: 28px;
+
   @media ${device.tablet} {
     font-size: 40px;
     line-height: 44px; /* 110% */
@@ -91,7 +92,6 @@ export const StyledInputWrap = styled.div`
   .react-datepicker__current-month,
   .react-datepicker__navigation {
     visibility: hidden;
-    /* width: 0px; */
   }
 
   .react-datepicker__day:hover {
@@ -164,9 +164,7 @@ export const StyledInput = styled.input`
   border-radius: 200px;
   border: 1px solid rgba(243, 243, 243, 0.2);
   background-color: transparent;
-
   color: var(--white);
-
   outline: none;
   padding: 18px 24px;
   padding-right: 44px;
@@ -179,7 +177,7 @@ export const StyledInput = styled.input`
   &:-webkit-autofill:focus,
   &:-webkit-autofill:active {
     -webkit-background-clip: text;
-    -webkit-text-fill-color: var(--white); // колір тексту
+    -webkit-text-fill-color: var(--white);
     -webkit-background-color: transparent !important;
     -webkit-border: 1px solid rgba(243, 243, 243, 0.2);
     transition: all 0s 50000s;
@@ -341,19 +339,24 @@ export const StyledSignInBtn = styled.button`
 `;
 
 export const StyledLink = styled(Link)`
-  color: #f3f3f3;
-
-  font-family: Manrope;
+  color: var(--white);
   font-size: 12px;
-  font-style: normal;
   font-weight: 600;
   line-height: 16px; /* 133.333% */
   text-decoration-line: underline;
-  &:hover {
-    //hover
-  }
+
   @media ${device.tablet} {
     font-size: 14px;
     line-height: 18px; /* 128.571% */
+  }
+`;
+
+export const StyledGoogleBtn = styled(GoogleButton)`
+  width: 330px !important;
+  margin-top: 20px;
+  border-radius: 8px;
+
+  @media ${device.tablet} {
+    width: 400px !important;
   }
 `;
