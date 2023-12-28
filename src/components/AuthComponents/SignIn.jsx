@@ -1,30 +1,30 @@
-import { useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
-import { signinThunk, signupThunk } from '../../redux/auth/operations.js';
-import { Navigate, useNavigate } from 'react-router-dom';
-import 'react-datepicker/dist/react-datepicker.css';
+import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { signinThunk } from '../../redux/auth/operations.js';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 import {
+  StyledGoogleBtn,
   StyledWrap,
   StyledHead,
   StyledInput,
   StyledSignInBtn,
   StyledLink,
   StyledFormWrap,
-  StyledDatePicker,
-  StyledCalendarIcon,
-  StyledInputWrap,
   StyledMessage,
   StyledEye,
   StyledStatus,
-} from './SignUp.styled.js';
-import sprite from '../../images/sprite.svg';
-import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
-import moment from 'moment';
-import { StyledGoogleBtn } from '../SignIn/SignIn.styled.js';
+  StyledInputWrap,
+} from './AuthComponents.styled.js';
 
-const SignUp = () => {
+import sprite from '../../images/sprite.svg';
+
+import { useState } from 'react';
+
+const SignIn = () => {
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState('eye-off');
 
@@ -38,12 +38,12 @@ const SignUp = () => {
     }
   };
 
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const {
     handleSubmit,
     register,
     reset,
     getValues,
-    control,
     formState: { errors },
   } = useForm({
     mode: 'all',
@@ -53,26 +53,14 @@ const SignUp = () => {
     return getValues(fieldName) && !errors[fieldName];
   };
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   const submit = data => {
-    const outputDate = moment(data.date).format('YYYY-MM-DD');
-    const newData = {
-      ...data,
-      date: outputDate,
-    };
-    dispatch(signupThunk(newData))
+    dispatch(signinThunk(data))
       .unwrap()
-      .then(res => dispatch(signinThunk(res)))
       .then(() => {
-        navigate('/');
+        navigate(location.state?.from ?? '/');
         reset();
       });
   };
-
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-
   if (isLoggedIn) {
     return <Navigate to="/" />;
   }
@@ -80,84 +68,7 @@ const SignUp = () => {
   return (
     <StyledWrap>
       <StyledFormWrap onSubmit={handleSubmit(submit)}>
-        <StyledHead>Sign Up</StyledHead>
-
-        <StyledInputWrap>
-          <StyledInput
-            {...register('name', {
-              required: "name can't be empty",
-              minLength: {
-                value: 2,
-                message: 'name must contain at least 2 characters',
-              },
-            })}
-            placeholder="Name"
-            className={
-              errors?.name ? 'error' : isFieldValid('name') ? 'correct' : ''
-            }
-          />
-          {errors?.name && (
-            <>
-              <StyledStatus className="error">
-                <use href={`${sprite}#icon-error-outline`} />
-              </StyledStatus>
-              <StyledMessage className="error">
-                {errors?.name?.message || 'ERROR'}
-              </StyledMessage>
-            </>
-          )}
-          {!errors?.name && isFieldValid('name') && (
-            <>
-              <StyledStatus className="correct">
-                <use href={`${sprite}#icon-done-outline`} />
-              </StyledStatus>
-              <StyledMessage className="correct">
-                This is a CORRECT name
-              </StyledMessage>
-            </>
-          )}
-        </StyledInputWrap>
-
-        <StyledInputWrap>
-          <Controller
-            control={control}
-            name="date"
-            rules={{ required: "date can't be empty" }}
-            render={({ field }) => (
-              <StyledDatePicker
-                selected={field.value}
-                onChange={date => field.onChange(date)}
-                onBlur={() => field.onBlur()}
-                showIcon
-                toggleCalendarOnIconClick
-                icon={
-                  <StyledCalendarIcon>
-                    <use href={`${sprite}#icon-calendar`} />
-                  </StyledCalendarIcon>
-                }
-                placeholderText="Your date of birth"
-                maxDate={new Date()}
-                style={{ float: 'left' }}
-                calendarStartDay={1}
-                showYearDropdown
-                showMonthDropdown
-                className={
-                  errors?.date ? 'error' : isFieldValid('date') ? 'correct' : ''
-                }
-              />
-            )}
-          />
-          {errors?.date && (
-            <StyledMessage className="error">
-              {errors?.date?.message || 'ERROR'}
-            </StyledMessage>
-          )}
-          {!errors?.date && isFieldValid('date') && (
-            <StyledMessage className="correct">
-              This is a CORRECT date
-            </StyledMessage>
-          )}
-        </StyledInputWrap>
+        <StyledHead>Sign In</StyledHead>
 
         <StyledInputWrap>
           <StyledInput
@@ -199,7 +110,6 @@ const SignUp = () => {
             </>
           )}
         </StyledInputWrap>
-
         <StyledInputWrap>
           <StyledInput
             {...register('password', {
@@ -219,6 +129,7 @@ const SignUp = () => {
                 : ''
             }
           />
+
           <StyledEye onClick={handleEyeToggle}>
             <use href={`${sprite}#icon-${icon}`} />
           </StyledEye>
@@ -233,14 +144,13 @@ const SignUp = () => {
             </StyledMessage>
           )}
         </StyledInputWrap>
+        <StyledSignInBtn>Sign In</StyledSignInBtn>
 
-        <StyledSignInBtn>Sign Up</StyledSignInBtn>
-
-        <StyledLink to="/signin" aria-label="Go to sign in page">
-          Sign In
+        <StyledLink to="/signup" aria-label="Go to sign up page">
+          Sign Up
         </StyledLink>
         <StyledGoogleBtn
-          label="Sign up with Google"
+          label="Sign in with Google"
           onClick={() =>
             (window.location.href =
               'https://shaking-code-api-lifuss.onrender.com/api/auth/google')
@@ -251,4 +161,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;
