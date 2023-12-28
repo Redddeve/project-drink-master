@@ -20,4 +20,4 @@ Main frontend stack - React + JavaScript + styled-components + Redux Toolkit
 
 Bundler - Vite
 
-Additionally libraries used: axios, react-select, react-hook-form
+Additionally libraries used: axios, react-hook-form, react-paginate, react-select,  react-datepicker, react-transition-group, react-toastify, react-spinners, react-responsive, lucide-react.
