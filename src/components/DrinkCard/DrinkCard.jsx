@@ -29,13 +29,6 @@ export const DrinkCard = ({ drink }) => {
           />
         </LazyLoad>
       )}
-      {/* <LazyLoad offset={100}>
-        <StyledDrinkImage
-          src={drink.drinkThumb}
-          alt={drink.drink}
-          onError={handleImageError}
-        />
-      </LazyLoad> */}
       <StyledTextContainerSmall>
         <StyledDrinkName theme={theme}>{drink.drink}</StyledDrinkName>
         <StyledSeeMoreSmall
@@ -56,5 +49,4 @@ DrinkCard.propTypes = {
     drink: PropTypes.string,
     _id: PropTypes.string,
   }),
-  // detailed: PropTypes.bool,
 };
