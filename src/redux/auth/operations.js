@@ -45,7 +45,8 @@ export const signoutThunk = createAsyncThunk(
   'auth/signout',
   async (_, { rejectWithValue, getState }) => {
     try {
-      await instance.get('auth/logout');
+      setToken(getState().auth.token);
+      await instance.post('auth/signout');
       clearToken();
       toast.info(`Bye, ${getState().auth.user.name} `);
     } catch (error) {
