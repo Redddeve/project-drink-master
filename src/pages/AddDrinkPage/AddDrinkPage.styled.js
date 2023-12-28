@@ -111,3 +111,21 @@ export const StyledValidationText = styled.p`
   font-size: 13px;
   width: 100%;
 `;
+
+export const Spinner = styled.div`
+  border: 3px solid lightblue;
+  border-top: 3px blue solid;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  animation: spin 2s linear infinite;
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`;

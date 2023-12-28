@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { StyledSubmitBtn } from './AddDrinkPage.styled';
+import { Spinner, StyledSubmitBtn } from './AddDrinkPage.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addOwnDrinkThunk,
@@ -99,14 +99,13 @@ const AddDrinkPage = () => {
         errors={errors}
         onSubmit={onSubmit}
       />
-
       <StyledSubmitBtn
         type="button"
         onClick={handleSubmit(onSubmit)}
         theme={theme}
         disabled={isPending}
       >
-        Add
+        {isPending ? <Spinner /> : 'Add'}
       </StyledSubmitBtn>
 
       <PopularDrinks />
