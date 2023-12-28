@@ -4,7 +4,7 @@ import { selectTheme } from '../../redux/theme/selectors';
 export const GetMenuStyles = element => {
   const theme = useSelector(selectTheme);
   if (element === 'color') {
-    return theme === 'dark' ? 'var(transp-white)' : 'var(--transp-dark)';
+    return theme === 'dark' ? 'var(--transp-white)' : 'var(--transp-dark)';
   } else if (element === 'background') {
     return theme === 'dark' ? 'var(--black)' : 'var(--white)';
   } else if (element === 'hover') {
@@ -49,6 +49,7 @@ export const stylesSelect = {
   menuList: base => ({
     ...base,
     zIndex: '20px',
+    paddingRight: '8px',
     '::-webkit-scrollbar': {
       width: '8px',
       paddingRight: '5px',
@@ -61,6 +62,7 @@ export const stylesSelect = {
     '::-webkit-scrollbar-thumb': {
       background: 'var(--gray)',
       borderRadius: '12px',
+      marginRight: '5px',
     },
   }),
 };
@@ -112,7 +114,6 @@ export const drinkStyles = {
     '@media only screen and (min-width:768px)': {
       width: 199,
       fontSize: '17px',
-      textAlign: 'center',
     },
   }),
   menuList: provided => ({
@@ -138,9 +139,10 @@ export const drinkStyles = {
     padding: '4px 23px',
     backgroundColor: state.isSelected ? 'rgba(255, 255, 255, 0.10)' : '',
     color: GetMenuStyles('color'),
+    transition: 'var(--tran-fast)',
     ':hover': {
-      background: 'rgba(255, 255, 255, 0.10)',
       color: GetMenuStyles('hover'),
+      cursor: 'pointer',
     },
   }),
 };

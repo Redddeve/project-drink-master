@@ -10,6 +10,7 @@ import {
 import {
   selectDrinkById,
   selectFavoriteDrinks,
+  selectIsLoading,
 } from '../../redux/drinks/selectors.js';
 import {
   StyledAddToFavButton,
@@ -49,6 +50,7 @@ const UserDrinkPage = () => {
 
   const drink = useSelector(selectDrinkById);
   const favorites = useSelector(selectFavoriteDrinks);
+  const isLoading = useSelector(selectIsLoading);
   const [isFavorite, setIsFavorite] = useState(false);
 
   const handleAddToFav = () => {
@@ -105,6 +107,7 @@ const UserDrinkPage = () => {
           <StyledAddToFavButton
             theme={theme}
             onClick={isFavorite ? handleRemoveFromFav : handleAddToFav}
+            disabled={isLoading}
           >
             {isFavorite
               ? 'Remove from favorite drinks'
