@@ -34,6 +34,10 @@ export const Paginator = styled(ReactPaginate).attrs({
     height: 27px;
     &:not(:nth-child(-n + 2)) {
       margin-left: ${({ pageCount }) => (pageCount >= 6 ? '5px' : '24px')};
+
+      @media ${device.tablet} {
+        margin-left: 24px;
+      }
     }
   }
 
