@@ -38,6 +38,7 @@ export const MessageBox = styled.div`
   width: 299px;
   height: 269px;
   padding: 50px 30px 14px;
+  border-radius: 0 70px;
   background: rgba(217, 217, 217, 0.14);
   backdrop-filter: blur(27.976364135742188px);
 

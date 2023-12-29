@@ -56,6 +56,7 @@ export const slice = createSlice({
       })
       .addCase(searchDrinksThunk.rejected, state => {
         state.searchDrinks = [];
+        state.pages = 0;
         state.isLoading = false;
       })
       .addCase(getDrinkbyIdThunk.fulfilled, (state, { payload }) => {
