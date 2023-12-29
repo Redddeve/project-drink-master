@@ -13,7 +13,9 @@ export const fetchAllDrinks = createAsyncThunk(
       const { data } = await instance.get(`/drinks/mainpage?limit=${limit}`);
       return data;
     } catch (error) {
-      toast.error(`Something went wrong. Please try again later.`);
+      if (error.response.status !== 401) {
+        toast.error(`Something went wrong. Please try again later.`);
+      }
       if (error.response.status === 401) {
         clearToken();
       }
