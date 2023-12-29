@@ -26,7 +26,6 @@ const EditProfile = forwardRef(
     const theme = useSelector(state => state.theme.theme);
     const dispatch = useDispatch();
     const { name, avatarURL } = useSelector(selectUser);
-    console.log('avatarURL :>> ', avatarURL);
 
     // eslint-disable-next-line no-unused-vars
     const { register, handleSubmit, setValue, control } = useForm({
