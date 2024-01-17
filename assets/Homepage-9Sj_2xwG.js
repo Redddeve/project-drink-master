@@ -1,4 +1,4 @@
-import{u as a,d as o,a as s,l as n,N as y,b as m,j as e,c as D,r as v,e as M,s as S,f as u,g as b,h as C,i as T}from"./index-Oi_9f0oW.js";import{P as O}from"./PageTitle-ShmL178u.js";import{s as H}from"./selectors-cEoKtL6D.js";import{S as p,D as c}from"./SearchResultsContainer.styled-t3QO0nwH.js";import{C as I}from"./CircleBg-lqTSM_JP.js";import{M as A}from"./Modal-Fv2a-gUC.js";import"./LazyLoad-nrLVUmnQ.js";const E=a.section`
+import{u as a,d as o,a as s,l as n,N as y,b as m,j as e,c as D,r as v,e as M,s as S,f as u,g as b,h as C,i as T}from"./index-u8BqMUJS.js";import{P as O}from"./PageTitle-TgjjPuQn.js";import{s as H}from"./selectors-UaiBIaWo.js";import{S as p,D as c}from"./SearchResultsContainer.styled-jxv2yMHN.js";import{C as I}from"./CircleBg-XSgVuoQC.js";import{M as z}from"./Modal-5sNyOGVy.js";import"./LazyLoad-UtDDrU8l.js";const A=a.section`
   margin-bottom: 112px;
 
   @media ${o.tablet} {
@@ -11,7 +11,7 @@ import{u as a,d as o,a as s,l as n,N as y,b as m,j as e,c as D,r as v,e as M,s a
     gap: 130px;
     margin-bottom: 160px;
   }
-`,P=a.div`
+`,E=a.div`
   margin-bottom: 47px;
 
   @media ${o.tablet} {
@@ -25,7 +25,7 @@ import{u as a,d as o,a as s,l as n,N as y,b as m,j as e,c as D,r as v,e as M,s a
     margin-top: 57px;
     height: 330px;
   }
-`,z=a.p`
+`,P=a.p`
   line-height: 1.42em;
   margin-bottom: 32px;
   color: ${({theme:t})=>t==="dark"?s.colors.main:n.colors.main};
@@ -67,12 +67,13 @@ import{u as a,d as o,a as s,l as n,N as y,b as m,j as e,c as D,r as v,e as M,s a
   width: 252px;
   height: 313px;
   margin: 0 auto;
+  z-index: 1;
 
   @media ${o.tablet} {
     width: 359px;
     height: 445px;
   }
-`,N=()=>{const t=m(r=>r.theme.theme);return e.jsx(e.Fragment,{children:e.jsxs(E,{children:[e.jsxs(P,{children:[e.jsx(O,{mbMobile:"16",mbTablet:"28",mbDesktop:"28",title:"Craft Your Perfect Drink with Drink Master"}),e.jsx(z,{theme:t,children:"Unlock your inner mixologist with Drink Master, your one-stop destination for exploring, crafting, and mastering the world's finest beverages."}),e.jsx(B,{theme:t,to:"/add","aria-label":"Add drinks",children:"Add drinks"})]}),e.jsx(L,{children:e.jsx("img",{srcSet:`${D} 1x, ${v} 2x`,alt:"cocktail"})})]})})},x=a.h2`
+`,N=()=>{const t=m(r=>r.theme.theme);return e.jsx(e.Fragment,{children:e.jsxs(A,{children:[e.jsxs(E,{children:[e.jsx(O,{mbMobile:"16",mbTablet:"28",mbDesktop:"28",title:"Craft Your Perfect Drink with Drink Master"}),e.jsx(P,{theme:t,children:"Unlock your inner mixologist with Drink Master, your one-stop destination for exploring, crafting, and mastering the world's finest beverages."}),e.jsx(B,{theme:t,to:"/add","aria-label":"Add drinks",children:"Add drinks"})]}),e.jsx(L,{children:e.jsx("img",{srcSet:`${D} 1x, ${v} 2x`,alt:"cocktail"})})]})})},x=a.h2`
   font-size: 28px;
   font-weight: 600;
   line-height: 1.14em;
@@ -126,4 +127,4 @@ import{u as a,d as o,a as s,l as n,N as y,b as m,j as e,c as D,r as v,e as M,s a
     background: ${({theme:t})=>t==="dark"?"rgba(188, 230, 210, 0.3)":"rgba(188, 230, 210, 0.4)"};
     filter: blur(104.8543701171875px);
   }
-`,Q="/project-drink-master/assets/Motivation-mob@2x-BTKJILD-.jpg",G=()=>{const t=m(T),[r,d]=b.useState(!1);b.useEffect(()=>{const l=new Date().toDateString(),g=sessionStorage.getItem("lastModalShown");(t===10||t===50||t===100)&&g!==l&&setTimeout(()=>{d(!0),sessionStorage.setItem("lastModalShown",l)},2e3)},[t]);const h=()=>{d(!1)};return e.jsxs(e.Fragment,{children:[e.jsx(F,{}),e.jsx(I,{}),e.jsx(N,{}),e.jsx(q,{}),r&&e.jsx(A,{background:Q,isOpen:!0,onClose:h,message:`Wow! You have been using the application for ${t} days!`})]})};export{G as default};
+`,Q="/project-drink-master/assets/Motivation-mob@2x-BTKJILD-.jpg",G=()=>{const t=m(T),[r,d]=b.useState(!1);b.useEffect(()=>{const l=new Date().toDateString(),g=sessionStorage.getItem("lastModalShown");(t===10||t===50||t===100)&&g!==l&&setTimeout(()=>{d(!0),sessionStorage.setItem("lastModalShown",l)},2e3)},[t]);const h=()=>{d(!1)};return e.jsxs(e.Fragment,{children:[e.jsx(F,{}),e.jsx(I,{}),e.jsx(N,{}),e.jsx(q,{}),r&&e.jsx(z,{background:Q,isOpen:!0,onClose:h,message:`Wow! You have been using the application for ${t} days!`})]})};export{G as default};
