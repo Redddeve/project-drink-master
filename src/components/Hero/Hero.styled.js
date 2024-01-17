@@ -85,6 +85,7 @@ export const HeroImg = styled.div`
   width: 252px;
   height: 313px;
   margin: 0 auto;
+  z-index: 1;
 
   @media ${device.tablet} {
     width: 359px;
