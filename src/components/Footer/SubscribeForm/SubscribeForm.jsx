@@ -6,7 +6,6 @@ import {
   StyledStatus,
 } from './SubscribeForm.styled';
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
 import CommonBtn from '../../SharedComponents/CommonBtn/CommonBtn';
 import sprite from '../../../images/sprite.svg';
 
@@ -26,7 +25,6 @@ const SubscribeForm = () => {
 
   const onSubmit = data => {
     dispatch(subscribeThunk(data));
-    toast.success(`Subscription ${data.email} completed successfully!`);
     reset();
   };
 

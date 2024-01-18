@@ -57,7 +57,6 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const submit = data => {
-    console.log(data);
     const outputDate = moment(data.date).format('YYYY-MM-DD');
     const newData = {
       ...data,

@@ -74,8 +74,8 @@ export const List = styled.ul`
     content: '';
     display: block;
     position: absolute;
-    bottom: -200px;
-    right: -450px;
+    top: 300px;
+    left: 300px;
     width: 549px;
     height: 543px;
     border-radius: 549px;
@@ -86,8 +86,7 @@ export const List = styled.ul`
   }
   @media ${device.tablet} {
     &::after {
-      bottom: -20px;
-      right: -395px;
+      left: 600px;
     }
   }
   @media ${device.desktop} {
