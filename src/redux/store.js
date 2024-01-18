@@ -17,7 +17,7 @@ import { themeReducer } from './theme/slice';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'favorite'],
 };
 
 const themePersistConfig = {
